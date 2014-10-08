@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  File: config/res_config_view.xml
+  Module: ons_productivity_edoctree
+
+  Created by cyp@open-net.ch
+
+  Copyright (c) 2013 Open-Net Ltd. All rights reserved.
+-->
+<openerp>
+    <data>
+
+        <record model="ir.ui.view" id="view_edoctree_configuration">
+            <field name="name">eDocTree settings</field>
+            <field name="model">ons_edoctree.config.settings</field>
+            <field name="inherit_id" ref="ons_productivity_edoctree.view_edoctree_configuration"/>
+            <field name="priority" eval="17"/>
+            <field name="arch" type="xml">
+                <form string="Configure eDocTree" position="inside">
+                    <group>
+                        <label for="id" string="Eagle management"/>
+                        <div name="instances">
+                            <label string="At meta-contract creation, the eDocTree system should copy..."/>
+                            <div style="margin-left:10px;">
+                                <label for="eagle_meta_new_what"/>
+                                <field name="eagle_meta_new_what" class="oe_inline" domain="[('is_template','=',True)]"/>
+                            </div>
+                            <div style="margin-left:10px;" attrs="{'invisible':[('eagle_meta_new_what','=',False)]}">
+                                <label for="eagle_meta_new_where"/>
+                                <field name="eagle_meta_new_where" class="oe_inline" attrs="{'required':[('eagle_meta_new_what','!=',False)]}"/>
+                            </div>
+                            <label string="At contract creation, the eDocTree system should copy..."/>
+                            <div style="margin-left:10px;">
+                                <label for="eagle_contract_new_what"/>
+                                <field name="eagle_contract_new_what" class="oe_inline" domain="[('is_template','=',True)]"/>
+                            </div>
+                            <div style="margin-left:10px;" attrs="{'invisible':[('eagle_contract_new_what','=',False)]}">
+                                <label for="eagle_contract_new_where"/>
+                                <field name="eagle_contract_new_where" class="oe_inline" attrs="{'required':[('eagle_contract_new_what','!=',False)]}"/>
+                            </div>
+                            <div style="margin-left:10px;" attrs="{'invisible':['|',('eagle_contract_new_what','=',False),('eagle_contract_new_where','!=','tree')]}">
+                                <label for="eagle_contract_new_tree"/>
+                                <field name="eagle_contract_new_tree" class="oe_inline" attrs="{'required':[('eagle_contract_new_what','!=',False),('eagle_contract_new_where','=','tree')]}"/>
+                            </div>
+                        </div>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+    </data>
+</openerp>

@@ -1,0 +1,56 @@
+# This file contains the translation of the following modules:
+#	* Eagle CRM
+#
+
+msgid ""
+msgstr ""
+"Project-Id-Version: OpenERP Server 7.0\n"
+"Report-Msgid-Bugs-To: support@open-net.ch\n"
+"POT-Creation-Date: 2014-05-14 21:20+0000\n"
+"PO-Revision-Date: 2014-05-14 21:20+0000\n"
+"Last-Translator: <cyp@open-net.ch>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. module: eagle_crm
+#: field:crm.case.stage,eagle_state:0
+msgid "Corresp. contract state"
+msgstr "Etat corresp. du contrat"
+
+#. module: eagle_crm
+#: selection:crm.case.stage,eagle_state:0
+msgid "Offer"
+msgstr "Offre"
+
+#. module: eagle_crm
+#: selection:crm.case.stage,eagle_state:0
+msgid "Confirmation"
+msgstr "Confirmation"
+
+#. module: eagle_crm
+#: selection:crm.case.stage,eagle_state:0
+msgid "Installation"
+msgstr "Installation"
+
+#. module: eagle_crm
+#: selection:crm.case.stage,eagle_state:0
+msgid "Production"
+msgstr "Production"
+
+#. module: eagle_crm
+#: selection:crm.case.stage,eagle_state:0
+msgid "Closed"
+msgstr "Fermé"
+
+#. module: eagle_crm
+#: selection:crm.case.stage,eagle_state:0
+msgid "Canceled"
+msgstr "Annulé"
+
+#. module: crm
+#: model:ir.ui.menu,name:eagle_crm.eagle_menu_crm_case_stages
+#: view:eagle.contract:0
+msgid "Stages"
+msgstr "Étapes"

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  File: config/config_view.xml
+  Module: eagle_invoice
+
+  Created by cyp@open-net.ch
+
+  Copyright (c) 2013 Open-Net Ltd. All rights reserved.
+-->
+<openerp>
+	<data>
+
+    	<!--
+    		Parameters
+    	-->
+		<record model="ir.ui.view" id="eagle_prj_view_config_params_form">
+			<field name="name">Eagle Project Params View</field>
+			<field name="model">eagle.config.settings</field>
+			<field name="type">form</field>
+			<field name="inherit_id" ref="eagle_base.eagle_view_config_settings"/>
+			<field name="arch" type="xml">
+                <div name="behavior" position="inside">
+                    <div>
+                        <field name="set_company" class="oe_inline"/>
+                        <label for="set_company"/>
+                    </div>
+                    <div>
+                        <field name="use_one_project" class="oe_inline"/>
+                        <label for="use_one_project"/>
+                    </div>
+                    <div>
+                        <label for="project_privacy_visibility"/>
+                        <field name="project_privacy_visibility" class="oe_inline"/>
+                    </div>
+                </div>
+			</field>
+		</record>
+
+	</data>
+</openerp>

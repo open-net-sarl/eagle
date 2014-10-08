@@ -1,0 +1,224 @@
+# Translation of OpenERP Server.
+# This file contains the translation of the following modules:
+# 	* eagle_invoice
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: OpenERP Server 6.0dev\n"
+"Report-Msgid-Bugs-To: support@open-net.ch\n"
+"PO-Creation-Date: 2011-07-14 11:38+0000\n"
+"PO-Revision-Date: 2012-04-19 18:08+0000\n"
+"Last-Translator: Cyp <cyp@open-net.ch>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. module: eagle_invoice
+#: code:addons/eagle_invoice/contracts.py:351
+#, python-format
+msgid "You can't close contract as long as some invoices are not paid"
+msgstr "Vous ne pouvez pas clore un contrat tant qu'il reste des factures non payées"
+
+#. module: eagle_invoice
+#: model:ir.model,name:eagle_invoice.model_eagle_setup_inv_sched
+msgid "Setup an Eagle Invoice Scheduler"
+msgstr "Définir le planificateur Eagle pour les factures"
+
+#. module: eagle_invoice
+#: constraint:account.invoice:0
+msgid "Error: Invalid Bvr Number (wrong checksum)."
+msgstr "Erreur : N° BVR invalide (somme de contrôle erronée)."
+
+#. module: eagle_invoice
+#: model:ir.actions.act_window,name:eagle_invoice.eagle_action_contract_2_passed_invoices
+msgid "Passed invoices"
+msgstr "Factures passées"
+
+#. module: eagle_invoice
+#: field:eagle.contract,eagle_make_invoice_button_visible:0
+msgid "'Make Invoice' Button visible?"
+msgstr "Montrer le bouton 'Faire la facture'?"
+
+#. module: eagle_invoice
+#: model:ir.actions.act_window,name:eagle_invoice.eagle_action_contract_2_current_invoices
+msgid "Current invoices"
+msgstr "Factures actuelles"
+
+#. module: eagle_invoice
+#: view:eagle.contract:0
+msgid "Current Invoice Lines"
+msgstr "Lignes de factures actuelles"
+
+#. module: eagle_invoice
+#: code:addons/eagle_invoice/contracts.py:284
+#, python-format
+msgid "to"
+msgstr "au"
+
+#. module: eagle_invoice
+#: help:eagle.config.params,invoicing_mode:0
+msgid "Automatic and manual have the 'Make Invoice' button visible, disabled no"
+msgstr "Automatique et Manuel ont le bouton 'Faire la facture', sinon il est caché"
+
+#. module: eagle_invoice
+#: view:eagle.contract:0
+msgid "Past Invoice Lines"
+msgstr "Lignes de factures passées"
+
+#. module: eagle_invoice
+#: view:eagle.config.params:0
+msgid "Closing if paid"
+msgstr "Fermer si payé"
+
+#. module: eagle_invoice
+#: view:eagle.contract:0
+msgid "Messages"
+msgstr "Messages"
+
+#. module: eagle_invoice
+#: view:eagle.setup_inv_sched:0
+msgid "Setup"
+msgstr "Régler"
+
+#. module: eagle_invoice
+#: field:eagle.config.params,invoicing_mode:0
+msgid "Invoicing mode"
+msgstr "Mode de facturation"
+
+#. module: eagle_invoice
+#: selection:eagle.config.params,invoicing_mode:0
+#: field:eagle.config.settings,invoicing_mode:0
+msgid "Manual"
+msgstr "Manuel"
+
+#. module: eagle_invoice
+#: sql_constraint:account.invoice:0
+msgid "Invoice Number must be unique per Company!"
+msgstr "Le numéro de facture doit être unique par société !"
+
+#. module: eagle_invoice
+#: field:account.invoice.line,contract_id:0
+#: model:ir.model,name:eagle_invoice.model_eagle_contract
+msgid "Contract"
+msgstr "Contrat"
+
+#. module: eagle_invoice
+#: view:eagle.config.params:0
+msgid "Billable/Invoices"
+msgstr "Unbillable/Invoices"
+
+#. module: eagle_invoice
+#: code:addons/eagle_invoice/contracts.py:351
+#, python-format
+msgid "Error"
+msgstr "Erreur"
+
+#. module: eagle_invoice
+#: selection:eagle.config.params,invoicing_mode:0
+#: field:eagle.config.settings,invoicing_mode:0
+msgid "Automatic"
+msgstr "Automatique"
+
+#. module: eagle_invoice
+#: view:eagle.contract:0
+msgid "Make Invoice"
+msgstr "Faire la facture"
+
+#. module: eagle_invoice
+#: view:eagle.setup_inv_sched:0
+#: model:ir.actions.act_window,name:eagle_invoice.eagle_action_wiz_setup_inv_sched
+#: model:ir.ui.menu,name:eagle_invoice.eagle_menu_wiz_setup_inv_sched
+msgid "Setup Eagle Invoice Scheduler"
+msgstr "Régler le planificateur Eagle pour les factures"
+
+#. module: eagle_invoice
+#: constraint:account.invoice:0
+msgid "Error: BVR reference is required."
+msgstr "Erreur : la référence BVR est requise."
+
+#. module: eagle_invoice
+#: field:account.invoice.line,contract_position_id:0
+msgid "Contract Position"
+msgstr "Position de contrat Position"
+
+#. module: eagle_invoice
+#: model:ir.model,name:eagle_invoice.model_account_invoice_line
+msgid "Invoice Line"
+msgstr "Ligne de facture"
+
+#. module: eagle_invoice
+#: field:eagle.contract,current_invoice_lines:0
+msgid "Current invoice lines"
+msgstr "Lignes de factures actuelles"
+
+#. module: eagle_invoice
+#: field:eagle.config.params,make_inv_lines_with_unbillables:0
+#: field:eagle.config.settings,make_inv_lines_with_unbillables:0
+msgid "Unbillable items make invoice lines"
+msgstr "Les positions non-facturables génèrent aussi des lignes de facture"
+
+#. module: eagle_invoice
+#: selection:eagle.config.params,invoicing_mode:0
+#: field:eagle.config.settings,invoicing_mode:0
+msgid "Disabled"
+msgstr "Désactivé"
+
+#. module: eagle_invoice
+#: field:eagle.config.params,inv_close_cnt_if_inv_payed:0
+#: field:eagle.config.settings,inv_close_cnt_if_inv_payed:0
+msgid "May close a contract only if all invoices are paid"
+msgstr "Fermeture de contrat seulement si toutes les factures sont payées"
+
+#. module: eagle_invoice
+#: view:eagle.setup_inv_sched:0
+msgid "This wizard is going to add a scheduler for Eagle Invoice. One and only one will be created."
+msgstr "Cet assistant va ajouter un planificateur Eagle pour les factures. Un et un seul sera ajouté."
+
+#. module: eagle_invoice
+#: model:ir.model,name:eagle_invoice.model_account_invoice
+msgid "Invoice"
+msgstr "Facture"
+
+#. module: eagle_invoice
+#: view:eagle.setup_inv_sched:0
+msgid "Cancel"
+msgstr "Annuler"
+
+#. module: eagle_invoice
+#: sql_constraint:eagle.config.params:0
+msgid "Only one configuration for Eagle!"
+msgstr "Une seule configuration pour Eagle!"
+
+#. module: eagle_invoice
+#: field:eagle.contract,past_invoice_lines:0
+msgid "Past invoice lines"
+msgstr "Lignes de factures passées"
+
+#. module: eagle_invoice
+#: field:eagle.config.params,invoicing_mode:0
+#: field:eagle.config.settings,invoicing_mode:0
+msgid "Invoicing mode"
+msgstr "Mode de facturation"
+
+#. module: eagle_invoice
+#: Help:eagle.config.settings,invoicing_mode:0
+msgid "Automatic and manual have the 'Make Invoice' button visible, disabled no"
+msgstr "Le bouton 'Faire la facture' est visible en mode automatique et manuel, sinon il est caché"
+
+#. module: eagle_invoice
+#: code:addons/eagle_invoice/wizard/wiz_inv_scheduler:53
+#, python-format
+msgid "Eagle Invoices Scheduler"
+msgstr "Planification de la facturation par Eagle"
+
+#. module: eagle_invoice
+#: view:eagle.setup_inv_sched:0
+msgid "Setup Eagle Invoice Scheduler"
+msgstr "Mise en place du planificateur de la facturation par Eagle"
+
+#. module: eagle_invoice
+#: view:eagle.setup_inv_sched:0
+msgid ""This wizard is going to add a scheduler for Eagle Invoice. One and only one will be created."
+msgstr "Cet assistant va ajouter un planificateur pour la facturation par Eagle. Une seule instance sera crée."
+

@@ -1,0 +1,105 @@
+<?xml version="1.0"?>
+<!--
+    File: contracts_view.xml
+    Module: eagle_invoice
+    
+    Created by cyp@open-net.ch
+    
+    Copyright (c) 2013 Open-Net Ltd. All rights reserved.
+-->
+<openerp>
+	<data>
+
+        <!--
+            Inherited contract form view from the Eagle Base module 
+        -->
+        <record model="ir.ui.view" id="eagle_financial_base_view_contract_form">
+            <field name="name">Eagle Financial base Contract View</field>
+            <field name="model">eagle.contract</field>
+            <field name="inherit_id" ref="eagle_base.eagle_view_contract_form"/>
+            <field name="arch" type="xml">
+                <group name="top" position="inside">
+                    <field name="tab_profile_curr_inv_lines" invisible="1"/>
+                    <field name="tab_profile_past_inv_lines" invisible="1"/>
+                    <field name="eagle_make_invoice_button_visible" invisible="1"/>
+                </group>
+                <page string="Other infos" position="before">
+                    <page string="Current Invoice Lines" attrs="{'invisible':[('tab_profile_curr_inv_lines','=',False)]}">
+                        <field name="current_invoice_lines" nolabel="1" colspan="4" readonly="1">
+                            <tree string="Invoice Line">
+                                <field name="name"/>
+                                <field name="account_id" groups="account.group_account_user"/>
+                                <field name="quantity"/>
+                                <field name="uos_id" groups="product.group_uom"/>
+                                <field name="price_unit"/>
+                                <field name="discount" groups="sale.group_discount_per_so_line"/>
+                                <field name="price_subtotal"/>
+                            </tree>
+                            <form string="Invoice Line" version="7.0">
+                                <group>
+                                    <group>
+                                        <field name="product_id"/>
+                                        <label for="quantity"/>
+                                        <div>
+                                            <field name="quantity" class="oe_inline"/>
+                                            <field name="uos_id" class="oe_inline" groups="product.group_uom"/>
+                                        </div>
+                                        <field name="price_unit"/>
+                                        <field name="discount" groups="sale.group_discount_per_so_line"/>
+                                    </group>
+                                    <group>
+                                        <field name="account_id" groups="account.group_account_user"/>
+                                        <field name="invoice_line_tax_id" widget="many2many_tags"/>
+                                        <field name="account_analytic_id" groups="analytic.group_analytic_accounting"/>
+                                        <field name="company_id" groups="base.group_multi_company" readonly="1"/>
+                                    </group>
+                                </group>
+                                <label for="name"/>
+                                <field name="name"/>
+                            </form>
+                        </field>
+                    </page>
+                    <page string="Past Invoice Lines" attrs="{'invisible':[('tab_profile_past_inv_lines','=',False)]}">
+                        <field name="past_invoice_lines" nolabel="1" colspan="4" readonly="1">
+                            <tree string="Invoice Line">
+                                <field name="name"/>
+                                <field name="account_id" groups="account.group_account_user"/>
+                                <field name="quantity"/>
+                                <field name="uos_id" groups="product.group_uom"/>
+                                <field name="price_unit"/>
+                                <field name="discount" groups="sale.group_discount_per_so_line"/>
+                                <field name="price_subtotal"/>
+                            </tree>
+                            <form string="Invoice Line" version="7.0">
+                                <group>
+                                    <group>
+                                        <field name="product_id"/>
+                                        <label for="quantity"/>
+                                        <div>
+                                            <field name="quantity" class="oe_inline"/>
+                                            <field name="uos_id" class="oe_inline" groups="product.group_uom"/>
+                                        </div>
+                                        <field name="price_unit"/>
+                                        <field name="discount" groups="sale.group_discount_per_so_line"/>
+                                    </group>
+                                    <group>
+                                        <field name="account_id" groups="account.group_account_user"/>
+                                        <field name="invoice_line_tax_id" widget="many2many_tags"/>
+                                        <field name="account_analytic_id" groups="analytic.group_analytic_accounting"/>
+                                        <field name="company_id" groups="base.group_multi_company" readonly="1"/>
+                                    </group>
+                                </group>
+                                <label for="name"/>
+                                <field name="name"/>
+                            </form>
+                        </field>
+                    </page>
+                </page>
+                <div name="base_buttons" position="inside">
+                    <button name="button_make_invoice" string="Make Invoice" class="oe_right" type="object" attrs="{'invisible':['|',('eagle_make_invoice_button_visible','=',False),('state','not in',['installation','production'])]}"/>
+                </div>
+            </field>
+        </record>
+
+    </data>
+</openerp>

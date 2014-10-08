@@ -1,0 +1,117 @@
+<?xml version="1.0"?>
+<!--
+  File: contracts_view.xml
+  Module: eagle_templates
+
+  Created by cyp@open-net.ch
+
+  Copyright (c) 2013 Open-Net Ltd. All rights reserved.
+-->
+<openerp>
+    <data>
+
+        <!--
+            Inherited contract form view from the Eagle Base module 
+        -->
+        <record model="ir.ui.view" id="eagle_view_base_tmpls_view_contract_form">
+            <field name="name">Eagle Base Templates Contract View</field>
+            <field name="model">eagle.contract</field>
+            <field name="type">form</field>
+            <field name="inherit_id" ref="eagle_base.eagle_view_contract_form"/>
+            <field name="priority" eval="18"/>
+            <field name="arch" type="xml">
+                <div name="prj_buttons" position="inside">
+                    <button name="action_check_task_templates" string="Task templates" class="oe_right" attrs="{'invisible':[('tab_profile_project_tasks','=',False)]}" type="object"/>
+                </div>
+                <div name="pos_buttons" position="inside">
+                    <button name="%(eagle_templates.wiz_copy_tmpl_pos_2_cnt_action)d" string="Use a template" class="oe_right" states="draft,installation,production" type="action"/>
+                </div>
+            </field>
+        </record>
+        
+        <!-- 
+            Contract templates
+        -->
+		<record model="ir.ui.view" id="eagle_tmpls_view_cnt_tmpl_form">
+			<field name="name">Eagle Contract Template View</field>
+			<field name="model">eagle.template.contract</field>
+			<field name="arch" type="xml">
+				<form string="Contract" version="7.0">
+                    <header>
+    					<button name="%(wiz_copy_tmpl_2_cnt_action)d" string="Create a new contract" type="action" class="oe_highlight"/>
+                    </header>
+                    <sheet>
+                        <div class="oe_title">
+                            <div class="oe_edit_only">
+                                <label for="name" string="Template name"/>
+                            </div>
+                            <h2>
+                                <field name="name"/>
+                            </h2>
+                            <label for="category_id" class="oe_edit_only"/>
+                            <h2>
+                                <field name="category_id"/>
+                            </h2>
+                        </div>
+                        <notebook>
+                            <page string="Positions">
+                                <field name="positions" mode="tree">
+                                    <tree string=" " editable="top">
+                                        <field name="sequence"/>
+                                        <field name="name"/>
+                                        <field name="recurrence_id"/>
+                                        <field name="cancellation_deadline"/>
+                                        <field name="is_billable"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+		<record model="ir.ui.view" id="eagle_tmpls_view_cnt_tmpl_list">
+			<field name="name">Eagle Contract Template List</field>
+			<field name="model">eagle.template.contract</field>
+			<field name="arch" type="xml">
+				<tree string="Contracts">
+                    <field name="name"/>
+                    <field name="category_id"/>
+                </tree>
+            </field>
+        </record>
+
+		<record model="ir.ui.view" id="eagle_tmpls_view_cnt_tmpl_filter">
+			<field name="name">Eagle Contract Template Filter</field>
+			<field name="model">eagle.template.contract</field>
+			<field name="arch" type="xml">
+				<search string="Search contract templates">
+					<group>
+						<field name="name" select="1"/>
+						<field name="category_id" select="1"/>
+					</group>
+					<group expand="1" string="Group by...">
+						<filter string="Category" icon="terp-personal" domain="[]" context="{'group_by':'category_id'}"/>
+					</group>
+				</search>
+			</field>
+		</record>
+
+        <record model="ir.actions.act_window" id="eagle_tmpls_action_contract_template">
+            <field name="name">Contract templates</field>
+            <field name="res_model">eagle.template.contract</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Click to start a new Eagle contract template.
+              </p><p>
+                Use the templating system in order to prepare pre-made Eagle contracts with pre-selected positions,
+                for example positions that are almost always used in your contracts.
+              </p>
+            </field>
+        </record>
+
+    </data>
+</openerp>

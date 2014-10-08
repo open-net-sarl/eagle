@@ -1,0 +1,911 @@
+# This file contains the translation of the following modules:
+#	* Eagle Base
+#
+
+msgid ""
+msgstr ""
+"Project-Id-Version: OpenERP Server 7.0\n"
+"Report-Msgid-Bugs-To: support@open-net.ch\n"
+"POT-Creation-Date: 2013-06-23 16:00+0000\n"
+"PO-Revision-Date: 2013-06-23 16:00+0000\n"
+"Last-Translator: <cyp@open-net.ch>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. module: eagle_base
+#: model:ir.ui.menu,name:eagle_base.eagle_menu_contracts_top
+#: model:ir.ui.menu,name:eagle_base.eagle_action_contract_filter_all_tree
+#: model:ir.actions.act_window,name:eagle_base.eagle_action_cust_2_contracts_list
+#: model:ir.actions.act_window,name:eagle_base.eagle_action_partner_2_contracts_list
+msgid "Contracts"
+msgstr "Contrats"
+
+#. module: eagle_base
+#: model:ir.ui.menu,name:eagle_base.eagle_menu_contracts_all_form
+#: model:ir.actions.act_window,name:eagle_base.eagle_action_contract_all_form
+msgid "All Contracts, by customer"
+msgstr "Tous les contrats, par client"
+
+#. module: eagle_base
+#: model:ir.ui.menu,name:eagle_base.eagle_menu_contracts_draft_form
+msgid "Offers"
+msgstr "Offres"
+
+#. module: eagle_base
+#: model:ir.ui.menu,name:eagle_base.eagle_action_contract_filter_inst_form
+msgid "Installations"
+msgstr "Installations"
+
+#. module: eagle_base
+#: model:ir.ui.menu,name:eagle_base.eagle_action_contract_filter_prod_form
+msgid "Productions"
+msgstr "Productions"
+
+#. module: eagle_base
+#: model:ir.ui.menu,name:eagle_base.eagle_menu_contracts_close_form
+msgid "Contracts"
+msgstr "Contrats"
+
+#. module: eagle_base
+#: model:ir.ui.menu,name:eagle_base.eagle_menu_contracts_close_form
+msgid "Closed contracts"
+msgstr "Contrats terminés"
+
+#. module: eagle_base
+#: model:ir.ui.menu,name:eagle_base.eagle_menu_contracts_cancel_form
+msgid "Canceled contracts"
+msgstr "Contrats annulés"
+
+#. module: eagle_base
+#: model:ir.ui.menu,name:eagle_base.eagle_menu_contracts_my_form
+msgid "My contracts"
+msgstr "Mes contrats"
+
+#. module: eagle_base
+#: model:ir.ui.menu,name:eagle_base.eagle_menu_contracts_top
+msgid "Contracts"
+msgstr "Contrats"
+
+#. module: eagle_base
+#: model:ir.ui.menu,name:eagle_base.eagle_menu_contract_pos_current_sales
+#: model:ir.actions.act_window,name:eagle_base.eagle_action_contract_pos_current_sales_tree
+msgid "Current sales"
+msgstr "Ventes en cours"
+
+#. module: eagle_base
+#: model:ir.ui.menu,name:eagle_base.eagle_menu_contract_all
+msgid "All contracts"
+msgstr "Tous les contrats"
+
+#. module: eagle_base
+#: model:ir.ui.menu,name:eagle_base.eagle_menu_eagle_config
+msgid "Configuration"
+msgstr "Configuration"
+
+#. module: eagle_base
+#: model:ir.ui.menu,name:eagle_base.eagle_action_product_recurrence_unit_menu
+#: model:ir.actions.act_window,name:eagle_base.eagle_action_product_recurrence_unit_view
+msgid "Units of recurrence"
+msgstr "Unités de réccurence"
+
+#. module: eagle_base
+#: view:eagle.contract.category:0
+#: model:ir.ui.menu,name:eagle_base.eagle_action_contract_categories_menu
+#: model:ir.actions.act_window,name:eagle_base.eagle_action_contract_categories
+msgid "Contract categories"
+msgstr "Catégories de contrat"
+
+#. module: eagle_base
+#: model:ir.ui.menu,name:eagle_base.eagle_menu_eagle_settings
+#: view:eagle.config.settings:0
+msgid "Configure Eagle"
+msgstr "Configurer Eagle"
+
+#. module: eagle_base
+#: model:ir.ui.menu,name:eagle_base.eagle_menu_config
+#: model:ir.actions.act_window,name:eagle_base.eagle_action_config
+msgid "Parameters"
+msgstr "Paramètres"
+
+#. module: eagle_base
+#: model:ir.ui.menu,name:eagle_base.eagle_menu_eagle_schedulers
+msgid "The Schedulers"
+msgstr "Les planificateurs"
+
+#. module: eagle_base
+#: model:ir.ui.menu,name:eagle_base.menu_eagle_config_events
+msgid "The events"
+msgstr "Les événements"
+
+#. module: eagle_base
+#: model:ir.ui.menu,name:eagle_base.eagle_menu_tabs_profiles
+msgid "The tabs profiles"
+msgstr "Les profils d'onglets"
+
+#. module: eagle_base
+#: view:eagle.wiz_tabs_profile:0
+#: model:ir.actions.act_window,name:eagle_base.eagle_action_wiz_tabs_profile
+msgid "Configure the tabs profile"
+msgstr "Configurer le profil des onglets"
+
+#. module: eagle_base
+#: view:eagle.wiz_tabs_profile:0
+msgid "Apply"
+msgstr "Enregistrer"
+
+#. module: eagle_base
+#: view:eagle.wiz_tabs_profile:0
+msgid "Cancel"
+msgstr "Annuler"
+
+#. module: eagle_base
+#: field:eagle.wiz_tabs_profile,name:0
+msgid "Profile"
+msgstr "Profil"
+
+#. module: eagle_base
+#: view:eagle.contract:0
+#: code:addons/eagle_base/config/wizard/wiz_tabs_profile.py:0
+#, python-format
+msgid "Please select a customer."
+msgstr "Veuillez sélectionner un client."
+
+#. module: eagle_base
+#: view:eagle.contract:0
+#: code:addons/eagle_base/contracts.py:0
+#, python-format
+msgid "Content"
+msgstr "Contenu"
+
+#. module: eagle_base
+#: code:addons/eagle_base/config/wizard/wiz_tabs_profile.py:0
+#, python-format
+msgid "Messages"
+msgstr "Messages"
+
+#. module: eagle_base
+#: code:addons/eagle_base/config/wizard/wiz_tabs_profile.py:0
+#, python-format
+msgid "Other infos"
+msgstr "Autres infos"
+
+#. module: eagle_base
+#: view:eagle.contract:0
+#: field:eagle.contract,members:0
+#: code:addons/eagle_base/config/wizard/wiz_tabs_profile.py:0
+#, python-format
+msgid "Contract members"
+msgstr "Membres du contrat"
+
+#. module: eagle_base
+#: view:eagle.contract:0
+#: field:eagle.contract,partners:0
+#: code:addons/eagle_base/config/wizard/wiz_tabs_profile.py:0
+#, python-format
+msgid "Contract partners"
+msgstr "Partenaires du contrat"
+
+#. module: eagle_base
+#: code:addons/eagle_base/config/wizard/wiz_tabs_profile.py:0
+#, python-format
+msgid "Notes"
+msgstr "Notes"
+
+#. module: eagle_base
+#: code:addons/eagle_base/config/wizard/wiz_tabs_profile.py:0
+#, python-format
+msgid "Debug"
+msgstr "Debug"
+
+#. module: eagle_base
+#: code:addons/eagle_base/config/wizard/wiz_tabs_profile:0
+msgid "Profile"
+msgstr "Profil"
+
+#. module: eagle_base
+#: code:addons/eagle_base/config/wizard/wiz_tabs_profile.py:0
+#, python-format
+msgid "Profile: "
+msgstr "Profil: "
+
+#. module: eagle_base
+#: field:eagle.config.tabs_profile,opts:0
+#: view:eagle.config.tabs_profile:0
+msgid "Options"
+msgstr "Options"
+
+#. module: eagle_base
+#: view:eagle.config.tabs_profile:0
+msgid "Configure"
+msgstr "Configurer"
+
+#. module: eagle_base
+#: view:eagle.config.tabs_profile:0
+#: model:ir.actions.act_window,name:eagle_base.eagle_action_tabs_profile
+msgid "Eagle's tabs profiles"
+msgstr "Profiles d'onglets de Eagle"
+
+#. module: eagle_base
+#: view:eagle.config.event:0
+#: model:ir.actions.act_window,name:eagle_base.eagle_action_event_config_view
+msgid "Eagle's events configuration"
+msgstr "Gestion des événements de Eagle"
+
+#. module: eagle_base
+#: view:eagle.config.event:0
+msgid "Lines"
+msgstr "Lignes"
+
+#. module: eagle_base
+#: field:eagle.config.event,name:0
+msgid "Linked to"
+msgstr "Lié à"
+
+#. module: eagle_base
+#: selection:eagle.config.event,name:0
+#: selection:eagle.contract,date_end:0
+msgid "Draft"
+msgstr "Offre"
+
+#. module: eagle_base
+#: selection:eagle.config.event,name:0
+#: selection:eagle.contract,date_end:0
+msgid "Installation"
+msgstr "Installation"
+
+#. module: eagle_base
+#: selection:eagle.config.event,name:0
+#: selection:eagle.contract,date_end:0
+msgid "Production"
+msgstr "Production"
+
+#. module: eagle_base
+#: selection:eagle.config.event,name:0
+#: selection:eagle.contract,date_end:0
+msgid "Closed"
+msgstr "Clôturé"
+
+#. module: eagle_base
+#: selection:eagle.config.event,name:0
+msgid "Canceled"
+msgstr "Annulé"
+
+#. module: eagle_base
+#: field:eagle.config.event.line,name:0
+msgid "Event's name"
+msgstr "Nom de l'événement"
+
+#. module: eagle_base
+#: field:eagle.config.event.line,seq:0
+msgid "Pos"
+msgstr "Pos"
+
+#. module: eagle_base
+#: field:eagle.config.event.line,function_name:0
+msgid "Function name"
+msgstr "Nom de la fonction"
+
+#. module: eagle_base
+#: field:eagle.config.event.line,module_descr:0
+msgid "Module"
+msgstr "Module"
+
+#. module: eagle_base
+#: view:eagle.config.settings:0
+msgid "Apply"
+msgstr "Appliquer"
+
+#. module: eagle_base
+#: view:eagle.config.settings:0
+msgid "Cancel"
+msgstr "Annuler"
+
+#. module: eagle_base
+#: view:eagle.config.settings:0
+msgid "Interface"
+msgstr "Interface"
+
+#. module: eagle_base
+#: view:eagle.config.settings:0
+msgid "Behavior"
+msgstr "Comportement"
+
+#. module: eagle_base
+#: view:eagle.config.settings:0
+msgid "Instance management"
+msgstr "Gestion des instances"
+
+#. module: eagle_base
+#: field:eagle.config.settings,use_price:0
+msgid "Uses price"
+msgstr "Utiliser les prix"
+
+#. module: eagle_base
+#: help:eagle.config.settings,use_price:0
+msgid "If True, the contract and its positions will display the prices and the amounts."
+msgstr "Si coché, alors les contrats et leurs positions afficheront les prix et montants."
+
+#. module: eagle_base
+#: field:eagle.config.settings,use_members_list:0
+msgid "Uses members list"
+msgstr "Utiliser les listes de membres"
+
+#. module: eagle_base
+#: help:eagle.config.settings,use_members_list:0
+msgid "If True, the contract will display the list of members."
+msgstr "Si coché, alors le contrat affichera la liste des membres."
+
+#. module: eagle_base
+#: field:eagle.config.settings,use_partners_list:0
+msgid "Uses partners list"
+msgstr "Utiliser les listes de partenaires"
+
+#. module: eagle_base
+#: help:eagle.config.settings,use_partners_list:0
+msgid "If True, the contract will display the list of partners."
+msgstr "Si coché, alors le contrat affichera la liste des partenaires."
+
+#. module: eagle_base
+#: field:eagle.config.settings,show_all_meta_tabs:0
+msgid "Show all tabs?"
+msgstr "Faut-il montrer tous les onglets?"
+
+#. module: eagle_base
+#: field:eagle.config.settings,tabs_profile:0
+msgid "Tabs profile"
+msgstr "Profil d'onglets"
+
+#. module: eagle_base
+#: field:eagle.config.settings,auto_production_state:0
+msgid "Automatic 'Production state' mode?"
+msgstr "Passer automatiquement en mode production?"
+
+#. module: eagle_base
+#: field:eagle.config.settings,close_to_draft:0
+msgid "Can re-open a contract?"
+msgstr "Un contrat clôturé peut-il être réouvert?"
+
+#. module: eagle_base
+#: field:eagle.config.settings,use_cust_ref_as_cn:0
+msgid "Use the customer's ref as contract name"
+msgstr "Utiliser la référence client pour le nom du contrat"
+
+#. module: eagle_base
+#: field:eagle.config.settings,use_cn_seq:0
+msgid "Use the contracts sequence"
+msgstr "Utilsier la séquence du contrat"
+
+#. module: eagle_base
+#: field:eagle.config.settings,date_format:0
+msgid "Date format"
+msgstr "Formattage des dates"
+
+#. module: eagle_base
+#: field:eagle.customer,nb_contracts:0
+msgid "Contracts Nb"
+msgstr "Nb de contrats"
+
+#. module: eagle_base
+#: field:eagle.contract,date_start:0
+msgid "Start date"
+msgstr "Date début"
+
+#. module: eagle_base
+#: field:eagle.contract,date_end:0
+msgid "End date"
+msgstr "Date fin"
+
+#. module: eagle_base
+#: field:eagle.contract,customer_id:0
+#: field:eagle.customer,customer:0
+msgid "Customer"
+msgstr "Client"
+
+#. module: eagle_base
+#: field:eagle.contract,user_id:0
+msgid "Salesman"
+msgstr "Vendeur"
+
+#. module: eagle_base
+#: field:eagle.contract,positions:0
+msgid "Positions"
+msgstr "Positions"
+
+#. module: eagle_base
+#: field:eagle.contract,financial_partner_id:0
+msgid "Funded by"
+msgstr "Financé par"
+
+#. module: eagle_base
+#: field:eagle.contract,message_ids:0
+msgid "Messages"
+msgstr "Messages"
+
+#. module: eagle_base
+#: field:eagle.contract,pricelist_id:0
+msgid "Pricelist"
+msgstr "Liste de prix"
+
+#. module: eagle_base
+#: field:eagle.contract,c_total:0
+msgid "Total"
+msgstr "Total"
+
+#. module: eagle_base
+#: field:eagle.contract,company_id:0
+msgid "Company"
+msgstr "Companie"
+
+#. module: eagle_base
+#: field:eagle.contract,notes:0
+msgid "Notes"
+msgstr "Notes"
+
+#. module: eagle_base
+#: view:eagle.contract:0
+#: field:eagle.contract,category_id:0
+msgid "Category"
+msgstr "Catégorie"
+
+#. module: eagle_base
+#: field:eagle.contract,sale_partner_id:0
+msgid "Shipping to"
+msgstr "Livraison à"
+
+#. module: eagle_base
+#: field:eagle.contract.position,name:0
+msgid "Product"
+msgstr "Produit"
+
+#. module: eagle_base
+#: field:eagle.contract.position,qty:0
+msgid "Quantity"
+msgstr "Quantité"
+
+#. module: eagle_base
+#: field:eagle.contract.position,contract_id:0
+#: field:eagle.contract.message,contract_id:0
+#: view:eagle.contract.position:0
+msgid "Contract"
+msgstr "Contrat"
+
+#. module: eagle_base
+#: field:eagle.contract.position,recurrence_id:0
+#: view:eagle.contract.position:0
+msgid "Recurrence"
+msgstr "Récurrence"
+
+#. module: eagle_base
+#: field:eagle.contract.position,next_invoice_date:0
+msgid "Next action date"
+msgstr "Prochaine date butoir"
+
+#. module: eagle_base
+#: field:eagle.contract.position,state:0
+#: view:eagle.contract.position:0
+msgid "State"
+msgstr "Etat"
+
+#. module: eagle_base
+#: selection:eagle.contract.position,state:0
+msgid "To install"
+msgstr "A installer"
+
+#. module: eagle_base
+#: selection:eagle.contract.position,state:0
+msgid "Installed"
+msgstr "installé"
+
+#. module: eagle_base
+#: selection:eagle.contract.position,state:0
+msgid "Recurrent"
+msgstr "Récurrent"
+
+#. module: eagle_base
+#: field:eagle.contract.position,cancellation_deadline:0
+msgid "Days before"
+msgstr "Jours avant"
+
+#. module: eagle_base
+#: field:eagle.contract.position,is_active:0
+msgid "Active"
+msgstr "Actif"
+
+#. module: eagle_base
+#: field:eagle.contract.position,is_billable:0
+msgid "Billable?"
+msgstr "Facturé?"
+
+#. module: eagle_base
+#: field:eagle.contract.position,start_of_period:0
+msgid "Start of period?"
+msgstr "Début de période?"
+
+#. module: eagle_base
+#: field:eagle.contract.position,sequence:0
+msgid "Sequence"
+msgstr "Séquence"
+
+#. module: eagle_base
+#: field:eagle.contract.position,description:0
+msgid "Description"
+msgstr "Description"
+
+#. module: eagle_base
+#: field:eagle.contract.position,out_description:0
+#: view:eagle.contract.position:0
+msgid "Reported text"
+msgstr "Texte reporté"
+
+#. module: eagle_base
+#: field:eagle.contract.position,list_price:0
+msgid "Sale Price"
+msgstr "Prix de vente"
+
+#. module: eagle_base
+#: help:eagle.contract.position,list_price:0
+msgid "Base price for computing the customer price."
+msgstr "Prix de base pour le calcul du prix client."
+
+#. module: eagle_base
+#: field:eagle.contract.position,cl_total:0
+msgid "Total"
+msgstr "Total"
+
+#. module: eagle_base
+#: field:eagle.contract.position,notes:0
+msgid "Notes"
+msgstr "Notes"
+
+#. module: eagle_base
+#: field:eagle.contract.position,property_ids:0
+msgid "Properties"
+msgstr "Propriétés"
+
+#. module: eagle_base
+#: field:eagle.contract.position,is_invoicable:0
+msgid "Is invoicable?"
+msgstr "Est facturable?"
+
+#. module: eagle_base
+#: field:eagle.contract.position,eagle_parm_use_price:0
+msgid "Uses prices?"
+msgstr "Utiliser les prix?"
+
+#. module: eagle_base
+#: view:eagle.contract.position:0
+msgid "Concerning"
+msgstr "Concerne"
+
+#. module: eagle_base
+#: view:eagle.contract:0
+#: view:eagle.contract.position:0
+msgid "Set to 'Active'"
+msgstr "Rendre 'Actif'"
+
+#. module: eagle_base
+#: view:eagle.contract:0
+#: view:eagle.contract.position:0
+msgid "Set to 'Inactive'"
+msgstr "Rendre 'Inactif'"
+
+#. module: eagle_base
+#: view:eagle.contract.position:0
+msgid "Prices / Amounts"
+msgstr "Prix / Montants"
+
+#. module: eagle_base
+#: view:eagle.contract.position:0
+msgid "Group by..."
+msgstr "Regrouper par..."
+
+#. module: eagle_base
+#: view:eagle.contract:0
+msgid "Price, totals"
+msgstr "Prix, total"
+
+#. module: eagle_base
+#: view:eagle.contract:0
+msgid "Status"
+msgstr "Status"
+
+#. module: eagle_base
+#: view:eagle.contract:0
+#: code:addons/eagle_base/config/wizard/wiz_tabs_profile.py:0
+#, python-format
+msgid "Content"
+msgstr "Contenu"
+
+#. module: eagle_base
+#: view:eagle.contract:0
+#: code:addons/eagle_base/contracts.py:0
+#, python-format
+msgid "Error !"
+msgstr "Erreur!"
+
+#. module: eagle_base
+#: view:eagle.contract:0
+#: code:addons/eagle_base/contracts.py:0
+#, python-format
+msgid "Product not found."
+msgstr "Produit pas trouvé."
+
+#. module: eagle_base
+#: view:eagle.contract:0
+#: code:addons/eagle_base/contracts.py:0
+#, python-format
+msgid " has added this note on "
+msgstr " a ajouté cette note le "
+
+#. module: eagle_base
+#: field:eagle.contract.message,date:0
+msgid "Date"
+msgstr "Date"
+
+#. module: eagle_base
+#: field:eagle.contract.message,user_id:0
+msgid "User Responsible"
+msgstr "Responsable"
+
+#. module: eagle_base
+#: field:eagle.contract.message,description:0
+msgid "Description"
+msgstr "Description"
+
+#. module: eagle_base
+#: field:eagle.contract.message,display_text:0
+msgid "Messages"
+msgstr "Messages"
+
+#. module: eagle_base
+#: code:addons/eagle_base/contracts.py:0
+#, python-format
+msgid "Invalid configuration!"
+msgstr "Configuration incorrecte!"
+
+#. module: eagle_base
+#: code:addons/eagle_base/contracts.py:0
+#, python-format
+msgid "Please define a tab's profile in Eagle's configuration!"
+msgstr "Veuillez définir un profil d'onglets dans la configuration de Eagle"
+
+#. module: eagle_base
+#: code:addons/eagle_base/contracts.py:0
+#, python-format
+msgid "No name"
+msgstr "Sans nom"
+
+#. module: eagle_base
+#: code:addons/eagle_base/contracts.py:0
+#, python-format
+msgid "Cannot delete contract(s) which are already confirmed !"
+msgstr "Un contrat qui n'est plus une offre ne peut plus être effacé!"
+
+#. module: eagle_base
+#: code:addons/eagle_base/contracts.py:0
+#, python-format
+msgid "Record #%d of %s not found, cannot copy!"
+msgstr "Copie impossible: enregistrement No %d de %s pas trouvé"
+
+#. module: eagle_base
+#: code:addons/eagle_base/contracts.py:0
+#, python-format
+msgid " (copy)"
+msgstr " (copie)"
+
+#. module: eagle_base
+#: field:product.recurrence.unit,name:0
+#: field:res.partner,comp_name:0
+msgid "Name"
+msgstr "Nom"
+
+#. module: eagle_base
+#: field:product.recurrence.unit,value:0
+msgid "Value"
+msgstr "Valeur"
+
+#. module: eagle_base
+#: field:product.recurrence.unit,unit:0
+msgid "Units"
+msgstr "Unités"
+
+#. module: eagle_base
+#: selection:product.recurrence.unit,unit:0
+msgid "Day"
+msgstr "Jour"
+
+#. module: eagle_base
+#: selection:product.recurrence.unit,unit:0
+msgid "Month"
+msgstr "Mois"
+
+#. module: eagle_base
+#: selection:product.recurrence.unit,unit:0
+msgid "Year"
+msgstr "Année"
+
+#. module: eagle_base
+#: selection:product.recurrence.unit,keep_same_day:0
+msgid "Keep same day"
+msgstr "Garder le même jour"
+
+#. module: eagle_base
+#: field:product.product,recurrence_id:0
+msgid "Recurrence"
+msgstr "Récurrence"
+
+#. module: eagle_base
+#: field:res.users,eagle_tabs:0
+msgid "Tabs list"
+msgstr "Liste des onglets"
+
+#. module: eagle_base
+#: field:res.users,eagle_tabs_profile:0
+msgid "Eagle tabs profile"
+msgstr "Profil d'onglets Eagle"
+
+#. module: eagle_base
+#: model:ir.ui.menu,name:eagle_base.eagle_action_contract_categories_menu
+msgid "Contract categories"
+msgstr "Catégories de contrat"
+
+#. module: eagle_base
+#: model:ir.ui.menu,name:eagle_base.eagle_menu_ir_sequence
+#: model:ir.actions.act_window,name:eagle_base.eagle_action_ir_sequence
+msgid "The sequences"
+msgstr "Les séquences"
+
+#. module: eagle_base
+#: view:eagle.contract:0
+msgid "Calendar"
+msgstr "Calendrier"
+
+#. module: eagle_base
+#: view:eagle.contract:0
+msgid "Stakeholders"
+msgstr "Intervenants"
+
+#. module: eagle_base
+#: view:eagle.contract:0
+msgid "Financial infos"
+msgstr "Infos financières"
+
+#. module: eagle_base
+#: view:eagle.contract:0
+msgid "Classification"
+msgstr "Classification"
+
+#. module: eagle_base
+#: view:eagle.contract:0
+msgid "Finances"
+msgstr "Finances"
+
+#. module: eagle_base
+#: view:eagle.contract:0
+msgid "Customer (mandatory only in 'installation' and 'production' states)"
+msgstr "Client (obligatoire seulement en mode 'installation' et 'production')"
+
+#. module: eagle_base
+#: field:eagle.config.settings,inline_pos_edit:0
+#: field:eagle.config.params,inline_pos_edit:0
+#: field:res.users,eagle_parm_inline_pos_edit:0
+msgid "Inline position edition"
+msgstr "Edition en ligne des positions"
+
+#. module: eagle_base
+#: selection:res.users,eagle_parm_inline_pos_edit:0
+msgid "Eagle parameter"
+msgstr "Paramètre Eagle"
+
+#. module: eagle_base
+#: selection:res.users,eagle_parm_inline_pos_edit:0
+msgid "Yes"
+msgstr "Oui"
+
+#. module: eagle_base
+#: selection:res.users,eagle_parm_inline_pos_edit:0
+msgid "No"
+msgstr "Non"
+
+#. module: eagle_base
+#: field:eagle.contract,state:0
+msgid "Contract State"
+msgstr "Status du contrat"
+
+#. module: eagle_base
+#: selection:eagle.contract,state:0
+msgid "Offer"
+msgstr "Offre"
+
+#. module: eagle_base
+#: selection:eagle.contract,state:0
+msgid "Confirmation"
+msgstr "Confirmation"
+
+#. module: eagle_base
+#: selection:eagle.contract,state:0
+msgid "Installation"
+msgstr "Installation"
+
+#. module: eagle_base
+#: selection:eagle.contract,state:0
+msgid "Production"
+msgstr "Production"
+
+#. module: eagle_base
+#: selection:eagle.contract,state:0
+msgid "Closed"
+msgstr "Fermé"
+
+#. module: eagle_base
+#: selection:eagle.contract,state:0
+msgid "Canceled"
+msgstr "Annulé"
+
+#. module: eagle_base
+#: field:eagle.contract.position,state:0
+msgid "State"
+msgstr "Status"
+
+#. module: eagle_base
+#: selection:eagle.contract.position,state:0
+msgid "To install"
+msgstr "A installer"
+
+#. module: eagle_base
+#: selection:eagle.contract.position,state:0
+msgid "Installed"
+msgstr "Installé"
+
+#. module: eagle_base
+#: selection:eagle.contract.position,state:0
+msgid "Recurrent"
+msgstr "Récurrent"
+
+#. module: eagle_base
+#: selection:eagle.contract.position,state:0
+msgid "Progressive"
+msgstr "Progressif"
+
+#. module: eagle_base
+#: field:eagle.contract.position,uom_id:0
+msgid "Unit of Measure"
+msgstr "Unité de mesure"
+
+#. module: eagle_base
+#: model:ir.ui.menu,name:eagle_base.eagle_action_prod_cats_menu
+msgid "Product Categories"
+msgstr "Catégories d'articles"
+
+#. module: eagle_base
+#: model:ir.ui.menu,name:eagle_base.eagle_action_products_menu
+msgid "Products"
+msgstr "Articles"
+
+#. module: eagle_base
+#: help:eagle.contract.position,product_type:0
+msgid ""
+"From stock: When needed, the product is taken from the stock or we wait for "
+"replenishment.\n"
+"On order: When needed, the product is purchased or produced."
+msgstr ""
+"Sur stock : lorsque c'est nécessaire, soit l'article est pris dans le stock "
+"soit on attendra le réapprovisionnement.\n"
+"À la commande : lorsque c'est nécessaire, l'article est fabriqué ou acheté."
+
+#. module: eagle_base
+#: selection:eagle.contract.position,product_type:0
+msgid "from stock"
+msgstr "Depuis le stock"
+
+#. module: eagle_base
+#: selection:eagle.contract.position,product_type:0
+msgid "on order"
+msgstr "Sur commande"
+
+#. module: eagle_base
+#: field:eagle.contract.position,product_type:0
+msgid "Procurement Method"
+msgstr "Méthode d'approvisionnement"

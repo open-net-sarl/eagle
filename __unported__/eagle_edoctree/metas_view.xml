@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<!--
+  File: metas_view.xml
+  Module: eagle_edoctree
+
+  Created by cyp@open-net.ch
+
+  Copyright (c) 2013 Open-Net Ltd. All rights reserved.
+-->
+<openerp>
+	<data>
+
+        <!--
+			META-CONTRACTS 
+        -->
+		<record model="ir.ui.view" id="eagle_view_meta_edoctree_form">
+			<field name="name">Eagle Meta eDocTree View</field>
+			<field name="model">eagle.contract.meta</field>
+            <field name="inherit_id" ref="eagle_meta.eagle_meta_contract_form"/>
+            <field name="priority" eval="19"/>
+			<field name="arch" type="xml">
+				<group name="top_left" position="inside">
+                    <field name="tab_profile_edoctree_m" invisible="1"/>
+                </group>
+				<page string="Informations" position="after">
+					<page string="eDocTree" attrs="{'invisible':[('tab_profile_edoctree_m','=',False)]}">
+						<field name="edoctree_children" nolabel="1" widget="one2many" mode="tree">
+                            <field name="parent_id"/>
+                            <field name="x_mail_from"/>
+                            <field name="name"/>
+                        </field>
+					</page>
+                </page>
+                <button string="Add contracts" position="after">
+                    <button name="%(eagle_base.eagle_action_wiz_tabs_profile_select)d" string="Tabs profile" type="action"/>
+                </button>
+                <xpath expr="//group[@name='top_left']" position="inside">
+                    <field name="edoctree_root_id" colspan="2"/>
+                </xpath>
+			</field>
+		</record>
+
+	</data>
+</openerp>

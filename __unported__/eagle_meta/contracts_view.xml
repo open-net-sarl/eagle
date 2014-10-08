@@ -1,0 +1,151 @@
+<?xml version="1.0"?>
+<!--
+  File: contracts_view.xml
+  Module: eagle_meta
+
+  Created by cyp@open-net.ch
+
+  Copyright (c) 2011 Open-Net Ltd. All rights reserved.
+-->
+<openerp>
+    <data>
+
+        <!--
+            Inherited contract views from the Eagle Base module 
+        -->
+        <record model="ir.ui.view" id="eagle_meta_base_contract_form">
+            <field name="name">Eagle Meta Base Contract View</field>
+            <field name="model">eagle.contract</field>
+            <field name="inherit_id" ref="eagle_base.eagle_view_contract_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//group[@name='various']" position="attributes">
+                    <attribute name="string">Meta information</attribute>
+                </xpath>
+                <xpath expr="//group[@name='various']" position="inside">
+                    <field name="meta_id" colspan="2" attrs="{'required':[('is_meta_mandatory','=',True)]}"/>
+                    <field name="is_meta_mandatory" invisible="1"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="eagle_meta_base_contract_search">
+            <field name="name">Eagle Meta Base Contract Filter</field>
+            <field name="model">eagle.contract</field>
+            <field name="inherit_id" ref="eagle_base.eagle_view_contract_filter"/>
+            <field name="arch" type="xml">
+                <field name="name" position="before">
+                    <field name="meta_id"/>
+                </field>
+                <filter string="Customer" position="before">
+                    <filter string="Metas" icon="terp-personal" domain="[]" context="{'group_by':'meta_id'}"/>
+                </filter>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="eagle_meta_base_contract_list">
+            <field name="name">Eagle Meta Base Contract List</field>
+            <field name="model">eagle.contract</field>
+            <field name="inherit_id" ref="eagle_base.eagle_view_contract_tree"/>
+            <field name="arch" type="xml">
+                <field name="name" position="before">
+                    <field name="meta_id" string="Meta"/>
+                </field>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="eagle_meta_reduced_contracts_list">
+            <field name="name">Eagle Meta: Reduced Contracts List</field>
+            <field name="model">eagle.contract</field>
+            <field name="priority" eval="60"/>
+            <field name="arch" type="xml">
+                <tree string=" " version="7.0">
+                    <field name="name"/>
+                    <field name="customer_id"/>
+                    <field name="date_start"/>
+                    <field name="date_end"/>
+                    <field name="user_id"/>
+                    <field name="category_id"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+
+        <!--
+            Meta-contracts
+        -->
+        <record model="ir.ui.view" id="eagle_meta_contract_form">
+            <field name="name">Eagle Meta Contract View</field>
+            <field name="model">eagle.contract.meta</field>
+            <field name="arch" type="xml">
+                <form string="Meta-Contract" version="7.0">
+                    <header>
+                        <field name="templates_installed" invisible="1"/>
+                        <button name="call_cnt_tmpl_wizard" string="Contract templates" type="object" class="oe_highlight" attrs="{'invisible':[('templates_installed','!=',False)]}"/>
+                        <button name="%(wiz_add_cnt_2_meta_action)d" string="Add contracts" type="action" class="oe_highlight"/>
+                    </header>
+                    <div class="oe_edit_only">
+                        <label for="name" string="Meta"/>
+                    </div>
+                    <h2>
+                        <field name="name" />
+                    </h2>
+                    <group name="top">
+                        <group name="top_left">
+                            <field name="date"/>
+                            <field name="eagle_parm_show_all_meta_tabs" invisible="1"/>
+                        </group>
+                        <group name="top_right">
+                        </group>
+                    </group>
+                    <notebook colspan="4">
+                        <page string="Contracts">
+                            <field name="contracts" colspan="4" nolabel="1" context="{'tree_view_ref':'eagle_meta.eagle_meta_reduced_contracts_list'}"/>
+                        </page>
+                        <page string="Informations">
+                            <field name="notes" colspan="4" nolabel="1"/>
+                        </page>
+                    </notebook>
+                </form>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="eagle_meta_contract_list">
+            <field name="name">Eagle Meta Contract List</field>
+            <field name="model">eagle.contract.meta</field>
+            <field name="arch" type="xml">
+                <tree string="Meta-Contracts">
+                    <field name="name" select="1"/>
+                    <field name="contracts"/>
+                </tree>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="eagle_meta_contract_filter">
+            <field name="name">Eagle Meta Contract Filter</field>
+            <field name="model">eagle.contract.meta</field>
+            <field name="arch" type="xml">
+                <search string="Search meta contracts">
+                    <group>
+                        <field name="name" select="1"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+        <record model="ir.actions.act_window" id="eagle_meta_contract_action">
+            <field name="name">Meta-contracts</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">eagle.contract.meta</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="eagle_meta_contract_list"/>
+            <field name="search_view_id" ref="eagle_meta_contract_filter"/>
+        </record>
+        <menuitem
+            name="Meta-contracts" 
+            action="eagle_meta_contract_action"
+            id="eagle_meta_contract_menu"
+            parent="eagle_base.eagle_menu_contracts_root"
+            icon="STOCK_DND_MULTIPLE" 
+            sequence="30" 
+            groups="eagle_base.group_contracts_viewers,eagle_base.group_contracts_editors,eagle_base.group_contracts_managers"/>
+
+    </data>
+</openerp>

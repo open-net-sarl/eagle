@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  File: wizard/wiz_cust_delivery_date.xml
+  Module: eagle_management
+
+  Created by cyp@open-net.ch
+
+  Copyright (c) 2011 Open-Net Ltd. All rights reserved.
+-->
+<openerp>
+	<data>
+
+        <!--  Compute Schedulers -->
+
+		<record model="ir.ui.view" id="eagle_wiz_cust_delivery_date_form">
+            <field name="name">Setup Eagle Management Force Delivery Date Wizard</field>
+            <field name="model">eagle.wiz_cust_delivery_date</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Customer Delivery Date">
+	                <label string="This will force the Customer Delivery Date on all position to install" colspan="4"/>
+	                <field name="cd_date"/>
+	                <newline/>
+				    <separator colspan="4"/>
+				    <group col="2" colspan="4">
+                		<button icon='gtk-cancel' special="cancel" string="Cancel" />
+                		<button name="force_date" string="Set the date" colspan="1" type="object" icon="gtk-ok" />
+                	</group>
+                </form>
+            </field>
+        </record>
+
+		<record model="ir.actions.act_window" id="eagle_action_wiz_cust_delivery_date">
+			<field name="name">Setup Eagle Management Force Delivery Date Wizard</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">eagle.wiz_cust_delivery_date</field>
+			<field name="view_type">form</field>
+			<field name="view_id" ref="eagle_wiz_cust_delivery_date_form"/>
+			<field name="target">new</field>
+		</record>
+	
+		<record model="ir.ui.view" id="eagle_management_view_contract_form_cdd">
+			<field name="name">Eagle Management Contract View CDD</field>
+			<field name="model">eagle.contract</field>
+			<field name="type">form</field>
+			<field name="inherit_id" ref="eagle_base.eagle_view_contract_form"/>
+			<field name="arch" type="xml">
+                <group name="top" position="inside">
+					<field name="eagle_cdd_button_visible" invisible="1"/>
+                </group>
+				<div name="base_buttons" position="inside">
+					<button 
+						name="%(eagle_management.eagle_action_wiz_cust_delivery_date)d"
+						string="Set Delivery Date" 
+						icon="gtk-execute" 
+						type="action"
+                         class="oe_right"
+						attrs="{'invisible':[('eagle_cdd_button_visible','=',False)]}"/>
+				</div>
+			</field>
+		</record>
+
+	</data>
+</openerp>

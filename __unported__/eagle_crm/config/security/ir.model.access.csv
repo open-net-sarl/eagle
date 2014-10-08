@@ -1,0 +1,5 @@
+"id","name","model_id:id","group_id:id","perm_read","perm_write","perm_create","perm_unlink"
+"access_eagle_crm_managers","eagle_meta.eagle_crm_managers","model_eagle_crm","eagle_base.group_contracts_managers",1,1,1,1
+"access_eagle_crm_viewers","eagle_meta.eagle_crm_viewers","model_eagle_crm","eagle_base.group_contracts_viewers",1,0,0,0
+"access_eagle_crm_editors","eagle_meta.eagle_crm_editors","model_eagle_crm","eagle_base.group_contracts_editors",1,1,1,1
+"access_eagle_crm_users","eagle_meta.eagle_crm_users","model_eagle_crm","eagle_base.group_contracts_users",1,0,0,0

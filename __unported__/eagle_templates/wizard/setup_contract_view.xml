@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  File: wizard/setup_contract_view.xml
+  Module: eagle_templates
+
+  Created by cyp@open-net.ch
+
+  Copyright (c) 2013 Open-Net Ltd. All rights reserved.
+-->
+<openerp>
+    <data>
+    
+        <!--
+            Wizard: copy template to contract
+        -->
+		<record model="ir.ui.view" id="wiz_copy_tmpl_2_cnt_view">
+			<field name="name">Eagle wizard: template to contract copy</field>
+			<field name="model">eagle.wiz_copy_tmpl_2_cnt</field>
+			<field name="arch" type="xml">
+                <form string="Create a new contract" version="7.0">
+                    <header>
+    					<button name="do_it" string="Create" type="object" class="oe_highlight"/>
+    					<button special="cancel" string="Close"/>
+                    </header>
+                    <sheet string="Create a new contract">
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="customer_id"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+			</field>
+		</record>
+
+        <record model="ir.actions.act_window" id="wiz_copy_tmpl_2_cnt_action">
+            <field name="name">Copy a template to a new contract</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">eagle.wiz_copy_tmpl_2_cnt</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="wiz_copy_tmpl_2_cnt_view"/>
+            <field name="target">new</field>
+        </record>
+
+    
+        <!--
+            Wizard: copy template positions to current contract
+        -->
+		<record model="ir.ui.view" id="wiz_copy_tmpl_pos_2_cnt_view">
+			<field name="name">Eagle wizard: copy template positions to current contract</field>
+			<field name="model">eagle.wiz_copy_tmpl_pos_2_cnt</field>
+			<field name="arch" type="xml">
+                <form string="Copy the positions of" version="7.0">
+                    <header>
+    					<button name="do_it" string="Copy" type="object" class="oe_highlight"/>
+    					<button special="cancel" string="Close"/>
+                    </header>
+                    <sheet string="Copy the positions of">
+                        <group>
+                            <group>
+                                <field name="name" readonly="1"/>
+                                <field name="cnt_tmpl_id"/>
+                                <field name="date_start"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+			</field>
+		</record>
+
+        <record model="ir.actions.act_window" id="wiz_copy_tmpl_pos_2_cnt_action">
+            <field name="name">Copy template positions to the current contract</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">eagle.wiz_copy_tmpl_pos_2_cnt</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="wiz_copy_tmpl_pos_2_cnt_view"/>
+            <field name="target">new</field>
+        </record>
+
+    </data>
+</openerp>

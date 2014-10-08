@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<!--
+  File: config/data/sequences.xml
+  Module: eagle_metas
+
+  Created by cyp@open-net.ch
+
+  Copyright (c) 2013 Open-Net Ltd. All rights reserved.
+-->
+<openerp>
+	<data noupdate="1">
+
+        <!--
+            Sequence types for eagle.contract.meta
+        -->
+
+        <record model="ir.sequence.type" id="eagle_seq_type_meta">
+            <field name="name">Eagle Meta Contract</field>
+            <field name="code">eagle.contract.meta</field>
+        </record>
+
+        <!--
+            Sequences for eagle.contract.meta
+        -->
+
+        <record model="ir.sequence" id="eagle_seq_meta">
+            <field name="name">Eagle Meta Contract</field>
+            <field name="code">eagle.contract.meta</field>
+            <field name="prefix">CN</field>
+            <field name="padding">5</field>
+        </record>
+
+	</data>
+</openerp>

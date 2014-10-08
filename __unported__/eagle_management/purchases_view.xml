@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  File: purchases_view.xml
+  Module: eagle_management
+
+  Created by cyp@open-net.ch
+
+  Copyright (c) 2011 Open-Net Ltd. All rights reserved.
+-->
+<openerp>
+	<data>
+
+		<record model="ir.ui.view" id="eagle_view_purchase_form_inherit">
+			<field name="name">Eagle purchase view</field>
+			<field name="model">purchase.order</field>
+			<field name="inherit_id" ref="purchase.purchase_order_form"/>
+            <field name="priority" eval="17"/>
+			<field name="arch" type="xml">
+                <field name="validator" position="before">
+                    <field name="contract_id"/>
+                </field>
+			</field>
+		</record>
+
+	</data>
+</openerp>

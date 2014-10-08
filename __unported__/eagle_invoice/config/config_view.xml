@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  File: config_view.xml
+  Module: eagle_invoice
+
+  Created by cyp@open-net.ch
+
+  Copyright (c) 2013 Open-Net Ltd. All rights reserved.
+-->
+<openerp>
+	<data>
+
+    	<!--
+    		Parameters
+    	-->
+		<record model="ir.ui.view" id="eagle_inv_view_config_params_form">
+			<field name="name">Eagle Invoice Params View</field>
+			<field name="model">eagle.config.settings</field>
+			<field name="type">form</field>
+			<field name="inherit_id" ref="eagle_base.eagle_view_config_settings"/>
+			<field name="arch" type="xml">
+                <div name="behavior" position="inside">
+                    <div>
+                        <field name="inv_close_cnt_if_inv_payed" class="oe_inline"/>
+                        <label for="inv_close_cnt_if_inv_payed"/>
+                    </div>
+                    <div>
+                        <field name="make_inv_lines_with_unbillables" class="oe_inline"/>
+                        <label for="make_inv_lines_with_unbillables"/>
+                    </div>
+                    <div>
+                        <field name="use_prec_invoices" class="oe_inline"/>
+                        <label for="use_prec_invoices"/>
+                    </div>
+                </div>
+                <div name="instances" position="inside">
+                    <div>
+                        <label for="invoicing_mode"/>
+                        <field name="invoicing_mode" class="oe_inline"/>
+                    </div>
+                </div>
+			</field>
+		</record>
+
+	</data>
+</openerp>
