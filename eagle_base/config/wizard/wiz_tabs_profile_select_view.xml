@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  File: config/wizard/wiz_tabs_profile_select_view.xml
+  Module: eagle_base
+
+  Created by cyp@open-net.ch
+
+  Copyright (c) 2011-TODAY Open-Net Ltd. All rights reserved.
+-->
+<openerp>
+    <data>
+
+        <record model="ir.ui.view" id="eagle_view_wiz_tabs_profile_select">
+            <field name="name">Eagle wizard: tabs profile selection</field>
+            <field name="model">eagle.wiz_tabs_profile_select</field>
+            <field name="arch" type="xml">
+                <form string="Select the tabs profile" version="7.0">
+                    <sheet string="Select the tabs profile">
+                        <group>
+                            <field name="tabs_prof_id"/>
+                        </group>
+                    </sheet>
+                    <footer>
+                        <button string="Apply" type="object" name="do_save" class="oe_highlight"/>
+                        <button string="Cancel" special="cancel" class="oe_link"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="eagle_action_wiz_tabs_profile_select">
+            <field name="name">Select the tabs profile</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">eagle.wiz_tabs_profile_select</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+    </data>
+</openerp>
+

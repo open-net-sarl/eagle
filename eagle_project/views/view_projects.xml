@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<!--
+  File: views/view_projects.xml
+  Module: eagle_project
+
+  Created by cyp@open-net.ch
+
+  Copyright (c) 2014-TODAY Open-Net Ltd. All rights reserved.
+-->
+<openerp>
+	<data>
+
+		<record model="ir.ui.view" id="eagle_view_task_work_form">
+			<field name="name">Eagle Project Task View</field>
+			<field name="model">project.task</field>
+			<field name="inherit_id" ref="project.view_task_form2"/>
+			<field name="priority" eval="17"/>
+			<field name="arch" type="xml">
+				<field name="date_last_stage_update" position="after">
+					<field name="eagle_contract"/>
+				</field>
+			</field>
+		</record>
+
+		<record model="ir.ui.view" id="eagle_view_task_work_filter">
+			<field name="name">Eagle Project Task Filter</field>
+			<field name="model">project.task</field>
+			<field name="inherit_id" ref="project.view_task_search_form"/>
+			<field name="priority" eval="17"/>
+			<field name="arch" type="xml">
+				<field name="project_id" position="before">
+					<field name="eagle_contract"/>
+				</field>
+				<filter name="project" position="before">
+					<filter string="File" name="eagle_contract" context="{'group_by':'eagle_contract'}"/>
+				</filter>
+			</field>
+		</record>
+
+		<record model="ir.ui.view" id="eagle_view_task_work_kanban">
+			<field name="name">Eagle Project Task Kanban</field>
+			<field name="model">project.task</field>
+			<field name="inherit_id" ref="project.view_task_kanban"/>
+			<field name="priority" eval="17"/>
+			<field name="arch" type="xml">
+				<field name="legend_done" position="after">
+					<field name="eagle_contract"/>
+				</field>
+                <xpath expr="//div[contains(@class, 'oe_kanban_content')]//div[contains(@class, 'text-muted')]" position="inside">
+					<t t-if="record.eagle_contract.raw_value"><br/><span t-attf-style="color:blue;">File: <field name="eagle_contract"/></span></t>
+                </xpath>
+			</field>
+		</record>
+
+	</data>
+</openerp>

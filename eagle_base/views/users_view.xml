@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<!--
+  File: views/users_view.xml
+  Module: eagle_base
+
+  Created by cyp@open-net.ch
+
+  Copyright (c) 2011 Open-Net Ltd. All rights reserved.
+-->
+<openerp>
+	<data>
+
+		<record model="ir.ui.view" id="eagle_view_full_user_inh_01">
+			<field name="name">Eagle Full User View Inherit 1</field>
+			<field name="model">res.users</field>
+			<field name="inherit_id" ref="base.view_users_form"/>
+            <field name="priority" eval="17"/>
+			<field name="type">form</field>
+			<field name="arch" type="xml">
+                <xpath expr="//group[@name='preferences']" position="after">
+                    <group string="Eagle" groups="eagle_base.group_contracts_viewers,eagle_base.group_contracts_editors,eagle_base.group_contracts_managers,eagle_base.group_contracts_users">
+                        <field name="eagle_tabs_profile"/>
+                        <field name="eagle_parm_inline_pos_edit"/>
+                    </group>
+				</xpath>
+			</field>
+		</record>
+
+		<record model="ir.ui.view" id="eagle_view_simple_user_inh_01">
+			<field name="name">Eagle Simple User View Inherit 1</field>
+			<field name="model">res.users</field>
+			<field name="inherit_id" ref="base.view_users_form_simple_modif"/>
+            <field name="priority" eval="17"/>
+			<field name="type">form</field>
+			<field name="arch" type="xml">
+				<xpath expr="//group[@name='preferences']" position="after">
+                    <group col="4" name="eagle" string="Eagle" groups="eagle_base.group_contracts_viewers,eagle_base.group_contracts_editors,eagle_base.group_contracts_managers,eagle_base.group_contracts_users">
+                        <group>
+    					   <field name="eagle_tabs_profile"/>
+                        </group>
+                        <group>
+        					<field name="eagle_parm_inline_pos_edit"/>
+                        </group>
+                    </group>
+				</xpath>
+			</field>
+		</record>
+
+    </data>
+</openerp>

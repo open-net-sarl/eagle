@@ -1,0 +1,5 @@
+"id","name","model_id:id","group_id:id","perm_read","perm_write","perm_create","perm_unlink"
+"access_eagle_tmpl_task_managers","eagle_base.eagle_tmpl_task_managers","model_eagle_template_task","eagle_base.group_contracts_managers",1,1,1,1
+"access_eagle_tmpl_task_viewers","eagle_base.eagle_tmpl_task_viewers","model_eagle_template_task","eagle_base.group_contracts_viewers",1,0,0,0
+"access_eagle_tmpl_task_editors","eagle_base.eagle_tmpl_task_editors","model_eagle_template_task","eagle_base.group_contracts_editors",1,1,1,1
+"access_eagle_tmpl_task_users","eagle_base.eagle_tmpl_task_users","model_eagle_template_task","eagle_base.group_contracts_users",1,0,0,0

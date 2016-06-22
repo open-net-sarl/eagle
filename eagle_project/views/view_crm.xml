@@ -1,0 +1,83 @@
+<?xml version="1.0"?>
+<!--
+  File: views/view_crm.xml
+  Module: eagle_project
+
+  Created by cyp@open-net.ch
+
+  Copyright (c) 2016-TODAY Open-Net Ltd. All rights reserved.
+-->
+<openerp>
+	<data>
+
+        <record model="ir.actions.act_window" id="ons_action_eagle_file_new">
+            <field name="name">File</field>
+            <field name="res_model">eagle.contract</field>
+            <field name="view_mode">form,tree,graph</field>
+            <field name="domain">[('opportunity_id', '=', active_id)]</field>
+            <field name="context">{'search_default_opportunity_id': active_id, 'default_opportunity_id': active_id}</field>
+        </record>
+
+		<record model="ir.ui.view" id="eagle_view_crm_opport_form_inherit">
+			<field name="name">Eagle Project: crm opportunity form</field>
+			<field name="model">crm.lead</field>
+			<field name="inherit_id" ref="crm.crm_case_form_view_oppor"/>
+            <field name="priority" eval="17"/>
+			<field name="arch" type="xml">
+                <data>
+                    <xpath expr="//field[@name='stage_id']" position="before">
+                        <field name="default_file_partner" invisible="1"/>
+                        <button string="New File" name="%(ons_action_eagle_file_new)d" type="action" class="oe_highlight"
+                            context="{'search_default_customer_id': default_file_partner,
+                                      'default_customer_id': default_file_partner,
+                                      'default_name': name,
+                                      'default_opportunity': active_id}"
+                            attrs="{'invisible': ['|',('probability', '=', 0),('eagle_files_ids','!=',[])]}"/>
+                        <button string="New File" name="%(ons_action_eagle_file_new)d" type="action"
+                            context="{'search_default_customer_id': default_file_partner,
+                                      'default_customer_id': default_file_partner,
+                                      'default_name': name,
+                                      'default_opportunity': active_id}"
+                            attrs="{'invisible': ['|',('probability', '>', 0),('eagle_files_ids','!=',[])]}"/>
+                    </xpath>
+                    <div name="button_box" position="inside">
+                        <button class="oe_stat_button"
+                            icon="fa-book"
+                            name="redirect_eagle_file_view"
+                            type="object"
+                            attrs="{'invisible': [('eagle_files_count','=',0)]}">
+                            <field name="eagle_files_count" widget="statinfo" string="File(s)"/>
+                        </button>
+                    </div>
+                    <field name="team_id" position="after">
+                        <field name="eagle_files_ids" invisible="0"/>
+                        <field name="eagle_files_lst" invisible="0"/>
+                    </field>
+                </data>
+			</field>
+		</record>
+
+		<record model="ir.ui.view" id="eagle_view_opport_kanban">
+			<field name="name">Eagle Opportunity Kanban</field>
+			<field name="model">crm.lead</field>
+			<field name="inherit_id" ref="crm.crm_case_kanban_view_leads"/>
+			<field name="priority" eval="17"/>
+			<field name="arch" type="xml">
+				<field name="company_currency" position="after">
+					<field name="eagle_files_ids"/>
+					<field name="eagle_files_lst"/>
+					<field name="eagle_files_count"/>
+				</field>
+                <xpath expr="//div[contains(@class, 'oe_kanban_content')]//div[contains(@class, 'text-muted')]" position="inside">
+                    <t t-if="record.eagle_files_count.raw_value == 1">
+                        <br/><span style="color:blue;font-style:italic;"><t t-esc="_('File:')"/> <t t-raw="record.eagle_files_lst.raw_value"/></span>
+                    </t>
+                    <t t-if="record.eagle_files_count.raw_value > 1">
+                        <br/><span style="color:blue;font-style:italic;"><t t-esc="_('Files:')"/></span><ul style="color:blue;"><t t-raw="record.eagle_files_lst.raw_value"/></ul>
+                    </t>
+                </xpath>
+			</field>
+		</record>
+
+	</data>
+</openerp>

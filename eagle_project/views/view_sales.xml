@@ -1,0 +1,79 @@
+<?xml version="1.0"?>
+<!--
+  File: views/view_sales.xml
+  Module: eagle_project
+
+  Created by cyp@open-net.ch
+
+  Copyright (c) 2011-TODAY Open-Net Ltd. All rights reserved.
+-->
+<openerp>
+	<data>
+
+		<record model="ir.ui.view" id="eagle_view_so_form_inherit">
+			<field name="name">Eagle Project: sale form</field>
+			<field name="model">sale.order</field>
+			<field name="inherit_id" ref="sale_order_dates.view_order_form_inherit_sale_stock_inherit_sale_order_dates"/>
+			<field name="arch" type="xml">
+				<field name="project_id" position="after">
+					<field
+                        name="contract_id"
+                        attrs="{'readonly':[('subscription_id','!=',False)]}"
+                        groups="eagle_base.group_contracts_viewers,eagle_base.group_contracts_editors,eagle_base.group_contracts_managers,eagle_base.group_contracts_users"/>
+				</field>
+                <xpath expr="//field[@name='quot_lines']/form//group[1]/group[2]" position="inside">
+                    <field name="date_order"/>
+                    <field name="requested_date"/>
+                </xpath>
+                <xpath expr="//field[@name='quot_lines']/tree//field[@name='price_unit']" position="before">
+                    <field name="date_order"/>
+                    <field name="requested_date"/>
+                </xpath>
+
+                <xpath expr="//group[@name='sale_shipping']//field[@name='requested_date']" position="before">
+                    <field name="hide_requested_date" invisible="1"/>
+                </xpath>
+                <xpath expr="//group[@name='sale_shipping']//field[@name='requested_date']" position="attributes">
+                    <attribute name="attrs">{'invisible':[('hide_requested_date','=',True)]}</attribute>
+                </xpath>
+			</field>
+		</record>
+
+		<record model="ir.ui.view" id="eagle_view_so_quot_list_inherit">
+			<field name="name">Eagle Project: sale quot. list</field>
+			<field name="model">sale.order</field>
+			<field name="inherit_id" ref="sale.view_quotation_tree"/>
+			<field name="arch" type="xml">
+				<field name="name" position="after">
+					<field name="contract_id" groups="eagle_base.group_contracts_viewers,eagle_base.group_contracts_editors,eagle_base.group_contracts_managers,eagle_base.group_contracts_users"/>
+				</field>
+			</field>
+		</record>
+
+		<record model="ir.ui.view" id="eagle_view_so_list_inherit">
+			<field name="name">Eagle Project: sale list</field>
+			<field name="model">sale.order</field>
+			<field name="inherit_id" ref="sale.view_order_tree"/>
+			<field name="arch" type="xml">
+				<field name="name" position="after">
+					<field name="contract_id" groups="eagle_base.group_contracts_viewers,eagle_base.group_contracts_editors,eagle_base.group_contracts_managers,eagle_base.group_contracts_users"/>
+				</field>
+			</field>
+		</record>
+
+		<act_window
+			domain="[('contract_id', '=', active_id),('state','&lt;&gt;','draft')]" 
+			id="eagle_action_contract_2_passed_sales"
+			name="Passed sales" 
+			res_model="sale.order" 
+			src_model="eagle.contract"/>
+
+		<act_window 
+			domain="[('contract_id', '=', active_id),('state','=','draft')]" 
+			id="eagle_action_contract_2_current_sales"
+			name="Current sales" 
+			res_model="sale.order" 
+			src_model="eagle.contract"/>
+
+	</data>
+</openerp>

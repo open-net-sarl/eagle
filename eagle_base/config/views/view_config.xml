@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  File: config/views/config_view.xml
+  Module: eagle_base
+
+  Created by cyp@open-net.ch
+
+  Copyright (c) 2011-TODAY Open-Net Ltd. All rights reserved.
+-->
+<openerp>
+    <data>
+
+        <record model="ir.ui.view" id="eagle_view_config_settings">
+            <field name="name">Eagle Settings</field>
+            <field name="model">eagle.config.settings</field>
+            <field name="arch" type="xml">
+                <form string="Configure Eagle" class="oe_form_configuration">
+                    <header>
+                        <button string="Apply" type="object" name="execute" class="oe_highlight"/>
+                        or
+                        <button string="Cancel" type="object" name="cancel" class="oe_link"/>
+                    </header>
+
+                    <separator string="Configure Eagle"/>
+                    <group>
+                        <label for="id" string="Interface"/>
+                        <div name="interface">
+                            <div>
+                                <field name="use_members_list" class="oe_inline"/>
+                                <label for="use_members_list"/>
+                            </div>
+                            <div>
+                                <field name="use_partners_list" class="oe_inline"/>
+                                <label for="use_partners_list"/>
+                            </div>
+                            <div>
+                                <field name="use_partners_roles" class="oe_inline"/>
+                                <label for="use_partners_roles"/>
+                            </div>
+                            <div>
+                                <label for="tabs_profile"/>
+                                <field name="tabs_profile" class="oe_inline"/>
+                            </div>
+                        </div>
+                        <label for="id" string="Behavior"/>
+                        <div name="behavior">
+                            <div>
+                                <field name="auto_production_state" class="oe_inline"/>
+                                <label for="auto_production_state"/>
+                            </div>
+                            <div>
+                                <field name="close_to_draft" class="oe_inline"/>
+                                <label for="close_to_draft"/>
+                            </div>
+                            <div>
+                                <label for="date_format"/>
+                                <field name="date_format" class="oe_inline"/>
+                                <label string="Ex.: %%d.%%m.%%Y"/>
+                            </div>
+                        </div>
+                        <label for="id" string="Instance management"/>
+                        <div name="instances">
+                            <div>
+                                <field name="use_cn_seq" class="oe_inline"/>
+                                <label for="use_cn_seq"/>
+                            </div>
+                        </div>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="eagle_action_config">
+            <field name="name">Configure Eagle</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">eagle.config.settings</field>
+            <field name="view_mode">form</field>
+            <field name="target">inline</field>
+        </record>
+
+        <menuitem 
+            name="Configure Eagle" 
+            id="eagle_menu_eagle_settings" 
+            parent="base.menu_config"
+            sequence="50" 
+            groups="eagle_base.group_contracts_viewers,eagle_base.group_contracts_editors,eagle_base.group_contracts_managers"/>
+
+            <menuitem 
+                name="The Views"
+                id="eagle_menu_eagle_views" 
+                parent="eagle_base.eagle_menu_eagle_settings"
+                sequence="190" 
+                groups="eagle_base.group_contracts_viewers,eagle_base.group_contracts_editors,eagle_base.group_contracts_managers"/>
+
+                <!-- Views: contracts -->
+                <record model="ir.actions.act_window" id="eagle_action_views_contracts">
+                    <field name="name">The files</field>
+                    <field name="type">ir.actions.act_window</field>
+                    <field name="res_model">ir.ui.view</field>
+                    <field name="view_type">form</field>
+                    <field name="view_id" ref="base.view_view_tree"/>
+                    <field name="domain">[('model','=','eagle.contract')]</field>
+                </record>
+    
+                <menuitem 
+                    name="The files"
+                    action="eagle_action_views_contracts" 
+                    id="eagle_menu_views_contracts" 
+                    parent="eagle_base.eagle_menu_eagle_views"
+                    sequence="1" 
+                    groups="eagle_base.group_contracts_viewers,eagle_base.group_contracts_editors,eagle_base.group_contracts_managers"/>
+
+                <!-- Views: all eagle -->
+                <record model="ir.actions.act_window" id="eagle_action_views_all">
+                    <field name="name">All Eagle</field>
+                    <field name="type">ir.actions.act_window</field>
+                    <field name="res_model">ir.ui.view</field>
+                    <field name="view_type">form</field>
+                    <field name="view_id" ref="base.view_view_tree"/>
+                    <field name="domain">[('model','like','eagle.')]</field>
+                </record>
+    
+                <menuitem 
+                    name="All Eagle"
+                    action="eagle_action_views_all" 
+                    id="eagle_menu_views_all" 
+                    parent="eagle_base.eagle_menu_eagle_views"
+                    sequence="50" 
+                    groups="eagle_base.group_contracts_viewers,eagle_base.group_contracts_editors,eagle_base.group_contracts_managers"/>
+
+            <record model="ir.actions.act_window" id="eagle_action_module_tree">
+                <field name="name">Open-Net Modules</field>
+                <field name="res_model">ir.module.module</field>
+                <field name="view_type">form</field>
+                <field name="view_mode">tree,form,kanban</field>
+                <field name="search_view_id" ref="base.view_module_filter"/>
+                <field name="domain">['|','|',('name','ilike','eagle_'),('name','ilike','ons_productivity_'),('name','ilike','ons_cust_')]</field>
+                <field name="help" type="html">
+                  <p><b>No module found!</b></p>
+                  <p>You should try others search criteria.</p>
+                </field>
+            </record>
+    
+    		<menuitem 
+    			name="Open-Net modules"
+                action="eagle_action_module_tree" 
+    			id="eagle_menu_module_tree" 
+    			parent="eagle_base.eagle_menu_eagle_settings" 
+    			sequence="1"
+    			groups="eagle_base.group_contracts_managers,eagle_base.group_contracts_editors"/>
+
+    		<menuitem 
+    			name="Parameters"
+                action="eagle_action_config" 
+    			id="eagle_menu_config" 
+    			parent="eagle_base.eagle_menu_eagle_settings" 
+    			sequence="2"
+    			groups="eagle_base.group_contracts_managers,eagle_base.group_contracts_editors"/>
+
+            <record model="ir.actions.act_window" id="eagle_action_ir_sequence">
+                <field name="name">The sequences</field>
+                <field name="type">ir.actions.act_window</field>
+                <field name="res_model">ir.sequence</field>
+                <field name="view_type">form</field>
+                <field name="view_id" ref="base.sequence_view_tree"/>
+                <field name="context">{'active_test': False}</field>
+                <field name="domain">[('code','ilike','eagle.')]</field>
+            </record>
+    
+            <menuitem 
+                name="The sequences"
+                action="eagle_action_ir_sequence" 
+                id="eagle_menu_ir_sequence"
+                groups="base.group_no_one" 
+        		sequence="5"
+                parent="eagle_base.eagle_menu_eagle_settings"/>
+    </data>
+</openerp>

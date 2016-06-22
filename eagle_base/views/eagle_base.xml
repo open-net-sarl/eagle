@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  File: views/eagle_base.xml
+  Module: eagle_base
+
+  Created by cyp@open-net.ch
+
+  Copyright (c) 2016 Open Net Sàrl. All rights reserved.
+-->
+<openerp>
+    <data>
+        <template id="assets_backend" name="eagle assets" inherit_id="web.assets_backend">
+            <xpath expr="." position="inside">
+                <link rel="stylesheet" href="/eagle_base/static/src/css/base.css"/>
+<!--
+                <link rel="text/javascript" href="/eagle_base/static/src/js/kanban.js"/>
+-->
+            </xpath>
+        </template>
+    </data>
+</openerp>

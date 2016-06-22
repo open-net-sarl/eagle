@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  File: views/view_sale_subscription.xml
+  Module: eagle_project
+
+  Created by cyp@open-net.ch
+
+  Copyright (c) 2016-TODAY Open-Net Ltd. All rights reserved.
+-->
+<openerp>
+    <data>
+
+        <record model="ir.ui.view" id="eagle_view_ssubcr_form_inherit">
+            <field name="name">Eagle Project: sale subscription form</field>
+            <field name="model">sale.subscription</field>
+            <field name="inherit_id" ref="ons_productivity_subscriptions_adv.onsp_view_sale_subscription_form"/>
+            <field name="priority" eval="17"/>
+            <field name="arch" type="xml">
+                <xpath expr="//group[@name='main']//field[@name='date_start']" position="before">
+                    <field name="eagle_contract"
+                        invisible="context.get('ons_hide_eagle_contract', False)"
+                        attrs="{'invisible':[('type', '=', 'template')]}"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="eagle_view_ssubcr_list_inherit">
+            <field name="name">Eagle Project: sale subscription list</field>
+            <field name="model">sale.subscription</field>
+            <field name="inherit_id" ref="sale_contract.sale_subscription_view_list"/>
+            <field name="priority" eval="17"/>
+            <field name="arch" type="xml">
+                <field name="display_name" position="after">
+                    <field name="type" invisible="1"/>
+                    <field name="eagle_contract" attrs="{'invisible':[('type', '=', 'template')]}"/>
+                </field>
+            </field>
+        </record>
+
+    </data>
+</openerp>
