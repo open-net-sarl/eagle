@@ -28,6 +28,10 @@ class EagleContract(models.Model):
                 'name': 'test',
                 'date_start': contract.date_start,
                 'template_id': template.id,
+                'partner_id': contract.customer_id.id,
+                'pricelist_id': template.pricelist_id.id,
+                'recurring_generates': template.recurring_generates,
+
             })
             for position in self.positions:
                 sale_sub_line_obj = self.env['sale.subscription.line']
@@ -46,6 +50,7 @@ class EagleContract(models.Model):
                     'sequence': position.sequence,
                     'cancellation_deadline': position.cancellation_deadline,
                     'discount': position.discount,
+                    'sold_quantity': position.qty,
                 })
 
 
