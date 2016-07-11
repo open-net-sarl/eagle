@@ -89,6 +89,8 @@ class EagleContract(models.Model):
     invoices_count = fields.Integer(compute='_get_invoices_count', string='Invoices count', default=0)
     picks_count = fields.Integer(compute='_get_pickings_count', string='Pickings count', default=0)
 
+    pricelist_id = fields.Many2one('product.pricelist', string='Pricelist')
+
     @api.multi
     def _get_tasks_count(self):
         for cnt in self:

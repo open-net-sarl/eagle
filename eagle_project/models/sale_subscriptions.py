@@ -136,3 +136,13 @@ class SaleSubscriptionLine(osv.osv):
         'eagle_contract': fields.many2one('eagle.contract', 'File')
     }
 
+    # ---------- Instances management
+
+    def create(self, cr, uid, vals, context=None):
+        if vals.get('analytic_account_id', False):
+            sale_sub = self.pool['sale.subscription'].browse(cr, uid, vals['analytic_account_id'], context=context)
+            if sale_sub and sale_sub.eagle_contract:
+                vals['eagle_contract'] = sale_sub.eagle_contract.id
+
+        return super(SaleSubscriptionLine, self).create(cr, uid, vals, context=context)
+
