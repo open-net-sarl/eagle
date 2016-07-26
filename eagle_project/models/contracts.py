@@ -261,8 +261,8 @@ class EagleContractPos(models.Model):
                 price *= (100 - self.discount) / 100.0
             
             tax = self.tax_id
-            if self.contract_id.fiscal_position:
-                tax = self.contract_id.fiscal_position.map_tax([self.name.taxes_id])
+            # if self.contract_id.fiscal_position:
+            #     tax = self.contract_id.fiscal_position.map_tax([self.name.taxes_id])
             if tax:
                 taxes = tax.compute_all(price, self.qty, product=self.name, partner=self.contract_id.customer_id)
                 self.cl_amount = taxes['total']

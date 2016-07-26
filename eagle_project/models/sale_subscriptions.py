@@ -7,7 +7,7 @@
 #
 #  Copyright (c) 2016-TODAY Open-Net Ltd. <http://www.open-net.ch>
 
-from openerp.osv import osv, fields
+from openerp import models, fields, api
 from openerp.tools.translate import _
 from openerp.exceptions import UserError
 
@@ -15,12 +15,10 @@ import logging
 _logger = logging.getLogger(__name__)
 
 
-class SaleSubscription(osv.osv):
+class SaleSubscription(models.Model):
     _inherit = 'sale.subscription'
 
-    _columns = {
-        'eagle_contract': fields.many2one('eagle.contract', 'File')
-    }
+    eagle_contract = fields.Many2one('eagle.contract', 'File')
 
     # ---------- Instances management
 
@@ -129,14 +127,11 @@ class SaleSubscription(osv.osv):
         return ret
 
 
-class SaleSubscriptionLine(osv.osv):
+class SaleSubscriptionLine(models.Model):
     _inherit = 'sale.subscription.line'
 
-    _columns = {
-        'eagle_contract': fields.many2one('eagle.contract', 'File')
-    }
-
-    # ---------- Instances management
+    eagle_contract = fields.Many2one('eagle.contract', string='File')
+    eagle_note = fields.Text(string="Note")
 
     def create(self, cr, uid, vals, context=None):
         if vals.get('analytic_account_id', False):

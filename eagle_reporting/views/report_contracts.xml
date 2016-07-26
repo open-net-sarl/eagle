@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  File: views/report_contracts.xml
+  Module: eagle_reporting
+
+  Created by cyp@open-net.ch
+
+  Copyright (c) 2015-TODAY Open-Net Ltd. All rights reserved.
+-->
+<openerp>
+    <data>
+
+        <template id="eagle_reporting.report_contract_document">
+            <t t-call="report.external_layout">
+                <t t-set="o" t-value="o.with_context({'lang':o.customer_id.lang})"/>
+                <div class="page">
+
+                    <div class="row">
+                        <div class="col-xs-5 col-xs-offset-7">
+                            <address t-field="o.customer_id" t-field-options="{&quot;widget&quot;: &quot;contact&quot;, &quot;fields&quot;: [&quot;address&quot;, &quot;name&quot;], &quot;no_marker&quot;: true}"/>
+                        </div>
+                    </div>
+                        <t t-set="amount" t-value="0"/>
+                        <table class="table table-condensed">
+                            <thead>
+                                <tr>
+                                    <th>Description</th>
+                                    <th>Qty</th>
+                                    <th>Price Unit</th>
+                                    <th>Price</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr t-foreach="o.sale_subscription_line" t-as="sub_line">
+                                    <td>
+                                        <strong><span t-field="sub_line.name"/></strong><br/>
+                                        <span t-field="sub_line.eagle_note"/>
+                                    </td>    
+                                    <td>
+                                        <span t-field="sub_line.quantity"/>
+                                    </td>
+                                    <td>
+                                        <span t-field="sub_line.price_unit"/>
+                                    </td>
+                                    <td>
+                                        <span t-field="sub_line.price_subtotal"/>
+                                        <t t-set="amount" t-value="amount + sub_line.price_subtotal"/>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="row">
+                            <div class="col-xs-4 pull-right">
+                                <table class="table table-condensed">
+                                    <tr class="border-black">
+                                        <td><strong>Subtotal</strong></td>
+                                        <td class="text-right">
+                                            <span t-esc="amount"/> <span t-esc="o.customer_id.property_product_pricelist.currency_id.symbol"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>TVA (8%)</td>
+                                        <td class="text-right">
+                                            <span t-esc="amount*0.08"/> <span t-esc="o.customer_id.property_product_pricelist.currency_id.symbol"/>
+                                        </td>
+                                    </tr>
+                                    <tr class="border-black">
+                                        <td><strong>Total</strong></td>
+                                        <td class="text-right">
+                                            <span t-esc="amount + amount*0.08"/> <span t-esc="o.customer_id.property_product_pricelist.currency_id.symbol"/>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    <!-- NOTES -->
+                    <div style="page-break-inside: avoid; color: #303030; vertical-align:top; padding-top: 10px; font-size:9pt;">
+                            <br/><span t-field="o.notes"/><br/>
+                    </div>
+                </div>
+            </t>
+        </template>
+        <template id="eagle_reporting.report_contract">
+            <t t-call="report.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <t t-call="eagle_reporting.report_contract_document" t-lang="o.customer_id.lang"/>
+                </t>
+            </t>
+        </template>
+    
+        <report 
+            string="Print contract"
+            id="eagle_print_contract"
+            model="eagle.contract"
+            report_type="qweb-pdf"
+            name="eagle_reporting.report_contract"
+            file="eagle_reporting.report_contract"/>
+
+    </data>
+</openerp>

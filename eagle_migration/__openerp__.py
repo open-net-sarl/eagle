@@ -9,7 +9,7 @@
     'summary': 'Eagle migration',
     'website': 'http://www.open-net.ch',
     'depends' : [
-        'eagle_project',
+        'eagle_project', 'eagle_base'
     ],
     'data': [
         'views/eagle_contract_view.xml'

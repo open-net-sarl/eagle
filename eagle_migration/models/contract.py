@@ -39,7 +39,7 @@ class EagleContract(models.Model):
                     'eagle_contract': contract.id,
                     'analytic_account_id': sale_sub.id,
                     'price_unit': position.list_price,
-                    'uom_id': position.uom_id.id,
+                    'uom_id': position.uom_id.id or 1,
                     'name': position.description or '',
                     'product_id': position.name.id,
                     'recurring_interval': position.recurrence_id.value,
@@ -51,6 +51,7 @@ class EagleContract(models.Model):
                     'cancellation_deadline': position.cancellation_deadline,
                     'discount': position.discount,
                     'sold_quantity': position.qty,
+                    'eagle_note': position.notes,
                 })
 
 
