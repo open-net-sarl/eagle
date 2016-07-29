@@ -435,12 +435,12 @@ class EagleCustomer(models.Model):
 
     # ---------- Instances management
 
-    def init(self, cr):
-        tools.sql.drop_view_if_exists(cr, self._table)
-        cr.execute("""CREATE OR REPLACE VIEW %s AS (
-SELECT DISTINCT 
- customer_id AS id, res_partner.name as customer, count(eagle_contract.id) as nb_contracts, ' ' as void
- FROM eagle_contract, res_partner 
- WHERE customer_id=res_partner.id 
- GROUP BY res_partner.name, customer_id 
- ORDER BY res_partner.name)""" % (self._table,))
+#     def init(self, cr):
+#         tools.sql.drop_view_if_exists(cr, self._table)
+#         cr.execute("""CREATE OR REPLACE VIEW %s AS (
+# SELECT DISTINCT 
+#  customer_id AS id, res_partner.name as customer, count(eagle_contract.id) as nb_contracts, ' ' as void
+#  FROM eagle_contract, res_partner 
+#  WHERE customer_id=res_partner.id 
+#  GROUP BY res_partner.name, customer_id 
+#  ORDER BY res_partner.name)""" % (self._table,))
