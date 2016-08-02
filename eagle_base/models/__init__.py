@@ -28,6 +28,6 @@
 
 from . import base
 from . import users
-# from . import products
-# from . import contracts
-# from . import partners
+from . import products
+from . import contracts
+from . import partners

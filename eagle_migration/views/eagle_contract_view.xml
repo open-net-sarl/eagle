@@ -32,7 +32,7 @@
             <field name="priority" eval="17"/>
             <field name="arch" type="xml">
               <xpath expr="//header" position="inside">
-                <button type="action" name="%(eagle_migration.eagle_open_migration_wizard)d" string="Migrate Positions"/>
+                <button type="action" name="%(eagle_open_migration_wizard)d" string="Migrate Positions"/>
               </xpath>
             </field>
         </record>

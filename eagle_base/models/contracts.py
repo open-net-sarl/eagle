@@ -130,7 +130,7 @@ class EagleContractBase(models.Model):
         self.state ='confirm'
 
         eagle_param = self.get_eagle_parameters()
-        if not eagle_param or not eagle_param.auto_production_state or len(contract_ids) < 1:
+        if not eagle_param or not eagle_param.auto_production_state or len(self._ids) < 1:
             return True
 
         to_do = []
@@ -278,7 +278,7 @@ class EagleContract(models.Model):
     date_end = fields.Date('End date')
     customer_id = fields.Many2one('res.partner', string='Customer', required=False, domain=[('is_company','=',True)])
     user_id = fields.Many2one('res.users', string='Salesman', readonly=True, states={'draft':[('readonly',False)]},
-        default=lambda self: self._uid)
+        default=lambda self: self.env.user)
     financial_partner_id = fields.Many2one('res.partner', string='Funded by')
     members = fields.Many2many(
         'res.users', 'eagle_contract_user_rel', 'contract_id', 'uid',
@@ -435,12 +435,12 @@ class EagleCustomer(models.Model):
 
     # ---------- Instances management
 
-#     def init(self, cr):
-#         tools.sql.drop_view_if_exists(cr, self._table)
-#         cr.execute("""CREATE OR REPLACE VIEW %s AS (
-# SELECT DISTINCT 
-#  customer_id AS id, res_partner.name as customer, count(eagle_contract.id) as nb_contracts, ' ' as void
-#  FROM eagle_contract, res_partner 
-#  WHERE customer_id=res_partner.id 
-#  GROUP BY res_partner.name, customer_id 
-#  ORDER BY res_partner.name)""" % (self._table,))
+    def init(self, cr):
+        tools.sql.drop_view_if_exists(cr, self._table)
+        cr.execute("""CREATE OR REPLACE VIEW %s AS (
+SELECT DISTINCT
+ customer_id AS id, res_partner.name as customer, count(eagle_contract.id) as nb_contracts, ' ' as void
+ FROM eagle_contract, res_partner
+ WHERE customer_id=res_partner.id
+ GROUP BY res_partner.name, customer_id
+ ORDER BY res_partner.name)""" % (self._table,))

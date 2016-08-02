@@ -106,7 +106,7 @@ class ResPartner(models.Model):
             part.eagle_contract_count = len(res)
 
 
-class eagle_contract(models.Model):
+class EagleContract(models.Model):
     _inherit = 'eagle.contract'
     
     partner_roles_id = fields.One2many(
