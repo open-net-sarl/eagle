@@ -8,7 +8,7 @@
 #  Copyright (c) 2011-TODAY Open-Net Ltd. <http://www.open-net.ch>
 {
     'name' : 'Eagle View: project module',
-    'version' : '9.1.03',
+    'version' : '9.1.04',
     'author' : 'Open Net/Cyp',
     'category': 'Eagle view',
     'summary': 'Synthetic view on your business',
