@@ -61,6 +61,7 @@
                         <filter string="Contract" icon="terp-stock_effects-object-colorize" domain="[]" context="{'group_by':'eagle_contract'}"/>
                         <filter string="Product" icon="terp-personal" domain="[]" context="{'group_by':'product_id'}"/>
                         <filter string="Analytic account" icon="terp-personal" domain="[]" context="{'group_by':'analytic_account_id'}"/>
+                        <filter string="Next action date" icon="terp-personal" domain="[]" context="{'group_by':'recurring_next_date'}"/>
                     </group>
                 </search>
             </field>
