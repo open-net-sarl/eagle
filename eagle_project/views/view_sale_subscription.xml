@@ -61,7 +61,7 @@
                         <filter string="Contract" icon="terp-stock_effects-object-colorize" domain="[]" context="{'group_by':'eagle_contract'}"/>
                         <filter string="Product" icon="terp-personal" domain="[]" context="{'group_by':'product_id'}"/>
                         <filter string="Analytic account" icon="terp-personal" domain="[]" context="{'group_by':'analytic_account_id'}"/>
-                        <filter string="Next action date" icon="terp-personal" domain="[]" context="{'group_by':'recurring_next_date'}"/>
+                        <filter string="Next action date" name='groupby_next_action_date' icon="terp-personal" domain="[]" context="{'group_by':'recurring_next_date'}"/>
                     </group>
                 </search>
             </field>
@@ -109,20 +109,13 @@
                     <field name="eagle_contract"/>
                     <field name="analytic_account_id"/>
                     <field name="product_id"/>
-                    <field name="name" invisible="1"/>
-                    <field name="quantity" groups="base.group_no_one"/>
-                    <field name="actual_quantity"/>
                     <field name="sold_quantity"/>
                     <field name="uom_id"/>
-                    <field name="requested_date"/>
                     <field name="recurring_rule_type"/>
-                    <field name="recurring_interval"/>
                     <field name="recurring_next_date"/>
                     <field name="is_billable"/>
-                    <field name="is_active"/>
                     <field name="cancellation_deadline"/>
                     <field name="price_unit"/>
-                    <field name="discount" groups="sale.group_discount_per_so_line"/>
                     <field name="price_subtotal"/>
                 </tree>
             </field>
@@ -136,7 +129,7 @@
             <field name="view_mode">tree,form</field>
             <field name="view_id" ref="eagle_view_active_subcr_lines_list"/>
             <field name="search_view_id" ref="eagle_view_active_subcr_lines_filter"/>
-            <field name="context">{'search_default_is_active':True}</field>
+            <field name="context">{'search_default_is_active':True, 'search_default_groupby_next_action_date':True}</field>
         </record>
 
     </data>

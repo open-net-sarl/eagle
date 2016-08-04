@@ -126,6 +126,11 @@ class SaleSubscription(models.Model):
 
         return ret
 
+    # ---------- Scheduler
+
+    def _cron_recurring_create_invoice(self, cr, uid, context=None):
+        return self._recurring_create_invoice(cr, uid, [], automatic=True, context=context)
+
 
 class SaleSubscriptionLine(models.Model):
     _inherit = 'sale.subscription.line'
