@@ -106,6 +106,7 @@
             <field name="arch" type="xml">
                 <tree create="false">
                     <field name="eagle_contract"/>
+                    <field name="analytic_account_id"/>
                     <field name="product_id"/>
                     <field name="name" invisible="1"/>
                     <field name="quantity" groups="base.group_no_one"/>
@@ -134,7 +135,7 @@
             <field name="view_mode">tree,form</field>
             <field name="view_id" ref="eagle_view_active_subcr_lines_list"/>
             <field name="search_view_id" ref="eagle_view_active_subcr_lines_filter"/>
-            <field name="context">{'default_is_active':True}</field>
+            <field name="context">{'search_default_is_active':True}</field>
         </record>
 
     </data>
