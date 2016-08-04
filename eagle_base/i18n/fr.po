@@ -557,3 +557,8 @@ msgstr "Liste des onglets"
 #: model:ir.model.fields,field_description:eagle_base.field_res_users_eagle_tabs_profile
 msgid "Eagle tabs profile"
 msgstr "Profil d'onglets Eagle"
+
+#. module: eagle_base
+#: model:ir.actions.act_window,name:eagle_base.eagle_menu_contract_pos_current_sale
+msgid "Current sales"
+msgstr "Ventes en cours"

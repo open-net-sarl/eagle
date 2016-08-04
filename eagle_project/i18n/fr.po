@@ -307,3 +307,8 @@ msgstr "Tâches"
 msgid "Task(s)"
 msgstr "Tâche(s)"
 
+#. module: eagle_project
+#: model:ir.ui.menu,name:eagle_project.eagle_action_active_subs_lines_list
+msgid "Current sales"
+msgstr "Ventes en cours"
+

@@ -10,6 +10,10 @@
 <openerp>
     <data>
 
+        <!--
+            More for the subscriptions
+        -->
+
         <record model="ir.ui.view" id="eagle_view_ssubcr_form_inherit">
             <field name="name">Eagle Project: sale subscription form</field>
             <field name="model">sale.subscription</field>
@@ -35,6 +39,102 @@
                     <field name="eagle_contract" attrs="{'invisible':[('type', '=', 'template')]}"/>
                 </field>
             </field>
+        </record>
+
+        <!--
+            More for the subscription lines
+        -->
+
+        <record model="ir.ui.view" id="eagle_view_active_subcr_lines_filter">
+            <field name="name">Eagle Project: active sale subscription lines Filter</field>
+            <field name="model">sale.subscription.line</field>
+            <field name="arch" type="xml">
+                <search string="Search subscription lines">
+                    <group>
+                        <field name="eagle_contract"/>
+                        <field name="product_id"/>
+                        <field name="analytic_account_id"/>
+                        <filter string="Active" name="is_active" domain="[('is_active','=',True)]"/>
+                        <filter string="Inactive" name="is_not_active" domain="[('is_active','!=',True)]"/>
+                    </group>
+                    <group expand="1" string="Group by...">
+                        <filter string="Contract" icon="terp-stock_effects-object-colorize" domain="[]" context="{'group_by':'eagle_contract'}"/>
+                        <filter string="Product" icon="terp-personal" domain="[]" context="{'group_by':'product_id'}"/>
+                        <filter string="Analytic account" icon="terp-personal" domain="[]" context="{'group_by':'analytic_account_id'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="eagle_view_active_subcr_lines_form">
+            <field name="name">Eagle Project: active sale subscription lines form</field>
+            <field name="model">sale.subscription.line</field>
+            <field name="arch" type="xml">
+                <form create="false">
+                    <div class="oe_title">
+                        <field name="name"/>
+                    </div>
+                    <group name="main">
+                        <group>
+                            <field name="eagle_contract"/>
+                            <field name="product_id"/>
+                            <field name="requested_date"/>
+                            <field name="recurring_rule_type"/>
+                            <field name="recurring_interval" attrs="{'invisible':['|',('recurring_rule_type','=',False),('recurring_rule_type','=','none')]}"/>
+                            <field name="recurring_next_date"/>
+                            <field name="cancellation_deadline"/>
+                            <field name="is_billable"/>
+                            <field name="is_active"/>
+                        </group>
+                        <group>
+                            <field name="quantity" groups="base.group_no_one"/>
+                            <field name="actual_quantity"/>
+                            <field name="sold_quantity"/>
+                            <field name="uom_id"/>
+                            <field name="price_unit"/>
+                            <field name="discount" groups="sale.group_discount_per_so_line"/>
+                            <field name="price_subtotal"/>
+                        </group>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="eagle_view_active_subcr_lines_list">
+            <field name="name">Eagle Project: active sale subscription lines list</field>
+            <field name="model">sale.subscription.line</field>
+            <field name="arch" type="xml">
+                <tree create="false">
+                    <field name="eagle_contract"/>
+                    <field name="product_id"/>
+                    <field name="name" invisible="1"/>
+                    <field name="quantity" groups="base.group_no_one"/>
+                    <field name="actual_quantity"/>
+                    <field name="sold_quantity"/>
+                    <field name="uom_id"/>
+                    <field name="requested_date"/>
+                    <field name="recurring_rule_type"/>
+                    <field name="recurring_interval"/>
+                    <field name="recurring_next_date"/>
+                    <field name="is_billable"/>
+                    <field name="is_active"/>
+                    <field name="cancellation_deadline"/>
+                    <field name="price_unit"/>
+                    <field name="discount" groups="sale.group_discount_per_so_line"/>
+                    <field name="price_subtotal"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="eagle_action_active_subs_lines_list">
+            <field name="name">Current sales</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">sale.subscription.line</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="eagle_view_active_subcr_lines_list"/>
+            <field name="search_view_id" ref="eagle_view_active_subcr_lines_filter"/>
+            <field name="context">{'default_is_active':True}</field>
         </record>
 
     </data>

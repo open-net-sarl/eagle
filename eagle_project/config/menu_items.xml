@@ -5,11 +5,35 @@
 
   Created by cyp@open-net.ch
 
-  Copyright (c) 2014 Open-Net Ltd. All rights reserved.
+  Copyright (c) 2014-TODAY Open-Net Ltd. All rights reserved.
 -->
 <openerp>
 	<data>
 
+	<menuitem
+		name="Files"
+		id="eagle_base.eagle_menu_contracts_top"
+		action="eagle_action_active_subs_lines_list"
+		sequence="1"
+		groups="eagle_base.group_contracts_viewers,eagle_base.group_contracts_editors,eagle_base.group_contracts_managers,eagle_base.group_contracts_users"
+        web_icon="eagle_base,static/description/web-icon.png"/>
+
+		<menuitem
+			name="Files"
+			id="eagle_base.eagle_menu_contracts_root"
+			action="eagle_action_active_subs_lines_list"
+			sequence="1"
+			parent="eagle_base.eagle_menu_contracts_top"
+			groups="eagle_base.group_contracts_viewers,eagle_base.group_contracts_editors,eagle_base.group_contracts_managers,eagle_base.group_contracts_users"/>
+
+        <menuitem
+			name="Current sales"
+			action="eagle_action_active_subs_lines_list"
+			id="eagle_base.eagle_menu_contract_pos_current_sales"
+			parent="eagle_base.eagle_menu_contracts_root"
+			icon="terp-dolar_ok!"
+			sequence="11"
+			groups="eagle_base.group_contracts_viewers,eagle_base.group_contracts_editors,eagle_base.group_contracts_managers,eagle_base.group_contracts_users"/>
 
 	</data>
 </openerp>

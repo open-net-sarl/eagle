@@ -13,7 +13,7 @@
 ##############################################################################
 {
     'name' : 'Eagle View',
-    'version' : '9.4',
+    'version' : '9.4.02',
     'author' : 'Open Net/Cyp',
     'category': 'Eagle view',
     'summary': 'Synthetic view on your business',
