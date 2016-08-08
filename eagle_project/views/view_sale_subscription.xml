@@ -25,6 +25,9 @@
                         invisible="context.get('ons_hide_eagle_contract', False)"
                         attrs="{'invisible':[('type', '=', 'template')]}"/>
                 </xpath>
+                <field name="display_name" position="replace">
+                    <field name="sale_subscr_name" attrs="{'invisible': [('type','=','template')],'required': [('type','=','contract')]}"/>
+                </field>
             </field>
         </record>
 
@@ -34,7 +37,8 @@
             <field name="inherit_id" ref="sale_contract.sale_subscription_view_list"/>
             <field name="priority" eval="17"/>
             <field name="arch" type="xml">
-                <field name="display_name" position="after">
+                <field name="display_name" position="replace">
+                    <field name="sale_subscr_name"/>
                     <field name="type" invisible="1"/>
                     <field name="eagle_contract" attrs="{'invisible':[('type', '=', 'template')]}"/>
                 </field>

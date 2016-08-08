@@ -59,7 +59,7 @@
                         <field name="sale_subscriptions"
                             context="{'default_eagle_contract':active_id,'default_partner_id':customer_id, 'default_manager_id':user_id, 'default_pricelist_id': pricelist_id, 'ons_hide_eagle_contract':True}">
                             <tree string=" " decoration-info="state=='draft'" decoration-danger="state=='pending'" decoration-muted="state in ('cancel','close')">
-                                <field name="display_name"/>
+                                <field name="sale_subscr_name"/>
                                 <field name="state" invisible="1"/>
                                 <field name="code"/>
                                 <field name="partner_id"/>

@@ -18,7 +18,27 @@ _logger = logging.getLogger(__name__)
 class SaleSubscription(models.Model):
     _inherit = 'sale.subscription'
 
+    @api.model
+    def _default_sale_subscr_name(self):
+        name = ''
+        if self._context.get('default_eagle_contract', False):
+            contract = self.env['eagle.contract'].browse(self._context['default_eagle_contract'])
+            if contract:
+                name = contract.name
+                if contract.default_ssubscr_acc:
+                    name += '/' + contract.default_ssubscr_acc.code
+        return name
+
+    @api.one
+    def _compute_sale_subscr_name(self):
+        self.name = self.name or self.analytic_account_id.name or _('New')
+
+    sale_subscr_name = fields.Char(string='Name', index=True, compute='_compute_sale_subscr_name', readonly=False, store=True, default=_default_sale_subscr_name)
     eagle_contract = fields.Many2one('eagle.contract', 'File')
+
+    _defaults = {
+        'code': 'New',
+    }
 
     # ---------- Instances management
 
@@ -35,19 +55,28 @@ class SaleSubscription(models.Model):
 
     def create(self, cr, uid, vals, context={}):
         do_it = ('eagle_contract' in vals)
+        contract = False
         contract_id = vals.get('eagle_contract', False)
+        if contract_id:
+            contract = self.pool.get('eagle.contract').browse(cr, uid, contract_id, context=context)
+            if contract.default_ssubscr_acc:
+                vals['analytic_account_id'] = contract.default_ssubscr_acc.id
+                for subscr in contract.sale_subscriptions:
+                    vals.update({
+                        'code': subscr.code,
+                        'name': subscr.name
+                    })
+                    break
+        if vals.get('type', 'template') == 'contract' and not vals.get('analytic_account_id', False):
+            vals['name'] = vals['sale_subscr_name']
 
         if not vals.get('code', False):
             vals['code'] = self.pool['ir.sequence'].next_by_code(cr, uid, 'sale.subscription', context=context) or 'New'
         if vals.get('name', 'New') == 'New':
             s = ''
-            if contract_id:
-                contract = self.pool.get('eagle.contract').browse(cr, uid, contract_id, context=context)
+            if contract:
                 s = contract.name + '/'
                 vals['name'] = s + vals['code']
-
-                if contract.default_ssubscr_acc:
-                    vals['analytic_account_id'] = contract.default_ssubscr_acc.id
 
         new_id = super(SaleSubscription, self).create(cr, uid, vals, context=context)
 
@@ -151,6 +180,24 @@ class SaleSubscriptionLine(models.Model):
 
 class AccountAnalyticAccount(models.Model):
     _inherit = 'account.analytic.account'
+
+    # ---------- Fields management
+
+    @api.model
+    def _default_analytic_account_code(self):
+        code = ''
+        if self._context.get('default_eagle_contract', False):
+            contract = self.env['eagle.contract'].browse(self._context['default_eagle_contract'])
+            if contract and contract.default_ssubscr_acc:
+                for subscr in contract.sale_subscriptions:
+                    code = subscr.code
+                    break
+        if not code:
+            code = self.env['ir.sequence'].next_by_code('sale.subscription') or 'New'
+
+        return code
+
+    code = fields.Char(string='Reference', index=True, track_visibility='onchange', default=_default_analytic_account_code)
 
     # ---------- Interface management
 
