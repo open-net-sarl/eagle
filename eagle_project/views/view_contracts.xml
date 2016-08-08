@@ -53,6 +53,9 @@
                 </div>
                 <page name="other_infos" position="before">
                     <page string="Sale susbscriptions" name="sale_subscr" attrs="{'invisible':[('tab_profile_sale_subscr','=',False)]}">
+                        <group colspan="4">
+                            <field name="default_ssubscr_acc"/>
+                        </group>
                         <field name="sale_subscriptions"
                             context="{'default_eagle_contract':active_id,'default_partner_id':customer_id, 'default_manager_id':user_id, 'default_pricelist_id': pricelist_id, 'ons_hide_eagle_contract':True}">
                             <tree string=" " decoration-info="state=='draft'" decoration-danger="state=='pending'" decoration-muted="state in ('cancel','close')">

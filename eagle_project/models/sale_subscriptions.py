@@ -44,7 +44,10 @@ class SaleSubscription(models.Model):
             if contract_id:
                 contract = self.pool.get('eagle.contract').browse(cr, uid, contract_id, context=context)
                 s = contract.name + '/'
-            vals['name'] = s + vals['code']
+                vals['name'] = s + vals['code']
+
+                if contract.default_ssubscr_acc:
+                    vals['analytic_account_id'] = contract.default_ssubscr_acc.id
 
         new_id = super(SaleSubscription, self).create(cr, uid, vals, context=context)
 
@@ -145,4 +148,26 @@ class SaleSubscriptionLine(models.Model):
                 vals['eagle_contract'] = sale_sub.eagle_contract.id
 
         return super(SaleSubscriptionLine, self).create(cr, uid, vals, context=context)
+
+class AccountAnalyticAccount(models.Model):
+    _inherit = 'account.analytic.account'
+
+    # ---------- Interface management
+
+    def subscriptions_action(self, cr, uid, ids, context=None):
+        accounts = self.browse(cr, uid, ids, context=context)
+        subscription_ids = sum([account.subscription_ids.ids for account in accounts], [])
+        result = {
+            "type": "ir.actions.act_window",
+            "res_model": "sale.subscription",
+            "views": [[False, "tree"], [False, "form"]],
+            "domain": [["id", "in", subscription_ids]],
+            "context": {"create": False},
+            "name": "Subscriptions",
+        }
+        if len(subscription_ids) == 1:
+            result['views'] = [(False, "form")]
+            result['res_id'] = subscription_ids[0]
+
+        return result
 

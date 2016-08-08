@@ -64,6 +64,7 @@ class EagleContract(models.Model):
     account_out_inv_lines = fields.One2many('account.invoice.line', 'contract_id', string='Customer Invoice Lines', domain=[('invoice_id.type','=','out_invoice')])
     account_in_inv_lines = fields.One2many('account.invoice.line', 'contract_id', string='Supplier Invoice Lines', domain=[('invoice_id.type','=','in_invoice')])
 
+    default_ssubscr_acc = fields.Many2one('account.analytic.account', string='Default sale subscriptions account')
     sale_subscriptions = fields.One2many('sale.subscription', 'eagle_contract', string='Sale Subscriptions')
     sale_subscription_line = fields.One2many('sale.subscription.line', 'eagle_contract', string='Sale Subscription Lines')
 

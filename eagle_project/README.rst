@@ -10,6 +10,7 @@ This is the projects module of the Eagle View management system
         - invoices
         - sale susbriptions
 	- all these elements have their own tab
+    - default analytic account for all the subscription of an Eagle file
 
 **Author :** 
 
