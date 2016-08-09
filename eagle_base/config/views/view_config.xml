@@ -81,7 +81,7 @@
         <menuitem 
             name="Configure Eagle" 
             id="eagle_menu_eagle_settings" 
-            parent="base.menu_config"
+            parent="base.menu_administration"
             sequence="50" 
             groups="eagle_base.group_contracts_viewers,eagle_base.group_contracts_editors,eagle_base.group_contracts_managers"/>
 

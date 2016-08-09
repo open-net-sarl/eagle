@@ -50,8 +50,8 @@
                         </button>
                     </div>
                     <field name="team_id" position="after">
-                        <field name="eagle_files_ids" invisible="0"/>
-                        <field name="eagle_files_lst" invisible="0"/>
+                        <field name="eagle_files_ids"  widget="many2many_tags"/>
+                        <field name="eagle_files_lst" invisible="1"/>
                     </field>
                 </data>
 			</field>
