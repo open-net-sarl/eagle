@@ -86,20 +86,22 @@ class SaleSubscription(models.Model):
         return new_id
 
     def write(self, cr, uid, ids, vals, context={}):
-        do_it = ('eagle_contract' in vals)
         prefix = ''
+        do_it = ('eagle_contract' in vals)
         if do_it:
-		contract_id = vals.get('eagle_contract', False)
-		contract = self.pool.get('eagle.contract').browse(cr, uid, contract_id, context=context)
-		if contract and contract.name:
-			prefix = contract.name + '/'
+            contract_id = vals.get('eagle_contract', False)
+            contract = self.pool.get('eagle.contract').browse(cr, uid, contract_id, context=context)
+            if contract and contract.name:
+                prefix = contract.name + '/'
 
         ret = super(SaleSubscription, self).write(cr, uid, ids, vals, context=context)
+
         if do_it:
             self._update_sale_subscr_line(cr, uid, ids, contract_id, context=context)
-	    if prefix:
-		for subs in self.browse(cr, uid, ids, context=context):
-			super(SaleSubscription, self).write(cr, uid, [subs.id], {'name': prefix + subs.code}, context=context)
+
+        if prefix:
+            for subs in self.browse(cr, uid, ids, context=context):
+                super(SaleSubscription, self).write(cr, uid, [subs.id], {'name': prefix + subs.code}, context=context)
 
         return ret
 
@@ -156,7 +158,10 @@ class SaleSubscription(models.Model):
 
         ret = super(SaleSubscription, self).action_recurring_invoice(cr, uid, ids, context=context)
 
-        return ret
+        return {
+            'type': 'ir.actions.client',
+            'tag': 'reload',
+        }
 
     # ---------- Scheduler
 
