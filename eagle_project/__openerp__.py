@@ -22,7 +22,9 @@
         'sale_stock',
         'sale_order_dates',
         'ons_productivity_sol_req',
-        'ons_productivity_subscriptions_adv'
+        'ons_productivity_subscriptions_adv',
+        'account_asset',
+        'sale_contract_asset'
     ],
     'data': [
     	'config/views/view_config.xml',
