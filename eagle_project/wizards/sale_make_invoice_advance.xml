@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  File: wizards/sale_make_invoice_advance.xml
+  Module: eagle_project
+
+  Created by cyp@open-net.ch
+
+  Copyright (c) 2016-TODAY Open-Net Ltd. All rights reserved.
+-->
+<openerp>
+    <data>
+        <record model="ir.ui.view" id="view_sale_advance_payment_inv">
+            <field name="name">Invoice Orders</field>
+            <field name="model">sale.advance.payment.inv</field>
+            <field name="inherit_id" ref="ons_productivity_subscriptions_adv.view_sale_advance_payment_inv"/>
+            <field name="priority" eval="17"/>
+            <field name="arch" type="xml">
+                <footer position="replace">
+                    <footer>
+                        <button name="create_invoices" string="Create and View Invoices" type="object"
+                            context="{'open_invoices': True}" class="btn-primary"/>
+                        <button name="create_invoices" string="Create Invoices" type="object"
+                            class="btn-primary"/>
+                        <button string="Cancel" class="btn-default" special="cancel"/>
+                    </footer>
+                </footer>
+            </field>
+        </record>
+
+    </data>
+</openerp>
