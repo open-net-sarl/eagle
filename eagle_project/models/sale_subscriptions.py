@@ -25,7 +25,7 @@ class SaleSubscription(models.Model):
             contract = self.env['eagle.contract'].browse(self._context['default_eagle_contract'])
             if contract:
                 name = contract.name
-                if contract.default_ssubscr_acc:
+                if contract.default_ssubscr_acc and contract.default_ssubscr_acc.code:
                     name += '/' + contract.default_ssubscr_acc.code
         return name
 
