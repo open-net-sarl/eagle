@@ -265,7 +265,7 @@
                                     </group>
                                     <group name="stakeholders" string="Stakeholders" style="width:32%;">
                                         <field name="user_id" groups="eagle_base.group_contracts_managers"/>
-                                        <field name="sale_partner_id"/>
+                                        <field name="sale_partner_id" readonly="1"/>
                                     </group>
                                     <group name="references" string="References" style="width:32%;">
                                         <field name="cust_ref"/>
