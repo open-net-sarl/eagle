@@ -28,6 +28,13 @@
                 <field name="display_name" position="replace">
                     <field name="sale_subscr_name" attrs="{'invisible': [('type','=','template')],'required': [('type','=','contract')]}"/>
                 </field>
+                <xpath expr="//field[@name='recurring_invoice_line_ids']" position="attributes">
+                    <attribute name="context">{'default_eagle_contract':eagle_contract, 'ons_hide_eagle_contract':True}</attribute>
+                </xpath>
+                <xpath expr="//field[@name='recurring_invoice_line_ids']/tree" position="attributes">
+                    <attribute name="editable"/>
+                </xpath>
+                <xpath expr="//field[@name='recurring_invoice_line_ids']/tree//field[@name='sequence']" position="replace"/>
             </field>
         </record>
 
@@ -81,8 +88,8 @@
                     </div>
                     <group name="main">
                         <group>
-                            <field name="eagle_contract"/>
-                            <field name="product_id"/>
+                            <field name="eagle_contract" invisible="context.get('ons_hide_eagle_contract', False)"/>
+                            <field name="product_id" on_change="product_id_change(product_id, uom_id, quantity, False, parent.partner_id, False, parent.pricelist_id, parent.company_id)"/>
                             <field name="requested_date"/>
                             <field name="recurring_rule_type"/>
                             <field name="recurring_interval" attrs="{'invisible':['|',('recurring_rule_type','=',False),('recurring_rule_type','=','none')]}"/>
@@ -99,6 +106,7 @@
                             <field name="price_unit"/>
                             <field name="discount" groups="sale.group_discount_per_so_line"/>
                             <field name="price_subtotal"/>
+                            <field name="sequence"/>
                         </group>
                     </group>
                 </form>
