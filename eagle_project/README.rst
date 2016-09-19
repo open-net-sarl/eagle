@@ -39,3 +39,6 @@ V9.2: 2016-09-19/Cyp
     * Sale subscription may have their own name
     * Button from analytic account to sale susbscriptions now points to a list instead of the form
     * Removed fields in an Eagle form: sale subscription line's sequence and actual quantity
+    * New dependency: sale_timesheet
+    * New: timesheet button hidden in sale order form (linked to the analytic account instead of only the sale)
+    * Correction: now displays three qty fields in sale order line when coming from an Eagle file

@@ -321,4 +321,5 @@ msgstr "Récurrences actives"
 #: model:ir.model.fields,field_description:eagle_project.default_ssubscr_acc
 msgid "Default sale subscriptions account"
 msgstr "Compte par défaut pour les abonnements"
+"
 

@@ -37,6 +37,7 @@
                 <xpath expr="//group[@name='sale_shipping']//field[@name='requested_date']" position="attributes">
                     <attribute name="attrs">{'invisible':[('hide_requested_date','=',True)]}</attribute>
                 </xpath>
+                <xpath expr="//button[@name='action_view_timesheet']" position="replace"/>
 			</field>
 		</record>
 

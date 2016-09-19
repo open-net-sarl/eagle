@@ -197,7 +197,7 @@ class EagleContract(models.Model):
             "res_model": "sale.order",
             "views": [[list_view_id, "tree"], [form_view_id, "form"]],
             "domain": [["id", "in", sale_ids]],
-            "context": {"create": False},
+            "context": {"create": False, 'show_sale':True},
             "name": _("Sales"),
         }
 

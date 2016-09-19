@@ -8,7 +8,7 @@
 #  Copyright (c) 2011-TODAY Open-Net Ltd. <http://www.open-net.ch>
 {
     'name' : 'Eagle View: project module',
-    'version' : '9.2',
+    'version' : '9.2.02',
     'author' : 'Open Net/Cyp',
     'category': 'Eagle view',
     'summary': 'Synthetic view on your business',
@@ -21,6 +21,7 @@
         'sale_service',
         'sale_stock',
         'sale_order_dates',
+        'sale_timesheet',
         'ons_productivity_sol_req',
         'ons_productivity_subscriptions_adv',
         'account_asset',
