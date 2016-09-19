@@ -148,6 +148,11 @@ msgid "Eagle Settings"
 msgstr "Réglages Eagle"
 
 #. module: eagle_base
+#: model:ir.ui.menu,name:eagle_base.eagle_menu_contracts_roots
+msgid "Customer files"
+msgstr "Dossiers clients"
+
+#. module: eagle_base
 #: model:ir.ui.view,arch_db:eagle_config_settings.eagle_view_config_settings
 #: model:ir.actions.act_window,name:eagle_base.eagle_action_config
 #: model:ir.ui.menu,name:eagle_base.eagle_menu_eagle_settings
@@ -252,52 +257,58 @@ msgid "Files"
 msgstr "Dossiers"
 
 #. module: eagle_base
-#: model:ir.ui.view,arch_db:eagle_contract.eagle_view_contract_filter
-#: model:ir.ui.view,arch_db:eagle_contract.eagle_view_contract_filter_no_cust
+#: model:ir.ui.view,arch_db:eagle_base.eagle_view_contract_filter
+#: model:ir.ui.view,arch_db:eagle_base.eagle_view_contract_filter_no_cust
 msgid "Search files"
 msgstr "Rechercher des dossiers"
 
 #. module: eagle_base
 #: model:ir.actions.act_window,name:eagle_base.eagle_action_contract_filter_all_tree
-#: model:ir.ui.menu,name:eagle_contract.eagle_menu_contract_all
+#: model:ir.ui.menu,name:eagle_base.eagle_menu_contract_all
 msgid "All files"
 msgstr "Tous les dossiers"
 
 #. module: eagle_base
+#: model:ir.actions.act_window,name:eagle_base.eagle_action_contract_pos_current_sales_tree
+#: model:ir.ui.menu,name:eagle_base.eagle_menu_contract_pos_current_sales
+msgid "Active recurrences"
+msgstr "Récurrences actives"
+
+#. module: eagle_base
 #: model:ir.actions.act_window,name:eagle_base.eagle_action_contract_filter_draft_form
-#: model:ir.ui.menu,name:eagle_contract.eagle_menu_contracts_draft_form
-msgid "Offers"
-msgstr "Offres"
+#: model:ir.ui.menu,name:eagle_base.eagle_menu_contracts_draft_form
+msgid "Files (Offer)"
+msgstr "Dossiers (Offre)"
 
 #. module: eagle_base
 #: model:ir.actions.act_window,name:eagle_base.eagle_action_contract_filter_confirm_form
-#: model:ir.ui.menu,name:eagle_contract.eagle_menu_contracts_confirm_form
-msgid "Confirmations"
-msgstr "Confirmations"
+#: model:ir.ui.menu,name:eagle_base.eagle_menu_contracts_confirm_form
+msgid "Files (Confirmations)"
+msgstr "Dossiers (Confirmations)"
 
 #. module: eagle_base
 #: model:ir.actions.act_window,name:eagle_base.eagle_action_contract_filter_prod_form
-#: model:ir.ui.menu,name:eagle_contract.eagle_menu_contracts_prod_form
-msgid "Productions"
-msgstr "Productions"
+#: model:ir.ui.menu,name:eagle_base.eagle_menu_contracts_prod_form
+msgid "Files (Ongoing)"
+msgstr "Dossiers (En cours)"
 
 #. module: eagle_base
 #: model:ir.actions.act_window,name:eagle_base.eagle_action_contract_filter_close_form
-#: model:ir.ui.menu,name:eagle_contract.eagle_menu_contracts_close_form
-msgid "Closed files"
-msgstr "Dossiers fermés"
+#: model:ir.ui.menu,name:eagle_base.eagle_menu_contracts_close_form
+msgid "Files (Closed)"
+msgstr "Dossiers (Terminé)"
 
 #. module: eagle_base
 #: model:ir.actions.act_window,name:eagle_base.eagle_action_contract_filter_cancel_form
-#: model:ir.ui.menu,name:eagle_contract.eagle_menu_contracts_cancel_form
-msgid "Canceled files"
-msgstr "Dossiers annulés"
+#: model:ir.ui.menu,name:eagle_base.eagle_menu_contracts_cancel_form
+msgid "Files (Canceled)"
+msgstr "Dossiers (Annulé)"
 
 #. module: eagle_base
 #: model:ir.actions.act_window,name:eagle_base.eagle_action_contract_filter_my_form
-#: model:ir.ui.menu,name:eagle_contract.eagle_menu_contracts_my_form
-msgid "My files"
-msgstr "Mes dossiers"
+#: model:ir.ui.menu,name:eagle_base.eagle_menu_contracts_my_form
+msgid "My files, ongoing"
+msgstr "Mes dossiers, en cours"
 
 #. module: eagle_base
 #: model:ir.actions.act_window,name:eagle_base.eagle_action_contract_2_list_edit_msgs
@@ -305,20 +316,20 @@ msgid "List &amp; edit messages"
 msgstr "Lister & éditer les messages"
 
 #. module: eagle_base
-#: model:ir.ui.view,arch_db:eagle_contract.eagle_view_customers_list
+#: model:ir.ui.view,arch_db:eagle_base.eagle_view_customers_list
 msgid "Customers"
 msgstr "Clients"
 
 #. module: eagle_base
 #: model:ir.ui.menu,name:eagle_base.eagle_menu_contracts_all_form
-#: model:ir.actions.act_window,name:eagle_contract.eagle_action_contract_all_form
+#: model:ir.actions.act_window,name:eagle_base.eagle_action_contract_all_form
 msgid "All files, by customer"
 msgstr "Tous les dossiers, par client"
 
 #. module: eagle_base
 #: model:ir.ui.menu,name:eagle_base.eagle_action_contract_categories_menu
-#: model:ir.actions.act_window,name:eagle_contract.eagle_action_contract_categories
-#: model:ir.ui.view,arch_db:eagle_contract.eagle_view_contract_categories_tree
+#: model:ir.actions.act_window,name:eagle_base.eagle_action_contract_categories
+#: model:ir.ui.view,arch_db:eagle_base.eagle_view_contract_categories_tree
 msgid "Files categories"
 msgstr "Catégories de dossiers"
 

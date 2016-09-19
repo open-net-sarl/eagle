@@ -338,7 +338,7 @@
         </record>
 
         <record model="ir.ui.view" id="eagle_view_contract_filter_no_cust">
-            <field name="name">Eagle Contracts Filter by cust</field>
+            <field name="name">All files, by customer</field>
             <field name="model">eagle.customer</field>
             <field name="arch" type="xml">
                 <search string="Search files">
@@ -357,7 +357,7 @@
         </record>
 
         <record model="ir.actions.act_window" id="eagle_action_contract_filter_draft_form">
-            <field name="name">Offers</field>
+            <field name="name">Files (Offer)</field>
             <field name="res_model">eagle.contract</field>
             <field name="view_type">form</field>
             <field name="view_mode">tree,form</field>
@@ -367,7 +367,7 @@
         </record>
 
         <record model="ir.actions.act_window" id="eagle_action_contract_filter_confirm_form">
-            <field name="name">Confirmations</field>
+            <field name="name">Files (Confirmations)</field>
             <field name="res_model">eagle.contract</field>
             <field name="view_type">form</field>
             <field name="view_mode">tree,form</field>
@@ -377,7 +377,7 @@
         </record>
 
         <record model="ir.actions.act_window" id="eagle_action_contract_filter_prod_form">
-            <field name="name">Productions</field>
+            <field name="name">Files (Ongoing)</field>
             <field name="res_model">eagle.contract</field>
             <field name="view_type">form</field>
             <field name="view_mode">tree,form</field>
@@ -387,7 +387,7 @@
         </record>
 
         <record model="ir.actions.act_window" id="eagle_action_contract_filter_close_form">
-            <field name="name">Closed files</field>
+            <field name="name">Files (Closed)</field>
             <field name="res_model">eagle.contract</field>
             <field name="view_type">form</field>
             <field name="view_mode">tree,form</field>
@@ -397,7 +397,7 @@
         </record>
 
         <record model="ir.actions.act_window" id="eagle_action_contract_filter_cancel_form">
-            <field name="name">Canceled files</field>
+            <field name="name">Files (Canceled)</field>
             <field name="res_model">eagle.contract</field>
             <field name="view_type">form</field>
             <field name="view_mode">tree,form</field>
@@ -407,7 +407,6 @@
         </record>
 
         <record model="ir.actions.act_window" id="eagle_action_contract_filter_my_form">
-            <field name="name">My files</field>
             <field name="res_model">eagle.contract</field>
             <field name="view_type">form</field>
             <field name="view_mode">tree,form</field>
@@ -467,7 +466,7 @@
         </record>
 
         <record model="ir.actions.act_window" id="eagle_action_contract_pos_current_sales_tree">
-            <field name="name">Current sales</field>
+            <field name="name">Customer files</field>
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">eagle.contract.position</field>
             <field name="view_type">form</field>

@@ -84,7 +84,6 @@
                                 <field name="product_id"/>
                                 <field name="name" invisible="1"/>
                                 <field name="quantity" groups="base.group_no_one"/>
-                                <field name="actual_quantity"/>
                                 <field name="sold_quantity"/>
                                 <field name="uom_id"/>
                                 <field name="requested_date"/>
