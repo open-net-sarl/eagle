@@ -592,7 +592,7 @@ msgstr "Profil d'onglets Eagle"
 #. module: eagle_base
 #: model:ir.model.fields,field_description:eagle_base.field_eagle_contract_sale_partner_id
 msgid "Shipping to"
-msgstr "Shipping to"
+msgstr "Livrer à"
 
 #. module: eagle_base
 #: model:ir.actions.act_window,name:eagle_base.eagle_menu_contract_pos_current_sale
