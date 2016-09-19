@@ -32,7 +32,7 @@ class EagleContractCategory(models.Model):
     
     # ---------- Fields management
     
-    name = fields.Char('Category')
+    name = fields.Char(string='Category')
 
 
 class EagleContractBase(models.Model):
@@ -42,7 +42,7 @@ class EagleContractBase(models.Model):
 
     # ---------- Fields management
 
-    name = fields.Char('File',
+    name = fields.Char(string='File',
         default=lambda self: self._context.get('default_name', _('New')))
 
     # ---------- Eagle management

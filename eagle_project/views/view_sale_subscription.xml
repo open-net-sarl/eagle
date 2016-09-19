@@ -36,6 +36,7 @@
                 </xpath>
                 <xpath expr="//field[@name='recurring_invoice_line_ids']/tree//field[@name='sequence']" position="replace"/>
                 <xpath expr="//field[@name='recurring_invoice_line_ids']/tree//field[@name='actual_quantity']" position="replace"/>
+                <button name="prepare_renewal_order" position="replace"/>
             </field>
         </record>
 

@@ -208,13 +208,23 @@ msgstr "Dossier(s):"
 
 #. module: eagle_project
 #: model:ir.ui.view,arch_db:eagle_project.eagle_project_view_contract_form
-msgid "Invoice(s):"
-msgstr "Facture(s):"
+msgid "Task(s)"
+msgstr "Tâche(s)"
 
 #. module: eagle_project
 #: model:ir.ui.view,arch_db:eagle_project.eagle_project_view_contract_form
-msgid "Sale(s):"
-msgstr "Vente(s):"
+msgid "Opportunity(ies)"
+msgstr "Opportunité(s)"
+
+#. module: eagle_project
+#: model:ir.ui.view,arch_db:eagle_project.eagle_project_view_contract_form
+msgid "Invoice(s)"
+msgstr "Facture(s)"
+
+#. module: eagle_project
+#: model:ir.ui.view,arch_db:eagle_project.eagle_project_view_contract_form
+msgid "Sale(s)"
+msgstr "Vente(s)"
 
 #. module: eagle_project
 #: model:ir.ui.view,arch_db:eagle_project.eagle_project_view_contract_form
@@ -318,8 +328,12 @@ msgid "Active recurrences"
 msgstr "Récurrences actives"
 
 #. module: eagle_project
-#: model:ir.model.fields,field_description:eagle_project.default_ssubscr_acc
+#: model:ir.model.fields,field_description:eagle_project.field_eagle_contract_default_ssubscr_acc
 msgid "Default sale subscriptions account"
 msgstr "Compte par défaut pour les abonnements"
-"
+
+#. module: eagle_project
+#: model:ir.model.fields,field_description:eagle_project.field_sale_subscription_sale_subscr_name
+msgid "Name"
+msgstr "Nom"
 

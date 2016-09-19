@@ -111,6 +111,7 @@ msgid "Options"
 msgstr "Options"
 
 #. module: eagle_base
+#: model:ir.ui.view,arch_db:eagle_base.eagle_view_contract_form
 #: model:ir.ui.view,arch_db:eagle_config_settings.eagle_view_config_settings
 #: code:addons/eagle_base/config/models/tab_profiles.py:34
 #, python-format
@@ -118,6 +119,7 @@ msgid "Other infos"
 msgstr "Autres infos"
 
 #. module: eagle_base
+#: model:ir.ui.view,arch_db:eagle_base.eagle_view_contract_form
 #: model:ir.ui.view,arch_db:eagle_config_settings.eagle_view_config_settings
 #: code:addons/eagle_base/config/models/tab_profiles.py:35
 #, python-format
@@ -125,6 +127,7 @@ msgid "File members"
 msgstr "Membres du dossier"
 
 #. module: eagle_base
+#: model:ir.ui.view,arch_db:eagle_base.eagle_view_contract_form
 #: model:ir.ui.view,arch_db:eagle_config_settings.eagle_view_config_settings
 #: code:addons/eagle_base/config/models/tab_profiles.py:36
 #, python-format
@@ -132,9 +135,25 @@ msgid "File partners"
 msgstr "Partenaires du dossier"
 
 #. module: eagle_base
+#: model:ir.ui.view,arch_db:eagle_base.eagle_view_contract_form
 #: model:ir.ui.view,arch_db:eagle_config_settings.eagle_view_config_settings
 msgid "Partners roles"
 msgstr "Rôle des partenaires"
+
+#. module: eagle_base
+#: model:ir.ui.view,arch_db:eagle_base.eagle_view_contract_form
+msgid "Stakeholders"
+msgstr "Intervenants"
+
+#. module: eagle_base
+#: model:ir.ui.view,arch_db:eagle_base.eagle_view_contract_form
+msgid "References"
+msgstr "Références"
+
+#. module: eagle_base
+#: model:ir.ui.view,arch_db:eagle_base.eagle_view_contract_form
+msgid "Calendar"
+msgstr "Calendrier"
 
 #. module: eagle_base
 #: code:addons/eagle_base/config/models/tab_profiles.py:37
@@ -350,6 +369,7 @@ msgid "Eagle file"
 msgstr "Dossier Eagle"
 
 #. module: eagle_base
+#: model:ir.model.fields,field_description:account.field_account_account_type_name
 #: model:ir.model.fields,field_description:eagle_base.field_eagle_contract_name
 msgid "File"
 msgstr "Dossier"
@@ -570,6 +590,16 @@ msgid "Eagle tabs profile"
 msgstr "Profil d'onglets Eagle"
 
 #. module: eagle_base
+#: model:ir.model.fields,field_description:eagle_base.field_eagle_contract_sale_partner_id
+msgid "Shipping to"
+msgstr "Shipping to"
+
+#. module: eagle_base
 #: model:ir.actions.act_window,name:eagle_base.eagle_menu_contract_pos_current_sale
 msgid "Current sales"
 msgstr "Ventes en cours"
+
+#. module: eagle_base
+#: model:ir.ui.view,arch_db:eagle_base.eagle_view_contract_partner_tree
+msgid "Company"
+msgstr "Compagnie"
