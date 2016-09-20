@@ -412,7 +412,7 @@
             <field name="view_mode">tree,form</field>
             <field name="view_id" ref="eagle_view_contract_tree"/>
             <field name="search_view_id" ref="eagle_view_contract_filter"/>
-            <field name="domain">[('user_id','=',uid)]</field>
+            <field name="domain">[('user_id','=',uid),('state','=','production')]</field>
         </record>
 
 		<act_window 
