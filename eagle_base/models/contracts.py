@@ -378,7 +378,7 @@ class EagleContract(models.Model):
         if view_type != 'form': return res
         if eagle_param and hasattr(eagle_param,'close_to_draft') and eagle_param.close_to_draft:
             eview = etree.fromstring(res['arch'])
-            for btn in eview.xpath("//button[@name='contract_draft']"):
+            for btn in eview.xpath("//button[@name='action_contract_draft']"):
                 btn.set('states','confirm,closed,canceled')
                 d = simplejson.loads(btn.get('modifiers'))
                 d['invisible'] = [('state', 'not in', ['confirm', 'closed', 'canceled'])]
