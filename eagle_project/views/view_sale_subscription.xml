@@ -97,6 +97,7 @@
                             <field name="recurring_interval" attrs="{'invisible':['|',('recurring_rule_type','=',False),('recurring_rule_type','=','none')]}"/>
                             <field name="recurring_next_date"/>
                             <field name="cancellation_deadline"/>
+                            <field name="use_new_so_inv"/>
                             <field name="is_billable"/>
                             <field name="is_active"/>
                         </group>
@@ -126,6 +127,7 @@
                     <field name="uom_id"/>
                     <field name="recurring_rule_type"/>
                     <field name="recurring_next_date"/>
+                    <field name="use_new_so_inv"/>
                     <field name="is_billable"/>
                     <field name="cancellation_deadline"/>
                     <field name="price_unit"/>
@@ -135,6 +137,7 @@
         </record>
 
         <record model="ir.actions.act_window" id="eagle_action_active_subs_lines_list">
+            <field name="name">Active recurrences</field>
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">sale.subscription.line</field>
             <field name="view_type">form</field>

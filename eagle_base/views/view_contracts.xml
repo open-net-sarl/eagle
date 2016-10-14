@@ -407,6 +407,7 @@
         </record>
 
         <record model="ir.actions.act_window" id="eagle_action_contract_filter_my_form">
+            <field name="name">My Files</field>
             <field name="res_model">eagle.contract</field>
             <field name="view_type">form</field>
             <field name="view_mode">tree,form</field>

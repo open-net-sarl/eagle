@@ -18,10 +18,16 @@
             <field name="model">product.recurrence.unit</field>
             <field name="arch" type="xml">
                 <form string="Units of Recurrence" col="6">
-                    <field name="name" select="True"/>
-                    <field name="value"/>
-                    <field name="unit"/>
-                    <field name="keep_same_day"/>
+                    <group>
+                        <group>
+                            <field name="name" select="True"/>
+                            <field name="value"/>
+                        <group>
+                        </group>
+                            <field name="unit"/>
+                            <field name="keep_same_day"/>
+                        </group>
+                    </group>
                 </form>
             </field>
         </record>
