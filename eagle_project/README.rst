@@ -15,7 +15,7 @@ This is the projects module of the Eagle View management system
 **Author :** 
 
 .. image:: http://open-net.ch/logo.png
-   :alt: Open Net Sarl
+   :alt: Open Net Sàrl
    :target: http://open-net.ch
 
 Industrie 59  

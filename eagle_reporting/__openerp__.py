@@ -29,7 +29,7 @@
     'name' : 'Eagle View: reporting module',
     'version' : '8.0',
     'website': 'http://www.open-net.ch',
-    'author' : 'Open Net/Cyp',
+    'author' : 'Open Net Sàrl',
     'category': 'Eagle view',
     'summary': 'Synthetic view on your business',
     'website': 'http://www.open-net.ch',

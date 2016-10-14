@@ -9,7 +9,7 @@
 {
     'name' : 'Eagle View: project module',
     'version' : '9.2.02',
-    'author' : 'Open Net/Cyp',
+    'author' : 'Open Net Sàrl',
     'category': 'Eagle view',
     'summary': 'Synthetic view on your business',
     'website': 'http://www.open-net.ch',

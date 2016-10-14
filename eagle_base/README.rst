@@ -10,7 +10,7 @@ This module increases your productivity by introducing a complete contracts mana
 **Author :**
 
 .. image:: http://open-net.ch/logo.png
-   :alt: Open Net Sarl
+   :alt: Open Net Sàrl
    :target: http://open-net.ch
 
 Industrie 59
