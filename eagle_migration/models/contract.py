@@ -33,7 +33,7 @@ class EagleContract(models.Model):
                 'recurring_generates': template.recurring_generates,
 
             })
-            for position in self.positions:
+            for position in contract.positions:
                 sale_sub_line_obj = self.env['sale.subscription.line']
                 sale_sub_line_obj.create({
                     'eagle_contract': contract.id,
@@ -62,7 +62,6 @@ class EagleContract(models.TransientModel):
     
     @api.multi
     def migrate_positions(self):
-        
         active_ids = self._context.get('active_ids', []) or []
         contracts = self.env['eagle.contract'].browse(active_ids)
         contracts.migrate_positions(self.eagle_subscription_template)
