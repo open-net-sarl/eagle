@@ -33,7 +33,7 @@
                             <tbody>
                                 <tr t-foreach="o.sale_subscription_line" t-as="sub_line">
                                     <td>
-                                        <strong><span t-field="sub_line.name"/></strong><br/>
+                                        <span t-field="sub_line.name"/><br/>
                                         <span t-field="sub_line.eagle_note"/>
                                     </td>    
                                     <td>
@@ -67,7 +67,7 @@
                                     <tr class="border-black">
                                         <td><strong>Total</strong></td>
                                         <td class="text-right">
-                                            <span t-esc="amount + amount*0.08"/> <span t-esc="o.customer_id.property_product_pricelist.currency_id.symbol"/>
+                                            <strong><span t-esc="amount + amount*0.08"/> <span t-esc="o.customer_id.property_product_pricelist.currency_id.symbol"/></strong>
                                         </td>
                                     </tr>
                                 </table>
