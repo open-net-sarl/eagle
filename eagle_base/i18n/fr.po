@@ -12,7 +12,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #. module: eagle_base
-#: code:addons/eagle_base/config/models/config.py:46
+#: code:addons/eagle_base/models/contracts.py:46
 #, python-format
 msgid "New"
 msgstr "Nouveau"
@@ -238,42 +238,59 @@ msgid "Parameters"
 msgstr "Paramètres"
 
 #. module: eagle_base
-#: model:ir.ui.view,arch_db:eagle_contract.eagle_view_contract_form
+#: model:ir.ui.view,arch_db:eagle_base.eagle_view_contract_form
 msgid "Offer"
 msgstr "Offre"
 
 #. module: eagle_base
-#: model:ir.ui.view,arch_db:eagle_contract.eagle_view_contract_form
+#: model:ir.ui.view,arch_db:eagle_base.eagle_view_contract_form
 msgid "Confirmation"
 msgstr "Confirmation"
 
 #. module: eagle_base
-#: model:ir.ui.view,arch_db:eagle_contract.eagle_view_contract_form
+#: model:ir.ui.view,arch_db:eagle_base.eagle_view_contract_form
 msgid "Production"
 msgstr "Production"
 
 #. module: eagle_base
-#: model:ir.ui.view,arch_db:eagle_contract.eagle_view_contract_form
+#: model:ir.ui.view,arch_db:eagle_base.eagle_view_contract_form
 msgid "Close"
 msgstr "Clore"
 
 #. module: eagle_base
-#: model:ir.ui.view,arch_db:eagle_contract.eagle_view_contract_form
+#: model:ir.ui.view,arch_db:eagle_base.eagle_view_contract_form
 msgid "Cancel"
 msgstr "Annuler"
 
 #. module: eagle_base
-#: model:ir.ui.view,arch_db:eagle_contract.eagle_view_contract_form
+#: model:ir.ui.view,arch_db:eagle_base.eagle_view_contract_form
 msgid "Tabs profile"
 msgstr "Profil d'onglets"
 
 #. module: eagle_base
-#: model:ir.ui.view,arch_db:eagle_contract.eagle_view_contract_tree
+#: model:ir.ui.view,arch_db:eagle_base.eagle_view_contract_tree
 #: model:ir.actions.act_window,name:eagle_base.eagle_action_cust_2_contracts_list
 #: model:ir.actions.act_window,name:eagle_base.eagle_action_partner_2_contracts_list
-#: model:ir.ui.menu,name:eagle_contract.eagle_menu_contracts_top
+#: model:ir.ui.menu,name:eagle_base.eagle_menu_contracts_top
+#: model:ir.ui.menu,name:eagle_base.eagle_menu_contracts_root
 msgid "Files"
 msgstr "Dossiers"
+
+#. module: eagle_base
+#: model:ir.ui.menu,name:eagle_base.eagle_action_products_menu
+msgid "Product Variants"
+msgstr "Variantes d'articles"
+
+#. module: eagle_base
+#: model:ir.ui.menu,name:eagle_base.eagle_action_prod_cats_menu
+msgid "Product Categories"
+msgstr "Catégories d'articles"
+
+#. module: eagle_base
+#: model:ir.actions.act_window,name:eagle_base.eagle_action_product_recurrence_unit_view
+#: model:ir.ui.menu,name:eagle_base.eagle_action_product_recurrence_unit_menu
+msgid "Units of recurrence"
+msgstr "Unités de récurrence"
 
 #. module: eagle_base
 #: model:ir.ui.view,arch_db:eagle_base.eagle_view_contract_filter
@@ -360,8 +377,8 @@ msgstr "Catégorie de dossier"
 #. module: eagle_base
 #: model:ir.model.fields,field_description:eagle_base.field_eagle_contract_category_name
 #: model:ir.model.fields,field_description:eagle_base.field_eagle_contract_category_id
-msgid "Category"
-msgstr "Catégorie"
+msgid "File category"
+msgstr "Catégorie de dossier"
 
 #. module: eagle_base
 #: model:ir.model,name:eagle_base.model_eagle_contract

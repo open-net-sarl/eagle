@@ -28,3 +28,6 @@ V9.0: 2016-05
 V9.2: 2016-09-19/Cyp
     * Current Sales list now can be grouped by action date, and it's by default filtering by active line
     * Eagle's menus revisited
+
+V9.6: 2016-11-15/Cyp
+    * Translation updated

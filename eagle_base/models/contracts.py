@@ -293,7 +293,7 @@ class EagleContract(models.Model):
         default=lambda self: self.env['res.company']._company_default_get('account.account'))
     notes = fields.Text('Notes', translate=True)
     cust_ref = fields.Char('Customer reference')
-    category_id = fields.Many2one('eagle.contract.category', string='Category')
+    category_id = fields.Many2one('eagle.contract.category', string='File category')
     sale_partner_id = fields.Many2one('res.partner', string='Shipping to')
     cnt_partners = fields.Char(compute='_get_partners_lists', string='File partners')
 
@@ -329,7 +329,7 @@ class EagleContract(models.Model):
     def create(self, vals):
         if vals.get('name', 'New') == 'New':
             if self.get_eagle_param('use_cn_seq', False):
-                vals['name'] = self.env['ir.sequence'].next_by_code('eagle.contract')
+                vals['name'] = self.env['ir.sequence'].next_by_code('eagle.contract') or 'New'
 
         return super(EagleContract, self).create(vals)
 
