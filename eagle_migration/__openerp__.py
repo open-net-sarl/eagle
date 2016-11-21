@@ -7,6 +7,7 @@
     'author' : 'Open Net Sàrl',
     'category': 'Eagle view',
     'summary': 'Eagle migration',
+    'description': 'Eagle migration',
     'website': 'http://www.open-net.ch',
     'depends' : [
         'eagle_project', 'eagle_base'
