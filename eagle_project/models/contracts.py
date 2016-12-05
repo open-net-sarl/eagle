@@ -240,6 +240,18 @@ class EagleContract(models.Model):
 
         return ret
 
+    # ---------- States management
+
+    # Response to the "Set to Closed State" button
+    @api.multi
+    def action_contract_close(self):
+        ret = super(EagleContract, self).action_contract_close()
+        for cnt in self:
+            if cnt.sale_subscription_line:
+                cnt.sale_subscription_line.write({'is_active': False})
+
+        return ret
+
 
 class EagleContractPos(models.Model):
     _inherit = 'eagle.contract.position'
