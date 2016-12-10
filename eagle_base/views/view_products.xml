@@ -22,8 +22,8 @@
                         <group>
                             <field name="name" select="True"/>
                             <field name="value"/>
-                        <group>
                         </group>
+                        <group>
                             <field name="unit"/>
                             <field name="keep_same_day"/>
                         </group>

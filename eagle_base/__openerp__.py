@@ -13,7 +13,7 @@
 ##############################################################################
 {
     'name' : 'Eagle View',
-    'version' : '9.6.02',
+    'version' : '9.6.04',
     'author' : 'Open Net Sàrl',
     'category': 'Eagle view',
     'summary': 'Synthetic view on your business',

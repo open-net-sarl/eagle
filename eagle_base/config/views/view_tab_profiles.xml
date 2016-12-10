@@ -44,7 +44,7 @@
         </record>
 
         <record model="ir.actions.act_window" id="eagle_action_tabs_profile">
-            <field name="name">Eagle's tabs profiles</field>
+            <field name="name">The tabs profiles</field>
             <field name="res_model">eagle.config.tabs_profile</field>
             <field name="view_type">form</field>
             <field name="view_mode">tree,form</field>

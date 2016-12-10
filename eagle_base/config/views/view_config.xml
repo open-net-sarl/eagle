@@ -14,14 +14,14 @@
             <field name="name">Eagle Settings</field>
             <field name="model">eagle.config.settings</field>
             <field name="arch" type="xml">
-                <form string="Configure Eagle" class="oe_form_configuration">
+                <form string="Files Management" class="oe_form_configuration">
                     <header>
                         <button string="Apply" type="object" name="execute" class="oe_highlight"/>
                         or
                         <button string="Cancel" type="object" name="cancel" class="oe_link"/>
                     </header>
 
-                    <separator string="Configure Eagle"/>
+                    <separator string="Files Management"/>
                     <group>
                         <label for="id" string="Interface"/>
                         <div name="interface">
@@ -71,7 +71,7 @@
         </record>
 
         <record model="ir.actions.act_window" id="eagle_action_config">
-            <field name="name">Configure Eagle</field>
+            <field name="name">Files Management</field>
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">eagle.config.settings</field>
             <field name="view_mode">form</field>
@@ -79,7 +79,7 @@
         </record>
 
         <menuitem 
-            name="Configure Eagle" 
+            name="Files Management"
             id="eagle_menu_eagle_settings" 
             parent="base.menu_administration"
             sequence="50" 
@@ -90,7 +90,7 @@
                 id="eagle_menu_eagle_views" 
                 parent="eagle_base.eagle_menu_eagle_settings"
                 sequence="190" 
-                groups="eagle_base.group_contracts_viewers,eagle_base.group_contracts_editors,eagle_base.group_contracts_managers"/>
+                groups="base.group_no_one"/>
 
                 <!-- Views: contracts -->
                 <record model="ir.actions.act_window" id="eagle_action_views_contracts">
@@ -108,7 +108,7 @@
                     id="eagle_menu_views_contracts" 
                     parent="eagle_base.eagle_menu_eagle_views"
                     sequence="1" 
-                    groups="eagle_base.group_contracts_viewers,eagle_base.group_contracts_editors,eagle_base.group_contracts_managers"/>
+                    groups="base.group_no_one"/>
 
                 <!-- Views: all eagle -->
                 <record model="ir.actions.act_window" id="eagle_action_views_all">
@@ -126,7 +126,7 @@
                     id="eagle_menu_views_all" 
                     parent="eagle_base.eagle_menu_eagle_views"
                     sequence="50" 
-                    groups="eagle_base.group_contracts_viewers,eagle_base.group_contracts_editors,eagle_base.group_contracts_managers"/>
+                    groups="base.group_no_one"/>
 
             <record model="ir.actions.act_window" id="eagle_action_module_tree">
                 <field name="name">Open-Net Modules</field>

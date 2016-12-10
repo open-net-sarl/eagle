@@ -36,14 +36,14 @@ msgstr "Lignes de vente traitées"
 #: code:addons/eagle_project/config/models/tab_profiles.py:46
 #, python-format
 msgid "Sale Subscriptions"
-msgstr "Abonnements"
+msgstr "Contrats"
 
 #. module: eagle_project
 #: model:ir.ui.view,arch_db:eagle_project.eagle_project_view_contract_form
 #: code:addons/eagle_project/config/models/tab_profiles.py:47
 #, python-format
 msgid "Sale Subscription Lines"
-msgstr "Lignes d'abonnement"
+msgstr "Lignes de contrat"
 
 #. module: eagle_project
 #: model:ir.model.fields,field_description:eagle_project.field_account_invoice_contract_id
@@ -118,12 +118,12 @@ msgstr "Lignes de facture client"
 #. module: eagle_project
 #: model:ir.model.fields,field_description:eagle_project.field_eagle_contract_sale_subscriptions
 msgid "Sale Subscriptions"
-msgstr "Abonnements"
+msgstr "Contrats"
 
 #. module: eagle_project
 #: model:ir.model.fields,field_description:eagle_project.field_eagle_contract_sale_subscription_line
 msgid "Sale Subscription Lines"
-msgstr "Lignes d'abonnement"
+msgstr "Lignes de contrat"
 
 #. module: eagle_project
 #: model:ir.model.fields,field_description:eagle_project.field_eagle_contract_project_tasks
@@ -330,7 +330,7 @@ msgstr "Récurrences actives"
 #. module: eagle_project
 #: model:ir.model.fields,field_description:eagle_project.field_eagle_contract_default_ssubscr_acc
 msgid "Default sale subscriptions account"
-msgstr "Compte par défaut pour les abonnements"
+msgstr "Compte par défaut pour les contrats"
 
 #. module: eagle_project
 #: model:ir.model.fields,field_description:eagle_project.field_sale_subscription_sale_subscr_name
