@@ -187,17 +187,19 @@ msgstr "Gestion des dossiers"
 #. module: eagle_base
 #: model:ir.ui.view,arch_db:eagle_base.eagle_view_wiz_tabs_profile
 msgid "Configure the tabs profile"
-msgstr "Configurer le profil d'onglets"
+msgstr "Configurer le profil des onglets"
 
 #. module: eagle_base
 #: model:ir.ui.view,arch_db:eagle_base.eagle_view_config_settings
 #: model:ir.ui.view,arch_db:eagle_base.eagle_view_wiz_tabs_profile
+#: model:ir.ui.view,arch_db:eagle_base.eagle_view_wiz_tabs_profile_select
 msgid "Apply"
 msgstr "Appliquer"
 
 #. module: eagle_base
 #: model:ir.ui.view,arch_db:eagle_base.eagle_view_config_settings
 #: model:ir.ui.view,arch_db:eagle_base.eagle_view_wiz_tabs_profile
+#: model:ir.ui.view,arch_db:eagle_base.eagle_view_wiz_tabs_profile_select
 msgid "Cancel"
 msgstr "Annuler"
 
@@ -278,7 +280,7 @@ msgstr "Annuler"
 #. module: eagle_base
 #: model:ir.ui.view,arch_db:eagle_base.eagle_view_contract_form
 msgid "Tabs profile"
-msgstr "Profil d'onglets"
+msgstr "Profil des onglets"
 
 #. module: eagle_base
 #: model:ir.ui.view,arch_db:eagle_base.eagle_view_contract_tree
@@ -617,7 +619,7 @@ msgstr "Liste des onglets"
 #. module: eagle_base
 #: model:ir.model.fields,field_description:eagle_base.field_res_users_eagle_tabs_profile
 msgid "Eagle tabs profile"
-msgstr "Profil d'onglets Eagle"
+msgstr "Profil des onglets Eagle"
 
 #. module: eagle_base
 #: model:ir.model.fields,field_description:eagle_base.field_eagle_contract_sale_partner_id
@@ -633,3 +635,13 @@ msgstr "Ventes en cours"
 #: model:ir.ui.view,arch_db:eagle_base.eagle_view_contract_partner_tree
 msgid "Company"
 msgstr "Compagnie"
+
+#. module: eagle_base
+#: model:ir.ui.view,arch_db:eagle_base.eagle_view_wiz_tabs_profile_select
+msgid "Select the tabs profile"
+msgstr "Sélectionnez le profil des onglets"
+
+#. module: eagle_base
+#: model:ir.model.fields,field_description:eagle_base.field_
+msgid "Select your tabs profile (let empty to use the default one)"
+msgstr "Choisissez votre profil des onglets (laissez vide pour utiliser celui par défaut)"

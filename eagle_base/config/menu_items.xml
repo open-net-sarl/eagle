@@ -108,21 +108,6 @@
 			groups="eagle_base.group_contracts_managers,eagle_base.group_contracts_editors"/>
 
             <menuitem
-                name="Product Categories"
-                action="product.product_category_action_form"
-                id="eagle_base.eagle_action_prod_cats_menu"
-                parent="eagle_base.eagle_menu_eagle_config"
-                sequence="0" groups="base.group_no_one"/>
-
-            <menuitem
-                name="Product Variants"
-                action="product.product_normal_action_sell"
-                id="eagle_base.eagle_action_products_menu"
-                parent="eagle_base.eagle_menu_eagle_config"
-			    groups="eagle_base.group_contracts_managers,eagle_base.group_contracts_editors"
-                sequence="10"/>
-
-            <menuitem
     			name="Units of recurrence"
                 action="eagle_base.eagle_action_product_recurrence_unit_view"
     			id="eagle_base.eagle_action_product_recurrence_unit_menu"

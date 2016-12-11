@@ -52,7 +52,7 @@
                     </button>
                 </div>
                 <page name="other_infos" position="before">
-                    <page string="Sale susbscriptions" name="sale_subscr" attrs="{'invisible':[('tab_profile_sale_subscr','=',False)]}">
+                    <page string="Sale Subscriptions" name="sale_subscr" attrs="{'invisible':[('tab_profile_sale_subscr','=',False)]}">
                         <group colspan="4">
                             <field name="default_ssubscr_acc" domain="[('partner_id','=',customer_id)]"/>
                         </group>
@@ -78,7 +78,7 @@
                             </tree>
                         </field>
                     </page>
-                    <page string="Sale Susbscription Lines" name="sale_subscrl" attrs="{'invisible':[('tab_profile_sale_subscrl','=',False)]}">
+                    <page string="Sale Subscription Lines" name="sale_subscrl" attrs="{'invisible':[('tab_profile_sale_subscrl','=',False)]}">
                         <field name="sale_subscription_line" mode="tree">
                             <tree create="false">
                                 <field name="product_id"/>

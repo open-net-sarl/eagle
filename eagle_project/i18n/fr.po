@@ -43,7 +43,7 @@ msgstr "Contrats"
 #: code:addons/eagle_project/config/models/tab_profiles.py:47
 #, python-format
 msgid "Sale Subscription Lines"
-msgstr "Lignes de contrat"
+msgstr "Positions du contrat"
 
 #. module: eagle_project
 #: model:ir.model.fields,field_description:eagle_project.field_account_invoice_contract_id
