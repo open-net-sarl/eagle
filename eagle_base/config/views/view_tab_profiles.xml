@@ -54,7 +54,7 @@
         <menuitem 
             name="The tabs profiles"
             id="eagle_menu_tabs_profiles"  
-            parent="eagle_menu_eagle_settings"
+            parent="eagle_menu_eagle_config"
             sequence="51" 
             action="eagle_action_tabs_profile"
             groups="eagle_base.group_contracts_viewers,eagle_base.group_contracts_editors,eagle_base.group_contracts_managers"/>

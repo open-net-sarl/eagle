@@ -193,6 +193,7 @@ msgstr "Configurer le profil des onglets"
 #: model:ir.ui.view,arch_db:eagle_base.eagle_view_config_settings
 #: model:ir.ui.view,arch_db:eagle_base.eagle_view_wiz_tabs_profile
 #: model:ir.ui.view,arch_db:eagle_base.eagle_view_wiz_tabs_profile_select
+#: model:ir.ui.view,arch_db:eagle_base.eagle_view_config_settings
 msgid "Apply"
 msgstr "Appliquer"
 
@@ -200,6 +201,7 @@ msgstr "Appliquer"
 #: model:ir.ui.view,arch_db:eagle_base.eagle_view_config_settings
 #: model:ir.ui.view,arch_db:eagle_base.eagle_view_wiz_tabs_profile
 #: model:ir.ui.view,arch_db:eagle_base.eagle_view_wiz_tabs_profile_select
+#: model:ir.ui.view,arch_db:eagle_base.eagle_view_config_settings
 msgid "Cancel"
 msgstr "Annuler"
 
