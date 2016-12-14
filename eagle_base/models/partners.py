@@ -48,7 +48,7 @@ class ResPartner(models.Model):
 
     @api.one
     def _default_tab_profile_part_contracts_list(self):
-        profiles = self.get_current_tabs_profile()
+        profiles = self.env['eagle.contract'].get_current_tabs_profile()
         return profiles.get('part_contracts_list', False)
 
     @api.one
@@ -62,7 +62,7 @@ class ResPartner(models.Model):
         string='Present in files',
         copy=False)
     comp_name = fields.Char(compute='_get_comp_name', string='Name')
-    eagle_contract_list = fields.One2many('eagle.contract', compute='_get_eagle_contract_list', string='Files list')
+    eagle_contract_list = fields.One2many('eagle.contract', 'customer_id', compute='_get_eagle_contract_list', string='Files list')
     eagle_contract_count = fields.Integer(compute='_get_eagle_contract_list', string='Files count')
 
     eagle_parm_use_partners_roles = fields.Boolean(
@@ -88,19 +88,28 @@ class ResPartner(models.Model):
         profiles = self.env['eagle.contract'].get_current_tabs_profile()
 
         for part in self:
-            part.eagle_tab_profile_part_roles = profiles.get('part_roles', False)
+            part.eagle_tab_profile_part_contracts_list = profiles.get('part_contracts_list', False)
 
 
     @api.multi
     def _get_eagle_contract_list(self):
+        params = self.env['eagle.contract'].read_eagle_params()
         for part in self:
             res = []
             ref_partner = part.parent_id or part
-            p_list = [p.id for p in ref_partner.child_ids]
+            p_list = [ref_partner.id] + [p.id for p in ref_partner.child_ids]
             if p_list:
-                items = self.env['eagle.contract'].search(['|', ('partners', 'in', p_list), ('customer_id', 'in', p_list)])
+                if len(p_list) == 1:
+                    op = '='
+                    p_list = p_list[0]
+                else:
+                    op = 'in'
+                filters = [('customer_id', op, p_list)]
+                if params.get('use_partners_list', False):
+                    filters = ['|'] + filters + [('partners', op, p_list)]
+                items = self.env['eagle.contract'].search(filters)
                 if items:
-                    res = list(OrderedDict.fromkeys(items))
+                    res = list(OrderedDict.fromkeys([x.id for x in items]))
 
             part.eagle_contract_list = res
             part.eagle_contract_count = len(res)

@@ -32,8 +32,6 @@ class eagle_config_tabs_profile(models.Model):
         
         module_tabs_list = {
             'other_infos': _('Other infos'),
-            'members': _('File members'),
-            'partners': _('File partners'),
             'part_contracts_list': _("Files list in partner's form"),
         }
         for tab in module_tabs_list:

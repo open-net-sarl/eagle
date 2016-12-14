@@ -258,11 +258,12 @@ class EagleContract(models.Model):
         params = self.read_eagle_params()
         return params.get('use_partners_roles', False)
 
-    @api.model
+    @api.multi
     @api.depends('partners')
     def _get_partners_lists(self):
-        lst_cnt = ["<li> - %s</li>" % x.comp_name for x in self.partners]
-        self.cnt_partners = '\n'.join(lst_cnt)
+        for row in self:
+            lst_cnt = ["<li> - %s</li>" % x.comp_name for x in row.partners]
+            row.cnt_partners = '\n'.join(lst_cnt)
 
     state = fields.Selection([
         ('draft','Offer'),
