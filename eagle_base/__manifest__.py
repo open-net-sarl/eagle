@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-#  File: __openerp__.py
+#  File: __manifest__.py
 #  Module: eagle_base
 #
 #  Created by cyp@open-net.ch
@@ -47,7 +47,7 @@
     ],
     'demo': [
     ],
-    'installable': True,
+    'installable': False,
     'application': True,
     'auto_install': False,
 }
