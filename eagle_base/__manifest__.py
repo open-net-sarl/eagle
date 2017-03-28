@@ -4,6 +4,7 @@
 #  Module: eagle_base
 #
 #  Created by cyp@open-net.ch
+#  Updated by lfr@open-net.ch (2017)
 #
 #  Copyright (c) 2014-TODAY Open-Net Ltd. <http://www.open-net.ch>
 ##############################################################################
@@ -27,19 +28,15 @@
     ],
     'data': [
         'views/eagle_base.xml',
-        'config/security/eagle_security.xml',
-        'config/security/ir.model.access.csv',
-        'config/data/sequences.xml',
-        'config/views/view_config.xml',
-        'config/wizard/view_tabs_profile_select.xml',
-        'config/wizard/view_tabs_profile.xml',
-        'config/views/view_tab_profiles.xml',
+        'security/eagle_security.xml',
+        'security/ir.model.access.csv',
+        'data/sequences.xml',
+        'views/view_config.xml',
         'views/view_base.xml',
         'views/view_products.xml',
         'views/view_partners.xml',
         'views/view_contracts.xml',
-        'config/menu_items.xml',
-        'views/view_users.xml',
+        'views/menu_items.xml',
     ],
     'qweb' : [
     ],
@@ -47,7 +44,7 @@
     ],
     'demo': [
     ],
-    'installable': False,
+    'installable': True,
     'application': True,
     'auto_install': False,
 }

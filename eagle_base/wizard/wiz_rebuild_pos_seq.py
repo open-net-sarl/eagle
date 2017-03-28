@@ -4,6 +4,7 @@
 #  Module: eagle_invoice
 #
 #  Created by cyp@open-net.ch
+#  Updated by lfr@open-net.ch (2017)
 #
 #  Copyright (c) 2014-TODAY Open-Net Ltd. <http://www.open-net.ch>
 ##############################################################################
@@ -30,26 +31,25 @@ import logging
 _logger = logging.getLogger(__name__)
 
 import time
+import odoo
+from odoo import fields, models
+from odoo.tools.translate import _
 
-import openerp
-from openerp.osv import osv, fields
-from openerp.tools.translate import _
-
-class wiz_rebuild_pos_seq(osv.osv_memory):
+class wiz_rebuild_pos_seq(models.TransientModel):
     _name = 'eagle.wiz_rebuild_pos_seq'
     _description = 'Eagle wizard: rebuild the sequence of the positions'
     
     # ---------- Fields management
 
-    _columns = {
-        'cnt_id': fields.many2one('eagle.contract', 'Contract', required=True),
-        'step': fields.integer('Step', required=True),
-    }
-    
-    _defaults = {
-        'cnt_id': lambda s,c,u,ct: ct.get('active_id', False),
-        'step': lambda *a: 10,
-    }
+    cnt_id = fields.Many2one(
+        comodel_name='eagle.contract', 
+        string='Contract', 
+        required=True,
+        default=lambda s,c,u,ct: ct.get('active_id', False))
+    step = fields.Integer(
+        string='Step', 
+        required=True,
+        default=lambda *a: 10),
 
     def do_it(self, cr, uid, ids, context=None):
         if not context:

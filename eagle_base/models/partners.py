@@ -4,13 +4,12 @@
 #  Module: eagle_base
 #
 #  Created by cyp@open-net.ch
+#  Updated by lfr@open-net.ch (2017)
 #
 #  Copyright (c) 2014-TODAY Open-Net Ltd. <http://www.open-net.ch>
 
 from collections import OrderedDict
-import re
-
-from openerp import _, api, fields, models
+from odoo import _, api, fields, models
 
 import logging
 _logger = logging.getLogger(__name__)
@@ -42,16 +41,6 @@ class ResPartner(models.Model):
     _inherit = 'res.partner'
 
     @api.one
-    def _default_parm_use_partners_roles(self):
-        params = self.read_eagle_params()
-        return params.get('use_partners_roles', False)
-
-    @api.one
-    def _default_tab_profile_part_contracts_list(self):
-        profiles = self.env['eagle.contract'].get_current_tabs_profile()
-        return profiles.get('part_contracts_list', False)
-
-    @api.one
     @api.depends('name')
     def _get_comp_name(self):
         return dict(self.name_get(self._cr, self._uid, self._ids, context=self._context))
@@ -65,31 +54,9 @@ class ResPartner(models.Model):
     eagle_contract_list = fields.One2many('eagle.contract', 'customer_id', compute='_get_eagle_contract_list', string='Files list')
     eagle_contract_count = fields.Integer(compute='_get_eagle_contract_list', string='Files count')
 
-    eagle_parm_use_partners_roles = fields.Boolean(
-        compute='_get_eagle_params',
-        string='Uses partners roles list?',
-        default=lambda self: self._default_parm_use_partners_roles)
-
-    eagle_tab_profile_part_contracts_list = fields.Boolean(
-        compute='check_tabs_profile',
-        string='eagle_tab_profile_part_contracts_list',
-        default=lambda self: self._default_tab_profile_part_contracts_list)
-
     @api.multi
     def _get_eagle_params(self):
         params = self.env['eagle.contract'].read_eagle_params()
-
-        for part in self:
-            part.use_partners_roles = params.get('use_partners_roles', False)
-
-
-    @api.multi
-    def check_tabs_profile(self):
-        profiles = self.env['eagle.contract'].get_current_tabs_profile()
-
-        for part in self:
-            part.eagle_tab_profile_part_contracts_list = profiles.get('part_contracts_list', False)
-
 
     @api.multi
     def _get_eagle_contract_list(self):

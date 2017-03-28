@@ -4,10 +4,11 @@
   Module: eagle_base
 
   Created by cyp@open-net.ch
+  Updated by lfr@open-net.ch (2017)
 
   Copyright (c) 2011-TODAY Open-Net Ltd. All rights reserved.
 -->
-<openerp>
+<odoo>
     <data>
 
         <record model="ir.ui.view" id="eagle_view_config_settings">
@@ -32,14 +33,6 @@
                             <div>
                                 <field name="use_partners_list" class="oe_inline"/>
                                 <label for="use_partners_list"/>
-                            </div>
-                            <div>
-                                <field name="use_partners_roles" class="oe_inline"/>
-                                <label for="use_partners_roles"/>
-                            </div>
-                            <div>
-                                <label for="tabs_profile"/>
-                                <field name="tabs_profile" class="oe_inline"/>
                             </div>
                         </div>
                         <label for="id" string="Behavior"/>
@@ -141,21 +134,21 @@
                 </field>
             </record>
     
-    		<menuitem 
-    			name="Open-Net modules"
+            <menuitem 
+                name="Open-Net modules"
                 action="eagle_action_module_tree" 
-    			id="eagle_menu_module_tree" 
-    			parent="eagle_base.eagle_menu_eagle_settings" 
-    			sequence="1"
-    			groups="eagle_base.group_contracts_managers,eagle_base.group_contracts_editors"/>
+                id="eagle_menu_module_tree" 
+                parent="eagle_base.eagle_menu_eagle_settings" 
+                sequence="1"
+                groups="eagle_base.group_contracts_managers,eagle_base.group_contracts_editors"/>
 
-    		<menuitem 
-    			name="Parameters"
+            <menuitem 
+                name="Parameters"
                 action="eagle_action_config" 
-    			id="eagle_menu_config" 
-    			parent="eagle_base.eagle_menu_eagle_settings" 
-    			sequence="2"
-    			groups="eagle_base.group_contracts_managers,eagle_base.group_contracts_editors"/>
+                id="eagle_menu_config" 
+                parent="eagle_base.eagle_menu_eagle_settings" 
+                sequence="2"
+                groups="eagle_base.group_contracts_managers,eagle_base.group_contracts_editors"/>
 
             <record model="ir.actions.act_window" id="eagle_action_ir_sequence">
                 <field name="name">The sequences</field>
@@ -172,7 +165,7 @@
                 action="eagle_action_ir_sequence" 
                 id="eagle_menu_ir_sequence"
                 groups="base.group_no_one" 
-        		sequence="5"
+                sequence="5"
                 parent="eagle_base.eagle_menu_eagle_settings"/>
     </data>
-</openerp>
+</odoo>

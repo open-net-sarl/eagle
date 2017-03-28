@@ -52,7 +52,7 @@
                     </button>
                 </div>
                 <page name="other_infos" position="before">
-                    <page string="Sale Subscriptions" name="sale_subscr" attrs="{'invisible':[('tab_profile_sale_subscr','=',False)]}">
+                    <page string="Sale Subscriptions" name="sale_subscr">
                         <group colspan="4">
                             <field name="default_ssubscr_acc" domain="[('partner_id','=',customer_id)]"/>
                         </group>
@@ -78,7 +78,7 @@
                             </tree>
                         </field>
                     </page>
-                    <page string="Sale Subscription Lines" name="sale_subscrl" attrs="{'invisible':[('tab_profile_sale_subscrl','=',False)]}">
+                    <page string="Sale Subscription Lines" name="sale_subscrl">
                         <field name="sale_subscription_line" mode="tree">
                             <tree create="false">
                                 <field name="product_id"/>
@@ -100,7 +100,7 @@
                             </tree>
                         </field>
                     </page>
-                    <page string="Current Sale Order Lines" name="curr_sol" attrs="{'invisible':[('tab_profile_curr_sol','=',False)]}">
+                    <page string="Current Sale Order Lines" name="curr_sol">
                         <field name="current_sale_order_lines">
                             <tree string=" " decoration-info="invoice_status=='to invoice'" create="false">
                                 <field name="sequence"/>
@@ -124,7 +124,7 @@
                             </tree>
                         </field>
                     </page>
-                    <page string="Past Sale Order Lines" nmae="past_sol" attrs="{'invisible':[('tab_profile_past_sol','=',False)]}">
+                    <page string="Past Sale Order Lines" nmae="past_sol">
                         <field name="past_sale_order_lines">
                             <tree string=" " decoration-info="invoice_status=='to invoice'" create="false">
                                 <field name="sequence"/>
@@ -148,7 +148,7 @@
                             </tree>
                         </field>
                     </page>
-                    <page string="Tasks" nmae="project_tasks" attrs="{'invisible':[('tab_profile_tasks','=',False)]}">
+                    <page string="Tasks" nmae="project_tasks">
                         <field name="project_tasks">
                             <tree editable="top" decoration-bf="message_needaction==True" decoration-danger="date_deadline and (date_deadline&lt;current_date)" string="Tasks" create="false">
                                 <field name="message_needaction" invisible="1"/>
@@ -173,7 +173,7 @@
                             </tree>
                         </field>
                     </page>
-                    <page string="Analytic Lines" nmae="analytic_lines" attrs="{'invisible':[('tab_profile_an_lines','=',False)]}">
+                    <page string="Analytic Lines" nmae="analytic_lines">
                         <field name="analytic_lines" domain="[('task_id.eagle_contract','=',active_id)]">
                             <tree editable="top" string="Timesheet Activities" create="false">
                                 <field name="date"/>
@@ -190,14 +190,6 @@
                         </field>
                     </page>
                 </page>
-                <group name="top" position="inside">
-                    <field name="tab_profile_curr_sol" invisible="1"/>
-                    <field name="tab_profile_past_sol" invisible="1"/>
-                    <field name="tab_profile_sale_subscr" invisible="1"/>
-                    <field name="tab_profile_sale_subscrl" invisible="1"/>
-                    <field name="tab_profile_tasks" invisible="1"/>
-                    <field name="tab_profile_an_lines" invisible="1"/>
-                </group>
                 <group name="references" position="inside">
                     <field name="opportunity"/>
                     <field name="pricelist_id" invisible="1"/>

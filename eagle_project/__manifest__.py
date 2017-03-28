@@ -18,7 +18,6 @@
         'analytic',
         'account',
         'project_issue_sheet',
-        'sale_service',
         'sale_stock',
         'sale_order_dates',
         'sale_timesheet',

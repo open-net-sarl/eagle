@@ -4,6 +4,7 @@
 #  Module: eagle_invoice
 #
 #  Created by cyp@open-net.ch
+#  Updated by lfr@open-net.ch (2017)
 #
 #  Copyright (c) 2014-TODAY Open-Net Ltd. <http://www.open-net.ch>
 ##############################################################################
@@ -31,32 +32,34 @@ _logger = logging.getLogger(__name__)
 
 import time
 
-import openerp
-from openerp.osv import osv, fields
-from openerp.tools.translate import _
+import odoo
+from odoo import fields, models
+from odoo.tools.translate import _
 
-class wiz_copy_positions_to(osv.osv_memory):
+class wiz_copy_positions_to(models.TransientModel):
     _name = 'eagle.wiz_copy_positions_to'
     _description = 'Eagle wizard: copy the positions to another contract'
     
     # ---------- Fields management
 
-    _columns = {
-        'src_id': fields.many2one('eagle.contract', 'Copy', required=True),
-        'dst_id': fields.many2one('eagle.contract', 'To', required=True),
-    }
+    src_id = fields.Many2one(
+        comodel_name='eagle.contract', 
+        string='Copy',
+        required=True, 
+        default=lambda s,c,u,ct: ct.get('active_id', False)),
+    dst_id = fields.Many2one(
+        comodel_name='eagle.contract', 
+        string='To', 
+        required=True),
     
-    _defaults = {
-        'src_id': lambda s,c,u,ct: ct.get('active_id', False),
-    }
 
-    def do_it(self, cr, uid, ids, context=None):
+    def do_it(self):
         if not context:
             context = {}
         
-        pos_obj = self.pool.get('eagle.contract.position')
+        pos_obj = self.env['eagle.contract.position']
         
-        datas = self.browse(cr, uid, ids[0], context=context)
+        datas = self.browse(ids[0])
         if not datas.src_id or not datas.dst_id: return {}
         seq = 0
         for pos in datas.dst_id.positions:
@@ -70,7 +73,7 @@ class wiz_copy_positions_to(osv.osv_memory):
             }
             if pos.state == 'done':
                 defaults['state'] = 'open'
-            new_pos_id = pos_obj.copy(cr, uid, pos.id, defaults, context=context)
+            new_pos_id = pos_obj.copy(pos.id, defaults)
 
         return {}
 

@@ -89,58 +89,6 @@ msgid "Customized date format"
 msgstr "Format personnalisé pour les dates"
 
 #. module: eagle_base
-#: model:ir.model.fields,field_description:eagle_base.field_eagle_config_params_tabs
-#: model:ir.model.fields,field_description:eagle_base.field_eagle_config_settings_tabs
-msgid "Tabs list"
-msgstr "Liste des onglets"
-
-#. module: eagle_base
-#: model:ir.model.fields,field_description:eagle_base.field_eagle_config_params_tabs_profile
-#: model:ir.model.fields,field_description:eagle_base.field_eagle_config_settings_tabs_profile
-msgid "Tabs profile"
-msgstr "Profil d'onglet"
-
-#. module: eagle_base
-#: model:ir.actions.act_window,name:eagle_base.eagle_action_tabs_profile
-#: model:ir.ui.menu,name:eagle_base.eagle_menu_tabs_profiles
-msgid "The tabs profiles"
-msgstr "Les profils d'onglet"
-
-#. module: eagle_base
-#: model:ir.model.fields,field_description:eagle_base.field_eagle_config_tabs_profile_name
-msgid "Profile"
-msgstr "Profil"
-
-#. module: eagle_base
-#: model:ir.model.fields,field_description:eagle_base.field_eagle_config_tabs_profile_opts
-msgid "Options"
-msgstr "Options"
-
-#. module: eagle_base
-#: model:ir.ui.view,arch_db:eagle_base.eagle_view_contract_form
-#: model:ir.ui.view,arch_db:eagle_base.eagle_view_config_settings
-#: code:addons/eagle_base/config/models/tab_profiles.py:34
-#, python-format
-msgid "Other infos"
-msgstr "Autres infos"
-
-#. module: eagle_base
-#: model:ir.ui.view,arch_db:eagle_base.eagle_view_contract_form
-#: model:ir.ui.view,arch_db:eagle_base.eagle_view_config_settings
-#: code:addons/eagle_base/config/models/tab_profiles.py:35
-#, python-format
-msgid "File members"
-msgstr "Membres du dossier"
-
-#. module: eagle_base
-#: model:ir.ui.view,arch_db:eagle_base.eagle_view_contract_form
-#: model:ir.ui.view,arch_db:eagle_base.eagle_view_config_settings
-#: code:addons/eagle_base/config/models/tab_profiles.py:36
-#, python-format
-msgid "File partners"
-msgstr "Partenaires du dossier"
-
-#. module: eagle_base
 #: model:ir.ui.view,arch_db:eagle_base.eagle_view_contract_form
 #: model:ir.ui.view,arch_db:eagle_base.eagle_view_config_settings
 msgid "Partners roles"
@@ -162,12 +110,6 @@ msgid "Calendar"
 msgstr "Calendrier"
 
 #. module: eagle_base
-#: code:addons/eagle_base/config/models/tab_profiles.py:37
-#, python-format
-msgid "Files list in partner's form"
-msgstr "Liste des dossiers dans la fiche du partenaire"
-
-#. module: eagle_base
 #: model:ir.ui.view,arch_db:eagle_base.eagle_view_config_settings
 msgid "Eagle Settings"
 msgstr "Réglages Eagle"
@@ -185,22 +127,13 @@ msgid "Files Management"
 msgstr "Gestion des dossiers"
 
 #. module: eagle_base
-#: model:ir.ui.view,arch_db:eagle_base.eagle_view_wiz_tabs_profile
-msgid "Configure the tabs profile"
-msgstr "Configurer le profil des onglets"
-
-#. module: eagle_base
 #: model:ir.ui.view,arch_db:eagle_base.eagle_view_config_settings
-#: model:ir.ui.view,arch_db:eagle_base.eagle_view_wiz_tabs_profile
-#: model:ir.ui.view,arch_db:eagle_base.eagle_view_wiz_tabs_profile_select
 #: model:ir.ui.view,arch_db:eagle_base.eagle_view_config_settings
 msgid "Apply"
 msgstr "Appliquer"
 
 #. module: eagle_base
 #: model:ir.ui.view,arch_db:eagle_base.eagle_view_config_settings
-#: model:ir.ui.view,arch_db:eagle_base.eagle_view_wiz_tabs_profile
-#: model:ir.ui.view,arch_db:eagle_base.eagle_view_wiz_tabs_profile_select
 #: model:ir.ui.view,arch_db:eagle_base.eagle_view_config_settings
 msgid "Cancel"
 msgstr "Annuler"
@@ -278,11 +211,6 @@ msgstr "Clore"
 #: model:ir.ui.view,arch_db:eagle_base.eagle_view_contract_form
 msgid "Cancel"
 msgstr "Annuler"
-
-#. module: eagle_base
-#: model:ir.ui.view,arch_db:eagle_base.eagle_view_contract_form
-msgid "Tabs profile"
-msgstr "Profil des onglets"
 
 #. module: eagle_base
 #: model:ir.ui.view,arch_db:eagle_base.eagle_view_contract_tree
@@ -515,12 +443,6 @@ msgid "Files Nb"
 msgstr "Nb de dossiers"
 
 #. module: eagle_base
-#: code:addons/eagle_base/models/contracts.py:110
-#, python-format
-msgid "Please define a tab's profile in Eagle's configuration!"
-msgstr "Veuillez d'abord définir un profil d'onglet dans la configuration de Eagle!"
-
-#. module: eagle_base
 #: code:addons/eagle_base/models/contracts.py:135
 #, python-format
 msgid "Please select a customer."
@@ -614,16 +536,6 @@ msgid "Partners roles"
 msgstr "Rôles des partenaires"
 
 #. module: eagle_base
-#: model:ir.model.fields,field_description:eagle_base.field_res_users_eagle_tabs
-msgid "Tabs list"
-msgstr "Liste des onglets"
-
-#. module: eagle_base
-#: model:ir.model.fields,field_description:eagle_base.field_res_users_eagle_tabs_profile
-msgid "Eagle tabs profile"
-msgstr "Profil des onglets Eagle"
-
-#. module: eagle_base
 #: model:ir.model.fields,field_description:eagle_base.field_eagle_contract_sale_partner_id
 msgid "Shipping to"
 msgstr "Livrer à"
@@ -637,13 +549,3 @@ msgstr "Ventes en cours"
 #: model:ir.ui.view,arch_db:eagle_base.eagle_view_contract_partner_tree
 msgid "Company"
 msgstr "Compagnie"
-
-#. module: eagle_base
-#: model:ir.ui.view,arch_db:eagle_base.eagle_view_wiz_tabs_profile_select
-msgid "Select the tabs profile"
-msgstr "Sélectionnez le profil des onglets"
-
-#. module: eagle_base
-#: model:ir.model.fields,field_description:eagle_base.field_
-msgid "Select your tabs profile (let empty to use the default one)"
-msgstr "Choisissez votre profil des onglets (laissez vide pour utiliser celui par défaut)"

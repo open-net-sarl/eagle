@@ -23,36 +23,6 @@ _logger = logging.getLogger(__name__)
 class EagleContract(models.Model):
     _inherit = 'eagle.contract'
 
-    @api.model
-    def _default_tab_profile_curr_sol(self):
-        profiles = self.get_current_tabs_profile()
-        return profiles.get('curr_sol', False)
-
-    @api.model
-    def _default_tab_profile_past_sol(self):
-        profiles = self.get_current_tabs_profile()
-        return profiles.get('past_sol', False)
-
-    @api.model
-    def _default_tab_profile_sale_subscr(self):
-        profiles = self.get_current_tabs_profile()
-        return profiles.get('sale_subscr', False)
-
-    @api.model
-    def _default_tab_profile_sale_subscrl(self):
-        profiles = self.get_current_tabs_profile()
-        return profiles.get('sale_subscrl', False)
-
-    @api.model
-    def _default_tab_profile_tasks(self):
-        profiles = self.get_current_tabs_profile()
-        return profiles.get('tasks', False)
-
-    @api.model
-    def _default_tab_profile_an_lines(self):
-        profiles = self.get_current_tabs_profile()
-        return profiles.get('an_lines', False)
-
     current_sale_order_lines = fields.One2many('sale.order.line', 'contract_id', string='Current Sale Order Lines', domain=[('state','=','draft')])
     past_sale_order_lines = fields.One2many('sale.order.line', 'contract_id', string='Past Sale Order Lines', domain=[('state','<>','draft')])
     current_sale_orders = fields.One2many('sale.order', 'contract_id', string='Current Sale Orders', domain=[('state','=','draft')])
@@ -70,19 +40,6 @@ class EagleContract(models.Model):
 
     project_tasks = fields.One2many('project.task', 'eagle_contract', string='Tasks')
     analytic_lines = fields.One2many('account.analytic.line', 'eagle_contract', string='Analytic Lines')
-
-    tab_profile_curr_sol = fields.Boolean(compute='_get_tabs_profile', string='tab_profile_curr_sol',
-                                          default=_default_tab_profile_curr_sol)
-    tab_profile_past_sol = fields.Boolean(compute='_get_tabs_profile', string='tab_profile_past_sol',
-                                          default=_default_tab_profile_past_sol)
-    tab_profile_sale_subscr = fields.Boolean(compute='_get_tabs_profile', string='tab_profile_sale_subscr',
-                                              default=_default_tab_profile_sale_subscr)
-    tab_profile_sale_subscrl = fields.Boolean(compute='_get_tabs_profile', string='tab_profile_sale_subscrl',
-                                              default=_default_tab_profile_sale_subscrl)
-    tab_profile_tasks = fields.Boolean(compute='_get_tabs_profile', string='tab_profile_tasks',
-                                              default=_default_tab_profile_tasks)
-    tab_profile_an_lines = fields.Boolean(compute='_get_tabs_profile', string='tab_profile_an_lines',
-                                              default=_default_tab_profile_an_lines)
 
     tasks_count = fields.Integer(compute='_get_tasks_count', string='Tasks count', default=0)
     leads_count = fields.Integer(compute='_get_leads_count', string='Leads count', default=0)
@@ -125,19 +82,6 @@ class EagleContract(models.Model):
     def _get_invoices_count(self):
         for cnt in self:
             cnt.invoices_count = 0 if not self.id else len(self.env['account.invoice'].search([('contract_id','=',self.id)]))
-
-    @api.multi
-    def _get_tabs_profile(self):
-        super(EagleContract, self)._get_tabs_profile()
-        profiles = self.get_current_tabs_profile()
-
-        for cnt in self:
-            cnt.tab_profile_curr_sol = profiles.get('curr_sol', False)
-            cnt.tab_profile_past_sol = profiles.get('past_sol', False)
-            cnt.tab_profile_sale_subscr = profiles.get('sale_subscr', False)
-            cnt.tab_profile_sale_subscrl = profiles.get('sale_subscrl', False)
-            cnt.tab_profile_tasks = profiles.get('tasks', False)
-            cnt.tab_profile_an_lines = profiles.get('an_lines', False)
 
     # ---------- UI management
 

@@ -4,10 +4,11 @@
   Module: eagle_base
 
   Created by cyp@open-net.ch
+  Updated by lfr@open-net.ch (2017)
 
   Copyright (c) 2011 Open-Net Ltd. All rights reserved.
 -->
-<openerp>
+<odoo>
     <data>
 
         <!--
@@ -240,7 +241,6 @@
                         <button name="action_contract_production" string="Production" states="confirm" type="object" class="oe_highlight" groups="eagle_base.group_contracts_managers"/>
                         <button name="action_contract_close" string="Close" states="production" type="object" groups="eagle_base.group_contracts_managers"/>
                         <button name="action_contract_cancel" string="Cancel" states="draft,production" type="object" groups="eagle_base.group_contracts_managers"/>
-                        <button name="%(eagle_action_wiz_tabs_profile_select)d" string="Tabs profile" type="action"/>
                         <field name="state" widget="statusbar" statusbar_colors='{"production":"green","closed":"red","canceled":"grey"}'/>
                     </header>
                     <sheet>
@@ -252,12 +252,9 @@
 
                             <field name="eagle_parm_use_members_list" invisible="1"/>
                             <field name="eagle_parm_use_partners_list" invisible="1"/>
-                            <field name="eagle_parm_use_partners_roles" invisible="1"/>
-
-                            <field name="tab_profile_other_infos" invisible="1"/>
                         </group>
                         <notebook colspan="4">
-                            <page string="Other infos" name="other_infos" attrs="{'invisible':[('tab_profile_other_infos','=',False)]}">
+                            <page string="Other infos" name="other_infos">
                                 <group colspan="4"  col="8">
                                     <group name="calendar" string="Calendar" style="width:32%;">
                                         <field name="date_start"/>
@@ -265,7 +262,6 @@
                                     </group>
                                     <group name="stakeholders" string="Stakeholders" style="width:32%;">
                                         <field name="user_id" groups="eagle_base.group_contracts_managers"/>
-                                        <field name="sale_partner_id" readonly="1"/>
                                     </group>
                                     <group name="references" string="References" style="width:32%;">
                                         <field name="cust_ref"/>
@@ -282,14 +278,6 @@
                             </page>
                             <page string="File partners" name="contract_partners" attrs="{'invisible':[('eagle_parm_use_partners_list','=',False)]}">
                                 <field name="partners" colspan="4" nolabel="1" attrs="{'readonly':[('state','&lt;&gt;','draft')]}"  context="{'tree_view_ref':'eagle_base.eagle_view_contract_partner_tree'}"/>
-                            </page>
-                            <page string="Partners roles" name="partner_roles" attrs="{'invisible':[('eagle_parm_use_partners_roles','=',False)]}">
-                                <field name="partner_roles_id" colspan="4" nolabel="1" attrs="{'readonly':[('state','&lt;&gt;','draft')]}" widget="one2many" mode="tree">
-                                    <tree string=" " editable="bottom" version="7.0">
-                                        <field name="name"/>
-                                        <field name="partner_id"/>
-                                    </tree>
-                                </field>
                             </page>
                         </notebook>
                     </sheet>
@@ -323,6 +311,13 @@
             <field name="model">eagle.contract</field>
             <field name="arch" type="xml">
                 <search string="Search files">
+                    <filter name="myfiles" string="My Files" domain="[('user_id','=',uid),('state','=','production')]"/>
+                    <separator/>
+                    <filter name="offer" string="Offer" domain="[('state','=','draft')]"/>
+                    <filter name="confirmations" string="Confirmations" domain="[('state','=','confirm')]"/>
+                    <filter name="ongoging" string="Ongoing" domain="[('state','=','production')]"/>
+                    <filter name="closed" string="Closed" domain="[('state','=','closed')]"/>
+                    <filter name="canceled" string="Canceled" domain="[('state','=','canceled')]"/>
                     <group>
                         <field name="name" select="1"/>
                         <field name="customer_id" select="1"/>
@@ -416,12 +411,12 @@
             <field name="domain">[('user_id','=',uid),('state','=','production')]</field>
         </record>
 
-		<act_window 
-			domain="[('res_id','=',active_id),('model','=','eagle.contract')]" 
-			id="eagle_action_contract_2_list_edit_msgs"
-			name="List &amp; edit messages" 
-			res_model="mail.message" 
-			src_model="eagle.contract"
+        <act_window 
+            domain="[('res_id','=',active_id),('model','=','eagle.contract')]" 
+            id="eagle_action_contract_2_list_edit_msgs"
+            name="List &amp; edit messages" 
+            res_model="mail.message" 
+            src_model="eagle.contract"
             context="{'default_model':'eagle.contract','default_res_id':active_id}"/>
         
         <record model="ir.ui.view" id="eagle_view_contract_pos_sales_tree">
@@ -485,7 +480,6 @@
                 <tree string="Customers">
                     <field name="customer"/>
                     <field name="nb_contracts"/>
-                    <field name="void" string=" "/>
                 </tree>
             </field>
         </record>
@@ -547,4 +541,4 @@
             src_model="res.partner"/>
 
     </data>
-</openerp>
+</odoo>

@@ -14,21 +14,21 @@ class ProcurementOrder(models.Model):
 
     eagle_contract = fields.Many2one('eagle.contract', string='File')
 
-    @api.v7
-    def _run(self, cr, uid, procurement, context=None):
+    # @api.v7
+    # def _run(self, cr, uid, procurement, context=None):
         return super(ProcurementOrder, self)._run(cr, uid, procurement, context=context)
 
     @api.v8
     def _run(self):
         return super(ProcurementOrder, self)._run()
 
-    @api.v7
-    def _create_service_task(self, cr, uid, procurement, context=None):
-        new_task_id = super(ProcurementOrder, self)._create_service_task(cr, uid, procurement, context=context)
-        if new_task_id:
-            self.pool.get('project.task').write(cr, uid, [new_task_id], {'eagle_contract': procurement.eagle_contract.id or False}, context=context)
+    # @api.v7
+    # def _create_service_task(self, cr, uid, procurement, context=None):
+    #     new_task_id = super(ProcurementOrder, self)._create_service_task(cr, uid, procurement, context=context)
+    #     if new_task_id:
+    #         self.pool.get('project.task').write(cr, uid, [new_task_id], {'eagle_contract': procurement.eagle_contract.id or False}, context=context)
 
-        return new_task_id
+    #     return new_task_id
 
     @api.v8
     def _create_service_task(self):

@@ -4,6 +4,7 @@
 #  Module: eagle_base
 #
 #  Created by cyp@open-net.ch
+#  Updated by lfr@open-net.ch (2017)
 #
 #  Copyright (c) 2016-TODAY Open-Net Ltd. <http://www.open-net.ch>
 ##############################################################################
@@ -28,7 +29,7 @@
 
 
 import time
-from openerp import models
+from odoo import models
 
 import logging
 _logger = logging.getLogger(__name__)

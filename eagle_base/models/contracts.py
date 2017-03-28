@@ -4,23 +4,19 @@
 #  Module: eagle_base
 #
 #  Created by cyp@open-net.ch
+#  Updated by lfr@open-net.ch (2017)
 #
 #  Copyright (c) 2016-TODAY Open-Net Ltd. <http://www.open-net.ch>
 
-
-from datetime import datetime, timedelta
-from dateutil.relativedelta import relativedelta
-from lxml import etree
 import simplejson
-import re
+import odoo.addons.decimal_precision as dp
 
-from openerp import _, api, fields, models
-from openerp.loglevels import ustr
-from openerp import tools
-import openerp.addons.decimal_precision as dp
-from openerp.exceptions import UserError, AccessError
+from datetime import datetime
+from lxml import etree
+from odoo import _, api, fields, models
+from odoo import tools
+from odoo.exceptions import UserError, AccessError
 
-import openerp.addons.decimal_precision as dp
 
 import logging
 _logger = logging.getLogger(__name__)
@@ -85,31 +81,6 @@ class EagleContractBase(models.Model):
             return params
 
         return False
-
-    @api.model
-    def get_current_tabs_profile_name(self):
-        tabs_profile = False
-        current_user = self.env.user
-        if current_user.eagle_tabs_profile:
-            tabs_profile = current_user.eagle_tabs_profile
-        if not tabs_profile:
-            tabs_profile = self.get_eagle_param('tabs_profile', False)
-
-        return tabs_profile
-
-    @api.model
-    def get_current_tabs_profile(self):
-        tabs_profile = self.get_current_tabs_profile_name()
-        ret = False
-        try:
-            ret = dict.fromkeys(re.sub(r'[^;^a-z_]+', '', str(tabs_profile.opts)).split(';'), True)
-        except:
-            pass
-
-        if not ret:
-            raise UserError(_("Please define a tab's profile in Eagle's configuration!"))
-
-        return ret
 
     # ---------- States management
 
@@ -239,11 +210,6 @@ class EagleContract(models.Model):
     _order = 'date_start desc, id desc'
 
     @api.model
-    def _default_tab_profile_other_infos(self):
-        profiles = self.get_current_tabs_profile()
-        return profiles.get('other_infos', False)
-
-    @api.model
     def _default_parm_use_members_list(self):
         params = self.read_eagle_params()
         return params.get('use_members_list', False)
@@ -252,11 +218,6 @@ class EagleContract(models.Model):
     def _default_parm_use_partners_list(self):
         params = self.read_eagle_params()
         return params.get('use_partners_list', False)
-
-    @api.model
-    def _default_parm_use_partners_roles(self):
-        params = self.read_eagle_params()
-        return params.get('use_partners_roles', False)
 
     @api.multi
     @api.depends('partners')
@@ -295,25 +256,12 @@ class EagleContract(models.Model):
     notes = fields.Text('Notes', translate=True)
     cust_ref = fields.Char('Customer reference')
     category_id = fields.Many2one('eagle.contract.category', string='File category')
-    sale_partner_id = fields.Many2one('res.partner', string='Shipping to')
     cnt_partners = fields.Char(compute='_get_partners_lists', string='File partners')
 
     eagle_parm_use_members_list = fields.Boolean(compute='_get_eagle_params', string='Uses members list?',
         default=_default_parm_use_members_list)
     eagle_parm_use_partners_list = fields.Boolean(compute='_get_eagle_params', string='Uses partners list?',
         default=_default_parm_use_partners_list)
-    eagle_parm_use_partners_roles = fields.Boolean(compute='_get_eagle_params', string='Uses partners roles list?',
-        default=_default_parm_use_partners_roles)
-
-    tab_profile_other_infos = fields.Boolean(compute='_get_tabs_profile', string='tab_profile_other_infos',
-        default=_default_tab_profile_other_infos)
-
-    @api.multi
-    def _get_tabs_profile(self):
-        profiles = self.get_current_tabs_profile()
-
-        for cnt in self:
-            cnt.tab_profile_other_infos = profiles.get('other_infos', False)
 
     # ---------- Eagle management
 
@@ -322,7 +270,6 @@ class EagleContract(models.Model):
         params = self.read_eagle_params()
         self.eagle_parm_use_members_list = params.get('use_members_list', False)
         self.eagle_parm_use_partners_list = params.get('use_partners_list', False)
-        self.eagle_parm_use_partners_roles = params.get('use_partners_roles', False)
 
     # ---------- Instances management
 
@@ -432,16 +379,16 @@ class EagleCustomer(models.Model):
 
     customer = fields.Char('Customer', readonly=True)
     nb_contracts = fields.Integer('Files Nb', readonly=True)
-    void = fields.Char('Void', size=1, readonly=True)
 
     # ---------- Instances management
-
-    def init(self, cr):
-        tools.sql.drop_view_if_exists(cr, self._table)
-        cr.execute("""CREATE OR REPLACE VIEW %s AS (
-SELECT DISTINCT
- customer_id AS id, res_partner.name as customer, count(eagle_contract.id) as nb_contracts, ' ' as void
- FROM eagle_contract, res_partner
- WHERE customer_id=res_partner.id
- GROUP BY res_partner.name, customer_id
- ORDER BY res_partner.name)""" % (self._table,))
+    @api.model_cr
+    def init(self):
+        tools.sql.drop_view_if_exists(self.env.cr, self._table)
+        self.env.cr.execute(
+            """CREATE OR REPLACE VIEW %s AS ( 
+             SELECT DISTINCT
+             customer_id AS id, res_partner.name as customer, count(eagle_contract.id) as nb_contracts
+             FROM eagle_contract, res_partner
+             WHERE customer_id=res_partner.id
+             GROUP BY res_partner.name, customer_id
+             ORDER BY res_partner.name)""" % (self._table))
