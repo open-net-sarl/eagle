@@ -4,12 +4,14 @@
 #  Module: eagle_project
 #
 #  Created by cyp@open-net.ch
+#  MIG[10.0] by lfr@open-net.ch
 #
 #  Copyright (c) 2016-TODAY Open-Net Ltd. <http://www.open-net.ch>
 
-from openerp import models, fields, api
-from openerp.tools.translate import _
-from openerp.exceptions import UserError
+from odoo import models, fields, api
+from odoo.tools.translate import _
+from odoo.exceptions import UserError
+from datetime import datetime, timedelta
 
 import logging
 _logger = logging.getLogger(__name__)
@@ -25,138 +27,146 @@ class SaleSubscription(models.Model):
             contract = self.env['eagle.contract'].browse(self._context['default_eagle_contract'])
             if contract:
                 name = contract.name
-                if contract.default_ssubscr_acc and contract.default_ssubscr_acc.code:
-                    name += '/' + contract.default_ssubscr_acc.code
         return name
 
-    @api.one
+    @api.model
+    def _default_date_start(self):
+        date = datetime.now()
+        if self._context.get('default_eagle_contract', False):
+            contract = self.env['eagle.contract'].browse(self._context['default_eagle_contract'])
+            if contract:
+                date = contract.date_start
+        return date
+
+    @api.model
+    def _default_date(self):
+        date = ''
+        if self._context.get('default_eagle_contract', False):
+            contract = self.env['eagle.contract'].browse(self._context['default_eagle_contract'])
+            if contract:
+                date = contract.date_end
+        return date
+
+    @api.multi
     def _compute_sale_subscr_name(self):
-        self.name = self.name or self.analytic_account_id.name or _('New')
+        for subs in self:
+            subs.name = subs.name or subs.analytic_account_id.name or _('New')
 
     sale_subscr_name = fields.Char(string='Name', index=True, compute='_compute_sale_subscr_name', readonly=False, store=True, default=_default_sale_subscr_name)
-    eagle_contract = fields.Many2one('eagle.contract', 'File')
-
-    _defaults = {
-        'code': 'New',
-    }
+    eagle_contract = fields.Many2one(comodel_name='eagle.contract', string='File')
+    code = fields.Char(default="New")
+    date_start = fields.Date(default=_default_date_start)
+    date = fields.Date(default=_default_date)
 
     # ---------- Instances management
 
-    def _update_sale_subscr_line(self, cr, uid, ids, eagle_contract_id, context={}):
-        if not ids:
-            return False
-        SaleSubscriptionLines = self.pool.get('sale.subscription.line')
-        lines = SaleSubscriptionLines.search(cr, uid, [('analytic_account_id', 'in', ids)], context=context)
-        if not lines:
-            return False
-        SaleSubscriptionLines.write(cr, uid, lines, {'eagle_contract':eagle_contract_id}, context=context)
+    @api.multi
+    def _update_sale_subscr_line(self, eagle_contract_id):
+        SaleSubscriptionLines = self.env['sale.subscription.line']
+        line = SaleSubscriptionLines.search([('analytic_account_id', '=', self.id)])
+        if len(line):
+            line.write({'eagle_contract':eagle_contract_id})
 
-        return True
-
-    def create(self, cr, uid, vals, context={}):
+    @api.model
+    def create(self, vals):
         do_it = ('eagle_contract' in vals)
         contract = False
         contract_id = vals.get('eagle_contract', False)
         if contract_id:
-            contract = self.pool.get('eagle.contract').browse(cr, uid, contract_id, context=context)
-            if contract.default_ssubscr_acc:
-                vals['analytic_account_id'] = contract.default_ssubscr_acc.id
-                for subscr in contract.sale_subscriptions:
-                    vals.update({
-                        'code': subscr.code,
-                        'name': subscr.name
-                    })
-                    break
-        if vals.get('type', 'template') == 'contract' and not vals.get('analytic_account_id', False):
+            contract = self.env['eagle.contract'].browse(contract_id)
+
+        if not vals.get('analytic_account_id', False):
             vals['name'] = vals['sale_subscr_name']
 
         if not vals.get('code', False):
-            vals['code'] = self.pool['ir.sequence'].next_by_code(cr, uid, 'sale.subscription', context=context) or 'New'
+            vals['code'] = self.env['ir.sequence'].next_by_code('sale.subscription') or 'New'
         if vals.get('name', 'New') == 'New':
             s = ''
             if contract:
                 s = contract.name + '/'
                 vals['name'] = s + vals['code']
 
-        new_id = super(SaleSubscription, self).create(cr, uid, vals, context=context)
+        new_id = super(SaleSubscription, self).create(vals)
 
         if do_it:
-            self._update_sale_subscr_line(cr, uid, [new_id], contract_id, context=context)
+            new_id._update_sale_subscr_line(contract_id)
 
         return new_id
 
-    def write(self, cr, uid, ids, vals, context={}):
+    @api.multi
+    def write(self, vals):
         prefix = ''
         do_it = ('eagle_contract' in vals)
-        if do_it:
-            contract_id = vals.get('eagle_contract', False)
-            contract = self.pool.get('eagle.contract').browse(cr, uid, contract_id, context=context)
-            if contract and contract.name:
-                prefix = contract.name + '/'
+        for subs in self:
+            if do_it:
+                contract_id = vals.get('eagle_contract', False)
+                contract = subs.env['eagle.contract'].browse(contract_id)
+                if contract and contract.name:
+                    prefix = contract.name + '/'
 
-        ret = super(SaleSubscription, self).write(cr, uid, ids, vals, context=context)
+            ret = super(SaleSubscription, subs).write(vals)
 
-        if do_it:
-            self._update_sale_subscr_line(cr, uid, ids, contract_id, context=context)
+            if do_it:
+                subs._update_sale_subscr_line(contract_id)
 
-        if prefix:
-            for subs in self.browse(cr, uid, ids, context=context):
-                super(SaleSubscription, self).write(cr, uid, [subs.id], {'name': prefix + subs.code}, context=context)
+            if prefix:
+                _logger.info("CODE: %s" % subs.code)
+                super(SaleSubscription, subs).write({'name': prefix + subs.code})
 
         return ret
 
     # ---------- Utils
 
-    def _prepare_sale_line(self, cr, uid, contract, line, fiscal_position_id, context={}):
-        sale_line = super(SaleSubscription, self)._prepare_sale_line(cr, uid, contract, line, fiscal_position_id, context=context)
-        sale_line['contract_id'] = contract.eagle_contract and contract.eagle_contract.id or False
-
+    @api.multi
+    def _prepare_sale_line(self):
+        sale_line = super(SaleSubscription, self)._prepare_sale_line()
+        sale_line['contract_id'] = self.eagle_contract and self.eagle_contract.id or False
         return sale_line
 
-    def _prepare_sale_data(self, cr, uid, contract, context={}):
-        sale = super(SaleSubscription, self)._prepare_sale_data(cr, uid, contract, context=context)
-        sale['contract_id'] = contract.eagle_contract and contract.eagle_contract.id or False
-
+    @api.multi
+    def _prepare_sale_data(self):
+        sale = super(SaleSubscription, self)._prepare_sale_data()
+        sale['contract_id'] = self.eagle_contract and self.eagle_contract.id or False
         return sale
 
-    def _prepare_invoice_line(self, cr, uid, line, fiscal_position, context={}):
-        invoice_line = super(SaleSubscription, self)._prepare_invoice_line(cr, uid, line, fiscal_position, context=context)
+    @api.multi
+    def _prepare_invoice_line(self, line, fiscal_position):
+        invoice_line = super(SaleSubscription, self)._prepare_invoice_line(line, fiscal_position)
         invoice_line['contract_id'] = line.analytic_account_id and \
                     line.analytic_account_id.eagle_contract and \
                     line.analytic_account_id.eagle_contract.id or False
-
         return invoice_line
 
-    def _prepare_invoice_data(self, cr, uid, contract, context=None):
-        invoice = super(SaleSubscription, self)._prepare_invoice_data(cr, uid, contract, context=context)
-        invoice['contract_id'] = contract.eagle_contract and contract.eagle_contract.id or False
-
+    @api.multi
+    def _prepare_invoice_data(self):
+        invoice = super(SaleSubscription, self)._prepare_invoice_data()
+        invoice['contract_id'] = self.eagle_contract and self.eagle_contract.id or False
         return invoice
 
-    def setup_sale_filter(self, cr, uid, contract, filter, context={}):
-        filter = super(SaleSubscription, self).setup_sale_filter(cr, uid, contract, filter, context=context)
-        if contract and contract.eagle_contract:
-            filter.append(('contract_id', '=', contract.eagle_contract.id))
-
+    @api.multi
+    def setup_sale_filter(self, filter):
+        filter = super(SaleSubscription, self).setup_sale_filter(filter)
+        filter.append(('contract_id', '=', self.eagle_contract.id))
         return filter
 
-    def setup_invoice_filter(self, cr, uid, contract, filter, context={}):
-        filter = super(SaleSubscription, self).setup_invoice_filter(cr, uid, contract, filter, context=context)
-        if contract and contract.eagle_contract:
-            filter.append(('contract_id', '=', contract.eagle_contract.id))
-
+    @api.multi
+    def setup_invoice_filter(self, filter):
+        filter = super(SaleSubscription, self).setup_invoice_filter(filter)
+        filter.append(('contract_id', '=', self.eagle_contract.id))
         return filter
 
-    def action_recurring_invoice(self, cr, uid, ids, context=None):
 
-        for row in self.browse(cr, uid, ids, context=context):
+    @api.multi
+    def action_recurring_invoice(self):
+
+        for row in self:
             if not row.eagle_contract:
                 continue
             if row.eagle_contract.state in ['confirm', 'production']:
                 continue
             raise UserError(_("As long as the file is not active, you can't generate anything."))
 
-        ret = super(SaleSubscription, self).action_recurring_invoice(cr, uid, ids, context=context)
+        ret = super(SaleSubscription, self).action_recurring_invoice()
 
         return {
             'type': 'ir.actions.client',
@@ -164,9 +174,9 @@ class SaleSubscription(models.Model):
         }
 
     # ---------- Scheduler
-
-    def _cron_recurring_create_invoice(self, cr, uid, context=None):
-        return self._recurring_create_invoice(cr, uid, [], automatic=True, context=context)
+    @api.multi
+    def _cron_recurring_create_invoice(self):
+        return self._recurring_create_invoice()
 
 
 class SaleSubscriptionLine(models.Model):
@@ -175,13 +185,61 @@ class SaleSubscriptionLine(models.Model):
     eagle_contract = fields.Many2one('eagle.contract', string='File')
     eagle_note = fields.Text(string="Note")
 
-    def create(self, cr, uid, vals, context=None):
+    @api.model
+    def create(self, vals):
         if vals.get('analytic_account_id', False):
-            sale_sub = self.pool['sale.subscription'].browse(cr, uid, vals['analytic_account_id'], context=context)
+            sale_sub = self.env['sale.subscription'].browse(vals['analytic_account_id'])
             if sale_sub and sale_sub.eagle_contract:
                 vals['eagle_contract'] = sale_sub.eagle_contract.id
 
-        return super(SaleSubscriptionLine, self).create(cr, uid, vals, context=context)
+        return super(SaleSubscriptionLine, self).create(vals)
+
+    # ---------- UI management
+    @api.onchange('product_id', 'quantity')
+    def onchange_product_id(self):
+        for subs in self:
+            res = super(SaleSubscriptionLine, subs).onchange_product_id()
+            contract = subs.analytic_account_id
+            company_id = contract.company_id.id
+            pricelist_id = contract.pricelist_id.id
+
+            if subs.product_id:
+                if 'value' not in res:
+                    res['value'] = {}
+                ctx = dict(subs.env.context, company_id=company_id, force_company=company_id, pricelist=pricelist_id, quantity=subs.quantity)
+
+                _logger.info("PROD_ID: %s" % subs.product_id)
+                prod = subs.env['product.product'].with_context(ctx).browse(subs.product_id.id)
+                _logger.info("PROD: %s" % prod)
+                if prod.recurring_rule_type and prod.recurring_interval:
+                    next_date = datetime.now()
+                    failed = True
+                    if prod.recurring_rule_type == 'daily':
+                        next_date += relativedelta(days=prod.recurring_interval or 1)
+                        failed = False
+                    elif prod.recurring_rule_type == 'weekly':
+                        next_date += relativedelta(days=7*(prod.recurring_interval or 1))
+                        failed = False
+                    elif prod.recurring_rule_type == 'monthly':
+                        next_date += relativedelta(months=prod.recurring_interval or 1)
+                        failed = False
+                    elif prod.recurring_rule_type == 'yearly':
+                        next_date += relativedelta(years=prod.recurring_interval or 1)
+                        failed = False
+                    if failed:
+                        res['value'].update({
+                            'recurring_rule_type': 'none',
+                            'recurring_interval': 1,
+                            'recurring_next_date': None
+                        })
+                    else:
+                        res['value'].update({
+                            'recurring_rule_type': prod.recurring_rule_type,
+                            'recurring_interval': prod.recurring_interval,
+                            'recurring_next_date': next_date
+                        })
+
+        return res
 
 class AccountAnalyticAccount(models.Model):
     _inherit = 'account.analytic.account'
@@ -190,10 +248,11 @@ class AccountAnalyticAccount(models.Model):
 
     @api.model
     def _default_analytic_account_code(self):
+        _logger.info("HEREEEEE_E_E")
         code = ''
         if self._context.get('default_eagle_contract', False):
             contract = self.env['eagle.contract'].browse(self._context['default_eagle_contract'])
-            if contract and contract.default_ssubscr_acc:
+            if contract:
                 for subscr in contract.sale_subscriptions:
                     code = subscr.code
                     break
@@ -206,8 +265,9 @@ class AccountAnalyticAccount(models.Model):
 
     # ---------- Interface management
 
-    def subscriptions_action(self, cr, uid, ids, context=None):
-        accounts = self.browse(cr, uid, ids, context=context)
+    @api.multi
+    def subscriptions_action(self):
+        accounts = self
         subscription_ids = sum([account.subscription_ids.ids for account in accounts], [])
         result = {
             "type": "ir.actions.act_window",

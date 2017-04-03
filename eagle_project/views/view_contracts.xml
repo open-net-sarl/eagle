@@ -4,6 +4,7 @@
   Module: views/eagle_project
 
   Created by cyp@open-net.ch
+  MIG[10.0] by lfr@open-net.ch (2017)
 
   Copyright (c) 2014-TODAY Open-Net Ltd. All rights reserved.
 -->
@@ -53,9 +54,6 @@
                 </div>
                 <page name="other_infos" position="before">
                     <page string="Sale Subscriptions" name="sale_subscr">
-                        <group colspan="4">
-                            <field name="default_ssubscr_acc" domain="[('partner_id','=',customer_id)]"/>
-                        </group>
                         <field name="sale_subscriptions"
                             context="{'default_eagle_contract':active_id,'default_partner_id':customer_id, 'default_manager_id':user_id, 'ons_hide_eagle_contract':True}">
                             <tree string=" " decoration-info="state=='draft'" decoration-danger="state=='pending'" decoration-muted="state in ('cancel','close')">
@@ -68,12 +66,11 @@
                                 <field name="pricelist_id" invisible="1"/>
                                 <field name="manager_id"/>
                                 <field name="company_id" groups="base.group_multi_company"/>
-                                <field name="type" invisible="1"/>
                                 <button
                                     icon="fa-dollar"
                                     name="action_recurring_invoice"
                                     type="object"
-                                    attrs="{'invisible': ['|',('type','=','template'),('state','!=','open')]}"
+                                    attrs="{'invisible': ['|', ('state','!=','open')]}"
                                     string="Generate $$$"/>
                             </tree>
                         </field>

@@ -4,6 +4,7 @@
 #  Module: eagle_project
 #
 #  Created by cyp@open-net.ch
+#  MIG[10.0] by lfr@open-net.ch
 #
 #  Copyright (c) 2015-TODAY Open-Net Ltd. <http://www.open-net.ch>
 

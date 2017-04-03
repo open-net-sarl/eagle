@@ -4,6 +4,7 @@
 #  Module: eagle_project
 #
 #  Created by cyp@open-net.ch
+#  MIG[10.0] by lfr@open-net.ch (2017)
 #
 #  Copyright (c) 2011-TODAY Open-Net Ltd. <http://www.open-net.ch>
 {
@@ -27,7 +28,7 @@
         'sale_contract_asset'
     ],
     'data': [
-    	'config/views/view_config.xml',
+    	'views/view_config.xml',
     	'views/view_invoices.xml',
 		'views/view_contracts.xml',
         'views/view_sales.xml',
@@ -35,7 +36,7 @@
         'views/view_projects.xml',
         'views/view_crm.xml',
         'views/view_products.xml',
-        'config/menu_items.xml'
+        'views/menu_items.xml'
     ],
     'js': [
     ],
@@ -47,7 +48,7 @@
     ],
     'test': [
     ],
-    'installable': False,
+    'installable': True,
     'application': True,
     'auto_install': False,
 }

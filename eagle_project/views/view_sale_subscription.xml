@@ -4,10 +4,11 @@
   Module: eagle_project
 
   Created by cyp@open-net.ch
+  MIG[10.0] by lfr@open-net.ch (2017)
 
   Copyright (c) 2016-TODAY Open-Net Ltd. All rights reserved.
 -->
-<openerp>
+<odoo>
     <data>
 
         <!--
@@ -22,11 +23,10 @@
             <field name="arch" type="xml">
                 <xpath expr="//group[@name='main']//field[@name='date_start']" position="before">
                     <field name="eagle_contract"
-                        invisible="context.get('ons_hide_eagle_contract', False)"
-                        attrs="{'invisible':[('type', '=', 'template')]}"/>
+                        invisible="context.get('ons_hide_eagle_contract', False)"/>
                 </xpath>
                 <field name="display_name" position="replace">
-                    <field name="sale_subscr_name" attrs="{'invisible': [('type','=','template')],'required': [('type','=','contract')]}"/>
+                    <field name="sale_subscr_name"/>
                 </field>
                 <xpath expr="//field[@name='recurring_invoice_line_ids']" position="attributes">
                     <attribute name="context">{'default_eagle_contract':eagle_contract, 'ons_hide_eagle_contract':True}</attribute>
@@ -46,10 +46,9 @@
             <field name="inherit_id" ref="sale_contract.sale_subscription_view_list"/>
             <field name="priority" eval="17"/>
             <field name="arch" type="xml">
-                <field name="display_name" position="replace">
+                <field name="code" position="before">
                     <field name="sale_subscr_name"/>
-                    <field name="type" invisible="1"/>
-                    <field name="eagle_contract" attrs="{'invisible':[('type', '=', 'template')]}"/>
+                    <field name="eagle_contract"/>
                 </field>
             </field>
         </record>
@@ -91,7 +90,7 @@
                     <group name="main">
                         <group>
                             <field name="eagle_contract" invisible="context.get('ons_hide_eagle_contract', False)"/>
-                            <field name="product_id" on_change="product_id_change(product_id, uom_id, quantity, False, parent.partner_id, False, parent.pricelist_id, parent.company_id)"/>
+                            <field name="product_id"/>
                             <field name="requested_date"/>
                             <field name="recurring_rule_type"/>
                             <field name="recurring_interval" attrs="{'invisible':['|',('recurring_rule_type','=',False),('recurring_rule_type','=','none')]}"/>
@@ -102,6 +101,7 @@
                             <field name="is_active"/>
                         </group>
                         <group>
+                            <field name="sale_layout_cat_id"/>
                             <field name="quantity" groups="base.group_no_one"/>
                             <field name="sold_quantity"/>
                             <field name="uom_id"/>
@@ -123,6 +123,7 @@
                     <field name="eagle_contract"/>
                     <field name="analytic_account_id"/>
                     <field name="product_id"/>
+                    <field name="sale_layout_cat_id"/>
                     <field name="sold_quantity"/>
                     <field name="uom_id"/>
                     <field name="recurring_rule_type"/>
@@ -145,8 +146,8 @@
             <field name="view_id" ref="eagle_view_active_subcr_lines_list"/>
             <field name="search_view_id" ref="eagle_view_active_subcr_lines_filter"/>
             <field name="context">{'search_default_is_active':True, 'search_default_groupby_next_action_date':True}</field>
-            <field name="domain">[('analytic_account_id.type','=','contract'),('recurring_rule_type','not in',[False,'none'])]</field>
+            <field name="domain">[('recurring_rule_type','not in',[False,'none'])]</field>
         </record>
 
     </data>
-</openerp>
+</odoo>

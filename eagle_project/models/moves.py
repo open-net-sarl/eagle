@@ -4,12 +4,13 @@
 #  Module: eagle_project
 #
 #  Created by cyp@open-net.ch
+#  MIG[10.0] by lfr@open-net.ch
 #
 #  Copyright (c) 2014-TODAY Open-Net Ltd. <http://www.open-net.ch>
 ##############################################################################
 
-from openerp import models, fields, api
-from openerp.exceptions import except_orm
+from odoo import models, fields, api
+from odoo.exceptions import except_orm
 
 import logging
 _logger = logging.getLogger(__name__)

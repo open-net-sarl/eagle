@@ -38,7 +38,7 @@
                                       'default_customer_id': default_file_partner,
                                       'default_name': name,
                                       'default_opportunity': active_id}"
-                            attrs="{'invisible': ['|',('probability', '>', 0),('eagle_files_ids','!=',[])]}"/>
+                            attrs="{'invisible': ['|',('probability', '&gt;', 0),('eagle_files_ids','!=',[])]}"/>
                     </xpath>
                     <div name="button_box" position="inside">
                         <button class="oe_stat_button"
@@ -72,7 +72,7 @@
                     <t t-if="record.eagle_files_count.raw_value == 1">
                         <br/><span style="color:blue;font-style:italic;"><t t-esc="_('File:')"/> <t t-raw="record.eagle_files_lst.raw_value"/></span>
                     </t>
-                    <t t-if="record.eagle_files_count.raw_value > 1">
+                    <t t-if="record.eagle_files_count.raw_value &gt; 1">
                         <br/><span style="color:blue;font-style:italic;"><t t-esc="_('Files:')"/></span><ul style="color:blue;"><t t-raw="record.eagle_files_lst.raw_value"/></ul>
                     </t>
                 </xpath>

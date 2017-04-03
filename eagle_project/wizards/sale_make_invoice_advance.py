@@ -3,11 +3,12 @@
 #  Module: eagle_project
 #
 #  Created by cyp@open-net.ch
+#  MIG[10.0] by lfr@open-net.ch (2017)
 #
 #  Copyright (c) 2016-TODAY Open-Net Ltd. <http://www.open-net.ch>
 
 
-from openerp import api, models, _
+from odoo import api, models, _
 
 
 class SaleAdvancePaymentInv(models.TransientModel):
@@ -28,3 +29,19 @@ class SaleAdvancePaymentInv(models.TransientModel):
     @api.multi
     def create_invoices(self):
         return super(SaleAdvancePaymentInv, self).create_invoices()
+
+
+class SaleOrder(models.Model):
+    _inherit = "sale.order"
+
+    @api.multi
+    def action_invoice_create(self, grouped=False, final=False):
+        contract_to_compare = self[0].contract_id
+
+        if grouped == True:
+            for order in self:
+                if order.contract_id == contract_to_compare:
+                    continue
+                else:
+                    return super(SaleOrder, self).action_invoice_create(grouped=False, final=final)
+        return super(SaleOrder, self).action_invoice_create(grouped=grouped, final=final)
