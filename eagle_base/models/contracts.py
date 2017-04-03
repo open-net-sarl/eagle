@@ -4,7 +4,7 @@
 #  Module: eagle_base
 #
 #  Created by cyp@open-net.ch
-#  Updated by lfr@open-net.ch (2017)
+#  MIG[10.0] by lfr@open-net.ch (2017)
 #
 #  Copyright (c) 2016-TODAY Open-Net Ltd. <http://www.open-net.ch>
 
@@ -140,6 +140,7 @@ class EagleContractPos(models.Model):
     _description = 'Contract position'
     _order = 'sequence,id'
     
+    @api.multi
     def get_eagle_parameters(self):
         for params in self.env['eagle.config.params'].search([]):
             return params
@@ -150,7 +151,7 @@ class EagleContractPos(models.Model):
 
     @api.one
     @api.depends('is_billable', 'list_price', 'discount', 'qty')
-    def _amount_line_base(self, cr, uid, line_ids, field_name, arg, context=None):
+    def _amount_line_base(self):
 
         self.cl_total = 0.0
         if self.is_billable:
@@ -302,10 +303,14 @@ class EagleContract(models.Model):
 
         return super(EagleContract, self).unlink()
 
-    @api.one
+    @api.multi
     def copy(self, default=None):
-        default = dict(default or {}, name=self.name+ _(' (copy)'), state='draft')
-        return super(EagleContract, self).copy(default=defaults)
+        default = default or {}
+        if default.get('name'): 
+            default['name'] = self.name+ _(' (copy)')
+        if default.get('state'): 
+            default['state'] = 'draft'
+        return super(EagleContract, self).copy(default=default)
 
     # ---------- Interface related
 

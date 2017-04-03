@@ -4,7 +4,7 @@
 #  Module: eagle_base
 #
 #  Created by cyp@open-net.ch
-#  Updated by lfr@open-net.ch (2017)
+#  MIG[10.0] by lfr@open-net.ch (2017)
 #
 #  Copyright (c) 2014-TODAY Open-Net Ltd. <http://www.open-net.ch>
 

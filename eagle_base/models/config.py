@@ -5,7 +5,7 @@
 #  Eagle's config management
 #
 #  Created by cyp@open-net.ch
-#  Updated by lfr@open-net.ch (2017)
+#  MIG[10.0] by lfr@open-net.ch (2017)
 #
 #   Starting with the version 5.0, Eagle's parameters are not any more managed
 #   using the old, classic way, but rather through OE V7 configuration management:
