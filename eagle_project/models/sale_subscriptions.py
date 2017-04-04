@@ -118,15 +118,16 @@ class SaleSubscription(models.Model):
     # ---------- Utils
 
     @api.multi
-    def _prepare_sale_line(self):
-        sale_line = super(SaleSubscription, self)._prepare_sale_line()
-        sale_line['contract_id'] = self.eagle_contract and self.eagle_contract.id or False
+    def _prepare_sale_line(self, line, fiscal_position):
+        sale_line = super(SaleSubscription, self)._prepare_sale_line(line, fiscal_position)
+        sale_line['contract_id'] = line.eagle_contract and line.eagle_contract.id or False
         return sale_line
 
     @api.multi
     def _prepare_sale_data(self):
         sale = super(SaleSubscription, self)._prepare_sale_data()
-        sale['contract_id'] = self.eagle_contract and self.eagle_contract.id or False
+        for data in self:
+            sale['contract_id'] = data.eagle_contract and data.eagle_contract.id or False
         return sale
 
     @api.multi
@@ -140,19 +141,22 @@ class SaleSubscription(models.Model):
     @api.multi
     def _prepare_invoice_data(self):
         invoice = super(SaleSubscription, self)._prepare_invoice_data()
-        invoice['contract_id'] = self.eagle_contract and self.eagle_contract.id or False
+        for data in self:
+            invoice['contract_id'] = data.eagle_contract and data.eagle_contract.id or False
         return invoice
 
     @api.multi
-    def setup_sale_filter(self, filter):
-        filter = super(SaleSubscription, self).setup_sale_filter(filter)
-        filter.append(('contract_id', '=', self.eagle_contract.id))
+    def setup_sale_filter(self, contract, filter):
+        filter = super(SaleSubscription, self).setup_sale_filter(contract, filter)
+        if contract and contract.eagle_contract:
+            filter.append(('contract_id', '=', contract.eagle_contract.id))
         return filter
 
     @api.multi
-    def setup_invoice_filter(self, filter):
-        filter = super(SaleSubscription, self).setup_invoice_filter(filter)
-        filter.append(('contract_id', '=', self.eagle_contract.id))
+    def setup_invoice_filter(self, contract, filter):
+        filter = super(SaleSubscription, self).setup_invoice_filter(contract, filter)
+        if contract and contract.eagle_contract:
+            filter.append(('contract_id', '=', contract.eagle_contract.id))
         return filter
 
 
@@ -248,7 +252,6 @@ class AccountAnalyticAccount(models.Model):
 
     @api.model
     def _default_analytic_account_code(self):
-        _logger.info("HEREEEEE_E_E")
         code = ''
         if self._context.get('default_eagle_contract', False):
             contract = self.env['eagle.contract'].browse(self._context['default_eagle_contract'])
