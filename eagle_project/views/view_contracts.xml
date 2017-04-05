@@ -67,7 +67,7 @@
                                 <field name="manager_id"/>
                                 <field name="company_id" groups="base.group_multi_company"/>
                                 <button
-                                    icon="fa-dollar"
+                                    icon="fa-dollar fa-lg btn-link"
                                     name="action_recurring_invoice"
                                     type="object"
                                     attrs="{'invisible': ['|', ('state','!=','open')]}"

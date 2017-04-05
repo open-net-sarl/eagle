@@ -52,7 +52,7 @@ class SaleSubscription(models.Model):
         for subs in self:
             subs.name = subs.name or subs.analytic_account_id.name or _('New')
 
-    sale_subscr_name = fields.Char(string='Name', index=True, compute='_compute_sale_subscr_name', readonly=False, store=True, default=_default_sale_subscr_name)
+    sale_subscr_name = fields.Char(string='Subscription Name', compute='_compute_sale_subscr_name', readonly=False, store=True, default=_default_sale_subscr_name)
     eagle_contract = fields.Many2one(comodel_name='eagle.contract', string='File')
     code = fields.Char(default="New")
     date_start = fields.Date(default=_default_date_start)
@@ -75,7 +75,7 @@ class SaleSubscription(models.Model):
         if contract_id:
             contract = self.env['eagle.contract'].browse(contract_id)
 
-        if not vals.get('analytic_account_id', False):
+        if not vals.get('analytic_account_id', False) and vals.get('sale_subscr_name', False):
             vals['name'] = vals['sale_subscr_name']
 
         if not vals.get('code', False):
@@ -212,9 +212,8 @@ class SaleSubscriptionLine(models.Model):
                     res['value'] = {}
                 ctx = dict(subs.env.context, company_id=company_id, force_company=company_id, pricelist=pricelist_id, quantity=subs.quantity)
 
-                _logger.info("PROD_ID: %s" % subs.product_id)
                 prod = subs.env['product.product'].with_context(ctx).browse(subs.product_id.id)
-                _logger.info("PROD: %s" % prod)
+                _logger.info("HERE PROD:_:")
                 if prod.recurring_rule_type and prod.recurring_interval:
                     next_date = datetime.now()
                     failed = True

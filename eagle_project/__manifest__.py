@@ -35,7 +35,6 @@
         'views/view_sale_subscription.xml',
         'views/view_projects.xml',
         'views/view_crm.xml',
-        'views/view_products.xml',
         'views/menu_items.xml'
     ],
     'js': [

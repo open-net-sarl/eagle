@@ -32,7 +32,7 @@ class AccountMoveLine(models.Model):
                 if obj_line.analytic_line_ids:
                     obj_line.analytic_line_ids.unlink()
                 vals_line = obj_line._prepare_analytic_line()[0]
-                self.pool.get('account.analytic.line').create(self._cr, self._uid, vals_line, context=self._context)
+                obj_line.env['account.analytic.line'].create(vals_line)
 
     class AccountMove(models.Model):
         _inherit = 'account.move'

@@ -25,7 +25,10 @@
                     <field name="eagle_contract"
                         invisible="context.get('ons_hide_eagle_contract', False)"/>
                 </xpath>
-                <field name="display_name" position="replace">
+                <field name="display_name" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </field>
+                <field name="code" position="after">
                     <field name="sale_subscr_name"/>
                 </field>
                 <xpath expr="//field[@name='recurring_invoice_line_ids']" position="attributes">
@@ -84,13 +87,11 @@
             <field name="model">sale.subscription.line</field>
             <field name="arch" type="xml">
                 <form create="false">
-                    <div class="oe_title">
-                        <field name="name"/>
-                    </div>
                     <group name="main">
                         <group>
                             <field name="eagle_contract" invisible="context.get('ons_hide_eagle_contract', False)"/>
                             <field name="product_id"/>
+                            <field name="name"/>
                             <field name="requested_date"/>
                             <field name="recurring_rule_type"/>
                             <field name="recurring_interval" attrs="{'invisible':['|',('recurring_rule_type','=',False),('recurring_rule_type','=','none')]}"/>
