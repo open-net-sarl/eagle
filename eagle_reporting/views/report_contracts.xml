@@ -4,12 +4,12 @@
   Module: eagle_reporting
 
   Created by cyp@open-net.ch
+  MIG[10.0] by lfr@open-net.ch (2017)
 
   Copyright (c) 2015-TODAY Open-Net Ltd. All rights reserved.
 -->
-<openerp>
+<odoo>
     <data>
-
         <template id="eagle_reporting.report_contract_document">
             <t t-call="report.external_layout">
                 <t t-set="o" t-value="o.with_context({'lang':o.customer_id.lang})"/>
@@ -61,13 +61,13 @@
                                     <tr>
                                         <td>TVA (8%)</td>
                                         <td class="text-right">
-                                            <span t-esc="amount*0.08"/> <span t-esc="o.customer_id.property_product_pricelist.currency_id.symbol"/>
+                                            <span t-esc="round(amount*0.08, 2)"/> <span t-esc="o.customer_id.property_product_pricelist.currency_id.symbol"/>
                                         </td>
                                     </tr>
                                     <tr class="border-black">
                                         <td><strong>Total</strong></td>
                                         <td class="text-right">
-                                            <strong><span t-esc="amount + amount*0.08"/> <span t-esc="o.customer_id.property_product_pricelist.currency_id.symbol"/></strong>
+                                            <strong><span t-esc="round(amount + amount*0.08, 2)"/> <span t-esc="o.customer_id.property_product_pricelist.currency_id.symbol"/></strong>
                                         </td>
                                     </tr>
                                 </table>
@@ -97,4 +97,4 @@
             file="eagle_reporting.report_contract"/>
 
     </data>
-</openerp>
+</odoo>
