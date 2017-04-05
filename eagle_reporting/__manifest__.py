@@ -28,7 +28,7 @@
 ##############################################################################
 {
     'name' : 'Eagle View: reporting module',
-    'version' : '8.0',
+    'version' : '10.0.0.1',
     'website': 'http://www.open-net.ch',
     'author' : 'Open Net Sàrl',
     'category': 'Eagle view',
