@@ -48,6 +48,13 @@ class EagleContract(models.Model):
 
     pricelist_id = fields.Many2one('product.pricelist', string='Pricelist')
 
+    lines_not_recurring = fields.One2many(
+        related="sale_subscription_line", 
+        domain="[('recurring_rule_type','=','none'), ('is_active','=','True')]")
+    lines_recurring = fields.One2many(
+        related="sale_subscription_line", 
+        domain="[('recurring_rule_type','!=','none'), ('is_active','=','True')]")
+
     @api.multi
     def _get_tasks_count(self):
         for cnt in self:
