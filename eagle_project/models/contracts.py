@@ -51,9 +51,28 @@ class EagleContract(models.Model):
     lines_not_recurring = fields.One2many(
         'sale.subscription.line', 'eagle_contract', 
         domain=[('recurring_rule_type','=','none'), ('is_active','=', True)])
+
     lines_recurring = fields.One2many(
         'sale.subscription.line', 'eagle_contract',
         domain=[('recurring_rule_type','!=','none'), ('is_active','=', True)])
+
+    non_recurring_total = fields.Float(
+        string="Non-recurring Subtotal",
+        compute='_get_non_recurring_price')
+
+    recurring_total = fields.Float(
+        string="Recurring Subtotal",
+        compute='_get_recurring_price')
+
+    @api.multi
+    def _get_non_recurring_price(self):
+        for contract in self:
+            contract.non_recurring_total = sum([line.price_subtotal for line in contract.lines_not_recurring])
+
+    @api.multi
+    def _get_recurring_price(self):
+        for contract in self:
+            contract.recurring_total = sum([line.price_subtotal for line in contract.lines_recurring])
 
     @api.multi
     def _get_tasks_count(self):
