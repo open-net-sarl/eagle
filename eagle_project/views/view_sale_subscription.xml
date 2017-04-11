@@ -14,7 +14,6 @@
         <!--
             More for the subscriptions
         -->
-
         <record model="ir.ui.view" id="eagle_view_ssubcr_form_inherit">
             <field name="name">Eagle Project: sale subscription form</field>
             <field name="model">sale.subscription</field>
@@ -40,6 +39,9 @@
                 <xpath expr="//field[@name='recurring_invoice_line_ids']/tree//field[@name='sequence']" position="replace"/>
                 <xpath expr="//field[@name='recurring_invoice_line_ids']/tree//field[@name='actual_quantity']" position="replace"/>
                 <button name="prepare_renewal_order" position="replace"/>
+                <xpath expr="//field[@name='recurring_invoice_line_ids']/tree/field[@name='uom_id']" position="after">
+                    <field name="page_break"/>
+                </xpath>
             </field>
         </record>
 
@@ -150,5 +152,24 @@
             <field name="domain">[('recurring_rule_type','not in',[False,'none'])]</field>
         </record>
 
+        <record model="ir.ui.view" id="eagle_view_sale_order_form">
+            <field name="name">Eagle Project: sale order form</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="priority" eval="30"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='order_line']/form/group" position="after">
+                    <group>
+                        <label for="page_break"/>
+                        <div>
+                            <field name="page_break"/>
+                        </div>
+                    </group>
+                </xpath>
+                <xpath expr="//field[@name='order_line']/tree/field[@name='analytic_tag_ids']" position="after">
+                    <field name="page_break"/>
+                </xpath>
+            </field>
+        </record>
     </data>
 </odoo>

@@ -121,6 +121,7 @@ class SaleSubscription(models.Model):
     def _prepare_sale_line(self, line, fiscal_position):
         sale_line = super(SaleSubscription, self)._prepare_sale_line(line, fiscal_position)
         sale_line['contract_id'] = line.eagle_contract and line.eagle_contract.id or False
+        sale_line['page_break'] = line.page_break
         return sale_line
 
     @api.multi
@@ -136,6 +137,7 @@ class SaleSubscription(models.Model):
         invoice_line['contract_id'] = line.analytic_account_id and \
                     line.analytic_account_id.eagle_contract and \
                     line.analytic_account_id.eagle_contract.id or False
+        invoice_line['page_break'] = line.page_break
         return invoice_line
 
     @api.multi
@@ -188,6 +190,10 @@ class SaleSubscriptionLine(models.Model):
 
     eagle_contract = fields.Many2one('eagle.contract', string='File')
     eagle_note = fields.Text(string="Note")
+
+    page_break = fields.Boolean(
+        string="Page Break",
+        help="Do a page break after this")
 
     @api.model
     def create(self, vals):
