@@ -101,7 +101,7 @@
                     <!-- NOTES -->
                     <t t-if="o.notes">
                         <div style="page-break-inside: avoid; color: #303030; vertical-align:top; padding-top: 10px; font-size:9pt;">
-                                <br/><span t-field="o.notes"/><br/>
+                                <span t-field="o.notes"/>
                         </div>
                     </t>
                 </div>
@@ -146,26 +146,38 @@
                             <t t-foreach="layout_category['lines']" t-as="sub_line">
                                 <tr class="eagle_table_lines">
                                     <td>
-                                        <span t-field="sub_line.name"/><br/>
-                                        <span t-field="sub_line.eagle_note"/>
+                                        <div>
+                                            <span t-field="sub_line.name"/>
+                                        </div>
+                                        <div>
+                                            <span t-field="sub_line.eagle_note"/>
+                                        </div>
                                     </td>    
                                     <td>
                                         <span t-esc="&quot;%0.0f&quot; % sub_line.quantity"/>
                                         <!-- <span t-field="sub_line.quantity"/> -->
                                     </td>
                                     <td>
-                                        <span t-field="sub_line.price_unit"/>
-                                        <br />
-                                        <span t-if="sub_line.discount">
-                                            <t t-set="line_discount" t-value="sub_line.discount" />
-                                            <t t-if="int(sub_line.discount) == line_discount">
-                                                <t t-set="line_discount" t-value="int(sub_line.discount)" />
-                                            </t>
-                                            (Disc. <span t-esc="line_discount"/>%)
-                                        </span>
+                                        <div>
+                                            <span t-field="sub_line.price_unit"/>
+                                        </div>
+                                        <div>
+                                            <span t-if="sub_line.discount">
+                                                <t t-set="line_discount" t-value="sub_line.discount" />
+                                                <t t-if="int(sub_line.discount) == line_discount">
+                                                    <t t-set="line_discount" t-value="int(sub_line.discount)" />
+                                                </t>
+                                                (Disc. <span t-esc="line_discount"/>%)
+                                            </span>
+                                        </div>
                                     </td>
                                     <td>
-                                        <span t-esc="', '.join(map(lambda x: (x.description or x.name), sub_line.product_id.taxes_id))"/>
+                                        <!-- <span t-esc="', '.join(map(lambda x: (x.description or x.name), sub_line.product_id.taxes_id))"/> -->
+                                        <t t-foreach="sub_line.product_id.taxes_id" t-as="x">
+                                            <div>
+                                                <span t-esc="x.description or x.name"/>
+                                            </div>
+                                        </t>
                                     </td>
                                     <td>
                                         <span t-field="sub_line.price_subtotal"/>
