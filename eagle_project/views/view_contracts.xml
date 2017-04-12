@@ -78,6 +78,7 @@
                     <page string="Sale Subscription Lines" name="sale_subscrl">
                         <field name="sale_subscription_line" mode="tree">
                             <tree create="false">
+                                <field name="sequence" widget="handle"/>
                                 <field name="product_id"/>
                                 <field name="name" invisible="1"/>
                                 <field name="quantity" groups="base.group_no_one"/>
@@ -100,7 +101,7 @@
                     <page string="Current Sale Order Lines" name="curr_sol">
                         <field name="current_sale_order_lines">
                             <tree string=" " decoration-info="invoice_status=='to invoice'" create="false">
-                                <field name="sequence"/>
+                                <field name="sequence" widget="handle"/>
                                 <field name="product_id"/>
                                 <field name="name" invisible="1"/>
                                 <field name="product_uom_qty" string="Ordered Qty"/>

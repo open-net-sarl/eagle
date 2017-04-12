@@ -18,7 +18,7 @@
             <field name="name">Eagle Project: sale subscription form</field>
             <field name="model">sale.subscription</field>
             <field name="inherit_id" ref="ons_productivity_subscriptions_adv.onsp_view_sale_subscription_form"/>
-            <field name="priority" eval="17"/>
+            <field name="priority" eval="18"/>
             <field name="arch" type="xml">
                 <xpath expr="//group[@name='main']//field[@name='date_start']" position="before">
                     <field name="eagle_contract"
@@ -39,8 +39,15 @@
                 <xpath expr="//field[@name='recurring_invoice_line_ids']/tree//field[@name='sequence']" position="replace"/>
                 <xpath expr="//field[@name='recurring_invoice_line_ids']/tree//field[@name='actual_quantity']" position="replace"/>
                 <button name="prepare_renewal_order" position="replace"/>
-                <xpath expr="//field[@name='recurring_invoice_line_ids']/tree/field[@name='uom_id']" position="after">
-                    <field name="page_break"/>
+
+                <xpath expr="//field[@name='recurring_invoice_line_ids']/tree//field[@name='product_id']" position="before">
+                    <field name="sequence" widget="handle"/>
+                </xpath>
+                <xpath expr="//field[@name='recurring_invoice_line_ids']/tree//field[@name='use_new_so_inv']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//field[@name='recurring_invoice_line_ids']/tree//field[@name='is_billable']" position="attributes">
+                    <attribute name="invisible">1</attribute>
                 </xpath>
             </field>
         </record>
