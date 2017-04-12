@@ -1,83 +1,194 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--
-  File: views/report_contracts.xml
-  Module: eagle_reporting
-
-  Created by cyp@open-net.ch
-  MIG[10.0] by lfr@open-net.ch (2017)
-
-  Copyright (c) 2015-TODAY Open-Net Ltd. All rights reserved.
--->
 <odoo>
     <data>
         <template id="eagle_reporting.report_contract_document">
             <t t-call="report.external_layout">
                 <t t-set="o" t-value="o.with_context({'lang':o.customer_id.lang})"/>
                 <div class="page">
-
                     <div class="row">
-                        <div class="col-xs-5 col-xs-offset-7">
+                        
+                    <!-- [Adress] -->
+                        <div class="col-xs-5 col-xs-offset-7 postal_adress_div">
                             <address t-field="o.customer_id" t-field-options="{&quot;widget&quot;: &quot;contact&quot;, &quot;fields&quot;: [&quot;address&quot;, &quot;name&quot;], &quot;no_marker&quot;: true}"/>
                         </div>
                     </div>
-                        <t t-set="amount" t-value="0"/>
-                        <table class="table table-condensed">
-                            <thead>
-                                <tr>
-                                    <th>Description</th>
-                                    <th>Qty</th>
-                                    <th>Price Unit</th>
-                                    <th>Price</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr t-foreach="o.sale_subscription_line" t-as="sub_line">
-                                    <td>
-                                        <span t-field="sub_line.name"/><br/>
-                                        <span t-field="sub_line.eagle_note"/>
-                                    </td>    
-                                    <td>
-                                        <span t-field="sub_line.quantity"/>
-                                    </td>
-                                    <td>
-                                        <span t-field="sub_line.price_unit"/>
-                                    </td>
-                                    <td>
-                                        <span t-field="sub_line.price_subtotal"/>
-                                        <t t-set="amount" t-value="amount + sub_line.price_subtotal"/>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
+
+                <!-- [Active not recurrings] -->
+                    <t t-set="has_not_rec_lines" t-value="0" />
+                    <t t-if="len(o.lines_not_recurring)">
+                        <t t-set="has_not_rec_lines" t-value="1"/>
+                    </t>
+                    
+
+                    <t t-if="has_not_rec_lines == 1">
+<!--                         <p><strong>[TO REMOVE] Not Recurring / Active [TO REMOVE]</strong></p> -->
+                        
+                        <!-- table -->
+                        <t t-set="filtered_lines" t-value="o.lines_not_recurring"/>
+                        <t t-call="eagle_reporting.table_template"/>
+
                         <div class="row">
-                            <div class="col-xs-4 pull-right">
+                            <div class="col-xs-5 pull-right">
                                 <table class="table table-condensed">
                                     <tr class="border-black">
-                                        <td><strong>Subtotal</strong></td>
+                                        <td><strong>Non-recurring Subtotal (WT)</strong></td>
                                         <td class="text-right">
-                                            <span t-esc="amount"/> <span t-esc="o.customer_id.property_product_pricelist.currency_id.symbol"/>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>TVA (8%)</td>
-                                        <td class="text-right">
-                                            <span t-esc="round(amount*0.08, 2)"/> <span t-esc="o.customer_id.property_product_pricelist.currency_id.symbol"/>
-                                        </td>
-                                    </tr>
-                                    <tr class="border-black">
-                                        <td><strong>Total</strong></td>
-                                        <td class="text-right">
-                                            <strong><span t-esc="round(amount + amount*0.08, 2)"/> <span t-esc="o.customer_id.property_product_pricelist.currency_id.symbol"/></strong>
+                                            <span t-esc="o.non_recurring_total" t-options="{'widget': 'monetary', 'display_currency': o.customer_id.property_product_pricelist.currency_id}"/>
                                         </td>
                                     </tr>
                                 </table>
                             </div>
                         </div>
-                    <!-- NOTES -->
-                    <div style="page-break-inside: avoid; color: #303030; vertical-align:top; padding-top: 10px; font-size:9pt;">
-                            <br/><span t-field="o.notes"/><br/>
+                    </t>   
+
+                <!-- [Active recurrings] -->
+                    <t t-set="has_rec_lines" t-value="0" />
+                    <t t-if="len(o.lines_recurring)">
+                        <t t-set="has_rec_lines" t-value="1"/>
+                    </t>
+
+                    <!-- if has something behing -->
+                    <t t-if="has_not_rec_lines == 1 and has_rec_lines == 1 and o.do_page_break">
+                        <p style="page-break-after:always;"></p>
+                    </t>
+
+                    <t t-if="has_rec_lines == 1">
+<!--                         <p><strong>[TO REMOVE] Recurring / Active [TO REMOVE]</strong></p> -->
+                        
+                        <!-- table -->
+                        <t t-set="filtered_lines" t-value="o.lines_recurring"/>
+                        <t t-call="eagle_reporting.table_template"/>
+
+                        <div class="row">
+                            <div class="col-xs-5 pull-right">
+                                <table class="table table-condensed">
+                                    <tr class="border-black">
+                                        <td><strong>Recurring Subtotal (WT)</strong></td>
+                                        <td class="text-right">
+                                            <span t-esc="o.recurring_total" t-options="{'widget': 'monetary', 'display_currency': o.customer_id.property_product_pricelist.currency_id}"/>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </t>
+
+                <!-- [Final total] -->
+                    <div class="row">
+                        <div class="col-xs-5 pull-right">
+                            <table class="table table-condensed">
+                                <t t-set="total_amount" t-value="o.non_recurring_total + o.recurring_total"/>
+                            <!--
+                                #Tax??
+                                <tr>
+                                    <td>TVA (8%)</td>
+                                    <td class="text-right">
+                                        <span t-esc="round(total_amount*0.08, 2)"/> <span t-esc="o.customer_id.property_product_pricelist.currency_id.symbol"/>
+                                    </td>
+                                </tr>
+                            -->
+                                <tr class="border-black">
+                                    <td><strong>Total (WT)</strong></td>
+                                    <td class="text-right">
+                                        <strong>
+                                            <span t-esc="round(total_amount, 2)" t-options="{'widget': 'monetary', 'display_currency': o.customer_id.property_product_pricelist.currency_id}"/>
+                                        </strong>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
                     </div>
+                    <!-- NOTES -->
+                    <t t-if="o.notes">
+                        <div style="page-break-inside: avoid; color: #303030; vertical-align:top; padding-top: 10px; font-size:9pt;">
+                                <br/><span t-field="o.notes"/><br/>
+                        </div>
+                    </t>
                 </div>
+            </t>
+        </template>
+
+        <template id="eagle_reporting.table_template">
+            <!-- filtered_lines needs to be defined before the call -->
+            <t t-foreach="o.subs_lines_layouted(filtered_lines)" t-as="page">
+                <table class="table table-condensed eagle_reporting_table">
+                    <thead>
+                        <tr>
+                            <th id="col_descrp">Description</th>
+                            <th id="col_qty">Qty.</th>
+                            <th id="col_price_unit">Price Unit</th>
+                            <th id="col_tax">Taxes</th>
+                            <th id="col_price">Price (WT)</th>
+
+                            <!-- 
+                                defines the number of columns to changs all the colspans 
+                            -->
+                            <t t-set="number_columns" t-value="5"/>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <t t-foreach="page" t-as="layout_category">
+                            <t t-if="layout_category_size &gt; 0 or page_size &gt; 1" groups="sale.group_sale_layout">
+                                
+                                <!-- if the last category hasnt a subtotal -->
+                                <t t-if="layout_category_last and last_has_not_subtotal">
+                                    <t t-set="style_for_cat">border-top: 2px solid LightSteelBlue !important</t>
+                                </t>
+
+                                <tr class="active layout_category_title" t-attf-style="{{style_for_cat}}">
+                                    <td t-attf-colspan="{{number_columns}}">&amp;bull;
+                                        <t t-esc="layout_category['name']"/>
+                                    </td>
+                                </tr>
+                            </t>
+
+                            <!-- Lines associated -->
+                            <t t-foreach="layout_category['lines']" t-as="sub_line">
+                                <tr class="eagle_table_lines">
+                                    <td>
+                                        <span t-field="sub_line.name"/><br/>
+                                        <span t-field="sub_line.eagle_note"/>
+                                    </td>    
+                                    <td>
+                                        <span t-esc="&quot;%0.0f&quot; % sub_line.quantity"/>
+                                        <!-- <span t-field="sub_line.quantity"/> -->
+                                    </td>
+                                    <td>
+                                        <span t-field="sub_line.price_unit"/>
+                                        <br />
+                                        <span t-if="sub_line.discount">
+                                            <t t-set="line_discount" t-value="sub_line.discount" />
+                                            <t t-if="int(sub_line.discount) == line_discount">
+                                                <t t-set="line_discount" t-value="int(sub_line.discount)" />
+                                            </t>
+                                            (Disc. <span t-esc="line_discount"/>%)
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <span t-esc="', '.join(map(lambda x: (x.description or x.name), sub_line.product_id.taxes_id))"/>
+                                    </td>
+                                    <td>
+                                        <span t-field="sub_line.price_subtotal"/>
+                                    </td>
+                                </tr>
+                            </t>
+                            <t t-set="last_has_not_subtotal" t-value="True"/>
+                            <t t-if="(layout_category_size &gt; 0 or page_size &gt; 1) and layout_category['subtotal']" groups="sale.group_sale_layout">
+                                <tr class="text-right eagle_table_subtotal_cat">
+                                    <td t-attf-colspan="{{number_columns}}">
+                                        <strong>Subtotal (WT) : </strong>
+                                        <t t-set="subtotal" t-value="sum(line.price_subtotal for line in layout_category['lines'])"/>
+                                        <span t-esc="subtotal" t-options="{'widget': 'monetary', 'display_currency': o.customer_id.property_product_pricelist.currency_id}"/>
+                                        <t t-set="last_has_not_subtotal" t-value="False"/>
+                                    </td>
+                                </tr>
+                            </t>
+                        </t>
+                    </tbody>
+                </table>
+                <t t-if="page_index &lt; page_size - 1">
+                    <p style="page-break-before:always;"> </p>
+                </t>
             </t>
         </template>
         <template id="eagle_reporting.report_contract">
@@ -95,6 +206,5 @@
             report_type="qweb-pdf"
             name="eagle_reporting.report_contract"
             file="eagle_reporting.report_contract"/>
-
     </data>
 </odoo>
