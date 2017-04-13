@@ -14,7 +14,7 @@ class EagleContract(models.Model):
 
     do_page_break = fields.Boolean(
         string="Do a page break between subscriptions types",
-        help="Do a page break between recurent and non recurent subscriptions in the report")
+        help="Do a page break between recurring and non recurring subscriptions in the report")
 
     @api.multi
     def subs_lines_layouted(self, filtred_lines):

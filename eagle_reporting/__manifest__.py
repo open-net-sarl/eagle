@@ -23,7 +23,8 @@
         'views/eagle_reporting.xml',
         'views/report_contracts.xml',
         'views/view_contracts.xml',
-        'views/view_sale_subscription.xml'
+        'views/view_sale_subscription.xml',
+        'views/view_sales.xml'
     ],
     'test': [
     ],
