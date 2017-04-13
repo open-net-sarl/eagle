@@ -1,0 +1,509 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* eagle_project
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 10.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-04-13 06:55+0000\n"
+"PO-Revision-Date: 2017-04-13 06:55+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: eagle_project
+#: model:ir.model,name:eagle_project.model_account_move
+msgid "Account Entry"
+msgstr "Écriture comptable"
+
+#. module: eagle_project
+#: model:ir.ui.view,arch_db:eagle_project.eagle_view_active_subcr_lines_filter
+msgid "Active"
+msgstr "Actif"
+
+#. module: eagle_project
+#: model:ir.actions.act_window,name:eagle_project.eagle_action_active_subs_lines_list
+msgid "Active recurrences"
+msgstr "Récurrences actives"
+
+#. module: eagle_project
+#: model:ir.model,name:eagle_project.model_account_analytic_account
+msgid "Analytic Account"
+msgstr "Compte analytique"
+
+#. module: eagle_project
+#: model:ir.model,name:eagle_project.model_account_analytic_line
+msgid "Analytic Line"
+msgstr "Ligne analytique"
+
+#. module: eagle_project
+#: model:ir.model.fields,field_description:eagle_project.field_eagle_contract_analytic_lines
+#: model:ir.ui.view,arch_db:eagle_project.eagle_project_view_contract_form
+msgid "Analytic Lines"
+msgstr "Lignes analytiques"
+
+#. module: eagle_project
+#: model:ir.ui.view,arch_db:eagle_project.eagle_view_active_subcr_lines_filter
+msgid "Analytic account"
+msgstr "Compte analytique"
+
+#. module: eagle_project
+#: code:addons/eagle_project/models/sale_subscriptions.py:171
+#, python-format
+msgid "As long as the file is not active, you can't generate anything."
+msgstr "Tant que le dossier n'est pas actif, vous ne pouvez rien générer."
+
+#. module: eagle_project
+#: model:ir.ui.view,arch_db:eagle_project.eagle_view_active_subcr_lines_filter
+msgid "Contract"
+msgstr "Contrat"
+
+#. module: eagle_project
+#: model:ir.model,name:eagle_project.model_eagle_contract_position
+msgid "Contract position"
+msgstr "Position de contrat"
+
+#. module: eagle_project
+#: model:ir.model.fields,field_description:eagle_project.field_eagle_contract_current_sale_order_lines
+#: model:ir.ui.view,arch_db:eagle_project.eagle_project_view_contract_form
+msgid "Current Sale Order Lines"
+msgstr "Lignes de vente actuelles"
+
+#. module: eagle_project
+#: model:ir.model.fields,field_description:eagle_project.field_eagle_contract_current_sale_orders
+msgid "Current Sale Orders"
+msgstr "Ventes actuelles"
+
+#. module: eagle_project
+#: model:ir.actions.act_window,name:eagle_project.eagle_action_contract_2_current_invoices
+msgid "Current invoices"
+msgstr "Factures courantes"
+
+#. module: eagle_project
+#: model:ir.actions.act_window,name:eagle_project.eagle_action_contract_2_current_sales
+msgid "Current sales"
+msgstr "Ventes courantes"
+
+#. module: eagle_project
+#: model:ir.model.fields,field_description:eagle_project.field_eagle_contract_position_cust_delivery_date
+msgid "Customer Delivery Date"
+msgstr "Date de livraison du client"
+
+#. module: eagle_project
+#: model:ir.model.fields,field_description:eagle_project.field_eagle_contract_account_out_inv_lines
+msgid "Customer Invoice Lines"
+msgstr "Lignes de facture client"
+
+#. module: eagle_project
+#: model:ir.model.fields,field_description:eagle_project.field_eagle_contract_account_out_invoices
+msgid "Customer Invoices"
+msgstr "Factures client"
+
+#. module: eagle_project
+#: model:ir.model.fields,field_description:eagle_project.field_crm_lead_default_file_partner
+msgid "Default file partner"
+msgstr "Partenaire par défaut (dossier)"
+
+#. module: eagle_project
+#: model:ir.model.fields,field_description:eagle_project.field_eagle_contract_position_product_duration
+#: model:ir.ui.view,arch_db:eagle_project.eagle_project_view_contract_form
+msgid "Duration"
+msgstr "Durée"
+
+#. module: eagle_project
+#: model:ir.model,name:eagle_project.model_eagle_config_params
+msgid "Eagle Configuration Parameters"
+msgstr "Paramètres de configuration de Eagle"
+
+#. module: eagle_project
+#: model:ir.model,name:eagle_project.model_eagle_contract
+msgid "Eagle file"
+msgstr "Dossier Eagle"
+
+#. module: eagle_project
+#: model:ir.actions.act_window,name:eagle_project.ons_action_eagle_file_new
+#: model:ir.model.fields,field_description:eagle_project.field_account_analytic_line_eagle_contract
+#: model:ir.model.fields,field_description:eagle_project.field_account_invoice_contract_id
+#: model:ir.model.fields,field_description:eagle_project.field_account_invoice_line_contract_id
+#: model:ir.model.fields,field_description:eagle_project.field_procurement_order_eagle_contract
+#: model:ir.model.fields,field_description:eagle_project.field_project_task_eagle_contract
+#: model:ir.model.fields,field_description:eagle_project.field_sale_order_contract_id
+#: model:ir.model.fields,field_description:eagle_project.field_sale_order_line_contract_id
+#: model:ir.model.fields,field_description:eagle_project.field_sale_subscription_eagle_contract
+#: model:ir.model.fields,field_description:eagle_project.field_sale_subscription_line_eagle_contract
+#: model:ir.ui.view,arch_db:eagle_project.eagle_view_task_work_filter
+msgid "File"
+msgstr "Dossier"
+
+#. module: eagle_project
+#: model:ir.ui.view,arch_db:eagle_project.eagle_view_crm_opport_form_inherit
+msgid "File(s)"
+msgstr "Dossier(s)"
+
+#. module: eagle_project
+#: model:ir.ui.view,arch_db:eagle_project.eagle_view_task_work_kanban
+msgid "File:"
+msgstr "Dossier:"
+
+#. module: eagle_project
+#: model:ir.model.fields,field_description:eagle_project.field_crm_lead_eagle_files_ids
+msgid "Files"
+msgstr "Dossiers"
+
+#. module: eagle_project
+#: model:ir.model.fields,field_description:eagle_project.field_crm_lead_eagle_files_lst
+msgid "Files Names"
+msgstr "Noms des dossiers"
+
+#. module: eagle_project
+#: model:ir.model.fields,field_description:eagle_project.field_crm_lead_eagle_files_count
+msgid "Files nb"
+msgstr "Nb de dossiers"
+
+#. module: eagle_project
+#: model:ir.ui.view,arch_db:eagle_project.eagle_project_view_contract_form
+msgid "Generate $$$"
+msgstr "Générer $$$"
+
+#. module: eagle_project
+#: model:ir.ui.view,arch_db:eagle_project.eagle_view_active_subcr_lines_filter
+msgid "Group by..."
+msgstr "Regrouper par..."
+
+#. module: eagle_project
+#: model:ir.ui.view,arch_db:eagle_project.eagle_view_active_subcr_lines_filter
+msgid "Inactive"
+msgstr "Inactif"
+
+#. module: eagle_project
+#: model:ir.model,name:eagle_project.model_account_invoice
+msgid "Invoice"
+msgstr "Facture"
+
+#. module: eagle_project
+#: model:ir.model,name:eagle_project.model_account_invoice_line
+msgid "Invoice Line"
+msgstr "Ligne de facture"
+
+#. module: eagle_project
+#: model:ir.ui.view,arch_db:eagle_project.eagle_project_view_contract_form
+msgid "Invoice(s)"
+msgstr "Facture(s)"
+
+#. module: eagle_project
+#: code:addons/eagle_project/models/contracts.py:152
+#, python-format
+msgid "Invoices"
+msgstr "Factures"
+
+#. module: eagle_project
+#: model:ir.model.fields,field_description:eagle_project.field_eagle_contract_invoices_count
+msgid "Invoices count"
+msgstr "Nb de factures"
+
+#. module: eagle_project
+#: model:ir.model,name:eagle_project.model_account_move_line
+msgid "Journal Item"
+msgstr "Écriture comptable"
+
+#. module: eagle_project
+#: model:ir.model,name:eagle_project.model_crm_lead
+msgid "Lead/Opportunity"
+msgstr "Piste/opportunité"
+
+#. module: eagle_project
+#: model:ir.model.fields,field_description:eagle_project.field_eagle_contract_leads_count
+msgid "Leads count"
+msgstr "Nb de prospects"
+
+#. module: eagle_project
+#: model:ir.model.fields,field_description:eagle_project.field_eagle_contract_lines_not_recurring
+msgid "Lines not recurring"
+msgstr "Lignes non récurrentes"
+
+#. module: eagle_project
+#: model:ir.model.fields,field_description:eagle_project.field_eagle_contract_lines_recurring
+msgid "Lines recurring"
+msgstr "Lignes récurrentes"
+
+#. module: eagle_project
+#: model:ir.model.fields,field_description:eagle_project.field_eagle_config_params_inv_close_cnt_if_inv_payed
+#: model:ir.model.fields,field_description:eagle_project.field_eagle_config_settings_inv_close_cnt_if_inv_payed
+msgid "May close a contract only if all invoices are paid"
+msgstr "Fermeture d'un contrat seulement si toutes les factures sont payées"
+
+#. module: eagle_project
+#: code:addons/eagle_project/models/sale_subscriptions.py:53
+#, python-format
+msgid "New"
+msgstr "Nouveau"
+
+#. module: eagle_project
+#: model:ir.ui.view,arch_db:eagle_project.eagle_view_crm_opport_form_inherit
+msgid "New File"
+msgstr "Nouveau dossier"
+
+#. module: eagle_project
+#: model:ir.ui.view,arch_db:eagle_project.eagle_view_active_subcr_lines_filter
+msgid "Next action date"
+msgstr "Date d'action suivante"
+
+#. module: eagle_project
+#: model:ir.model.fields,field_description:eagle_project.field_eagle_contract_non_recurring_total
+msgid "Non-recurring Subtotal"
+msgstr "Sous-total non récurrent"
+
+#. module: eagle_project
+#: model:ir.ui.view,arch_db:eagle_project.eagle_project_view_contract_form
+msgid "Non-recurring subtotal:"
+msgstr "Sous-total non récurrent:"
+
+#. module: eagle_project
+#: model:ir.model.fields,field_description:eagle_project.field_sale_subscription_line_eagle_note
+msgid "Note"
+msgstr "Remarque"
+
+#. module: eagle_project
+#: code:addons/eagle_project/models/contracts.py:138
+#, python-format
+msgid "Opportunities"
+msgstr "Opportunités"
+
+#. module: eagle_project
+#: model:ir.model.fields,field_description:eagle_project.field_eagle_contract_opportunity
+msgid "Opportunity"
+msgstr "Opportunité"
+
+#. module: eagle_project
+#: model:ir.ui.view,arch_db:eagle_project.eagle_project_view_contract_form
+msgid "Opportunity(ies)"
+msgstr "Opportunité(s)"
+
+#. module: eagle_project
+#: model:ir.model.fields,field_description:eagle_project.field_sale_order_line_date_order
+msgid "Order Date"
+msgstr "Date de la commande"
+
+#. module: eagle_project
+#: model:ir.ui.view,arch_db:eagle_project.eagle_project_view_contract_form
+msgid "Ordered Qty"
+msgstr "Qté commandée"
+
+#. module: eagle_project
+#: model:ir.actions.act_window,name:eagle_project.eagle_action_contract_2_passed_invoices
+msgid "Passed invoices"
+msgstr "Factures passées"
+
+#. module: eagle_project
+#: model:ir.actions.act_window,name:eagle_project.eagle_action_contract_2_passed_sales
+msgid "Passed sales"
+msgstr "Ventes passées"
+
+#. module: eagle_project
+#: model:ir.model.fields,field_description:eagle_project.field_eagle_contract_past_sale_order_lines
+#: model:ir.ui.view,arch_db:eagle_project.eagle_project_view_contract_form
+msgid "Past Sale Order Lines"
+msgstr "Lignes de vente traitées"
+
+#. module: eagle_project
+#: model:ir.model.fields,field_description:eagle_project.field_eagle_contract_past_sale_orders
+msgid "Past Sale Orders"
+msgstr "Ventes traitées"
+
+#. module: eagle_project
+#: model:ir.ui.view,arch_db:eagle_project.eagle_project_view_contract_form
+msgid "Picking(s)"
+msgstr "Livraison(s)"
+
+#. module: eagle_project
+#: code:addons/eagle_project/models/contracts.py:190
+#, python-format
+msgid "Pickings"
+msgstr "Pickings"
+
+#. module: eagle_project
+#: model:ir.model.fields,field_description:eagle_project.field_eagle_contract_picks_count
+msgid "Pickings count"
+msgstr "Nb de livraisons"
+
+#. module: eagle_project
+#: code:addons/eagle_project/models/moves.py:61
+#, python-format
+msgid "Please define a sequence on the journal."
+msgstr "Veuillez définir une séquence sur le journal."
+
+#. module: eagle_project
+#: model:ir.model,name:eagle_project.model_procurement_order
+msgid "Procurement"
+msgstr "Approvisionnement"
+
+#. module: eagle_project
+#: model:ir.ui.view,arch_db:eagle_project.eagle_view_active_subcr_lines_filter
+msgid "Product"
+msgstr "Article"
+
+#. module: eagle_project
+#: model:ir.model,name:eagle_project.model_project_issue
+msgid "Project Issue"
+msgstr "Incident"
+
+#. module: eagle_project
+#: model:ir.model.fields,field_description:eagle_project.field_eagle_contract_recurring_total
+msgid "Recurring Subtotal"
+msgstr "Sous-total récurrent"
+
+#. module: eagle_project
+#: model:ir.ui.view,arch_db:eagle_project.eagle_project_view_contract_form
+msgid "Recurring subtotal:"
+msgstr "Sous-total récurrent:"
+
+#. module: eagle_project
+#: model:ir.ui.view,arch_db:eagle_project.eagle_project_view_contract_form
+msgid "Remaining Hours"
+msgstr "Heures restantes"
+
+#. module: eagle_project
+#: model:ir.model,name:eagle_project.model_sale_subscription
+msgid "Sale Subscription"
+msgstr "Abonnement"
+
+#. module: eagle_project
+#: model:ir.model.fields,field_description:eagle_project.field_eagle_contract_sale_subscription_line
+#: model:ir.ui.view,arch_db:eagle_project.eagle_project_view_contract_form
+msgid "Sale Subscription Lines"
+msgstr "Lignes de contrat"
+
+#. module: eagle_project
+#: model:ir.model.fields,field_description:eagle_project.field_eagle_contract_sale_subscriptions
+#: model:ir.ui.view,arch_db:eagle_project.eagle_project_view_contract_form
+msgid "Sale Subscriptions"
+msgstr "Contrats"
+
+#. module: eagle_project
+#: model:ir.ui.view,arch_db:eagle_project.eagle_project_view_contract_form
+msgid "Sale(s)"
+msgstr "Vente(s)"
+
+#. module: eagle_project
+#: code:addons/eagle_project/models/contracts.py:166
+#, python-format
+msgid "Sales"
+msgstr "Ventes"
+
+#. module: eagle_project
+#: model:ir.model,name:eagle_project.model_sale_advance_payment_inv
+msgid "Sales Advance Payment Invoice"
+msgstr "Facture de paiement d'avance"
+
+#. module: eagle_project
+#: model:ir.model,name:eagle_project.model_sale_order
+msgid "Sales Order"
+msgstr "Bon de commande"
+
+#. module: eagle_project
+#: model:ir.model,name:eagle_project.model_sale_order_line
+msgid "Sales Order Line"
+msgstr "Ligne de bons de commande"
+
+#. module: eagle_project
+#: model:ir.model.fields,field_description:eagle_project.field_eagle_contract_sales_count
+msgid "Sales count"
+msgstr "Nb de ventes"
+
+#. module: eagle_project
+#: model:ir.ui.view,arch_db:eagle_project.eagle_view_active_subcr_lines_filter
+msgid "Search subscription lines"
+msgstr "Rechercher des lignes de contrat"
+
+#. module: eagle_project
+#: model:ir.model,name:eagle_project.model_eagle_setup_prj_sched
+msgid "Setup an Eagle Project Scheduler"
+msgstr "Configurer un planificateur de Eagle Project"
+
+#. module: eagle_project
+#: model:ir.ui.view,arch_db:eagle_project.eagle_project_view_contract_form
+msgid "Spent Hours"
+msgstr "Heures consommées"
+
+#. module: eagle_project
+#: model:ir.model.fields,field_description:eagle_project.field_eagle_contract_position_cl_start_date
+msgid "Start date"
+msgstr "Date de début"
+
+#. module: eagle_project
+#: model:ir.model.fields,field_description:eagle_project.field_eagle_contract_position_stock_disposal_date
+msgid "Stock Disposal Date"
+msgstr "Date d'élimination des stocks"
+
+#. module: eagle_project
+#: model:ir.model.fields,field_description:eagle_project.field_sale_subscription_sale_subscr_name
+msgid "Subscription Name"
+msgstr "Nom de l'abonnement"
+
+#. module: eagle_project
+#: model:ir.model.fields,field_description:eagle_project.field_eagle_contract_account_in_inv_lines
+msgid "Supplier Invoice Lines"
+msgstr "Lignes de facture client"
+
+#. module: eagle_project
+#: model:ir.model.fields,field_description:eagle_project.field_eagle_contract_account_in_invoices
+msgid "Supplier Invoices"
+msgstr "Factures fournisseur"
+
+#. module: eagle_project
+#: model:ir.model,name:eagle_project.model_project_task
+msgid "Task"
+msgstr "Tâche"
+
+#. module: eagle_project
+#: model:ir.ui.view,arch_db:eagle_project.eagle_project_view_contract_form
+msgid "Task(s)"
+msgstr "Tâche(s)"
+
+#. module: eagle_project
+#: code:addons/eagle_project/models/contracts.py:124
+#: model:ir.model.fields,field_description:eagle_project.field_eagle_contract_project_tasks
+#: model:ir.ui.view,arch_db:eagle_project.eagle_project_view_contract_form
+#, python-format
+msgid "Tasks"
+msgstr "Tâches"
+
+#. module: eagle_project
+#: model:ir.model.fields,field_description:eagle_project.field_eagle_contract_tasks_count
+msgid "Tasks count"
+msgstr "Nb de Tâches"
+
+#. module: eagle_project
+#: model:ir.model.fields,field_description:eagle_project.field_eagle_contract_position_cl_taxes
+msgid "Tax Amount"
+msgstr "Montant de la taxe"
+
+#. module: eagle_project
+#: model:ir.model.fields,field_description:eagle_project.field_eagle_contract_position_cl_amount
+msgid "Tax-free Amount"
+msgstr "Montant sans taxes"
+
+#. module: eagle_project
+#: model:ir.model.fields,field_description:eagle_project.field_eagle_contract_position_tax_id
+msgid "Taxes"
+msgstr "Taxes"
+
+#. module: eagle_project
+#: model:ir.ui.view,arch_db:eagle_project.eagle_project_view_contract_form
+msgid "Timesheet Activities"
+msgstr "Activités de la feuille de temps"
+
+#. module: eagle_project
+#: model:ir.model,name:eagle_project.model_eagle_config_settings
+msgid "eagle.config.settings"
+msgstr "eagle.config.settings"
+
+#. module: eagle_project
+#: model:ir.model,name:eagle_project.model_ir_sequence
+msgid "ir.sequence"
+msgstr "ir.sequence"
+
