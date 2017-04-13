@@ -40,6 +40,9 @@
     border: 1px solid LightSteelBlue !important;
     border-bottom: 2px solid LightSteelBlue !important;
 }
+.eagle_reporting_table .layout_category_title td{
+    padding-left: 8px !important;
+}
 
 /* table lines */
 .eagle_reporting_table .eagle_table_lines td{

@@ -136,7 +136,7 @@
                                 </t>
 
                                 <tr class="active layout_category_title" t-attf-style="{{style_for_cat}}">
-                                    <td t-attf-colspan="{{number_columns}}">&amp;bull;
+                                    <td t-attf-colspan="{{number_columns}}">
                                         <t t-esc="layout_category['name']"/>
                                     </td>
                                 </tr>
