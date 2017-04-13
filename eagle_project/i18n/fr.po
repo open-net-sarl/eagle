@@ -497,6 +497,11 @@ msgstr "Taxes"
 msgid "Timesheet Activities"
 msgstr "Activités de la feuille de temps"
 
+#. module: sale_contract
+#: model:ir.model.fields,field_description:sale_contract.field_sale_subscription_line_sold_quantity
+msgid "Sold quantity"
+msgstr "Quantité vendue"
+
 #. module: eagle_project
 #: model:ir.model,name:eagle_project.model_eagle_config_settings
 msgid "eagle.config.settings"

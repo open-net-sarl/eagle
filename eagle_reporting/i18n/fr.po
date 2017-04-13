@@ -53,12 +53,22 @@ msgstr "Description"
 #. module: eagle_reporting
 #: model:ir.model.fields,help:eagle_reporting.field_eagle_contract_do_page_break
 msgid "Do a page break between recurring and non recurring subscriptions in the report"
-msgstr "Faire une saut de page entre les abonnements récurrents et non récurrents dans le rapport"
+msgstr "Faire un saut de page entre les abonnements récurrents et non récurrents dans le rapport"
 
 #. module: eagle_reporting
 #: model:ir.model.fields,field_description:eagle_reporting.field_eagle_contract_do_page_break
 msgid "Do a page break between subscriptions types"
-msgstr "Faire une saut de page entres types d'abonnements"
+msgstr "Faire un saut de page entre les types d'abonnements"
+
+#. module: eagle_reporting
+#: model:ir.model.fields,field_description:eagle_reporting.field_sale_subscription_line_page_break
+msgid "Page Break"
+msgstr "Saut de Page"
+
+#. module: eagle_reporting
+#: model:ir.model.fields,help:eagle_reporting.field_sale_subscription_line_page_break
+msgid "Do a page break after this"
+msgstr "Faire un saut de page après cela"
 
 #. module: eagle_reporting
 #: model:ir.model,name:eagle_reporting.model_eagle_contract
