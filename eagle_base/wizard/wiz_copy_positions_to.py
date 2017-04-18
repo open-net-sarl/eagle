@@ -46,11 +46,11 @@ class wiz_copy_positions_to(models.TransientModel):
         comodel_name='eagle.contract', 
         string='Copy',
         required=True, 
-        default=lambda s,c,u,ct: ct.get('active_id', False)),
+        default=lambda s,c,u,ct: ct.get('active_id', False))
     dst_id = fields.Many2one(
         comodel_name='eagle.contract', 
         string='To', 
-        required=True),
+        required=True)
     
 
     def do_it(self):
