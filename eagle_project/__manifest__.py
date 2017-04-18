@@ -24,6 +24,7 @@
         'sale_timesheet',
         'ons_productivity_sol_req',
         'ons_productivity_subscriptions_adv',
+        'ons_productivity_layout',
         'account_asset',
         'sale_contract_asset'
     ],
