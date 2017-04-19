@@ -49,7 +49,7 @@ class wiz_rebuild_pos_seq(models.TransientModel):
     step = fields.Integer(
         string='Step', 
         required=True,
-        default=lambda *a: 10),
+        default=lambda *a: 10)
 
     def do_it(self, cr, uid, ids, context=None):
         if not context:
