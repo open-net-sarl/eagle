@@ -189,10 +189,6 @@ class EagleContractPos(models.Model):
     cl_total = fields.Float(compute='_amount_line_base', string='Total', digits=dp.get_precision('Sale Price'))
     discount = fields.Float('Discount')
     notes = fields.Text('Notes', translate=True)
-    property_ids = fields.Many2many(
-        'mrp.property', 'position_property_rel', 'contract_id', 'property_id',
-        string='Properties',
-        copy=False)
     progr_rate = fields.Float('Rate [%]')
     progr_invoiced = fields.Boolean('Invoiced')
     is_invoicable = fields.Boolean(compute='_get_is_invoicable', string='Is invoicable?', store=True)
