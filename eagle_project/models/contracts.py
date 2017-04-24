@@ -213,7 +213,8 @@ class EagleContract(models.Model):
         res = super(EagleContract, self).create(vals)
 
         rec = self.env['account.analytic.account'].create({
-            'name': res.name
+            'name': res.name,
+            'code': '',
             })
         res.default_analytic_acc = rec.id
 
