@@ -6,7 +6,7 @@
 #  Created by cyp@open-net.ch
 #  MIG[10.0] by lfr@open-net.ch
 #
-#  Copyright (c) 2014-TODAY Open-Net Ltd. <http://www.open-net.ch>
+#  Copyright (c) 2014-TODAY Open Net Sàrl. <http://www.open-net.ch>
 ##############################################################################
 
 from odoo import _, api, fields, models
@@ -63,6 +63,10 @@ class EagleContract(models.Model):
     recurring_total = fields.Float(
         string="Recurring Subtotal",
         compute='_get_recurring_price')
+
+    default_analytic_acc = fields.Many2one(
+        'account.analytic.account',
+        string="Default Analytic Account")
 
     @api.multi
     def _get_non_recurring_price(self):
@@ -201,6 +205,19 @@ class EagleContract(models.Model):
                 cnt.sale_subscription_line.write({'is_active': False})
 
         return ret
+
+
+    # create analytic account when creating
+    @api.model
+    def create(self, vals):
+        res = super(EagleContract, self).create(vals)
+
+        rec = self.env['account.analytic.account'].create({
+            'name': res.name
+            })
+        res.default_analytic_acc = rec.id
+
+        return res
 
 
 class EagleContractPos(models.Model):

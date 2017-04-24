@@ -43,6 +43,13 @@ class AccountAnalyticLine(models.Model):
 class AccountAnalyticAccount(models.Model):
     _inherit = 'account.analytic.account'
 
+    eagle_contract_id = fields.One2many(
+        'eagle.contract',
+        'default_analytic_acc',
+        string="Eagle contract ID",
+        required=False)
+
+
     @api.multi
     def projects_action(self):
         project_ids = sum([account.project_ids.ids for account in self], [])
@@ -57,5 +64,41 @@ class AccountAnalyticAccount(models.Model):
         if len(project_ids) == 1:
             result['views'] = [(False, "form")]
             result['res_id'] = project_ids[0]
+
+        return result
+
+    @api.model
+    def _default_analytic_account_code(self):
+        code = ''
+        if self._context.get('default_eagle_contract', False):
+            contract = self.env['eagle.contract'].browse(self._context['default_eagle_contract'])
+            if contract:
+                for subscr in contract.sale_subscriptions:
+                    code = subscr.code
+                    break
+        if not code:
+            code = self.env['ir.sequence'].next_by_code('sale.subscription') or 'New'
+
+        return code
+
+    code = fields.Char(string='Reference', index=True, track_visibility='onchange', default=_default_analytic_account_code)
+
+    
+
+    @api.multi
+    def subscriptions_action(self):
+        accounts = self
+        subscription_ids = sum([account.subscription_ids.ids for account in accounts], [])
+        result = {
+            "type": "ir.actions.act_window",
+            "res_model": "sale.subscription",
+            "views": [[False, "tree"], [False, "form"]],
+            "domain": [["id", "in", subscription_ids]],
+            "context": {"create": False},
+            "name": "Subscriptions",
+        }
+        if len(subscription_ids) == 1:
+            result['views'] = [(False, "form")]
+            result['res_id'] = subscription_ids[0]
 
         return result

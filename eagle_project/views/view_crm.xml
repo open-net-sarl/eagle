@@ -32,13 +32,13 @@
                                       'default_customer_id': default_file_partner,
                                       'default_name': name,
                                       'default_opportunity': active_id}"
-                            attrs="{'invisible': ['|',('probability', '=', 0),('eagle_files_ids','!=',[])]}"/>
+                            attrs="{'invisible': ['|',('probability', '=', 0)]}"/>
                         <button string="New File" name="%(ons_action_eagle_file_new)d" type="action"
                             context="{'search_default_customer_id': default_file_partner,
                                       'default_customer_id': default_file_partner,
                                       'default_name': name,
                                       'default_opportunity': active_id}"
-                            attrs="{'invisible': ['|',('probability', '&gt;', 0),('eagle_files_ids','!=',[])]}"/>
+                            attrs="{'invisible': ['|',('probability', '&gt;', 0)]}"/>
                     </xpath>
                     <div name="button_box" position="inside">
                         <button class="oe_stat_button"
@@ -49,10 +49,6 @@
                             <field name="eagle_files_count" widget="statinfo" string="File(s)"/>
                         </button>
                     </div>
-                    <field name="team_id" position="after">
-                        <field name="eagle_files_ids"  widget="many2many_tags"/>
-                        <field name="eagle_files_lst" invisible="1"/>
-                    </field>
                 </data>
 			</field>
 		</record>
@@ -64,7 +60,6 @@
 			<field name="priority" eval="17"/>
 			<field name="arch" type="xml">
 				<field name="company_currency" position="after">
-					<field name="eagle_files_ids"/>
 					<field name="eagle_files_lst"/>
 					<field name="eagle_files_count"/>
 				</field>

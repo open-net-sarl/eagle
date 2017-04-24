@@ -47,6 +47,11 @@ class SaleSubscription(models.Model):
                 date = contract.date_end
         return date
 
+    @api.model
+    def _default_analytic_account(self):
+        contract = self.env['eagle.contract'].browse(self._context['default_eagle_contract'])
+        return contract.default_analytic_acc
+
     @api.multi
     def _compute_sale_subscr_name(self):
         for subs in self:
@@ -57,6 +62,7 @@ class SaleSubscription(models.Model):
     code = fields.Char(default="New")
     date_start = fields.Date(default=_default_date_start)
     date = fields.Date(default=_default_date)
+    analytic_account_id = fields.Many2one(default=_default_analytic_account)
 
     # ---------- Instances management
 
@@ -244,45 +250,3 @@ class SaleSubscriptionLine(models.Model):
                         })
 
         return res
-
-class AccountAnalyticAccount(models.Model):
-    _inherit = 'account.analytic.account'
-
-    # ---------- Fields management
-
-    @api.model
-    def _default_analytic_account_code(self):
-        code = ''
-        if self._context.get('default_eagle_contract', False):
-            contract = self.env['eagle.contract'].browse(self._context['default_eagle_contract'])
-            if contract:
-                for subscr in contract.sale_subscriptions:
-                    code = subscr.code
-                    break
-        if not code:
-            code = self.env['ir.sequence'].next_by_code('sale.subscription') or 'New'
-
-        return code
-
-    code = fields.Char(string='Reference', index=True, track_visibility='onchange', default=_default_analytic_account_code)
-
-    # ---------- Interface management
-
-    @api.multi
-    def subscriptions_action(self):
-        accounts = self
-        subscription_ids = sum([account.subscription_ids.ids for account in accounts], [])
-        result = {
-            "type": "ir.actions.act_window",
-            "res_model": "sale.subscription",
-            "views": [[False, "tree"], [False, "form"]],
-            "domain": [["id", "in", subscription_ids]],
-            "context": {"create": False},
-            "name": "Subscriptions",
-        }
-        if len(subscription_ids) == 1:
-            result['views'] = [(False, "form")]
-            result['res_id'] = subscription_ids[0]
-
-        return result
-
