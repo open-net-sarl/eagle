@@ -53,9 +53,7 @@ class CrmLead(models.Model):
 
     @api.multi
     def redirect_eagle_file_view(self):
-        lead = self.browse()
         res = self.env['ir.actions.act_window'].for_xml_id( 'eagle_base', 'eagle_action_contract_filter_all_tree')
-        res['domain'] = [('id','in',[x.id for x in lead.eagle_files_ids])]
-
+        res['domain'] = [('id','in', self._context['active_ids'])]
         return res
 

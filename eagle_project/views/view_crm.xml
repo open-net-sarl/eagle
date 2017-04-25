@@ -4,19 +4,22 @@
   Module: eagle_project
 
   Created by cyp@open-net.ch
+  MIG[10.0] by lfr@open-net.ch
 
-  Copyright (c) 2016-TODAY Open-Net Ltd. All rights reserved.
+  Copyright (c) 2016-TODAY Open Net Sàrl. All rights reserved.
 -->
-<openerp>
+<odoo>
 	<data>
 
-        <record model="ir.actions.act_window" id="ons_action_eagle_file_new">
-            <field name="name">File</field>
-            <field name="res_model">eagle.contract</field>
-            <field name="view_mode">form,tree,graph</field>
-            <field name="domain">[('opportunity_id', '=', active_id)]</field>
-            <field name="context">{'search_default_opportunity_id': active_id, 'default_opportunity_id': active_id}</field>
-        </record>
+      <record model="ir.actions.act_window" id="ons_action_eagle_file_new">
+          <field name="name">File</field>
+          <field name="res_model">eagle.contract</field>
+          <field name="view_mode">form,tree,graph</field>
+          <field name="domain">[('opportunity_id', '=', active_id)]</field>
+          <field name="context">{'search_default_opportunity_id': active_id, 'default_opportunity_id': active_id}</field>
+      </record>
+
+    
 
 		<record model="ir.ui.view" id="eagle_view_crm_opport_form_inherit">
 			<field name="name">Eagle Project: crm opportunity form</field>
@@ -75,4 +78,4 @@
 		</record>
 
 	</data>
-</openerp>
+</odoo>
