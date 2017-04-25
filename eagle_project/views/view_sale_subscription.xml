@@ -178,5 +178,16 @@
                 </xpath>
             </field>
         </record>
+        <record model="ir.ui.view" id="eagle_view_sale_order_form2">
+            <field name="name">Eagle Project: rm subscription field</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="priority" eval="30"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='subscription_id']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+            </field>
+        </record>
     </data>
 </odoo>
