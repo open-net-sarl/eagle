@@ -107,6 +107,8 @@ class EagleContractBase(models.Model):
         to_do = []
         for cnt in self:
             if cnt.state == 'confirm':
+                for subs in cnt.sale_subscriptions:
+                    subs.state = 'open'
                 cnt.action_contract_production()
 
         return True
