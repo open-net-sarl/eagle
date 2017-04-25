@@ -23,3 +23,5 @@ info@open-net.ch
 
 V8.0: 2015-06-28
     - Scratch writing
+
+Icon made by Freepik from www.flaticon.com 

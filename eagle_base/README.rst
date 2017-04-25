@@ -31,3 +31,5 @@ V9.2: 2016-09-19/Cyp
 
 V9.6: 2016-11-15/Cyp
     * Translation updated
+
+Icon made by Freepik from www.flaticon.com

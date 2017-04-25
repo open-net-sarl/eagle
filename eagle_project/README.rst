@@ -42,3 +42,5 @@ V9.2: 2016-09-19/Cyp
     * New dependency: sale_timesheet
     * New: timesheet button hidden in sale order form (linked to the analytic account instead of only the sale)
     * Correction: now displays three qty fields in sale order line when coming from an Eagle file
+
+Icon made by Freepik from www.flaticon.com 
