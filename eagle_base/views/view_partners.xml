@@ -8,10 +8,10 @@
 
   Copyright (c) 2014 Open-Net Ltd. All rights reserved.
 -->
-<openerp>
+<odoo>
 	<data>
         <record id="eagle_contract_action_res_partner" model="ir.actions.act_window">
-            <field name="context">{'search_default_partner_id': [active_id], 'default_partner_id': active_id}</field>
+            <field name="context">{'search_default_customer_id': [active_id], 'default_customer_id': active_id}</field>
             <field name="name">Contracts</field>
             <field name="res_model">eagle.contract</field>
         </record>
@@ -22,8 +22,7 @@
             <field name="priority" eval="22"/>
             <field name="arch" type="xml">
                 <xpath expr="//div[@name='button_box']" position="inside">
-                    <button class="oe_stat_button" type="action" name="%(eagle_base.eagle_contract_action_res_partner)d"
-                        icon="fa-briefcase">
+                    <button class="oe_stat_button" type="action" name="%(eagle_base.eagle_contract_action_res_partner)d" icon="fa-briefcase" >
                         <field string="Contracts" name="eagle_contract_count" widget="statinfo"/>
                     </button>
                 </xpath>
@@ -46,4 +45,4 @@
 		</record>
 
     </data>
-</openerp>
+</odoo>
