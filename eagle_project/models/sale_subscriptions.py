@@ -49,8 +49,12 @@ class SaleSubscription(models.Model):
 
     @api.model
     def _default_analytic_account(self):
-        contract = self.env['eagle.contract'].browse(self._context['default_eagle_contract'])
-        return contract.default_analytic_acc
+        analiytic_acc = ''
+        if self._context.get('default_eagle_contract', False):
+            contract = self.env['eagle.contract'].browse(self._context['default_eagle_contract'])
+            if contract:
+                analiytic_acc = contract.default_analytic_acc
+        return analiytic_acc
 
     @api.multi
     def _compute_sale_subscr_name(self):
