@@ -12,6 +12,7 @@ from odoo import models, fields, api
 from odoo.tools.translate import _
 from odoo.exceptions import UserError
 from datetime import datetime, timedelta
+from dateutil.relativedelta import relativedelta
 
 import logging
 _logger = logging.getLogger(__name__)
