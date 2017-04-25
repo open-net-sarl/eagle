@@ -22,8 +22,8 @@ class ProcurementOrder(models.Model):
     @api.multi
     def _create_service_task(self):
         new_task = super(ProcurementOrder, self)._create_service_task()
-        if new_task:
-            new_task.eagle_contract = procurement.eagle_contract or False
-
+        for procurement in self:
+            if new_task:
+                new_task.eagle_contract = procurement.eagle_contract or False
         return new_task
 
