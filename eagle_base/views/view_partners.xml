@@ -12,7 +12,7 @@
 	<data>
         <record id="eagle_contract_action_res_partner" model="ir.actions.act_window">
             <field name="context">{'search_default_customer_id': [active_id], 'default_customer_id': active_id}</field>
-            <field name="name">Contracts</field>
+            <field name="name">Files</field>
             <field name="res_model">eagle.contract</field>
         </record>
         <record model="ir.ui.view" id="res_partner_view_inherit_sale_contract">
@@ -23,7 +23,7 @@
             <field name="arch" type="xml">
                 <xpath expr="//div[@name='button_box']" position="inside">
                     <button class="oe_stat_button" type="action" name="%(eagle_base.eagle_contract_action_res_partner)d" icon="fa-briefcase" >
-                        <field string="Contracts" name="eagle_contract_count" widget="statinfo"/>
+                        <field string="Files" name="eagle_contract_count" widget="statinfo"/>
                     </button>
                 </xpath>
             </field>

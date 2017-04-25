@@ -1,247 +1,51 @@
-# French translation for eagle_base
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* eagle_base
 #
-
 msgid ""
 msgstr ""
-"Project-Id-Version: openobject-addons\n"
-"POT-Creation-Date: 2016-05-31 11:45+0000\n"
-"PO-Revision-Date: 2016-05-31 11:45+0000\n"
-"Last-Translator: <cyp@open-net.ch>\n"
+"Project-Id-Version: Odoo Server 10.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-04-25 12:18+0000\n"
+"PO-Revision-Date: 2017-04-25 12:18+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
 
 #. module: eagle_base
-#: code:addons/eagle_base/models/contracts.py:46
+#: code:addons/eagle_base/models/contracts.py:306
 #, python-format
-msgid "New"
-msgstr "Nouveau"
+msgid " (copy)"
+msgstr " (copie)"
 
 #. module: eagle_base
-#: code:addons/eagle_base/config/models/config.py:71
-#, python-format
-msgid "Forbidden!"
-msgstr "Interdit!"
+#: model:ir.actions.act_window,help:eagle_base.eagle_action_module_tree
+msgid "<b>No module found!</b>"
+msgstr "<b>Pas de module trouvé !</b>"
 
 #. module: eagle_base
-#: code:addons/eagle_base/config/models/config.py:71
-#, python-format
-msgid "Eagle configuration must have one and only one record."
-msgstr "Un seul enregistrement pour la configuration de Eagle."
+#: model:ir.model.fields,field_description:eagle_base.field_eagle_contract_message_needaction
+msgid "Action Needed"
+msgstr "A besoin d'une action"
 
 #. module: eagle_base
-#: model:ir.model,name:eagle_base.model_eagle_config_params
-msgid "Eagle Configuration Parameters"
-msgstr "Paramètres de configuration de Eagle"
+#: model:ir.model.fields,field_description:eagle_base.field_eagle_contract_position_is_active
+msgid "Active"
+msgstr "Actif"
 
 #. module: eagle_base
-#: model:ir.model.fields,field_description:eagle_base.field_eagle_config_params_name
-#: model:ir.model.fields,field_description:eagle_base.field_eagle_config_settings_name
-msgid "Name"
-msgstr "Nom"
+#: model:ir.ui.menu,name:eagle_base.eagle_menu_contract_pos_current_sales
+msgid "Active recurrences"
+msgstr "Récurrences actives"
 
 #. module: eagle_base
-#: model:ir.model.fields,field_description:eagle_base.field_eagle_config_params_use_members_list
-#: model:ir.model.fields,field_description:eagle_base.field_eagle_config_settings_use_members_list
-msgid "Uses members list"
-msgstr "Utiliser la liste des membres"
-
-#. module: eagle_base
-#: model:ir.model.fields,field_description:eagle_base.field_eagle_config_params_use_partners_list
-#: model:ir.model.fields,field_description:eagle_base.field_eagle_config_settings_use_partners_list
-msgid "Uses partners list"
-msgstr "Utiliser la liste des partenaires"
-
-#. module: eagle_base
-#: model:ir.model.fields,field_description:eagle_base.field_eagle_config_params_use_partners_roles
-#: model:ir.model.fields,field_description:eagle_base.field_eagle_config_settings_use_partners_roles
-msgid "Uses partners roles"
-msgstr "Utiliser les rôles des partenaires"
-
-#. module: eagle_base
-#: model:ir.model.fields,field_description:eagle_base.field_eagle_config_params_auto_production_state
-#: model:ir.model.fields,field_description:eagle_base.field_eagle_config_settings_auto_production_state
-msgid Automatic 'Production state' mode?""
-msgstr "Passage automatique à l'état 'Production'"
-
-#. module: eagle_base
-#: model:ir.model.fields,field_description:eagle_base.field_eagle_config_params_close_to_draft
-#: model:ir.model.fields,field_description:eagle_base.field_eagle_config_settings_close_to_draft
-msgid "Can re-open a contract?"
-msgstr "Possibilité de ré-ouvrir un contrat"
-
-#. module: eagle_base
-#: model:ir.model.fields,field_description:eagle_base.field_eagle_config_params_use_cn_seq
-#: model:ir.model.fields,field_description:eagle_base.field_eagle_config_settings_use_cn_seq
-msgid "Use the Eagle File sequences"
-msgstr "Utiliser la séquence des dossiers Eagle"
-
-#. module: eagle_base
-#: model:ir.model.fields,field_description:eagle_base.field_eagle_config_params_date_format
-#: model:ir.model.fields,field_description:eagle_base.field_eagle_config_settings_date_format
-msgid "Customized date format"
-msgstr "Format personnalisé pour les dates"
-
-#. module: eagle_base
-#: model:ir.model.fields,field_description:eagle_base.field_eagle_config_params_date_format
-#: model:ir.model.fields,field_description:eagle_base.field_eagle_config_settings_date_format
-msgid "Customized date format"
-msgstr "Format personnalisé pour les dates"
-
-#. module: eagle_base
-#: model:ir.ui.view,arch_db:eagle_base.eagle_view_contract_form
-#: model:ir.ui.view,arch_db:eagle_base.eagle_view_config_settings
-msgid "Partners roles"
-msgstr "Rôle des partenaires"
-
-#. module: eagle_base
-#: model:ir.ui.view,arch_db:eagle_base.eagle_view_contract_form
-msgid "Stakeholders"
-msgstr "Intervenants"
-
-#. module: eagle_base
-#: model:ir.ui.view,arch_db:eagle_base.eagle_view_contract_form
-msgid "References"
-msgstr "Références"
-
-#. module: eagle_base
-#: model:ir.ui.view,arch_db:eagle_base.eagle_view_contract_form
-msgid "Calendar"
-msgstr "Calendrier"
-
-#. module: eagle_base
-#: model:ir.ui.view,arch_db:eagle_base.eagle_view_config_settings
-msgid "Eagle Settings"
-msgstr "Réglages Eagle"
-
-#. module: eagle_base
-#: model:ir.ui.menu,name:eagle_base.eagle_menu_contracts_roots
-msgid "Customer files"
-msgstr "Dossiers clients"
-
-#. module: eagle_base
-#: model:ir.ui.view,arch_db:eagle_base.eagle_view_config_settings
-#: model:ir.actions.act_window,name:eagle_base.eagle_action_config
-#: model:ir.ui.menu,name:eagle_base.eagle_menu_eagle_settings
-msgid "Files Management"
-msgstr "Gestion des dossiers"
-
-#. module: eagle_base
-#: model:ir.ui.view,arch_db:eagle_base.eagle_view_config_settings
-#: model:ir.ui.view,arch_db:eagle_base.eagle_view_config_settings
-msgid "Apply"
-msgstr "Appliquer"
-
-#. module: eagle_base
-#: model:ir.ui.view,arch_db:eagle_base.eagle_view_config_settings
-#: model:ir.ui.view,arch_db:eagle_base.eagle_view_config_settings
-msgid "Cancel"
-msgstr "Annuler"
-
-#. module: eagle_base
-#: model:ir.ui.view,arch_db:eagle_base.eagle_view_config_settings
-msgid "Interface"
-msgstr "Interface"
-
-#. module: eagle_base
-#: model:ir.ui.view,arch_db:eagle_base.eagle_view_config_settings
-msgid "Behavior"
-msgstr "Comportement"
-
-#. module: eagle_base
-#: model:ir.ui.view,arch_db:eagle_base.eagle_view_config_settings
-msgid "Instance management"
-msgstr "Gestion des instances"
-
-#. module: eagle_base
-#: model:ir.ui.menu,name:eagle_base.eagle_menu_eagle_views
-msgid "The Views"
-msgstr "Les vues"
-
-#. module: eagle_base
-#: model:ir.ui.menu,name:eagle_base.eagle_menu_views_contracts
-#: model:ir.actions.act_window,name:eagle_base.eagle_action_views_contracts
-msgid "The files"
-msgstr "Les dossiers"
-
-#. module: eagle_base
-#: model:ir.ui.menu,name:eagle_base.eagle_menu_views_all
 #: model:ir.actions.act_window,name:eagle_base.eagle_action_views_all
+#: model:ir.ui.menu,name:eagle_base.eagle_menu_views_all
 msgid "All Eagle"
 msgstr "Tout Eagle"
-
-#. module: eagle_base
-#: model:ir.ui.menu,name:eagle_base.eagle_menu_module_tree
-#: model:ir.actions.act_window,name:eagle_base.eagle_action_module_tree
-msgid "Open-Net modules"
-msgstr "Modules Open-Net"
-
-#. module: eagle_base
-#: model:ir.ui.menu,name:eagle_base.eagle_menu_ir_sequence
-#: model:ir.actions.act_window,name:eagle_base.eagle_action_ir_sequence
-msgid "The sequences"
-msgstr "Les séquences"
-
-#. module: eagle_base
-#: model:ir.ui.menu,name:eagle_base.eagle_menu_config
-msgid "Parameters"
-msgstr "Paramètres"
-
-#. module: eagle_base
-#: model:ir.ui.view,arch_db:eagle_base.eagle_view_contract_form
-msgid "Offer"
-msgstr "Offre"
-
-#. module: eagle_base
-#: model:ir.ui.view,arch_db:eagle_base.eagle_view_contract_form
-msgid "Confirmation"
-msgstr "Confirmation"
-
-#. module: eagle_base
-#: model:ir.ui.view,arch_db:eagle_base.eagle_view_contract_form
-msgid "Production"
-msgstr "Production"
-
-#. module: eagle_base
-#: model:ir.ui.view,arch_db:eagle_base.eagle_view_contract_form
-msgid "Close"
-msgstr "Clore"
-
-#. module: eagle_base
-#: model:ir.ui.view,arch_db:eagle_base.eagle_view_contract_form
-msgid "Cancel"
-msgstr "Annuler"
-
-#. module: eagle_base
-#: model:ir.ui.view,arch_db:eagle_base.eagle_view_contract_tree
-#: model:ir.actions.act_window,name:eagle_base.eagle_action_cust_2_contracts_list
-#: model:ir.actions.act_window,name:eagle_base.eagle_action_partner_2_contracts_list
-#: model:ir.ui.menu,name:eagle_base.eagle_menu_contracts_top
-#: model:ir.ui.menu,name:eagle_base.eagle_menu_contracts_root
-msgid "Files"
-msgstr "Dossiers"
-
-#. module: eagle_base
-#: model:ir.ui.menu,name:eagle_base.eagle_action_products_menu
-msgid "Product Variants"
-msgstr "Variantes d'articles"
-
-#. module: eagle_base
-#: model:ir.ui.menu,name:eagle_base.eagle_action_prod_cats_menu
-msgid "Product Categories"
-msgstr "Catégories d'articles"
-
-#. module: eagle_base
-#: model:ir.actions.act_window,name:eagle_base.eagle_action_product_recurrence_unit_view
-#: model:ir.ui.menu,name:eagle_base.eagle_action_product_recurrence_unit_menu
-msgid "Units of recurrence"
-msgstr "Unités de récurrence"
-
-#. module: eagle_base
-#: model:ir.ui.view,arch_db:eagle_base.eagle_view_contract_filter
-#: model:ir.ui.view,arch_db:eagle_base.eagle_view_contract_filter_no_cust
-msgid "Search files"
-msgstr "Rechercher des dossiers"
 
 #. module: eagle_base
 #: model:ir.actions.act_window,name:eagle_base.eagle_action_contract_filter_all_tree
@@ -250,34 +54,352 @@ msgid "All files"
 msgstr "Tous les dossiers"
 
 #. module: eagle_base
+#: model:ir.actions.act_window,name:eagle_base.eagle_action_contract_all_form
+#: model:ir.ui.menu,name:eagle_base.eagle_menu_contracts_all_form
+msgid "All files, by customer"
+msgstr "Tous les dossiers, par client"
+
+#. module: eagle_base
+#: code:addons/eagle_base/models/contracts.py:298
+#, python-format
+msgid "An already confirmed file can't be deleted!"
+msgstr "Un dossier déjà confirmé ne peut pas être effacé!"
+
+#. module: eagle_base
+#: model:ir.ui.view,arch_db:eagle_base.eagle_view_config_settings
+msgid "Apply"
+msgstr "Appliquer"
+
+#. module: eagle_base
+#: model:ir.model.fields,field_description:eagle_base.field_eagle_config_params_auto_production_state
+#: model:ir.model.fields,field_description:eagle_base.field_eagle_config_settings_auto_production_state
+msgid "Automatic 'Production state' mode?"
+msgstr "Passer automatiquement en mode production?"
+
+#. module: eagle_base
+#: model:ir.model.fields,help:eagle_base.field_eagle_contract_position_list_price
+msgid "Base price for computing the customer price."
+msgstr "Prix de base pour le calcul du prix client."
+
+#. module: eagle_base
+#: model:ir.ui.view,arch_db:eagle_base.eagle_view_config_settings
+msgid "Behavior"
+msgstr "Comportement"
+
+#. module: eagle_base
+#: model:ir.model.fields,field_description:eagle_base.field_eagle_contract_position_is_billable
+msgid "Billable?"
+msgstr "Facturé?"
+
+#. module: eagle_base
+#: model:ir.ui.view,arch_db:eagle_base.eagle_view_contract_form
+msgid "Calendar"
+msgstr "Calendrier"
+
+#. module: eagle_base
+#: model:ir.model.fields,field_description:eagle_base.field_eagle_config_params_close_to_draft
+#: model:ir.model.fields,field_description:eagle_base.field_eagle_config_settings_close_to_draft
+msgid "Can re-open a contract?"
+msgstr "Possible de ré-ouvrir un contrat ?"
+
+#. module: eagle_base
+#: model:ir.ui.view,arch_db:eagle_base.eagle_view_config_settings
+#: model:ir.ui.view,arch_db:eagle_base.eagle_view_contract_form
+msgid "Cancel"
+msgstr "Annuler"
+
+#. module: eagle_base
+#: selection:eagle.contract,state:0
+#: model:ir.ui.view,arch_db:eagle_base.eagle_view_contract_filter
+msgid "Canceled"
+msgstr "Annulé"
+
+#. module: eagle_base
+#: model:ir.ui.view,arch_db:eagle_base.eagle_view_contract_filter
+msgid "Category"
+msgstr "Catégorie"
+
+#. module: eagle_base
+#: model:ir.actions.act_window,help:eagle_base.eagle_action_contract_filter_my_form
+msgid "Cliquez ici pour ajouter un nouveau document"
+msgstr "Cliquez ici pour ajouter un nouveau document"
+
+#. module: eagle_base
+#: model:ir.ui.view,arch_db:eagle_base.eagle_view_contract_form
+msgid "Close"
+msgstr "Clôturer"
+
+#. module: eagle_base
+#: selection:eagle.contract,state:0
+#: model:ir.ui.view,arch_db:eagle_base.eagle_view_contract_filter
+msgid "Closed"
+msgstr "Fermé"
+
+#. module: eagle_base
+#: model:ir.model.fields,field_description:eagle_base.field_eagle_contract_company_id
+#: model:ir.ui.view,arch_db:eagle_base.eagle_view_contract_partner_tree
+msgid "Company"
+msgstr "Société"
+
+#. module: eagle_base
+#: model:ir.ui.view,arch_db:eagle_base.eagle_view_contract_pos_indep_tree
+#: model:ir.ui.view,arch_db:eagle_base.eagle_view_contract_pos_sales_tree
+#: model:ir.ui.view,arch_db:eagle_base.eagle_view_contract_pos_tree
+msgid "Concerning"
+msgstr "Concerne"
+
+#. module: eagle_base
+#: model:ir.ui.menu,name:eagle_base.eagle_menu_eagle_config
+msgid "Configuration"
+msgstr "Configuration"
+
+#. module: eagle_base
+#: selection:eagle.contract,state:0
+#: model:ir.ui.view,arch_db:eagle_base.eagle_view_contract_form
+msgid "Confirmation"
+msgstr "Confirmation"
+
+#. module: eagle_base
+#: model:ir.ui.view,arch_db:eagle_base.eagle_view_contract_filter
+msgid "Confirmations"
+msgstr "Confirmations"
+
+#. module: eagle_base
+#: model:ir.model.fields,field_description:eagle_base.field_eagle_contract_position_contract_id
+#: model:ir.model.fields,field_description:eagle_base.field_eagle_wiz_rebuild_pos_seq_cnt_id
+#: model:ir.ui.view,arch_db:eagle_base.eagle_view_contract_pos_current_sales_filter
+#: model:ir.ui.view,arch_db:eagle_base.eagle_view_contract_pos_indep_filter
+msgid "Contract"
+msgstr "Contrat"
+
+#. module: eagle_base
+#: model:ir.model,name:eagle_base.model_eagle_contract_position
+msgid "Contract position"
+msgstr "Position de contrat"
+
+#. module: eagle_base
+#: model:res.groups,name:eagle_base.group_contracts_editors
+msgid "Contracts Editors"
+msgstr "Contracts Editors"
+
+#. module: eagle_base
+#: model:res.groups,name:eagle_base.group_contracts_managers
+msgid "Contracts Managers"
+msgstr "Contracts Managers"
+
+#. module: eagle_base
+#: model:res.groups,name:eagle_base.group_contracts_users
+msgid "Contracts Users (external)"
+msgstr "Contracts Users (external)"
+
+#. module: eagle_base
+#: model:res.groups,name:eagle_base.group_contracts_viewers
+msgid "Contracts Viewers (staff)"
+msgstr "Contracts Viewers (staff)"
+
+#. module: eagle_base
+#: model:ir.model.fields,field_description:eagle_base.field_eagle_wiz_copy_positions_to_src_id
+msgid "Copy"
+msgstr "Copy"
+
+#. module: eagle_base
+#: model:ir.ui.view,arch_db:eagle_base.eagle_product_form_inherit_1
+msgid "Corr. contracts"
+msgstr "Corr. contracts"
+
+#. module: eagle_base
+#: model:ir.model.fields,field_description:eagle_base.field_eagle_config_settings_create_uid
+#: model:ir.model.fields,field_description:eagle_base.field_eagle_contract_create_uid
+#: model:ir.model.fields,field_description:eagle_base.field_eagle_contract_partner_role_create_uid
+#: model:ir.model.fields,field_description:eagle_base.field_eagle_contract_partner_role_type_create_uid
+#: model:ir.model.fields,field_description:eagle_base.field_eagle_contract_position_create_uid
+#: model:ir.model.fields,field_description:eagle_base.field_eagle_wiz_copy_positions_to_create_uid
+#: model:ir.model.fields,field_description:eagle_base.field_eagle_wiz_rebuild_pos_seq_create_uid
+msgid "Created by"
+msgstr "Créé par"
+
+#. module: eagle_base
+#: model:ir.model.fields,field_description:eagle_base.field_eagle_config_settings_create_date
+#: model:ir.model.fields,field_description:eagle_base.field_eagle_contract_create_date
+#: model:ir.model.fields,field_description:eagle_base.field_eagle_contract_partner_role_create_date
+#: model:ir.model.fields,field_description:eagle_base.field_eagle_contract_partner_role_type_create_date
+#: model:ir.model.fields,field_description:eagle_base.field_eagle_contract_position_create_date
+#: model:ir.model.fields,field_description:eagle_base.field_eagle_wiz_copy_positions_to_create_date
+#: model:ir.model.fields,field_description:eagle_base.field_eagle_wiz_rebuild_pos_seq_create_date
+msgid "Created on"
+msgstr "Créé le"
+
+#. module: eagle_base
+#: model:ir.model.fields,field_description:eagle_base.field_eagle_contract_customer_id
+#: model:ir.model.fields,field_description:eagle_base.field_eagle_customer_customer
+#: model:ir.ui.view,arch_db:eagle_base.eagle_view_contract_filter
+msgid "Customer"
+msgstr "Client"
+
+#. module: eagle_base
 #: model:ir.actions.act_window,name:eagle_base.eagle_action_contract_pos_current_sales_tree
-#: model:ir.ui.menu,name:eagle_base.eagle_menu_contract_pos_current_sales
-msgid "Active recurrences"
-msgstr "Récurrences actives"
+#: model:ir.ui.menu,name:eagle_base.eagle_menu_contracts_root
+msgid "Customer files"
+msgstr "Customer files"
 
 #. module: eagle_base
-#: model:ir.actions.act_window,name:eagle_base.eagle_action_contract_filter_draft_form
-#: model:ir.ui.menu,name:eagle_base.eagle_menu_contracts_draft_form
-msgid "Files (Offer)"
-msgstr "Dossiers (Offre)"
+#: model:ir.model.fields,field_description:eagle_base.field_eagle_contract_cust_ref
+msgid "Customer reference"
+msgstr "Référence client"
 
 #. module: eagle_base
-#: model:ir.actions.act_window,name:eagle_base.eagle_action_contract_filter_confirm_form
-#: model:ir.ui.menu,name:eagle_base.eagle_menu_contracts_confirm_form
-msgid "Files (Confirmations)"
-msgstr "Dossiers (Confirmations)"
+#: model:ir.ui.view,arch_db:eagle_base.eagle_view_customers_list
+msgid "Customers"
+msgstr "Clients"
 
 #. module: eagle_base
-#: model:ir.actions.act_window,name:eagle_base.eagle_action_contract_filter_prod_form
-#: model:ir.ui.menu,name:eagle_base.eagle_menu_contracts_prod_form
-msgid "Files (Ongoing)"
-msgstr "Dossiers (En cours)"
+#: model:ir.model,name:eagle_base.model_eagle_customer
+msgid "Customers Files"
+msgstr "Dossiers des clients"
 
 #. module: eagle_base
-#: model:ir.actions.act_window,name:eagle_base.eagle_action_contract_filter_close_form
-#: model:ir.ui.menu,name:eagle_base.eagle_menu_contracts_close_form
-msgid "Files (Closed)"
-msgstr "Dossiers (Terminé)"
+#: model:ir.model.fields,field_description:eagle_base.field_eagle_config_params_date_format
+msgid "Customized date format"
+msgstr "Format personnalisé pour les dates"
+
+#. module: eagle_base
+#: model:ir.model.fields,field_description:eagle_base.field_eagle_config_settings_date_format
+msgid "Date format"
+msgstr "Formattage des dates"
+
+#. module: eagle_base
+#: model:ir.model.fields,help:eagle_base.field_eagle_contract_message_last_post
+msgid "Date of the last message posted on the record."
+msgstr "Date du dernier message"
+
+#. module: eagle_base
+#: model:ir.model.fields,field_description:eagle_base.field_eagle_contract_position_cancellation_deadline
+msgid "Days before"
+msgstr "Jours avant"
+
+#. module: eagle_base
+#: selection:eagle.contract.partner_role_type,type:0
+msgid "Delivery"
+msgstr "Livraison"
+
+#. module: eagle_base
+#: model:ir.model.fields,field_description:eagle_base.field_eagle_contract_position_description
+#: model:ir.ui.view,arch_db:eagle_base.eagle_view_contract_pos_form
+#: model:ir.ui.view,arch_db:eagle_base.eagle_view_contract_pos_indep_form
+msgid "Description"
+msgstr "Description"
+
+#. module: eagle_base
+#: model:ir.model.fields,field_description:eagle_base.field_eagle_contract_position_discount
+msgid "Discount"
+msgstr "Remise"
+
+#. module: eagle_base
+#: model:ir.model.fields,field_description:eagle_base.field_eagle_config_params_display_name
+#: model:ir.model.fields,field_description:eagle_base.field_eagle_config_settings_display_name
+#: model:ir.model.fields,field_description:eagle_base.field_eagle_contract_display_name
+#: model:ir.model.fields,field_description:eagle_base.field_eagle_contract_partner_role_display_name
+#: model:ir.model.fields,field_description:eagle_base.field_eagle_contract_partner_role_type_display_name
+#: model:ir.model.fields,field_description:eagle_base.field_eagle_contract_position_display_name
+#: model:ir.model.fields,field_description:eagle_base.field_eagle_customer_display_name
+#: model:ir.model.fields,field_description:eagle_base.field_eagle_wiz_copy_positions_to_display_name
+#: model:ir.model.fields,field_description:eagle_base.field_eagle_wiz_rebuild_pos_seq_display_name
+msgid "Display Name"
+msgstr "Nom affiché"
+
+#. module: eagle_base
+#: model:ir.model,name:eagle_base.model_eagle_config_params
+msgid "Eagle Configuration Parameters"
+msgstr "Paramètres de configuration de Eagle"
+
+#. module: eagle_base
+#: model:ir.model,name:eagle_base.model_eagle_config_tabs_profile
+msgid "Eagle Configuration Tabs Profile"
+msgstr "Eagle Configuration Tabs Profile"
+
+#. module: eagle_base
+#: model:ir.ui.view,arch_db:eagle_base.eagle_base_sequences_view_inh_01
+msgid "Eagle Contract Name: %(eagle_contract)s"
+msgstr "Nom du contrat Eagle: %(eagle_contract)s"
+
+#. module: eagle_base
+#: model:ir.model,name:eagle_base.model_eagle_contract
+msgid "Eagle file"
+msgstr "Dossier Eagle"
+
+#. module: eagle_base
+#: model:ir.model,name:eagle_base.model_eagle_wiz_copy_positions_to
+msgid "Eagle wizard: copy the positions to another contract"
+msgstr "Eagle wizard: copy the positions to another contract"
+
+#. module: eagle_base
+#: model:ir.model,name:eagle_base.model_eagle_wiz_rebuild_pos_seq
+msgid "Eagle wizard: rebuild the sequence of the positions"
+msgstr "Eagle wizard: rebuild the sequence of the positions"
+
+#. module: eagle_base
+#: model:ir.model,name:eagle_base.model_eagle_wiz_tabs_profile_select
+msgid "Eagle wizard: select a tabs profile"
+msgstr "Eagle wizard: select a tabs profile"
+
+#. module: eagle_base
+#: model:ir.model,name:eagle_base.model_eagle_wiz_tabs_profile
+msgid "Eagle wizard: setup a tabs profile"
+msgstr "Eagle wizard: setup a tabs profile"
+
+#. module: eagle_base
+#: model:ir.model.fields,field_description:eagle_base.field_eagle_contract_date_end
+msgid "End date"
+msgstr "Date de fin"
+
+#. module: eagle_base
+#: model:ir.ui.view,arch_db:eagle_base.eagle_view_config_settings
+msgid "Ex.: %d.%m.%Y"
+msgstr "Ex.: %d.%m.%Y"
+
+#. module: eagle_base
+#: model:ir.model.fields,field_description:eagle_base.field_eagle_contract_partner_role_contract_id
+#: model:ir.ui.view,arch_db:eagle_base.eagle_view_contract_form
+msgid "File"
+msgstr "Fichier"
+
+#. module: eagle_base
+#: model:ir.model.fields,field_description:eagle_base.field_eagle_contract_state
+msgid "File State"
+msgstr "Status du dossier"
+
+#. module: eagle_base
+#: model:ir.ui.menu,name:eagle_base.eagle_action_contract_categories_menu
+msgid "File categories"
+msgstr "File categories"
+
+#. module: eagle_base
+#: model:ir.model,name:eagle_base.model_eagle_contract_category
+msgid "File category"
+msgstr "Catégorie de dossier"
+
+#. module: eagle_base
+#: model:ir.model.fields,field_description:eagle_base.field_eagle_contract_members
+#: model:ir.ui.view,arch_db:eagle_base.eagle_view_contract_form
+msgid "File members"
+msgstr "Membres du dossier"
+
+#. module: eagle_base
+#: model:ir.model.fields,field_description:eagle_base.field_eagle_contract_cnt_partners
+#: model:ir.model.fields,field_description:eagle_base.field_eagle_contract_partners
+#: model:ir.ui.view,arch_db:eagle_base.eagle_view_contract_form
+msgid "File partners"
+msgstr "Partenaires du dossier"
+
+#. module: eagle_base
+#: model:ir.actions.act_window,name:eagle_base.eagle_action_cust_2_contracts_list
+#: model:ir.actions.act_window,name:eagle_base.eagle_action_partner_2_contracts_list
+#: model:ir.actions.act_window,name:eagle_base.eagle_contract_action_res_partner
+#: model:ir.ui.menu,name:eagle_base.eagle_menu_contracts_top
+#: model:ir.ui.view,arch_db:eagle_base.eagle_view_contract_tree
+#: model:ir.ui.view,arch_db:eagle_base.res_partner_view_inherit_sale_contract
+msgid "Files"
+msgstr "Dossiers"
 
 #. module: eagle_base
 #: model:ir.actions.act_window,name:eagle_base.eagle_action_contract_filter_cancel_form
@@ -286,244 +408,46 @@ msgid "Files (Canceled)"
 msgstr "Dossiers (Annulé)"
 
 #. module: eagle_base
-#: model:ir.actions.act_window,name:eagle_base.eagle_action_contract_filter_my_form
-#: model:ir.ui.menu,name:eagle_base.eagle_menu_contracts_my_form
-msgid "My files, ongoing"
-msgstr "Mes dossiers, en cours"
+#: model:ir.actions.act_window,name:eagle_base.eagle_action_contract_filter_close_form
+#: model:ir.ui.menu,name:eagle_base.eagle_menu_contracts_close_form
+msgid "Files (Closed)"
+msgstr "Dossiers (Terminé)"
 
 #. module: eagle_base
-#: model:ir.actions.act_window,name:eagle_base.eagle_action_contract_2_list_edit_msgs
-msgid "List &amp; edit messages"
-msgstr "Lister & éditer les messages"
+#: model:ir.actions.act_window,name:eagle_base.eagle_action_contract_filter_confirm_form
+#: model:ir.ui.menu,name:eagle_base.eagle_menu_contracts_confirm_form
+msgid "Files (Confirmations)"
+msgstr "Dossiers (Confirmations)"
 
 #. module: eagle_base
-#: model:ir.ui.view,arch_db:eagle_base.eagle_view_customers_list
-msgid "Customers"
-msgstr "Clients"
+#: model:ir.actions.act_window,name:eagle_base.eagle_action_contract_filter_draft_form
+#: model:ir.ui.menu,name:eagle_base.eagle_menu_contracts_draft_form
+msgid "Files (Offer)"
+msgstr "Dossiers (Offre)"
 
 #. module: eagle_base
-#: model:ir.ui.menu,name:eagle_base.eagle_menu_contracts_all_form
-#: model:ir.actions.act_window,name:eagle_base.eagle_action_contract_all_form
-msgid "All files, by customer"
-msgstr "Tous les dossiers, par client"
+#: model:ir.actions.act_window,name:eagle_base.eagle_action_contract_filter_prod_form
+#: model:ir.ui.menu,name:eagle_base.eagle_menu_contracts_prod_form
+msgid "Files (Ongoing)"
+msgstr "Dossiers (En cours)"
 
 #. module: eagle_base
-#: model:ir.ui.menu,name:eagle_base.eagle_action_contract_categories_menu
+#: model:ir.actions.act_window,name:eagle_base.eagle_action_config
+#: model:ir.ui.menu,name:eagle_base.eagle_menu_eagle_settings
+#: model:ir.ui.view,arch_db:eagle_base.eagle_view_config_settings
+msgid "Files Management"
+msgstr "Gestion des dossiers"
+
+#. module: eagle_base
+#: model:ir.model.fields,field_description:eagle_base.field_eagle_customer_nb_contracts
+msgid "Files Nb"
+msgstr "Files Nb"
+
+#. module: eagle_base
 #: model:ir.actions.act_window,name:eagle_base.eagle_action_contract_categories
 #: model:ir.ui.view,arch_db:eagle_base.eagle_view_contract_categories_tree
 msgid "Files categories"
 msgstr "Catégories de dossiers"
-
-#. module: eagle_base
-#: model:ir.model,name:eagle_base.model_eagle_contract_category
-msgid "File category"
-msgstr "Catégorie de dossier"
-
-#. module: eagle_base
-#: model:ir.model.fields,field_description:eagle_base.field_eagle_contract_category_name
-#: model:ir.model.fields,field_description:eagle_base.field_eagle_contract_category_id
-msgid "File category"
-msgstr "Catégorie de dossier"
-
-#. module: eagle_base
-#: model:ir.model,name:eagle_base.model_eagle_contract
-msgid "Eagle file"
-msgstr "Dossier Eagle"
-
-#. module: eagle_base
-#: model:ir.model.fields,field_description:account.field_account_account_type_name
-#: model:ir.model.fields,field_description:eagle_base.field_eagle_contract_name
-msgid "File"
-msgstr "Dossier"
-
-#. module: eagle_base
-#: selection:eagle.contract,state:0
-msgid "Offer"
-msgstr "Offre"
-
-#. module: eagle_base
-#: selection:eagle.contract,state:0
-msgid "Confirmation"
-msgstr "Confirmation"
-
-#. module: eagle_base
-#: selection:eagle.contract,state:0
-msgid "Production"
-msgstr "Production"
-
-#. module: eagle_base
-#: selection:eagle.contract,state:0
-msgid "Closed"
-msgstr "Fermé"
-
-#. module: eagle_base
-#: selection:eagle.contract,state:0
-msgid "Canceled"
-msgstr "Annulé"
-
-#. module: eagle_base
-#: model:ir.model.fields,field_description:eagle_base.field_eagle_contract_state
-msgid "File State"
-msgstr "Status du dossier"
-
-#. module: eagle_base
-#: model:ir.model.fields,field_description:eagle_base.field_eagle_contract_date_start
-msgid "Start date"
-msgstr "Date de début"
-
-#. module: eagle_base
-#: model:ir.model.fields,field_description:eagle_base.field_eagle_contract_date_end
-msgid "End date"
-msgstr "Date de fin"
-
-#. module: eagle_base
-#: model:ir.model.fields,field_description:eagle_base.field_eagle_contract_customer_id
-msgid "Customer"
-msgstr "Client"
-
-#. module: eagle_base
-#: model:ir.model.fields,field_description:eagle_base.field_eagle_contract_user_id
-msgid "Salesman"
-msgstr "Vendeur"
-
-#. module: eagle_base
-#: model:ir.model.fields,field_description:eagle_base.field_eagle_contract_financial_partner_id
-msgid "Funded by"
-msgstr "Financé par"
-
-#. module: eagle_base
-#: model:ir.model.fields,field_description:eagle_base.field_eagle_contract_members
-msgid "File members"
-msgstr "Membres du dossier"
-
-#. module: eagle_base
-#: model:ir.model.fields,field_description:eagle_base.field_eagle_contract_partners
-#: model:ir.model.fields,field_description:eagle_base.field_eagle_contract_cnt_partners
-msgid "File partners"
-msgstr "Partenaires du dossier"
-
-#. module: eagle_base
-#: model:ir.model.fields,field_description:eagle_base.field_eagle_contract_pricelist_id
-msgid "Pricelist"
-msgstr "Liste de prix"
-
-#. module: eagle_base
-#: model:ir.model.fields,field_description:eagle_base.field_eagle_contract_company_id
-msgid "Company"
-msgstr "Companie"
-
-#. module: eagle_base
-#: model:ir.model.fields,field_description:eagle_base.field_eagle_contract_notes
-msgid "Notes"
-msgstr "Notes"
-
-#. module: eagle_base
-#: model:ir.model.fields,field_description:eagle_base.field_eagle_contract_cust_ref
-msgid "Customer reference"
-msgstr "Référence client"
-
-#. module: eagle_base
-#: model:ir.model.fields,field_description:eagle_base.field_eagle_contract_sale_partner_id
-msgid "Shipping to"
-msgstr "Adresse livraison"
-
-#. module: eagle_base
-#: model:ir.model,name:eagle_base.model_eagle_customer
-msgid "Customers Files"
-msgstr "Dossiers des clients"
-
-#. module: eagle_base
-#: model:ir.model.fields,field_description:eagle_base.field_eagle_contract_customer
-msgid "Customer"
-msgstr "Client"
-
-#. module: eagle_base
-#: model:ir.model.fields,field_description:eagle_base.field_eagle_contract_nb_contracts
-msgid "Files Nb"
-msgstr "Nb de dossiers"
-
-#. module: eagle_base
-#: code:addons/eagle_base/models/contracts.py:135
-#, python-format
-msgid "Please select a customer."
-msgstr "Veuillez choisir un client."
-
-#. module: eagle_base
-#: code:addons/eagle_base/models/contracts.py:365
-#, python-format
-msgid "An already confirmed file can't be deleted!"
-msgstr "Un dossier déjà confirmé ne peut pas être effacé!"
-
-#. module: eagle_base
-#: code:addons/eagle_base/models/contracts.py:371
-#, python-format
-msgid " (copy)"
-msgstr " (copie)"
-
-#. module: eagle_base
-#: model:ir.model,name:eagle_base.model_eagle_contract_partner_role_type
-msgid "Partner role type in an Eagle file"
-msgstr "Type de rôle d'un partenaire dans un dossier Eagle"
-
-#. module: eagle_base
-#: selection:eagle.contract,state:0
-msgid "Invoicing"
-msgstr "Facturation"
-
-#. module: eagle_base
-#: selection:eagle.contract,state:0
-msgid "Delivery"
-msgstr "Livraison"
-
-#. module: eagle_base
-#: selection:eagle.contract,state:0
-msgid "Other"
-msgstr "Autre"
-
-#. module: eagle_base
-#: model:ir.model.fields,field_description:eagle_base.field_eagle_contract_partner_role_type_type
-msgid "Type"
-msgstr "Type"
-
-#. module: eagle_base
-#: model:ir.model,name:eagle_base.model_eagle_contract_partner_role
-msgid "Partner role in an Eagle file"
-msgstr "Rôle d'un partenaire dans un dossier Eagle"
-
-#. module: eagle_base
-#: model:ir.model.fields,field_description:eagle_base.field_eagle_contract_partner_role_name
-msgid "Role type"
-msgstr "Type de rôle"
-
-#. module: eagle_base
-#: model:ir.model.fields,field_description:eagle_base.field_eagle_contract_partner_role_partner_id
-msgid "Partner"
-msgstr "Partenaire"
-
-#. module: eagle_base
-#: model:ir.model.fields,field_description:eagle_base.field_eagle_contract_partner_role_contract_id
-msgid "File"
-msgstr "Dossier"
-
-#. module: eagle_base
-#: model:ir.model.fields,field_description:eagle_base.field_res_partner_contract_roles_id
-msgid "Roles"
-msgstr "Rôles"
-
-#. module: eagle_base
-#: model:ir.model.fields,field_description:eagle_base.field_res_partner_eagle_contracts
-msgid "Present in files"
-msgstr "Présent dans les dossiers"
-
-#. module: eagle_base
-#: model:ir.model.fields,field_description:eagle_base.field_res_partner_comp_name
-msgid "Name"
-msgstr "Nom"
-
-#. module: eagle_base
-#: model:ir.model.fields,field_description:eagle_base.field_res_partner_eagle_contract_list
-msgid "Files list"
-msgstr "Liste des dossiers"
 
 #. module: eagle_base
 #: model:ir.model.fields,field_description:eagle_base.field_res_partner_eagle_contract_count
@@ -531,21 +455,554 @@ msgid "Files count"
 msgstr "Nb de dossiers"
 
 #. module: eagle_base
+#: model:ir.model.fields,field_description:eagle_base.field_res_partner_eagle_contract_list
+msgid "Files list"
+msgstr "Liste des dossiers"
+
+#. module: eagle_base
+#: model:ir.model.fields,field_description:eagle_base.field_eagle_contract_message_follower_ids
+msgid "Followers"
+msgstr "Abonnés"
+
+#. module: eagle_base
+#: model:ir.model.fields,field_description:eagle_base.field_eagle_contract_message_channel_ids
+msgid "Followers (Channels)"
+msgstr "Abonnés (Canaux)"
+
+#. module: eagle_base
+#: model:ir.model.fields,help:eagle_base.field_eagle_contract_position_product_type
+msgid "From stock: When needed, the product is taken from the stock or we wait for replenishment.\n"
+"On order: When needed, the product is purchased or produced."
+msgstr "Sur stock : lorsque c'est nécessaire, soit l'article est pris dans le stock soit on attendra le réapprovisionnement.\n"
+"À la commande : lorsque c'est nécessaire, l'article est fabriqué ou acheté."
+
+#. module: eagle_base
+#: model:ir.model.fields,field_description:eagle_base.field_eagle_contract_financial_partner_id
+msgid "Funded by"
+msgstr "Financé par"
+
+#. module: eagle_base
+#: model:ir.ui.view,arch_db:eagle_base.eagle_view_contract_filter
+#: model:ir.ui.view,arch_db:eagle_base.eagle_view_contract_pos_current_sales_filter
+#: model:ir.ui.view,arch_db:eagle_base.eagle_view_contract_pos_indep_filter
+#: model:ir.ui.view,arch_db:eagle_base.eagle_view_contract_pos_sw_filter
+msgid "Group by..."
+msgstr "Regrouper par..."
+
+#. module: eagle_base
+#: model:ir.model.fields,field_description:eagle_base.field_eagle_config_settings_id
+#: model:ir.model.fields,field_description:eagle_base.field_eagle_contract_id
+#: model:ir.model.fields,field_description:eagle_base.field_eagle_contract_partner_role_id
+#: model:ir.model.fields,field_description:eagle_base.field_eagle_contract_partner_role_type_id
+#: model:ir.model.fields,field_description:eagle_base.field_eagle_contract_position_id
+#: model:ir.model.fields,field_description:eagle_base.field_eagle_customer_id
+#: model:ir.model.fields,field_description:eagle_base.field_eagle_wiz_copy_positions_to_id
+#: model:ir.model.fields,field_description:eagle_base.field_eagle_wiz_rebuild_pos_seq_id
+msgid "ID"
+msgstr "ID"
+
+#. module: eagle_base
+#: model:ir.model.fields,help:eagle_base.field_eagle_contract_message_needaction
+msgid "If checked, new messages require your attention."
+msgstr "si elle est cochée, de nouveaux messages requièrent votre attention."
+
+#. module: eagle_base
+#: selection:eagle.contract.position,state:0
+msgid "Installed"
+msgstr "installé"
+
+#. module: eagle_base
+#: model:ir.ui.view,arch_db:eagle_base.eagle_view_config_settings
+msgid "Instance management"
+msgstr "Gestion des instances"
+
+#. module: eagle_base
+#: model:ir.ui.view,arch_db:eagle_base.eagle_view_config_settings
+msgid "Interface"
+msgstr "Interface"
+
+#. module: eagle_base
+#: model:ir.model.fields,field_description:eagle_base.field_eagle_contract_position_progr_invoiced
+msgid "Invoiced"
+msgstr "Facturée"
+
+#. module: eagle_base
+#: selection:eagle.contract.partner_role_type,type:0
+msgid "Invoicing"
+msgstr "Facturation"
+
+#. module: eagle_base
+#: model:ir.model.fields,field_description:eagle_base.field_eagle_contract_message_is_follower
+msgid "Is Follower"
+msgstr "Est un abonné"
+
+#. module: eagle_base
+#: model:ir.model.fields,field_description:eagle_base.field_eagle_contract_position_is_invoicable
+msgid "Is invoicable?"
+msgstr "Est facturable?"
+
+#. module: eagle_base
+#: model:ir.model.fields,field_description:eagle_base.field_eagle_contract_message_last_post
+msgid "Last Message Date"
+msgstr "Date du dernier message"
+
+#. module: eagle_base
+#: model:ir.model.fields,field_description:eagle_base.field_eagle_config_params___last_update
+#: model:ir.model.fields,field_description:eagle_base.field_eagle_config_settings___last_update
+#: model:ir.model.fields,field_description:eagle_base.field_eagle_contract___last_update
+#: model:ir.model.fields,field_description:eagle_base.field_eagle_contract_partner_role___last_update
+#: model:ir.model.fields,field_description:eagle_base.field_eagle_contract_partner_role_type___last_update
+#: model:ir.model.fields,field_description:eagle_base.field_eagle_contract_position___last_update
+#: model:ir.model.fields,field_description:eagle_base.field_eagle_customer___last_update
+#: model:ir.model.fields,field_description:eagle_base.field_eagle_wiz_copy_positions_to___last_update
+#: model:ir.model.fields,field_description:eagle_base.field_eagle_wiz_rebuild_pos_seq___last_update
+msgid "Last Modified on"
+msgstr "Dernière modification le"
+
+#. module: eagle_base
+#: model:ir.model.fields,field_description:eagle_base.field_eagle_config_settings_write_uid
+#: model:ir.model.fields,field_description:eagle_base.field_eagle_contract_partner_role_type_write_uid
+#: model:ir.model.fields,field_description:eagle_base.field_eagle_contract_partner_role_write_uid
+#: model:ir.model.fields,field_description:eagle_base.field_eagle_contract_position_write_uid
+#: model:ir.model.fields,field_description:eagle_base.field_eagle_contract_write_uid
+#: model:ir.model.fields,field_description:eagle_base.field_eagle_wiz_copy_positions_to_write_uid
+#: model:ir.model.fields,field_description:eagle_base.field_eagle_wiz_rebuild_pos_seq_write_uid
+msgid "Last Updated by"
+msgstr "Mis à jour par"
+
+#. module: eagle_base
+#: model:ir.model.fields,field_description:eagle_base.field_eagle_config_settings_write_date
+#: model:ir.model.fields,field_description:eagle_base.field_eagle_contract_partner_role_type_write_date
+#: model:ir.model.fields,field_description:eagle_base.field_eagle_contract_partner_role_write_date
+#: model:ir.model.fields,field_description:eagle_base.field_eagle_contract_position_write_date
+#: model:ir.model.fields,field_description:eagle_base.field_eagle_contract_write_date
+#: model:ir.model.fields,field_description:eagle_base.field_eagle_wiz_copy_positions_to_write_date
+#: model:ir.model.fields,field_description:eagle_base.field_eagle_wiz_rebuild_pos_seq_write_date
+msgid "Last Updated on"
+msgstr "Mis à jour le"
+
+#. module: eagle_base
+#: model:ir.actions.act_window,name:eagle_base.eagle_action_contract_2_list_edit_msgs
+msgid "List & edit messages"
+msgstr "List & edit messages"
+
+#. module: eagle_base
+#: model:ir.model.fields,field_description:eagle_base.field_eagle_contract_message_ids
+msgid "Messages"
+msgstr "Messages"
+
+#. module: eagle_base
+#: model:ir.actions.act_window,name:eagle_base.eagle_action_contract_filter_my_form
+#: model:ir.ui.view,arch_db:eagle_base.eagle_view_contract_filter
+msgid "My Files"
+msgstr "My Files"
+
+#. module: eagle_base
+#: model:ir.ui.menu,name:eagle_base.eagle_menu_contracts_my_form
+msgid "My files, ongoing"
+msgstr "Mes dossiers, en cours"
+
+#. module: eagle_base
+#: model:ir.model.fields,field_description:eagle_base.field_eagle_config_params_name
+#: model:ir.model.fields,field_description:eagle_base.field_eagle_config_settings_name
+#: model:ir.model.fields,field_description:eagle_base.field_eagle_contract_partner_role_type_name
+#: model:ir.model.fields,field_description:eagle_base.field_res_partner_comp_name
+msgid "Name"
+msgstr "Nom"
+
+#. module: eagle_base
+#: code:addons/eagle_base/models/contracts.py:42
+#, python-format
+msgid "New"
+msgstr "Nouveau"
+
+#. module: eagle_base
+#: model:ir.ui.view,arch_db:eagle_base.eagle_view_contract_pos_current_sales_filter
+msgid "Next Invoice"
+msgstr "Next Invoice"
+
+#. module: eagle_base
+#: model:ir.model.fields,field_description:eagle_base.field_eagle_contract_position_next_invoice_date
+msgid "Next action date"
+msgstr "Prochaine date butoir"
+
+#. module: eagle_base
+#: model:ir.model.fields,field_description:eagle_base.field_eagle_contract_position_notes
+msgid "Notes"
+msgstr "Notes"
+
+#. module: eagle_base
+#: model:ir.ui.view,arch_db:eagle_base.eagle_view_contract_form
+msgid "Notes..."
+msgstr "Notes..."
+
+#. module: eagle_base
+#: model:ir.model.fields,help:eagle_base.field_eagle_contract_message_unread_counter
+msgid "Number of unread messages"
+msgstr "Nombre de messages non lus"
+
+#. module: eagle_base
+#: selection:eagle.contract,state:0
+#: model:ir.ui.view,arch_db:eagle_base.eagle_view_contract_filter
+#: model:ir.ui.view,arch_db:eagle_base.eagle_view_contract_form
+msgid "Offer"
+msgstr "Offre"
+
+#. module: eagle_base
+#: model:ir.ui.view,arch_db:eagle_base.eagle_view_contract_filter
+msgid "Ongoing"
+msgstr "Ongoing"
+
+#. module: eagle_base
+#: model:ir.actions.act_window,name:eagle_base.eagle_action_module_tree
+msgid "Open-Net Modules"
+msgstr "Open-Net Modules"
+
+#. module: eagle_base
+#: model:ir.ui.menu,name:eagle_base.eagle_menu_module_tree
+msgid "Open-Net modules"
+msgstr "Modules Open-Net"
+
+#. module: eagle_base
+#: selection:eagle.contract.partner_role_type,type:0
+msgid "Other"
+msgstr "Autre"
+
+#. module: eagle_base
+#: model:ir.ui.view,arch_db:eagle_base.eagle_view_contract_form
+msgid "Other infos"
+msgstr "Autres infos"
+
+#. module: eagle_base
+#: model:ir.ui.menu,name:eagle_base.eagle_menu_config
+msgid "Parameters"
+msgstr "Paramètres"
+
+#. module: eagle_base
+#: model:ir.model,name:eagle_base.model_res_partner
+#: model:ir.model.fields,field_description:eagle_base.field_eagle_contract_partner_role_partner_id
+msgid "Partner"
+msgstr "Partenaire"
+
+#. module: eagle_base
+#: model:ir.model,name:eagle_base.model_eagle_contract_partner_role
+msgid "Partner role in an Eagle file"
+msgstr "Rôle d'un partenaire dans un dossier Eagle"
+
+#. module: eagle_base
+#: model:ir.model,name:eagle_base.model_eagle_contract_partner_role_type
+msgid "Partner role type in an Eagle file"
+msgstr "Type de rôle d'un partenaire dans un dossier Eagle"
+
+#. module: eagle_base
 #: model:ir.model.fields,field_description:eagle_base.field_eagle_contract_partner_roles_id
 msgid "Partners roles"
 msgstr "Rôles des partenaires"
 
 #. module: eagle_base
-#: model:ir.model.fields,field_description:eagle_base.field_eagle_contract_sale_partner_id
-msgid "Shipping to"
-msgstr "Livrer à"
+#: code:addons/eagle_base/models/contracts.py:100
+#: code:addons/eagle_base/models/contracts.py:119
+#: code:addons/eagle_base/models/contracts.py:288
+#, python-format
+msgid "Please select a customer."
+msgstr "Veuillez choisir un client."
 
 #. module: eagle_base
-#: model:ir.actions.act_window,name:eagle_base.eagle_menu_contract_pos_current_sale
-msgid "Current sales"
-msgstr "Ventes en cours"
+#: model:ir.ui.view,arch_db:eagle_base.eagle_view_contract_pos_form
+#: model:ir.ui.view,arch_db:eagle_base.eagle_view_contract_pos_indep_form
+#: model:ir.ui.view,arch_db:eagle_base.eagle_view_contract_pos_sw_form
+msgid "Position"
+msgstr "Position"
 
 #. module: eagle_base
-#: model:ir.ui.view,arch_db:eagle_base.eagle_view_contract_partner_tree
-msgid "Company"
-msgstr "Compagnie"
+#: model:ir.actions.act_window,name:eagle_base.eagle_action_contract_pos_filter_all_tree
+#: model:ir.actions.act_window,name:eagle_base.eagle_action_contract_pos_filter_sw_tree
+#: model:ir.ui.view,arch_db:eagle_base.eagle_view_contract_pos_indep_tree
+#: model:ir.ui.view,arch_db:eagle_base.eagle_view_contract_pos_sales_tree
+#: model:ir.ui.view,arch_db:eagle_base.eagle_view_contract_pos_tree
+msgid "Positions"
+msgstr "Positions"
+
+#. module: eagle_base
+#: model:ir.model.fields,field_description:eagle_base.field_res_partner_eagle_contracts
+msgid "Present in files"
+msgstr "Présent dans les dossiers"
+
+#. module: eagle_base
+#: model:ir.model.fields,field_description:eagle_base.field_eagle_contract_pricelist_id
+msgid "Pricelist"
+msgstr "Liste de prix"
+
+#. module: eagle_base
+#: model:ir.model.fields,field_description:eagle_base.field_eagle_contract_position_product_type
+msgid "Procurement Method"
+msgstr "Méthode d'approvisionnement"
+
+#. module: eagle_base
+#: model:ir.model,name:eagle_base.model_product_product
+#: model:ir.model.fields,field_description:eagle_base.field_eagle_contract_position_name
+msgid "Product"
+msgstr "Article"
+
+#. module: eagle_base
+#: selection:eagle.contract,state:0
+#: model:ir.ui.view,arch_db:eagle_base.eagle_view_contract_form
+msgid "Production"
+msgstr "Production"
+
+#. module: eagle_base
+#: selection:eagle.contract.position,state:0
+msgid "Progressive"
+msgstr "Progressif"
+
+#. module: eagle_base
+#: model:ir.model.fields,field_description:eagle_base.field_eagle_contract_position_qty
+msgid "Quantity"
+msgstr "Quantité"
+
+#. module: eagle_base
+#: model:ir.model.fields,field_description:eagle_base.field_eagle_contract_position_progr_rate
+msgid "Rate [%]"
+msgstr "Rate [%]"
+
+#. module: eagle_base
+#: model:ir.model.fields,field_description:eagle_base.field_eagle_contract_position_recurrence_id
+#: model:ir.model.fields,field_description:eagle_base.field_product_product_recurrence_id_15947
+#: model:ir.ui.view,arch_db:eagle_base.eagle_view_contract_pos_indep_filter
+#: model:ir.ui.view,arch_db:eagle_base.eagle_view_contract_pos_sw_filter
+msgid "Recurrence"
+msgstr "Récurrence"
+
+#. module: eagle_base
+#: model:ir.model,name:eagle_base.model_product_recurrence_unit
+msgid "Recurrence units for the products and the warranties"
+msgstr "Recurrence units for the products and the warranties"
+
+#. module: eagle_base
+#: selection:eagle.contract.position,state:0
+msgid "Recurrent"
+msgstr "Récurrent"
+
+#. module: eagle_base
+#: model:ir.ui.view,arch_db:eagle_base.eagle_view_contract_form
+msgid "References"
+msgstr "Références"
+
+#. module: eagle_base
+#: model:ir.model.fields,field_description:eagle_base.field_eagle_contract_position_out_description
+msgid "Reported text"
+msgstr "Texte reporté"
+
+#. module: eagle_base
+#: model:ir.model.fields,field_description:eagle_base.field_eagle_contract_partner_role_name
+msgid "Role type"
+msgstr "Type de rôle"
+
+#. module: eagle_base
+#: model:ir.model.fields,field_description:eagle_base.field_res_partner_contract_roles_id
+msgid "Roles"
+msgstr "Rôles"
+
+#. module: eagle_base
+#: model:ir.model.fields,field_description:eagle_base.field_eagle_contract_position_list_price
+msgid "Sale Price"
+msgstr "Prix de vente"
+
+#. module: eagle_base
+#: model:ir.model.fields,field_description:eagle_base.field_eagle_contract_user_id
+msgid "Salesman"
+msgstr "Vendeur"
+
+#. module: eagle_base
+#: model:ir.ui.view,arch_db:eagle_base.eagle_view_contract_pos_indep_filter
+#: model:ir.ui.view,arch_db:eagle_base.eagle_view_contract_pos_sw_filter
+msgid "Search Contract Positions"
+msgstr "Search Contract Positions"
+
+#. module: eagle_base
+#: model:ir.ui.view,arch_db:eagle_base.eagle_view_contract_pos_current_sales_filter
+msgid "Search contracts positions"
+msgstr "Search contracts positions"
+
+#. module: eagle_base
+#: model:ir.ui.view,arch_db:eagle_base.eagle_view_contract_filter
+#: model:ir.ui.view,arch_db:eagle_base.eagle_view_contract_filter_no_cust
+msgid "Search files"
+msgstr "Rechercher des dossiers"
+
+#. module: eagle_base
+#: model:ir.model.fields,field_description:eagle_base.field_eagle_contract_position_sequence
+msgid "Sequence"
+msgstr "Séquence"
+
+#. module: eagle_base
+#: model:ir.ui.view,arch_db:eagle_base.eagle_view_contract_pos_indep_tree
+#: model:ir.ui.view,arch_db:eagle_base.eagle_view_contract_pos_sales_tree
+#: model:ir.ui.view,arch_db:eagle_base.eagle_view_contract_pos_tree
+msgid "Set to 'Active'"
+msgstr "Rendre 'Actif'"
+
+#. module: eagle_base
+#: model:ir.ui.view,arch_db:eagle_base.eagle_view_contract_pos_indep_tree
+#: model:ir.ui.view,arch_db:eagle_base.eagle_view_contract_pos_sales_tree
+#: model:ir.ui.view,arch_db:eagle_base.eagle_view_contract_pos_tree
+msgid "Set to 'Inactive'"
+msgstr "Rendre 'Inactif'"
+
+#. module: eagle_base
+#: model:ir.ui.view,arch_db:eagle_base.eagle_view_contract_form
+msgid "Stakeholders"
+msgstr "Intervenants"
+
+#. module: eagle_base
+#: model:ir.model.fields,field_description:eagle_base.field_eagle_contract_date_start
+msgid "Start date"
+msgstr "Date de début"
+
+#. module: eagle_base
+#: model:ir.model.fields,field_description:eagle_base.field_eagle_contract_position_start_of_period
+msgid "Start of period?"
+msgstr "Début de période?"
+
+#. module: eagle_base
+#: model:ir.model.fields,field_description:eagle_base.field_eagle_contract_position_state
+#: model:ir.ui.view,arch_db:eagle_base.eagle_view_contract_pos_current_sales_filter
+#: model:ir.ui.view,arch_db:eagle_base.eagle_view_contract_pos_indep_filter
+#: model:ir.ui.view,arch_db:eagle_base.eagle_view_contract_pos_sw_filter
+msgid "State"
+msgstr "Statut"
+
+#. module: eagle_base
+#: model:ir.ui.view,arch_db:eagle_base.eagle_view_contract_filter
+msgid "Status"
+msgstr "Statut"
+
+#. module: eagle_base
+#: model:ir.model.fields,field_description:eagle_base.field_eagle_wiz_rebuild_pos_seq_step
+msgid "Step"
+msgstr "Pas"
+
+#. module: eagle_base
+#: model:ir.ui.menu,name:eagle_base.eagle_menu_eagle_views
+msgid "The Views"
+msgstr "Les Vues"
+
+#. module: eagle_base
+#: model:ir.actions.act_window,name:eagle_base.eagle_action_views_contracts
+#: model:ir.ui.menu,name:eagle_base.eagle_menu_views_contracts
+msgid "The files"
+msgstr "Les dossiers"
+
+#. module: eagle_base
+#: model:ir.actions.act_window,name:eagle_base.eagle_action_ir_sequence
+#: model:ir.ui.menu,name:eagle_base.eagle_menu_ir_sequence
+msgid "The sequences"
+msgstr "Les séquences"
+
+#. module: eagle_base
+#: model:ir.model.fields,field_description:eagle_base.field_eagle_wiz_copy_positions_to_dst_id
+msgid "To"
+msgstr "au"
+
+#. module: eagle_base
+#: selection:eagle.contract.position,state:0
+msgid "To install"
+msgstr "A installer"
+
+#. module: eagle_base
+#: model:ir.model.fields,field_description:eagle_base.field_eagle_contract_position_cl_total
+#: model:ir.ui.view,arch_db:eagle_base.eagle_view_contract_pos_indep_tree
+#: model:ir.ui.view,arch_db:eagle_base.eagle_view_contract_pos_tree
+msgid "Total"
+msgstr "Total"
+
+#. module: eagle_base
+#: model:ir.model.fields,field_description:eagle_base.field_eagle_contract_partner_role_type_type
+msgid "Type"
+msgstr "Type"
+
+#. module: eagle_base
+#: model:ir.model.fields,field_description:eagle_base.field_eagle_contract_position_uom_id
+msgid "Unit of Measure"
+msgstr "Unité"
+
+#. module: eagle_base
+#: model:ir.actions.act_window,name:eagle_base.eagle_action_product_recurrence_unit_view
+#: model:ir.ui.view,arch_db:eagle_base.eagle_view_product_recurrence_unit_form
+#: model:ir.ui.view,arch_db:eagle_base.eagle_view_product_recurrence_unit_list
+msgid "Units of Recurrence"
+msgstr "Unités de récurrence"
+
+#. module: eagle_base
+#: model:ir.ui.menu,name:eagle_base.eagle_action_product_recurrence_unit_menu
+msgid "Units of recurrence"
+msgstr "Unités de réccurence"
+
+#. module: eagle_base
+#: model:ir.model.fields,field_description:eagle_base.field_eagle_contract_message_unread_counter
+msgid "Unread Messages Counter"
+msgstr "Compteur de messages non lus"
+
+#. module: eagle_base
+#: model:ir.model.fields,field_description:eagle_base.field_eagle_config_params_use_cn_seq
+#: model:ir.model.fields,field_description:eagle_base.field_eagle_config_settings_use_cn_seq
+msgid "Use the contract sequences"
+msgstr "Utiliser la séquence des contrats"
+
+#. module: eagle_base
+#: model:ir.model,name:eagle_base.model_res_users
+msgid "Users"
+msgstr "Utilisateurs"
+
+#. module: eagle_base
+#: model:ir.model.fields,field_description:eagle_base.field_eagle_config_params_use_members_list
+#: model:ir.model.fields,field_description:eagle_base.field_eagle_config_settings_use_members_list
+msgid "Uses members list"
+msgstr "Utilise la liste des membres"
+
+#. module: eagle_base
+#: model:ir.model.fields,field_description:eagle_base.field_eagle_contract_eagle_parm_use_members_list
+msgid "Uses members list?"
+msgstr "Uses members list?"
+
+#. module: eagle_base
+#: model:ir.model.fields,field_description:eagle_base.field_eagle_config_params_use_partners_list
+#: model:ir.model.fields,field_description:eagle_base.field_eagle_config_settings_use_partners_list
+msgid "Uses partners list"
+msgstr "Utilise la liste des partenaires ?"
+
+#. module: eagle_base
+#: model:ir.model.fields,field_description:eagle_base.field_eagle_contract_eagle_parm_use_partners_list
+msgid "Uses partners list?"
+msgstr "Uses partners list?"
+
+#. module: eagle_base
+#: model:ir.actions.act_window,help:eagle_base.eagle_action_module_tree
+msgid "You should try others search criteria."
+msgstr "Essayer d'autres critères de recherche."
+
+#. module: eagle_base
+#: model:ir.model,name:eagle_base.model_eagle_config_settings
+msgid "eagle.config.settings"
+msgstr "eagle.config.settings"
+
+#. module: eagle_base
+#: selection:eagle.contract.position,product_type:0
+msgid "from stock"
+msgstr "Depuis le stock"
+
+#. module: eagle_base
+#: model:ir.model,name:eagle_base.model_ir_sequence
+msgid "ir.sequence"
+msgstr "ir.sequence"
+
+#. module: eagle_base
+#: selection:eagle.contract.position,product_type:0
+msgid "on order"
+msgstr "Sur commande"
+
+#. module: eagle_base
+#: model:ir.ui.view,arch_db:eagle_base.eagle_view_config_settings
+msgid "or"
+msgstr "ou"
+
