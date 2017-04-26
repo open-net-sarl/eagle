@@ -172,7 +172,8 @@
                         </field>
                     </page>
                     <page string="Analytic Lines" nmae="analytic_lines">
-                        <field name="analytic_lines" domain="[('task_id.eagle_contract','=',active_id)]">
+                        <!-- <field name="analytic_lines" domain="[('task_id.eagle_contract','=',active_id)]"> -->
+                        <field name="analytic_lines">
                             <tree editable="top" string="Timesheet Activities" create="false">
                                 <field name="date"/>
                                 <field name="user_id" required="1"/>

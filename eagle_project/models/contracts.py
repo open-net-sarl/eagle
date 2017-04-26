@@ -24,6 +24,11 @@ _logger = logging.getLogger(__name__)
 class EagleContract(models.Model):
     _inherit = 'eagle.contract'
 
+    @api.depends('sale_subscriptions')
+    def _compute_analytic_lines(self):
+        for contract in self:
+            contract.analytic_lines = contract.env['account.analytic.line'].search([('account_id', 'in', [x.id for x in contract.sale_subscriptions.analytic_account_id])])
+
     current_sale_order_lines = fields.One2many(comodel_name='sale.order.line', inverse_name='contract_id', string='Current Sale Order Lines', domain=[('state','=','draft')])
     past_sale_order_lines = fields.One2many('sale.order.line', 'contract_id', string='Past Sale Order Lines', domain=[('state','<>','draft')])
     current_sale_orders = fields.One2many('sale.order', 'contract_id', string='Current Sale Orders', domain=[('state','=','draft')])
@@ -38,7 +43,7 @@ class EagleContract(models.Model):
     sale_subscription_line = fields.One2many('sale.subscription.line', 'eagle_contract', string='Sale Subscription Lines')
 
     project_tasks = fields.One2many('project.task', 'eagle_contract', string='Tasks')
-    analytic_lines = fields.One2many('account.analytic.line', 'eagle_contract', string='Analytic Lines')
+    analytic_lines = fields.One2many('account.analytic.line', 'eagle_contract', string='Analytic Lines', compute='_compute_analytic_lines', store=False)
 
     tasks_count = fields.Integer(compute='_get_tasks_count', string='Tasks count', default=0)
     leads_count = fields.Integer(compute='_get_leads_count', string='Leads count', default=0)
