@@ -211,8 +211,28 @@ class SaleSubscriptionLine(models.Model):
         return super(SaleSubscriptionLine, self).create(vals)
 
     # ---------- UI management
-    @api.onchange('product_id', 'quantity')
+    @api.onchange('quantity')
+    def onchange_product_qty(self):
+        _logger.info("ONCHANGE QTY")
+        _logger.info(self._context)
+        for subs in self:
+            description = subs.name
+
+            res = super(SaleSubscriptionLine, subs).onchange_product_id()
+
+            if subs.product_id:
+                if 'value' not in res:
+                    res['value'] = {}
+
+                res['value'].update({
+                    'name': description
+                    })
+        return res
+
+    @api.onchange('product_id')
     def onchange_product_id(self):
+        _logger.info("ONCHANGE")
+        _logger.info(self._context)
         for subs in self:
             res = super(SaleSubscriptionLine, subs).onchange_product_id()
             contract = subs.analytic_account_id
@@ -225,7 +245,6 @@ class SaleSubscriptionLine(models.Model):
                 ctx = dict(subs.env.context, company_id=company_id, force_company=company_id, pricelist=pricelist_id, quantity=subs.quantity)
 
                 prod = subs.env['product.product'].with_context(ctx).browse(subs.product_id.id)
-                _logger.info("HERE PROD:_:")
                 if prod.recurring_rule_type and prod.recurring_interval:
                     next_date = datetime.now()
                     failed = True
