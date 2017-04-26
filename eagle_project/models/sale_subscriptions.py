@@ -213,7 +213,6 @@ class SaleSubscriptionLine(models.Model):
     # ---------- UI management
     @api.onchange('quantity')
     def onchange_product_qty(self):
-        _logger.info("ONCHANGE QTY")
         _logger.info(self._context)
         for subs in self:
             description = subs.name
@@ -231,7 +230,6 @@ class SaleSubscriptionLine(models.Model):
 
     @api.onchange('product_id')
     def onchange_product_id(self):
-        _logger.info("ONCHANGE")
         _logger.info(self._context)
         for subs in self:
             res = super(SaleSubscriptionLine, subs).onchange_product_id()

@@ -109,7 +109,9 @@ class EagleContractBase(models.Model):
             if cnt.state == 'confirm':
                 for subs in cnt.sale_subscriptions:
                     subs.state = 'open'
+                    subs.action_recurring_invoice()
                 cnt.action_contract_production()
+
 
         return True
 
