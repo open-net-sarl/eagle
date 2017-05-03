@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<odoo>
+
+        <record model="ir.ui.view" id="eagle_migration_view_contract_wizard">
+            <field name="name">Eagle Project Contract View</field>
+            <field name="model">eagle.contract.migration.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Migrate">
+                    <field name="eagle_subscription_template"/>
+                    <button type="object" name="migrate_positions" string="Migrate Positions"/>
+                </form>
+            </field>
+        </record>
+
+        <record id="eagle_open_migration_wizard" model="ir.actions.act_window">
+            <field name="name">Migration contract position</field>
+            <field name="res_model">eagle.contract.migration.wizard</field>
+            <field name="src_model">eagle.contract</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="eagle_migration_view_contract_wizard"/>
+            <field name="target">new</field>
+        </record>
+
+        <!--
+            Inherited contract form view from the Eagle Base module 
+        -->
+        <record model="ir.ui.view" id="eagle_migration_view_contract_form">
+            <field name="name">Eagle Project Contract View</field>
+            <field name="model">eagle.contract</field>
+            <field name="inherit_id" ref="eagle_base.eagle_view_contract_form"/>
+            <field name="priority" eval="17"/>
+            <field name="arch" type="xml">
+              <xpath expr="//header" position="inside">
+                <button type="action" name="%(eagle_open_migration_wizard)d" string="Migrate Positions"/>
+              </xpath>
+            </field>
+        </record>
+        <act_window 
+            id="migration_position"
+            name="Migrate Position"
+            res_model="eagle.contract.migration.wizard"
+            src_model="eagle.contract"
+            view_mode="form"
+            target="new"
+            key2="client_action_multi"/>
+</odoo>

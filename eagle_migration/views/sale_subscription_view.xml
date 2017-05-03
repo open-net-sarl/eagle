@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<odoo>
+    <record model="ir.ui.view" id="sale_subscription_form_view">
+        <field name="name">Sale Subscription Template</field>
+        <field name="model">sale.subscription.template</field>
+        <field name="inherit_id" ref="sale_contract.sale_subscription_template_view_form"/>
+        <field name="arch" type="xml">
+            <field name="journal_id" position="after">
+                <field name="pricelist_id"/>
+                <field name="recurring_generates"/>
+            </field>
+        </field>
+    </record>
+
+</odoo>
