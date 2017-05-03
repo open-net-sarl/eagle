@@ -27,7 +27,7 @@ class EagleContract(models.Model):
     @api.depends('sale_subscriptions')
     def _compute_analytic_lines(self):
         for contract in self:
-            contract.analytic_lines = contract.env['account.analytic.line'].search([('account_id', 'in', [x.id for x in contract.sale_subscriptions.analytic_account_id])])
+            contract.analytic_lines = contract.env['account.analytic.line'].search([('account_id', 'in', [x.analytic_account_id.id for x in contract.sale_subscriptions])])
 
     current_sale_order_lines = fields.One2many(comodel_name='sale.order.line', inverse_name='contract_id', string='Current Sale Order Lines', domain=[('state','=','draft')])
     past_sale_order_lines = fields.One2many('sale.order.line', 'contract_id', string='Past Sale Order Lines', domain=[('state','<>','draft')])
