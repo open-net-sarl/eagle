@@ -15,27 +15,45 @@ class EagleContract(models.Model):
 
     @api.multi
     def migrate_positions(self, template):
+        SaleSubscription = self.env['sale.subscription']
+        SaleSubscriptionLine = self.env['sale.subscription.line']
+
         map_recurrency = {
             'day': 'daily',
             'week': 'weekly',
             'month': 'monthly',
             'year': 'yearly'
         }
-        for contract in self: 
-            sale_sub_obj = self.env['sale.subscription']
-            sale_sub = sale_sub_obj.create({
+
+        for contract in self:
+            query = "select analytic_account_id from project_project  where contract_id=%d and project_use='maint'" % (contract.id,)
+            self._cr.execute(query)
+            row = self._cr.fetchone()
+
+            analytic_account_id = row[0] if row and row[0] else False
+            if not analytic_account_id:
+                analytic_account = self.env['account.analytic.account'].create({
+                    'contract.name': contract.name or 'test',
+                    'partner_id': contract.customer_id.id,
+                })
+                if analytic_account:
+                    analytic_account_id = analytic_account.id
+
+            pricelist_id = template.pricelist_id.id if not contract.customer_id.property_product_pricelist \
+                    else contract.customer_id.property_product_pricelist.id
+
+            sale_sub = SaleSubscription.create({
                 'eagle_contract': contract.id,
-                'name': 'test',
+                'sale_subscr_name': contract.name or 'test',
                 'date_start': contract.date_start,
                 'template_id': template.id,
                 'partner_id': contract.customer_id.id,
-                'pricelist_id': template.pricelist_id.id,
+                'pricelist_id': pricelist_id,
                 'recurring_generates': template.recurring_generates,
-
+                'analytic_account_id': analytic_account_id
             })
             for position in contract.positions:
-                sale_sub_line_obj = self.env['sale.subscription.line']
-                sale_sub_line_obj.create({
+                SaleSubscriptionLine.create({
                     'eagle_contract': contract.id,
                     'analytic_account_id': sale_sub.id,
                     'price_unit': position.list_price,
