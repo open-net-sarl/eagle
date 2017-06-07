@@ -1,23 +1,31 @@
 @charset "UTF-8";
 /*--adress--*/
 .postal_adress_div {
-    margin-left: 520px; 
+    /*margin-left: 520px; 
     margin-top : 45px; 
     margin-bottom : 15px; 
     line-height: 20px !important; 
-    font-size: 16px;
+    font-size: 16px;*/
+    margin-top : 90px !important; 
+    margin-bottom: 80px !important;
+    line-height: 17px !important; 
+    font-size: 12px !important;
 }
 
 /* ---- Table ---- */
 /* -header- */
+.eagle_reporting_table {
+    width: auto;
+}
 .eagle_reporting_table thead > tr{
-    border-bottom: 2px solid LightSteelBlue !important;
+    border-bottom: 1px solid LightSteelBlue !important;
+    border-top: 1px solid LightSteelBlue !important;
 }
 .eagle_reporting_table thead > tr > th{
     border-top: 1px solid LightSteelBlue !important;
-    border: 1px solid LightSteelBlue;
+    border-bottom: 1px solid LightSteelBlue !important;
+    border: 1px solid LightSteelBlue !important;
     background-color: WhiteSmoke;
-    width: 15%;
     text-align: center;
 }
 .eagle_reporting_table thead > tr #col_descrp{
@@ -25,12 +33,11 @@
     text-align: left;
     padding-left: 5px !important;
 }
-.eagle_reporting_table thead > tr #col_qty{
-    width: 8%;
-}
+.eagle_reporting_table thead > tr #col_qty,
 .eagle_reporting_table thead > tr #col_price_unit, 
 .eagle_reporting_table thead > tr #col_tax, 
 .eagle_reporting_table thead > tr #col_price{
+    width: 90px !important;
 }
 
 /* -tbody- */
@@ -38,9 +45,10 @@
 .eagle_reporting_table .layout_category_title{
     font-weight: bold; 
     border: 1px solid LightSteelBlue !important;
-    border-bottom: 2px solid LightSteelBlue !important;
+    border-bottom: 1px solid LightSteelBlue !important;
+    border-top: 1px solid LightSteelBlue !important;
 }
-.eagle_reporting_table .layout_category_title td{
+.eagle_reporting_table .layout_category_title > td{
     padding-left: 8px !important;
 }
 
@@ -49,7 +57,8 @@
     border-top: 1px solid LightSteelBlue !important;
     border-bottom: 1px solid LightSteelBlue !important;
     border: 1px solid LightSteelBlue;
-    text-align: center;
+    text-align: right;
+    padding-right: 6px;
     /*padding-left: 5% !important;*/
 }
 .eagle_reporting_table .eagle_table_lines td:first-child{

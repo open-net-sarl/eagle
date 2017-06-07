@@ -82,8 +82,8 @@ msgstr "Prix (HT)"
 
 #. module: eagle_reporting
 #: model:ir.ui.view,arch_db:eagle_reporting.table_template
-msgid "Price Unit"
-msgstr "Prix Unitaire"
+msgid "Unit Price"
+msgstr "Prix Unit."
 
 #. module: eagle_reporting
 #: model:ir.actions.report.xml,name:eagle_reporting.eagle_print_contract
