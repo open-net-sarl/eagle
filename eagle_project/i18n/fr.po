@@ -503,6 +503,17 @@ msgid "Sold quantity"
 msgstr "Quantité vendue"
 
 #. module: eagle_project
+#: model:ir.model.fields,field_description:eagle_project.field_sale_order_move_ids
+#: model:ir.model.fields,field_description:eagle_project.field_eagle_contract_lst_stock_moves
+msgid "Related stock moves"
+msgstr "Mouv. stock"
+
+#. module: eagle_project
+#: model:ir.ui.view,arch_db:eagle_project.eagle_project_view_contract_form
+msgid "Stock moves"
+msgstr "Mouv. stock"
+
+#. module: eagle_project
 #: model:ir.model,name:eagle_project.model_eagle_config_settings
 msgid "eagle.config.settings"
 msgstr "eagle.config.settings"

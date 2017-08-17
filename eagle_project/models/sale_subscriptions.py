@@ -201,6 +201,9 @@ class SaleSubscriptionLine(models.Model):
     eagle_contract = fields.Many2one('eagle.contract', string='File')
     eagle_note = fields.Text(string="Note")
 
+    short_descr = fields.Char(string='Short descr.')
+    product_type = fields.Selection(related='product_id.type', string='Product type')
+
     @api.model
     def create(self, vals):
         if vals.get('analytic_account_id', False):
@@ -231,18 +234,26 @@ class SaleSubscriptionLine(models.Model):
     @api.onchange('product_id')
     def onchange_product_id(self):
         _logger.info(self._context)
+        res = super(SaleSubscriptionLine, self).onchange_product_id()
+        company_id = self.env.user.company_id.id
+        pricelist_id = None
         for subs in self:
-            res = super(SaleSubscriptionLine, subs).onchange_product_id()
-            contract = subs.analytic_account_id
-            company_id = contract.company_id.id
-            pricelist_id = contract.pricelist_id.id
+            analytic_account_id = subs.analytic_account_id
+            
 
             if subs.product_id:
+                if analytic_account_id:
+                    company_id = analytic_account_id.company_id.id
+                    pricelist_id = analytic_account_id.pricelist_id.id
+
                 if 'value' not in res:
                     res['value'] = {}
-                ctx = dict(subs.env.context, company_id=company_id, force_company=company_id, pricelist=pricelist_id, quantity=subs.quantity)
+                ctx = dict(company_id=company_id, force_company=company_id, pricelist=pricelist_id, quantity=subs.quantity)
 
                 prod = subs.env['product.product'].with_context(ctx).browse(subs.product_id.id)
+
+                subs.short_descr = prod.display_name
+
                 if prod.recurring_rule_type and prod.recurring_interval:
                     next_date = datetime.now()
                     failed = True
@@ -270,5 +281,4 @@ class SaleSubscriptionLine(models.Model):
                             'recurring_interval': prod.recurring_interval,
                             'recurring_next_date': next_date
                         })
-
         return res

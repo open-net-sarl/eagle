@@ -73,6 +73,55 @@ class EagleContract(models.Model):
         'account.analytic.account',
         string="Default Analytic Account")
 
+
+
+    lst_deliverables = fields.One2many(
+        'sale.order.line', 'contract_id',
+        string='Deliverables',
+        copy=True,
+        domain=[
+            ('product_type', 'in', ['product','consu']),
+            '|',('recurring_rule_type','=','none'),('recurring_rule_type','=',False)
+        ]
+    )
+    lst_services = fields.One2many(
+        'sale.order.line', 'contract_id',
+        string='Services',
+        copy=True,
+        domain=[
+            ('product_type', '=', 'service'),
+            '|',('recurring_rule_type','=','none'),('recurring_rule_type','=',False)
+        ]
+    )
+
+    lst_recurrents = fields.One2many(
+        'sale.subscription.line', 'eagle_contract',
+        string='Recurrents',
+        copy=True,
+        domain=[
+            ('recurring_rule_type', 'not in', [False,'none'])
+        ]
+    )
+
+    lst_stock_moves = fields.Many2many(
+        'stock.move',
+        compute='_comp_lst_stock_moves',
+        string='Related stock moves'
+    )
+
+    @api.multi
+    @api.depends('past_sale_orders')
+    def _comp_lst_stock_moves(self):
+        for cnt in self:
+            pick_grps = set()
+            query = "Select distinct procurement_group_id from sale_order where contract_id=" + str(cnt.id)
+            self._cr.execute(query)
+            for row in self._cr.fetchall():
+                pick_grps.add(row[0])
+            pick_grps = list(pick_grps)
+
+            cnt.lst_stock_moves = self.env['stock.move'].search([('group_id','in',pick_grps)])
+
     @api.multi
     def _get_non_recurring_price(self):
         for contract in self:

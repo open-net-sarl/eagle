@@ -9,7 +9,7 @@
 #  Copyright (c) 2011-TODAY Open-Net Ltd. <http://www.open-net.ch>
 {
     'name' : 'Eagle View: project module',
-    'version' : '10.0.0.1',
+    'version' : '10.0.0.2',
     'author' : 'Open Net Sàrl',
     'category': 'Eagle view',
     'summary': 'Synthetic view on your business',
@@ -26,7 +26,8 @@
         'ons_productivity_subscriptions_adv',
         'ons_productivity_layout',
         'account_asset',
-        'sale_contract_asset'
+        'sale_contract_asset',
+        'sale_margin'
     ],
     'data': [
     	'views/view_config.xml',
