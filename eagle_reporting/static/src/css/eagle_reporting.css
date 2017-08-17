@@ -15,7 +15,7 @@
 /* ---- Table ---- */
 /* -header- */
 .eagle_reporting_table {
-    width: auto;
+    width: 100%;
 }
 .eagle_reporting_table thead > tr{
     border-bottom: 1px solid LightSteelBlue !important;
@@ -68,4 +68,12 @@
 }
 /* category subtotal */
 .eagle_reporting_table .eagle_table_subtotal_cat{
+}
+
+h2 {
+    font-size: 30px !important;
+}
+
+h3 {
+    font-size: 24px !important;
 }
