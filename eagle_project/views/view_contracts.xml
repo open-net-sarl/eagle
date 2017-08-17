@@ -111,8 +111,35 @@
                                     <field name="sequence" widget="handle"/>
                                     <field name="product_id" invisible="1"/>
                                     <field name="short_descr"/>
+                                    <field name="order_id"/>
                                     <field name="date_order" widget="date"/>
-                                    <field name="requested_date"/>
+                                    <field name="product_uom_qty" string="Ordered Qty"/>
+                                    <field name="qty_delivered" invisible="0"/>
+                                    <field name="qty_invoiced" invisible="0"/>
+                                    <field name="qty_to_invoice" invisible="0"/>
+                                    <field name="product_uom" groups="product.group_uom" options='{"no_open": True}'/>
+                                    <field name="price_unit"/>
+                                    <field name="discount" groups="sale.group_discount_per_so_line"/>
+                                    <field name="price_subtotal" widget="monetary"/>
+                                    <field name="invoice_status" invisible="0"/>
+                                    <field name="state" invisible="1"/>
+                            </tree>
+                        </field>
+                    </page>
+                    <page string="Services" name="sale_subscrl_services">
+                        <field name="lst_services" context="{'ons_product_type':'service','default_contract_id':context.get('active_id'),'default_partner_id':customer_id,'default_project_id':default_analytic_acc}" options="{'form_view_ref':'eagle_project.eagle_project_view_sale_order_line_form'}">
+                            <tree string=" " 
+                                decoration-info="invoice_status=='to invoice'" 
+                                decoration-primary="(state not in ('done', 'draft'))"
+                                decoration-success="(state in ('done'))"
+                                decoration-danger="(state in ('draft'))"
+                                limit="20" 
+                                default_order="date_order DESC">
+                                    <field name="sequence" widget="handle"/>
+                                    <field name="product_id" invisible="1"/>
+                                    <field name="short_descr"/>
+                                    <field name="order_id"/>
+                                    <field name="date_order" widget="date"/>
                                     <field name="product_uom_qty" string="Ordered Qty"/>
                                     <field name="qty_delivered" invisible="0"/>
                                     <field name="qty_invoiced" invisible="0"/>
@@ -142,33 +169,6 @@
                                 <field name="date" groups="base.group_no_one"/>
                                 <field name="date_expected" invisible="context.get('scrap_move')"/>  <!-- TDE FIXME: woooooo -->
                                 <field name="state"/>
-                            </tree>
-                        </field>
-                    </page>
-                    <page string="Services" name="sale_subscrl_services">
-                        <field name="lst_services" context="{'ons_product_type':'service','default_contract_id':context.get('active_id'),'default_partner_id':customer_id,'default_project_id':default_analytic_acc}" options="{'form_view_ref':'eagle_project.eagle_project_view_sale_order_line_form'}">
-                            <tree 
-                                string=" " 
-                                decoration-info="invoice_status=='to invoice'" 
-                                decoration-primary="(state not in ('done', 'draft'))"
-                                decoration-success="(state in ('done'))"
-                                decoration-danger="(state in ('draft'))"
-                                limit="20" 
-                                default_order="date_order DESC">
-                                    <field name="sequence" widget="handle"/>
-                                    <field name="product_id" invisible="1"/>
-                                    <field name="short_descr"/>
-                                    <field name="date_order" widget="date"/>
-                                    <field name="product_uom_qty" string="Ordered Qty"/>
-                                    <field name="product_uom" groups="product.group_uom" options='{"no_open": True}'/>
-                                    <field name="price_unit"/>
-                                    <field name="discount" groups="sale.group_discount_per_so_line"/>
-                                    <field name="price_subtotal" widget="monetary"/>
-                                    <field name="qty_delivered" invisible="1"/>
-                                    <field name="qty_invoiced" invisible="1"/>
-                                    <field name="qty_to_invoice" invisible="1"/>
-                                    <field name="invoice_status" invisible="1"/>
-                                    <field name="state" invisible="1"/>
                             </tree>
                         </field>
                     </page>
