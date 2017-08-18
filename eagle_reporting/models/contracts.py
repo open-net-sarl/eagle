@@ -16,6 +16,27 @@ class EagleContract(models.Model):
         string="Do a page break between subscriptions types",
         help="Do a page break between recurring and non recurring subscriptions in the report")
 
+    report_contract_total = fields.Float(
+        compute="_compute_report_contract_total")
+
+    @api.multi
+    def _compute_report_contract_total(self):
+        for contract in self:
+            domain = [
+                ('contract_id', '=', contract.id),
+                '|',('recurring_rule_type', '=', 'none'),('recurring_rule_type', '=', False),
+                '|',('order_id.state', '=', 'draft'),('order_id', '=', False)
+            ]
+            domain_deliverable = domain + [('product_type', 'in', ['product','consu'])]
+            domain_services = domain + [('product_type', '=', 'service')]
+            lst_deliverables = self.env['sale.order.line'].search(domain_deliverable)
+            lst_services = self.env['sale.order.line'].search(domain_services)
+
+            sum_lst_deliverables = sum([line.price_subtotal for line in lst_deliverables])
+            sum_lst_services = sum([line.price_subtotal for line in lst_services])
+
+            contract.report_contract_total = sum_lst_deliverables + sum_lst_services + contract.recurring_total
+
     @api.multi
     def subs_lines_layouted(self, filtred_lines):
         """

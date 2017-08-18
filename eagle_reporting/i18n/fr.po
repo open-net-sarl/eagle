@@ -41,6 +41,11 @@ msgid "<strong>Subtotal (WT) : </strong>"
 msgstr "<strong>Sous-total (HT) : </strong>"
 
 #. module: eagle_reporting
+#: model:ir.ui.view,arch_db:eagle_reporting.table_common
+msgid "<strong>Subtotal (WT) : </strong>"
+msgstr "<strong>Sous-total (HT) : </strong>"
+
+#. module: eagle_reporting
 #: model:ir.ui.view,arch_db:eagle_reporting.report_contract_document
 msgid "<strong>Total (WT)</strong>"
 msgstr "<strong>Total (HT)</strong>"

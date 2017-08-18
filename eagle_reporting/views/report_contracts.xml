@@ -74,8 +74,6 @@
                         <t t-call="eagle_reporting.table_template"/>
                         
                     </t>
-
-                    <t t-set="subtotal_common" t-value="0" />
                     
                     <t t-set="eagle_table_common_ids" t-value="o.lst_deliverables"/>
                     <t t-call="eagle_reporting.table_common" />
@@ -89,7 +87,7 @@
                     <div class="row">
                         <div class="col-xs-5 pull-right">
                             <table class="table table-condensed">
-                                <t t-set="total_amount" t-value="subtotal_common + o.recurring_total "/>
+                                <t t-set="total_amount" t-value="o.report_contract_total "/>
                             <!--
                                 #Tax??
                                 <tr>
