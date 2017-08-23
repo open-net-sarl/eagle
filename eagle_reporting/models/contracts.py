@@ -19,6 +19,12 @@ class EagleContract(models.Model):
     report_contract_total = fields.Float(
         compute="_compute_report_contract_total")
 
+    report_deliverables_total = fields.Float(
+        compute="_compute_report_contract_total")
+
+    report_services_total = fields.Float(
+        compute="_compute_report_contract_total")
+
     @api.multi
     def _compute_report_contract_total(self):
         for contract in self:
@@ -36,6 +42,9 @@ class EagleContract(models.Model):
             sum_lst_services = sum([line.price_subtotal for line in lst_services])
 
             contract.report_contract_total = sum_lst_deliverables + sum_lst_services + contract.recurring_total
+            contract.report_deliverables_total = sum_lst_deliverables
+            contract.report_services_total = sum_lst_services
+
 
     @api.multi
     def subs_lines_layouted(self, filtred_lines):

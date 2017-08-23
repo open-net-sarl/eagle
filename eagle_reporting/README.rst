@@ -17,14 +17,13 @@ This module increases your productivity by introducing a complete contracts mana
 
 Known issues / Roadmap
 ======================
-* Sum of all table in report contract
 
 Contributors
 ------------
 
 * Cyp <cyp@open-net.ch>
 * Lfr <lfr@open-net.ch>
-* Rémy Zulauff <rzu@open-net.ch>
+* Rzu <rzu@open-net.ch>
 
 Maintainer
 ----------
@@ -39,5 +38,10 @@ This module is maintained by Open Net Sàrl.
 
 V8.0: 2015-06-28
     - Scratch writing
+
+v10.0.0.2: 2017-08-23
+	- Report : show deliverables and services list
+	- Report : reordered by categories
+	- Report : more translations
 
 Icon made by Freepik from www.flaticon.com 

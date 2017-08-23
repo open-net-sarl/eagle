@@ -9,7 +9,7 @@
 #  Copyright (c) 2015-TODAY Open-Net Ltd. <http://www.open-net.ch>
 {
     'name' : 'Eagle View: reporting module',
-    'version' : '10.0.0.1',
+    'version' : '10.0.0.2',
     'website': 'http://www.open-net.ch',
     'author' : 'Open Net Sàrl',
     'category': 'Eagle view',

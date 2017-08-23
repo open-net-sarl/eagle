@@ -17,13 +17,20 @@ msgstr ""
 
 #. module: eagle_reporting
 #: model:ir.ui.view,arch_db:eagle_reporting.table_template
+#: model:ir.ui.view,arch_db:eagle_reporting.table_common
 msgid "&amp;bull;"
 msgstr "&amp;bull;"
 
 #. module: eagle_reporting
 #: model:ir.ui.view,arch_db:eagle_reporting.table_template
+#: model:ir.ui.view,arch_db:eagle_reporting.table_common
 msgid "(Disc."
 msgstr "(Rabais"
+
+#. module: eagle_reporting
+#: model:ir.ui.view,arch_db:eagle_reporting.report_contract_document
+msgid "Offer"
+msgstr "Offre"
 
 #. module: eagle_reporting
 #: model:ir.ui.view,arch_db:eagle_reporting.report_contract_document
@@ -52,6 +59,7 @@ msgstr "<strong>Total (HT)</strong>"
 
 #. module: eagle_reporting
 #: model:ir.ui.view,arch_db:eagle_reporting.table_template
+#: model:ir.ui.view,arch_db:eagle_reporting.table_common
 msgid "Description"
 msgstr "Description"
 
@@ -82,11 +90,13 @@ msgstr "Dossier Eagle"
 
 #. module: eagle_reporting
 #: model:ir.ui.view,arch_db:eagle_reporting.table_template
+#: model:ir.ui.view,arch_db:eagle_reporting.table_common
 msgid "Price (WT)"
 msgstr "Prix (HT)"
 
 #. module: eagle_reporting
 #: model:ir.ui.view,arch_db:eagle_reporting.table_template
+#: model:ir.ui.view,arch_db:eagle_reporting.table_common
 msgid "Unit Price"
 msgstr "Prix Unit."
 
@@ -97,6 +107,7 @@ msgstr "Imprimer le contrat"
 
 #. module: eagle_reporting
 #: model:ir.ui.view,arch_db:eagle_reporting.table_template
+#: model:ir.ui.view,arch_db:eagle_reporting.table_common
 msgid "Qty."
 msgstr "Qté."
 
@@ -107,11 +118,13 @@ msgstr "Abonnement"
 
 #. module: eagle_reporting
 #: model:ir.ui.view,arch_db:eagle_reporting.table_template
+#: model:ir.ui.view,arch_db:eagle_reporting.table_common
 msgid "Taxes"
 msgstr "Taxes"
 
 #. module: eagle_reporting
 #: model:ir.ui.view,arch_db:eagle_reporting.table_template
+#: model:ir.ui.view,arch_db:eagle_reporting.table_common
 msgid "border-top: 2px solid LightSteelBlue !important"
 msgstr "border-top: 2px solid LightSteelBlue !important"
 

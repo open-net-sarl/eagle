@@ -51,8 +51,8 @@
 
                     </div>
 
-                    <div class="row col-xs-12 mb32">
-                        <h3 style="text-decoration:underline">Devis de prestation Odoo</h3>
+                    <div class="row col-xs-12 mb16">
+                        <h3 style="text-decoration:underline">Offer</h3>
                     </div>
                        
                 <!-- [Active recurrings] -->
@@ -65,6 +65,18 @@
                     <t t-if="has_not_rec_lines == 1 and has_rec_lines == 1 and o.do_page_break">
                         <p style="page-break-after:always;"></p>
                     </t>
+                    
+                    <t t-set="eagle_table_common_ids" t-value="o.lst_deliverables"/>
+                    <t t-set="eagle_table_total_label" t-value="'Total des prestations (HT)'" />
+                    <t t-set="table_title" t-value="'Prestations'" />
+                    <t t-set="eagle_table_total" t-value="o.report_deliverables_total "/>
+                    <t t-call="eagle_reporting.table_common" />
+          
+                    <t t-set="eagle_table_common_ids" t-value="o.lst_services"/>
+                    <t t-set="eagle_table_total_label" t-value="'Total des services (ĤT)'" />
+                    <t t-set="table_title" t-value="'Services'" />
+                    <t t-set="eagle_table_total" t-value="o.report_services_total "/>                    
+                    <t t-call="eagle_reporting.table_common" />
 
                     <t t-if="has_rec_lines == 1">
 <!--                         <p><strong>[TO REMOVE] Recurring / Active [TO REMOVE]</strong></p> -->
@@ -74,14 +86,6 @@
                         <t t-call="eagle_reporting.table_template"/>
                         
                     </t>
-                    
-                    <t t-set="eagle_table_common_ids" t-value="o.lst_deliverables"/>
-                    <t t-call="eagle_reporting.table_common" />
-
-                    <t t-set="eagle_table_common_ids" t-value="o.lst_services"/>                    
-                    <t t-call="eagle_reporting.table_common" />
-
-                    
 
                 <!-- [Final total] -->
                     <div class="row">
@@ -125,98 +129,9 @@
         <template id="eagle_reporting.table_template">
             <!-- filtered_lines needs to be defined before the call -->
             <t t-foreach="o.subs_lines_layouted(filtered_lines)" t-as="page">
-                <table class="table table-condensed eagle_reporting_table">
-                    <thead>
-                        <tr>
-                            <th id="col_descrp">Description</th>
-                            <th id="col_qty">Qty.</th>
-                            <th id="col_price_unit">Unit Price</th>
-                            <!-- <th id="col_tax">Taxes</th> -->
-                            <th id="col_price">Price (WT)</th>
-
-                            <!-- 
-                                defines the number of columns to changs all the colspans 
-                            -->
-                            <t t-set="number_columns" t-value="4"/>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <t t-foreach="page" t-as="layout_category">
-                            <t t-if="layout_category_size &gt; 0 or page_size &gt; 1" groups="sale.group_sale_layout">
-                                <tr class="active layout_category_title">
-                                    <!-- dont remove style! -->
-                                    <td t-attf-colspan="{{number_columns}}" style="border-top: 1px solid LightSteelBlue">
-                                        <t t-esc="layout_category['name']"/>
-                                    </td>
-                                </tr>
-                            </t>
-
-                            <!-- Lines associated -->
-                            <t t-foreach="layout_category['lines']" t-as="sub_line">
-                                <tr class="eagle_table_lines">
-                                    <td>
-                                        <div>
-                                            <span t-field="sub_line.name"/>
-                                        </div>
-                                        <div>
-                                            <span t-field="sub_line.eagle_note"/>
-                                        </div>
-                                    </td>    
-                                    <td>
-                                        <span t-esc="&quot;%0.0f&quot; % sub_line.quantity"/>
-                                        <span t-field="sub_line.uom_id"/>
-                                        <!-- <span t-field="sub_line.quantity"/> -->
-                                    </td>
-                                    <td>
-                                        <div>
-                                            <span t-field="sub_line.price_unit"/>
-                                        </div>
-                                        <div>
-                                            <span t-if="sub_line.discount">
-                                                <t t-set="line_discount" t-value="sub_line.discount" />
-                                                <t t-if="int(sub_line.discount) == line_discount">
-                                                    <t t-set="line_discount" t-value="int(sub_line.discount)" />
-                                                </t>
-                                                (Disc. <span t-esc="line_discount"/>%)
-                                            </span>
-                                        </div>
-                                    </td>
-                                    <!-- <td>
-                                        <t t-foreach="sub_line.product_id.taxes_id" t-as="x">
-                                            <div>
-                                                <span t-esc="x.description or x.name"/>
-                                            </div>
-                                        </t>
-                                    </td> -->
-                                    <td>
-                                        <span t-field="sub_line.price_subtotal"/>
-                                    </td>
-                                </tr>
-                            </t>
-                            <t t-set="last_has_not_subtotal" t-value="True"/>
-                                <tr class="text-right eagle_table_subtotal_cat">
-                                    <td t-attf-colspan="{{number_columns}}">
-                                        <strong>Subtotal (WT) : </strong>
-                                        <t t-set="subtotal_common" t-value="sum([line.price_subtotal for line in layout_category['lines']])"/>
-                                        <span t-esc="subtotal_common" t-options="{'widget': 'monetary', 'display_currency': o.customer_id.property_product_pricelist.currency_id}"/>
-                                        <t t-set="last_has_not_subtotal" t-value="False"/>
-                                    </td>
-                                </tr>
-                        </t>
-                    </tbody>
-                </table>
-                <t t-if="page_index &lt; page_size - 1">
-                    <p style="page-break-before:always;"> </p>
-                </t>
-            </t>
-
-        </template>
-
-        <template id="eagle_reporting.table_common">
-            <t t-if="[tab for tab in eagle_table_common_ids if tab.order_id.state == 'draft' or not tab.order_id]" >
-                <!-- filtered_lines needs to be defined before the call -->
-                <t t-foreach="o.order_lines_layouted(eagle_table_common_ids)" t-as="page">
-                    <table class="table table-condensed eagle_reporting_table">
+                <div style="page-break-inside: avoid;">
+                    <h4 style="text-decoration:underline">Hébergement</h4>
+                    <table class="table table-condensed eagle_reporting_table" style="page-break-inside: avoid;">
                         <thead>
                             <tr>
                                 <th id="col_descrp">Description</th>
@@ -233,65 +148,177 @@
                         </thead>
                         <tbody>
                             <t t-foreach="page" t-as="layout_category">
-                                <t t-if="[line for line in layout_category['lines'] if line.order_id.state == 'draft' or not line.order_id]" >
-                                    <t t-if="layout_category_size &gt; 0 or page_size &gt; 1" groups="sale.group_sale_layout">
-                                        <t t-if="layout_category['name'] != 'Uncategorized'">
-                                            <tr class="active layout_category_title">
-                                                <!-- dont remove style! -->
-                                                <td t-attf-colspan="{{number_columns}}" style="border-top: 1px solid LightSteelBlue">
-                                                    <t t-esc="layout_category['name']"/>
-                                                </td>
-                                            </tr>
-                                        </t>
-                                    </t>
-
-                                    <!-- Lines associated -->
-                                    <t t-foreach="layout_category['lines']" t-as="line">
-                                        <t t-if="line.order_id.state == 'draft' or not line.order_id" >
-                                            <tr class="eagle_table_lines">
-                                                <td>
-                                                    <span t-field="line.name"/>
-                                                </td>
-                                                <td>
-                                                    <span t-esc="&quot;%0.0f&quot; % line.product_uom_qty"/>
-                                                    <span t-field="line.product_uom"/>
-                                                </td>
-                                                <td>
-                                                    <div>
-                                                        <span t-field="line.price_unit"/>
-                                                    </div>
-                                                    <div>
-                                                        <span t-if="line.discount">
-                                                            <t t-set="line_discount" t-value="line.discount" />
-                                                            <t t-if="int(line.discount) == line_discount">
-                                                                <t t-set="line_discount" t-value="int(line.discount)" />
-                                                            </t>
-                                                            (Disc. <span t-esc="line_discount"/>%)
-                                                        </span>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <span t-field="line.price_subtotal" />
-                                                </td> 
-                                            </tr>
-                                        </t>
-                                    </t>
-
-                                    <tr class="text-right eagle_table_subtotal_cat">
-                                        <td t-attf-colspan="{{number_columns}}">
-                                            <strong>Subtotal (WT) : </strong>
-                                            <t t-set="subtotal_common" t-value="sum([line.price_subtotal for line in layout_category['lines'] if line.order_id.state == 'draft' or not line.order_id])"/>
-                                            <span t-esc="subtotal_common" t-options="{'widget': 'monetary', 'display_currency': o.customer_id.property_product_pricelist.currency_id}"/>
+                                <t t-if="layout_category_size &gt; 0 or page_size &gt; 1" groups="sale.group_sale_layout">
+                                    <tr class="active layout_category_title">
+                                        <!-- dont remove style! -->
+                                        <td t-attf-colspan="{{number_columns}}" style="border-top: 1px solid LightSteelBlue">
+                                            <t t-esc="layout_category['name']"/>
                                         </td>
                                     </tr>
                                 </t>
+
+                                <!-- Lines associated -->
+                                <t t-foreach="layout_category['lines']" t-as="sub_line">
+                                    <tr class="eagle_table_lines">
+                                        <td>
+                                            <div>
+                                                <span t-field="sub_line.name"/>
+                                            </div>
+                                            <div>
+                                                <span t-field="sub_line.eagle_note"/>
+                                            </div>
+                                        </td>    
+                                        <td>
+                                            <span t-esc="&quot;%0.0f&quot; % sub_line.quantity"/>
+                                            <span t-field="sub_line.uom_id"/>
+                                            <!-- <span t-field="sub_line.quantity"/> -->
+                                        </td>
+                                        <td>
+                                            <div>
+                                                <span t-field="sub_line.price_unit"/>
+                                            </div>
+                                            <div>
+                                                <span t-if="sub_line.discount">
+                                                    <t t-set="line_discount" t-value="sub_line.discount" />
+                                                    <t t-if="int(sub_line.discount) == line_discount">
+                                                        <t t-set="line_discount" t-value="int(sub_line.discount)" />
+                                                    </t>
+                                                    (Disc. <span t-esc="line_discount"/>%)
+                                                </span>
+                                            </div>
+                                        </td>
+                                        <!-- <td>
+                                            <t t-foreach="sub_line.product_id.taxes_id" t-as="x">
+                                                <div>
+                                                    <span t-esc="x.description or x.name"/>
+                                                </div>
+                                            </t>
+                                        </td> -->
+                                        <td>
+                                            <span t-field="sub_line.price_subtotal"/>
+                                        </td>
+                                    </tr>
+                                </t>
+                                <t t-set="last_has_not_subtotal" t-value="True"/>
+                                    <tr class="text-right eagle_table_subtotal_cat">
+                                        <td t-attf-colspan="{{number_columns}}">
+                                            <strong>Subtotal (WT) : </strong>
+                                            <t t-set="subtotal_common" t-value="sum([line.price_subtotal for line in layout_category['lines']])"/>
+                                            <span t-esc="subtotal_common" t-options="{'widget': 'monetary', 'display_currency': o.customer_id.property_product_pricelist.currency_id}"/>
+                                            <t t-set="last_has_not_subtotal" t-value="False"/>
+                                        </td>
+                                    </tr>
                             </t>
                         </tbody>
                     </table>
+                </div>
+                <t t-if="page_index &lt; page_size - 1">
+                    <p style="page-break-before:always;"> </p>
+                </t>
+            </t>
+
+        </template>
+
+        <template id="eagle_reporting.table_common">
+            <t t-if="[tab for tab in eagle_table_common_ids if tab.order_id.state == 'draft' or not tab.order_id]" >
+                <!-- filtered_lines needs to be defined before the call -->
+                <t t-foreach="o.order_lines_layouted(eagle_table_common_ids)" t-as="page">
+                    <div style="page-break-inside: avoid;">
+                        <h4 style="text-decoration:underline"><span t-esc="table_title" /></h4>
+                        <table class="table table-condensed eagle_reporting_table" >
+                            <thead>
+                                <tr>
+                                    <th id="col_descrp">Description</th>
+                                    <th id="col_qty">Qty.</th>
+                                    <th id="col_price_unit">Unit Price</th>
+                                    <!-- <th id="col_tax">Taxes</th> -->
+                                    <th id="col_price">Price (WT)</th>
+
+                                    <!-- 
+                                        defines the number of columns to changs all the colspans 
+                                    -->
+                                    <t t-set="number_columns" t-value="4"/>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-foreach="page" t-as="layout_category">
+                                    <t t-if="[line for line in layout_category['lines'] if line.order_id.state == 'draft' or not line.order_id]" >
+                                        <t t-if="layout_category_size &gt; 0 or page_size &gt; 1" groups="sale.group_sale_layout">
+                                            <t t-if="layout_category['name'] != 'Uncategorized'">
+                                                <tr class="active layout_category_title">
+                                                    <!-- dont remove style! -->
+                                                    <td t-attf-colspan="{{number_columns}}" style="border-top: 1px solid LightSteelBlue">
+                                                        <t t-esc="layout_category['name']"/>
+                                                    </td>
+                                                </tr>
+                                            </t>
+                                        </t>
+
+                                        <!-- Lines associated -->
+                                        <t t-foreach="layout_category['lines']" t-as="line">
+                                            <t t-if="line.order_id.state == 'draft' or not line.order_id" >
+                                                <tr class="eagle_table_lines">
+                                                    <td>
+                                                        <span t-field="line.name"/>
+                                                    </td>
+                                                    <td>
+                                                        <span t-esc="&quot;%0.0f&quot; % line.product_uom_qty"/>
+                                                        <span t-field="line.product_uom"/>
+                                                    </td>
+                                                    <td>
+                                                        <div>
+                                                            <span t-field="line.price_unit"/>
+                                                        </div>
+                                                        <div>
+                                                            <span t-if="line.discount">
+                                                                <t t-set="line_discount" t-value="line.discount" />
+                                                                <t t-if="int(line.discount) == line_discount">
+                                                                    <t t-set="line_discount" t-value="int(line.discount)" />
+                                                                </t>
+                                                                (Disc. <span t-esc="line_discount"/>%)
+                                                            </span>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <span t-field="line.price_subtotal" />
+                                                    </td> 
+                                                </tr>
+                                            </t>
+                                        </t>
+
+                                        <tr class="text-right eagle_table_subtotal_cat">
+                                            <td t-attf-colspan="{{number_columns}}">
+                                                <strong>Subtotal (WT) : </strong>
+                                                <t t-set="subtotal_common" t-value="sum([line.price_subtotal for line in layout_category['lines'] if line.order_id.state == 'draft' or not line.order_id])"/>
+                                                <span t-esc="subtotal_common" t-options="{'widget': 'monetary', 'display_currency': o.customer_id.property_product_pricelist.currency_id}"/>
+                                            </td>
+                                        </tr>
+                                    </t>
+                                </t>
+                            </tbody>
+                        </table>
+                        <div class="row">
+                            <div class="col-xs-5 pull-right">
+                                <table class="table table-condensed">
+                                    <tr class="eagle_border">
+                                        <td><span t-esc="eagle_table_total_label"/></td>
+                                        <td class="text-right">
+                                            <span t-esc="eagle_table_total" t-options="{'widget': 'monetary', 'display_currency': o.customer_id.property_product_pricelist.currency_id}"/>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
                     <t t-if="page_index &lt; page_size - 1">
                         <p style="page-break-before:always;"> </p>
                     </t>
                 </t>
+                <t t-if="o.do_page_break">
+                    <p style="page-break-before:always;"> </p>
+                </t>
+                
             </t>        
         </template>
 
