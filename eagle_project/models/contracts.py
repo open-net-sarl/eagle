@@ -300,8 +300,8 @@ class EagleContractPos(models.Model):
                 tax = pos.tax_id
 
                 if tax:
-                    taxes = tax.compute_all(price, pos.qty, product=pos.name, partner=pos.contract_id.customer_id)
-                    pos.cl_amount = taxes['total']
+                    taxes = tax.compute_all(price, quantity=pos.qty, product=pos.name, partner=pos.contract_id.customer_id)
+                    pos.cl_amount = taxes['total_excluded']
                     pos.cl_total = taxes['total_included']
                 else:
                     pos.cl_amount = price * pos.qty
