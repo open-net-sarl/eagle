@@ -81,7 +81,7 @@ class EagleContract(models.Model):
         copy=True,
         domain=[
             ('product_type', 'in', ['product','consu']),
-            '|',('recurring_rule_type','=','none'),('recurring_rule_type','=',False)
+            ('product_id.recurring_invoice','!=',True)
         ]
     )
     lst_services = fields.One2many(
@@ -90,7 +90,7 @@ class EagleContract(models.Model):
         copy=True,
         domain=[
             ('product_type', '=', 'service'),
-            '|',('recurring_rule_type','=','none'),('recurring_rule_type','=',False)
+            ('product_id.recurring_invoice','!=',True)
         ]
     )
 
