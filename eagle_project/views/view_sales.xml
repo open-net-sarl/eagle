@@ -156,6 +156,18 @@
             </field>
         </record>
 
+        <record model="ir.ui.view" id="eagle_view_sale_line_form">
+            <field name="name">Eagle Project: sale line form</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="ons_productivity_subscriptions_adv.onsp_view_sale_order_subscription_form"/>
+            <field name="priority" eval="17"/>
+            <field name="arch" type="xml">
+                <field name="quot_lines" position="attributes">
+                    <attribute name="context">{'form_view_ref':'eagle_project.eagle_project_view_sale_order_line_form'}</attribute>
+                </field>
+            </field>
+        </record>
+
 		<act_window
 			domain="[('contract_id', '=', active_id),('state','&lt;&gt;','draft')]" 
 			id="eagle_action_contract_2_passed_sales"
