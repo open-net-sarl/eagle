@@ -52,7 +52,7 @@
                     </div>
 
                     <div class="row col-xs-12 mb16">
-                        <h3 style="text-decoration:underline">Offer</h3>
+                        <h3>Offer <span t-esc="o.id"/> du <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%d/%m/%Y')"/></h3>
                     </div>
                        
                 <!-- [Active recurrings] -->
@@ -130,7 +130,7 @@
             <!-- filtered_lines needs to be defined before the call -->
             <t t-foreach="o.subs_lines_layouted(filtered_lines)" t-as="page">
                 <div style="page-break-inside: avoid;">
-                    <h4 style="text-decoration:underline">Hébergement</h4>
+                    <h4>Hébergement</h4>
                     <table class="table table-condensed eagle_reporting_table" style="page-break-inside: avoid;">
                         <thead>
                             <tr>
@@ -224,7 +224,7 @@
                 <!-- filtered_lines needs to be defined before the call -->
                 <t t-foreach="o.order_lines_layouted(eagle_table_common_ids)" t-as="page">
                     <div style="page-break-inside: avoid;">
-                        <h4 style="text-decoration:underline"><span t-esc="table_title" /></h4>
+                        <h4><span t-esc="table_title" /></h4>
                         <table class="table table-condensed eagle_reporting_table" >
                             <thead>
                                 <tr>
