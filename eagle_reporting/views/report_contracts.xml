@@ -73,7 +73,7 @@
                     <t t-call="eagle_reporting.table_common" />
           
                     <t t-set="eagle_table_common_ids" t-value="o.lst_services"/>
-                    <t t-set="eagle_table_total_label" t-value="'Total des services (ĤT)'" />
+                    <t t-set="eagle_table_total_label" t-value="'Total des services (HT)'" />
                     <t t-set="table_title" t-value="'Services'" />
                     <t t-set="eagle_table_total" t-value="o.report_services_total "/>                    
                     <t t-call="eagle_reporting.table_common" />
