@@ -132,7 +132,6 @@ msgstr "Dossier Eagle"
 #: model:ir.model.fields,field_description:eagle_project.field_procurement_order_eagle_contract
 #: model:ir.model.fields,field_description:eagle_project.field_project_task_eagle_contract
 #: model:ir.model.fields,field_description:eagle_project.field_sale_order_contract_id
-#: model:ir.model.fields,field_description:eagle_project.field_sale_order_line_contract_id
 #: model:ir.model.fields,field_description:eagle_project.field_sale_subscription_eagle_contract
 #: model:ir.model.fields,field_description:eagle_project.field_sale_subscription_line_eagle_contract
 #: model:ir.ui.view,arch_db:eagle_project.eagle_view_task_work_filter
@@ -522,4 +521,9 @@ msgstr "eagle.config.settings"
 #: model:ir.model,name:eagle_project.model_ir_sequence
 msgid "ir.sequence"
 msgstr "ir.sequence"
+
+#. module: eagle_project
+#: model:ir.model.fields,field_description:eagle_project.field_sale_order_short_descr
+msgid "Short descr."
+msgstr "Descr. courte"
 

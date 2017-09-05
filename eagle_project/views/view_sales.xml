@@ -165,6 +165,9 @@
                 <field name="quot_lines" position="attributes">
                     <attribute name="context">{'form_view_ref':'eagle_project.eagle_project_view_sale_order_line_form'}</attribute>
                 </field>
+                <xpath expr="//field[@name='quot_lines']/form//field[@name='layout_category_id']" position="after">
+                    <field name="short_descr"/>
+                </xpath>
             </field>
         </record>
 
