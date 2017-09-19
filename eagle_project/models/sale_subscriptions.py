@@ -17,6 +17,12 @@ from dateutil.relativedelta import relativedelta
 import logging
 _logger = logging.getLogger(__name__)
 
+class AccountAnalyticAccount(models.Model):
+    _inherit = 'account.analytic.account'
+
+    partner_invoice_id = fields.Many2one('res.partner', string='Invoice Address', track_visibility='onchange')
+    partner_shipping_id = fields.Many2one('res.partner', string='Delivery Address', track_visibility='onchange')
+
 
 class SaleSubscription(models.Model):
     _inherit = 'sale.subscription'
@@ -139,6 +145,10 @@ class SaleSubscription(models.Model):
         sale = super(SaleSubscription, self)._prepare_sale_data()
         for data in self:
             sale['contract_id'] = data.eagle_contract and data.eagle_contract.id or False
+            if data.partner_invoice_id:
+                sale['partner_invoice_id'] = data.partner_invoice_id.id
+        if data.partner_shipping_id:
+            sale['partner_shipping_id'] = data.partner_shipping_id.id
         return sale
 
     @api.multi
@@ -154,6 +164,8 @@ class SaleSubscription(models.Model):
         invoice = super(SaleSubscription, self)._prepare_invoice_data()
         for data in self:
             invoice['contract_id'] = data.eagle_contract and data.eagle_contract.id or False
+            if data.partner_invoice_id:
+                invoice['partner_id'] = data.partner_invoice_id.id
         return invoice
 
     @api.multi
