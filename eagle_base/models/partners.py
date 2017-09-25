@@ -40,17 +40,17 @@ class EagleContractPartnerRole(models.Model):
 class ResPartner(models.Model):
     _inherit = 'res.partner'
 
-    @api.one
-    @api.depends('name')
-    def _get_comp_name(self):
-        return dict(self.name_get(self._cr, self._uid, self._ids, context=self._context))
+    # @api.one
+    # @api.depends('name')
+    # def _get_comp_name(self):
+    #     return dict(self.name_get(self._cr, self._uid, self._ids, context=self._context))
 
     contract_roles_id = fields.One2many('eagle.contract.partner_role', 'partner_id', string='Roles')
     eagle_contracts = fields.Many2many(
         'eagle.contract', 'eagle_contract_partner_rel', 'partner_id', 'contract_id',
         string='Present in files',
         copy=False)
-    comp_name = fields.Char(compute='_get_comp_name', string='Name')
+    # comp_name = fields.Char(compute='_get_comp_name', string='Name')
     eagle_contract_list = fields.One2many('eagle.contract', 'customer_id', compute='_get_eagle_contract_list', string='Files list')
     eagle_contract_count = fields.Integer(compute='_get_eagle_contract_list', string='Files count')
 
