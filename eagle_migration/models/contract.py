@@ -26,7 +26,7 @@ class EagleContract(models.Model):
         }
 
         for contract in self:
-            query = "select analytic_account_id from project_project  where contract_id=%d and project_use='maint'" % (contract.id,)
+            query = "select analytic_account_id from project_project  where eagle_contract=%d and project_use='maint'" % (contract.id,)
             self._cr.execute(query)
             row = self._cr.fetchone()
 
