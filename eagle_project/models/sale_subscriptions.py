@@ -246,7 +246,7 @@ class SaleSubscriptionLine(models.Model):
     @api.onchange('product_id')
     def onchange_product_id(self):
         _logger.info(self._context)
-        res = super(SaleSubscriptionLine, self).onchange_product_id()
+        super(SaleSubscriptionLine, self).onchange_product_id()
         company_id = self.env.user.company_id.id
         pricelist_id = None
         for subs in self:
@@ -258,13 +258,11 @@ class SaleSubscriptionLine(models.Model):
                     company_id = analytic_account_id.company_id.id
                     pricelist_id = analytic_account_id.pricelist_id.id
 
-                if 'value' not in res:
-                    res['value'] = {}
                 ctx = dict(company_id=company_id, force_company=company_id, pricelist=pricelist_id, quantity=subs.quantity)
-
                 prod = subs.env['product.product'].with_context(ctx).browse(subs.product_id.id)
-
-                subs.short_descr = prod.display_name
+                res = {
+                    'short_descr': prod.display_name
+                }
 
                 if prod.recurring_rule_type and prod.recurring_interval:
                     next_date = datetime.now()
@@ -282,15 +280,17 @@ class SaleSubscriptionLine(models.Model):
                         next_date += relativedelta(years=prod.recurring_interval or 1)
                         failed = False
                     if failed:
-                        res['value'].update({
+                        res.update({
                             'recurring_rule_type': 'none',
                             'recurring_interval': 1,
                             'recurring_next_date': None
                         })
                     else:
-                        res['value'].update({
+                        res.update({
                             'recurring_rule_type': prod.recurring_rule_type,
                             'recurring_interval': prod.recurring_interval,
                             'recurring_next_date': next_date
                         })
-        return res
+
+                subs.update(res)
+
