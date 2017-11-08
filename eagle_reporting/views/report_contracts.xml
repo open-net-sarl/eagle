@@ -52,7 +52,7 @@
                     </div>
 
                     <div class="row col-xs-12 mb16">
-                        <h3>Offer <span t-esc="o.id"/> du <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%d/%m/%Y')"/></h3>
+                        <h3>Dossier <span t-esc="o.id"/> offre du <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%d/%m/%Y')"/></h3>
                     </div>
                        
                 <!-- [Active recurrings] -->
@@ -78,7 +78,7 @@
                     <t t-set="eagle_table_total" t-value="o.report_services_total "/>                    
                     <t t-call="eagle_reporting.table_common" />
 
-                    <t t-if="has_rec_lines == 1">
+                    <t t-if="has_rec_lines == 1 and o.state != 'production'">
 <!--                         <p><strong>[TO REMOVE] Recurring / Active [TO REMOVE]</strong></p> -->
                         
                         <!-- table -->
@@ -91,7 +91,12 @@
                     <div class="row">
                         <div class="col-xs-5 pull-right">
                             <table class="table table-condensed">
-                                <t t-set="total_amount" t-value="o.report_contract_total "/>
+                                <t t-if="o.state != 'production'">
+                                    <t t-set="total_amount" t-value="o.report_contract_total "/>
+                                </t>
+                                <t t-else="">
+                                    <t t-set="total_amount" t-value="o.report_deliverables_total + o.report_services_total"/>
+                                </t>
                             <!--
                                 #Tax??
                                 <tr>
