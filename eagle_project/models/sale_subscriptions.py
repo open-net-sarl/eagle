@@ -231,17 +231,9 @@ class SaleSubscriptionLine(models.Model):
         _logger.info(self._context)
         for subs in self:
             description = subs.name
-
-            res = super(SaleSubscriptionLine, subs).onchange_product_id()
-
+            super(SaleSubscriptionLine, subs).onchange_product_id()
             if subs.product_id:
-                if 'value' not in res:
-                    res['value'] = {}
-
-                res['value'].update({
-                    'name': description
-                    })
-        return res
+                subs.name = description
 
     @api.onchange('product_id')
     def onchange_product_id(self):
