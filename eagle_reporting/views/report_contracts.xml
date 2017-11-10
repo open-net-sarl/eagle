@@ -302,24 +302,24 @@
                                 </t>
                             </tbody>
                         </table>
-                        <div class="row">
-                            <div class="col-xs-5 pull-right">
-                                <table class="table table-condensed">
-                                    <tr class="eagle_border">
-                                        <td><span t-esc="eagle_table_total_label"/></td>
-                                        <td class="text-right">
-                                            <span t-esc="eagle_table_total" t-options="{'widget': 'monetary', 'display_currency': o.customer_id.property_product_pricelist.currency_id}"/>
-                                        </td>
-                                    </tr>
-                                </table>
-                            </div>
-                        </div>
                     </div>
 
                     <t t-if="page_index &lt; page_size - 1">
                         <p style="page-break-before:always;"> </p>
                     </t>
                 </t>
+                <div class="row">
+                    <div class="col-xs-5 pull-right">
+                        <table class="table table-condensed">
+                            <tr class="eagle_border">
+                                <td><span t-esc="eagle_table_total_label"/></td>
+                                <td class="text-right">
+                                    <span t-esc="eagle_table_total" t-options="{'widget': 'monetary', 'display_currency': o.customer_id.property_product_pricelist.currency_id}"/>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
                 <t t-if="o.do_page_break">
                     <p style="page-break-before:always;"> </p>
                 </t>
