@@ -200,7 +200,7 @@
                                             </t>
                                         </td> -->
                                         <td>
-                                            <span t-field="sub_line.price_subtotal"/>
+                                            <span t-field="sub_line.price_subtotal" t-field-options="{'widget': 'monetary', 'display_currency': o.customer_id.property_product_pricelist.currency_id}"/>
                                         </td>
                                     </tr>
                                 </t>
