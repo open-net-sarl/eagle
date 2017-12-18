@@ -92,7 +92,7 @@
                                 <field name="use_new_so_inv"/>
                                 <field name="is_billable"/>
                                 <field name="is_active"/>
-                                <field name="cancellation_deadline"/>
+                                <field name="cancellation_deadline" attrs="{'readonly':[('recurring_interval','in',[False,'none'])]}"/>
                                 <field name="price_unit"/>
                                 <field name="discount" groups="sale.group_discount_per_so_line"/>
                                 <field name="price_subtotal"/>

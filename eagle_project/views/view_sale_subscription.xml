@@ -121,7 +121,7 @@
                             <field name="recurring_rule_type"/>
                             <field name="recurring_interval" attrs="{'invisible':['|',('recurring_rule_type','=',False),('recurring_rule_type','=','none')]}"/>
                             <field name="recurring_next_date"/>
-                            <field name="cancellation_deadline"/>
+                            <field name="cancellation_deadline" attrs="{'readonly':[('recurring_rule_type','in',[False,'none'])]}"/>
                             <field name="use_new_so_inv"/>
                             <field name="is_billable"/>
                             <field name="is_active"/>
@@ -157,7 +157,7 @@
                     <field name="recurring_next_date"/>
                     <field name="use_new_so_inv"/>
                     <field name="is_billable"/>
-                    <field name="cancellation_deadline"/>
+                    <field name="cancellation_deadline" attrs="{'readonly':[('recurring_rule_type','in',[False,'none'])]}"/>
                     <field name="price_unit"/>
                     <field name="price_subtotal"/>
                 </tree>
