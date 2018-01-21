@@ -274,6 +274,39 @@ class EagleContract(models.Model):
 
         return res
 
+    @api.multi
+    def write(self, vals):
+        for row in self.read(['state','customer_id']):
+            if row['state'] not in ['production']:
+                continue
+            if not row.get('customer_id', []):
+                if not vals.get('customer_id', False):
+                    raise UserError(_('Please select a customer.'))
+
+        protected_fields = self.env['sale.order.line']._get_protected_fields()
+        item_list = vals.get('past_sale_order_lines', [])
+        new_item_list = []
+        for item_id in range(len(item_list)):
+            item = item_list[item_id]
+            if not isinstance(item, list) or len(item) < 3:
+                new_item_list.append(item)
+                continue
+            if not item[1]:
+                new_item_list.append(item)
+                continue
+            sol = self.env['sale.order.line'].browse(item[1])
+            if not sol:
+                new_item_list.append(item)
+                continue
+            if any(f in item[2].keys() for f in protected_fields):
+                if sol.order_id.state == 'done':
+                    continue
+            new_item_list.append(item)
+        if 'past_sale_order_lines' in vals:
+            vals['past_sale_order_lines'] = new_item_list
+
+        return super(EagleContract, self).write(vals)
+
 
 class EagleContractPos(models.Model):
     _inherit = 'eagle.contract.position'
