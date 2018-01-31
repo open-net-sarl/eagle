@@ -131,6 +131,125 @@
             </t>
         </template>
 
+        <template id="eagle_reporting.report_contract_document_group">
+            <t t-call="report.external_layout">
+                <t t-set="o" t-value="o.with_context({'lang':o.customer_id.lang})"/>
+                <div class="page">
+                    <div class="row col-xs-12">
+                        
+                    <!-- [Adress] -->
+                        <!-- <div class="col-xs-4 pull-right postal_adress_div">
+                            <address t-field="o.customer_id" t-field-options="{&quot;widget&quot;: &quot;contact&quot;, &quot;fields&quot;: [&quot;address&quot;, &quot;name&quot;], &quot;no_marker&quot;: true}"/>
+                        </div> -->
+                        <div class="col-xs-4 pull-right postal_adress_div">
+                            <span t-if="o.customer_id.name">
+                                <strong>
+                                    <span t-field="o.customer_id.name"/>
+                                </strong>
+                                <br/>
+                            </span>
+                            <!-- CONTACT NAME FOR COMPANY -->
+                            <span t-if="o.customer_id.is_company and o.customer_id.child_ids">
+                                <span t-field="o.customer_id.child_ids[0].name"/>
+                                <br/>
+                            </span>
+                            <!-- COMPANY NAME FOR CONTACT -->
+                            <span t-if="o.customer_id.parent_id">
+                                <span t-field="o.customer_id.parent_id.name"/>
+                                <br/>
+                            </span>
+                            <span t-if="o.customer_id.street">
+                                <span t-field="o.customer_id.street"/>
+                                <br/>
+                            </span>
+                            <span t-if="o.customer_id.street2">
+                                <span t-field="o.customer_id.street2"/>
+                                <br/>
+                            </span>
+                            <span t-if="o.customer_id.zip">
+                                <span t-field="o.customer_id.zip"/>
+                            </span>
+                            <span t-if="o.customer_id.city">
+                                <span t-field="o.customer_id.city"/>
+                                <br/>
+                            </span>
+                            <span t-if="o.customer_id.country_id.code != 'CH'">
+                                <span t-field="o.customer_id.country_id.name"/>
+                                <br/>
+                            </span>
+                        </div>
+
+                    </div>
+
+                    <div class="row col-xs-12 mb16">
+                        <h3>Dossier <span t-esc="o.id"/> offre du <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%d/%m/%Y')"/></h3>
+                    </div>
+                       
+                <!-- [Active recurrings] -->
+                    <t t-set="has_rec_lines" t-value="0" />
+                    <t t-if="len(o.lines_recurring)">
+                        <t t-set="has_rec_lines" t-value="1"/>
+                    </t>
+
+                    <!-- if has something behing -->
+                    <t t-if="has_not_rec_lines == 1 and has_rec_lines == 1 and o.do_page_break">
+                        <p style="page-break-after:always;"></p>
+                    </t>
+                    
+                    <t t-set="eagle_table_common_ids" t-value="o.lst_packs"/>
+                    <t t-set="eagle_table_total_label" t-value="'Total de la prestation (HT)'" />
+                    <t t-set="table_title" t-value="'Prestations'" />
+                    <t t-set="eagle_table_total" t-value="o.report_contract_total "/>
+                    <t t-call="eagle_reporting.table_common" />
+
+                    <t t-if="has_rec_lines == 1 and o.state != 'production'">
+<!--                         <p><strong>[TO REMOVE] Recurring / Active [TO REMOVE]</strong></p> -->
+                        
+                        <!-- table -->
+                        <t t-set="filtered_lines" t-value="o.lines_recurring"/>
+                        <t t-call="eagle_reporting.table_template"/>
+                        
+                    </t>
+
+                <!-- [Final total] -->
+                    <div class="row">
+                        <div class="col-xs-5 pull-right">
+                            <table class="table table-condensed">
+                                <t t-set="total_amount" t-value="o.report_contract_total "/>
+                            <!--
+                                #Tax??
+                                <tr>
+                                    <td>TVA (8%)</td>
+                                    <td class="text-right">
+                                        <span t-esc="round(total_amount*0.08, 2)"/> <span t-esc="o.customer_id.property_product_pricelist.currency_id.symbol"/>
+                                    </td>
+                                </tr>
+                            -->
+                                <tr class="border-black">
+                                    <td><strong>Total (WT)</strong></td>
+                                    <td class="text-right">
+                                        <strong>
+                                            <span t-esc="total_amount" t-options="{'widget': 'monetary', 'display_currency': o.customer_id.property_product_pricelist.currency_id}"/>
+                                        </strong>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+
+
+                    <!-- NOTES -->
+                    <t t-if="o.notes">
+                        <div style="page-break-inside: avoid; color: #303030; vertical-align:top; padding-top: 10px; font-size:9pt;">
+                                <span t-field="o.notes"/>
+                        </div>
+                    </t>
+
+
+                </div>
+            </t>
+        </template>
+
         <template id="eagle_reporting.table_template">
             <!-- filtered_lines needs to be defined before the call -->
             <t t-foreach="o.subs_lines_layouted(filtered_lines)" t-as="page">
@@ -213,6 +332,7 @@
                                             <t t-set="last_has_not_subtotal" t-value="False"/>
                                         </td>
                                     </tr>
+                                </t>
                             </t>
                         </tbody>
                     </table>
@@ -230,7 +350,7 @@
                 <t t-foreach="o.order_lines_layouted(eagle_table_common_ids)" t-as="page">
                     <div style="page-break-inside: avoid;">
                         <h4><span t-esc="table_title" /></h4>
-                        <table class="table table-condensed eagle_reporting_table" >
+                        <table class="table table-condensed eagle_reporting_table" style="page-break-inside: avoid;">
                             <thead>
                                 <tr>
                                     <th id="col_descrp">Description</th>
@@ -308,7 +428,7 @@
                         <p style="page-break-before:always;"> </p>
                     </t>
                 </t>
-                <div class="row">
+                <!-- <div class="row">
                     <div class="col-xs-5 pull-right">
                         <table class="table table-condensed">
                             <tr class="eagle_border">
@@ -319,7 +439,7 @@
                             </tr>
                         </table>
                     </div>
-                </div>
+                </div> -->
                 <t t-if="o.do_page_break">
                     <p style="page-break-before:always;"> </p>
                 </t>
@@ -334,6 +454,14 @@
                 </t>
             </t>
         </template>
+
+        <template id="eagle_reporting.report_contract_group">
+            <t t-call="report.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <t t-call="eagle_reporting.report_contract_document_group" t-lang="o.customer_id.lang"/>
+                </t>
+            </t>
+        </template>
     
         <report 
             string="Print contract"
@@ -342,5 +470,13 @@
             report_type="qweb-pdf"
             name="eagle_reporting.report_contract"
             file="eagle_reporting.report_contract"/>
+
+        <report 
+            string="Print contract group"
+            id="eagle_print_contract_group"
+            model="eagle.contract"
+            report_type="qweb-pdf"
+            name="eagle_reporting.report_contract_group"
+            file="eagle_reporting.report_contract_group"/>
     </data>
 </odoo>

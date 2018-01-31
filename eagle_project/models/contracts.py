@@ -93,6 +93,14 @@ class EagleContract(models.Model):
             ('product_id.recurring_invoice','!=',True)
         ]
     )
+    lst_packs = fields.One2many(
+        'sale.order.line', 'contract_id',
+        string='Packs',
+        copy=True,
+        domain=[
+            ('product_id.recurring_invoice','!=',True)
+        ]
+    )
 
     lst_recurrents = fields.One2many(
         'sale.subscription.line', 'eagle_contract',
