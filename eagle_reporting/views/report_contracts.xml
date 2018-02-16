@@ -189,7 +189,12 @@
                     <div class="row">
                         <div class="col-xs-5 pull-right">
                             <table class="table table-condensed">
-                                <t t-set="total_amount" t-value="o.report_contract_total " />
+                                <t t-if="o.state != 'production'">
+                                    <t t-set="total_amount" t-value="o.report_contract_total " />
+                                </t>
+                                <t t-else="">
+                                    <t t-set="total_amount" t-value="o.report_deliverables_total + o.report_services_total" />
+                                </t>
                                 <!--
                                 #Tax??
                                 <tr>
