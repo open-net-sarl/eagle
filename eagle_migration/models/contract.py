@@ -53,6 +53,7 @@ class EagleContract(models.Model):
                 'analytic_account_id': analytic_account_id
             })
             for position in contract.positions:
+                recurrency = map_recurrency.get(position.recurrence_id.unit) or 'none'
                 SaleSubscriptionLine.create({
                     'eagle_contract': contract.id,
                     'analytic_account_id': sale_sub.id,
@@ -61,10 +62,10 @@ class EagleContract(models.Model):
                     'name': position.description or '',
                     'product_id': position.name.id,
                     'recurring_interval': position.recurrence_id.value,
-                    'recurring_rule_type': map_recurrency.get(position.recurrence_id.unit)  or 'none',
+                    'recurring_rule_type': recurrency,
                     'recurring_next_date': position.next_invoice_date,
                     'is_billable': position.is_billable,
-                    'is_active': position.is_active,
+                    'is_active': False if recurrency == 'none' else position.is_active,
                     'sequence': position.sequence,
                     'cancellation_deadline': position.cancellation_deadline,
                     'discount': position.discount,
