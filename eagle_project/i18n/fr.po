@@ -523,7 +523,8 @@ msgid "ir.sequence"
 msgstr "ir.sequence"
 
 #. module: eagle_project
-#: model:ir.model.fields,field_description:eagle_project.field_sale_order_short_descr
+#: model:ir.model.fields,field_description:eagle_project.field_sale_order_line_short_descr
+#: model:ir.model.fields,field_description:eagle_project.field_sale_subscription_line_short_descr
 msgid "Short descr."
 msgstr "Descr. courte"
 
@@ -536,4 +537,9 @@ msgstr "Adresse de facturation"
 #: model:ir.model.fields,field_description:eagle_project.field_account_analytic_account_partner_shipping_id
 msgid "Delivery Address"
 msgstr "Adresse de livraison"
+
+#. module: eagle_project
+#: model:ir.model.fields,field_description:eagle_project.field_eagle_contract_default_analytic_acc
+msgid "Default Analytic Account"
+msgstr "Compte analytique"
 

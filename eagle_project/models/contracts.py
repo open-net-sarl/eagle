@@ -11,11 +11,10 @@
 
 from odoo import _, api, fields, models
 import odoo.addons.decimal_precision as dp
+from odoo.exceptions import UserError
 
-from lxml import etree
 from datetime import datetime
 from dateutil.relativedelta import relativedelta
-import simplejson
 
 import logging
 _logger = logging.getLogger(__name__)
@@ -277,6 +276,7 @@ class EagleContract(models.Model):
         rec = self.env['account.analytic.account'].create({
             'name': res.name,
             'code': '',
+            'partner_id': res.customer_id and res.customer_id.id or False
             })
         res.default_analytic_acc = rec.id
 

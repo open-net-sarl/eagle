@@ -1006,3 +1006,13 @@ msgstr "Sur commande"
 msgid "or"
 msgstr "ou"
 
+#. module: eagle_base
+#: model:ir.model.fields,field_description:eagle_base.field_eagle_contract_category_id
+msgid "File category"
+msgstr "Catégorie"
+
+#. module: eagle_base
+#: model:ir.model.fields,field_description:eagle_base.field_eagle_contract_name
+msgid "File"
+msgstr "Dossier"
+
