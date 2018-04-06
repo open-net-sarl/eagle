@@ -198,7 +198,7 @@
                             </tree>
                         </field>
                     </page>
-                    <page string="Past Sale Order Lines" nmae="past_sol" invisible="1">
+                    <page string="Past Sale Order Lines" name="past_sol" invisible="1">
                         <field name="past_sale_order_lines">
                             <tree string=" " decoration-info="invoice_status=='to invoice'" create="false">
                                 <field name="sequence"/>
@@ -222,7 +222,7 @@
                             </tree>
                         </field>
                     </page>
-                    <page string="Tasks" nmae="project_tasks">
+                    <page string="Tasks" name="project_tasks">
                         <field name="project_tasks">
                             <tree 
                                 editable="top" 
@@ -255,7 +255,7 @@
                             </tree>
                         </field>
                     </page>
-                    <page string="Analytic Lines" nmae="analytic_lines" invisible="1">
+                    <page string="Analytic Lines" name="analytic_lines" invisible="1">
                         <!-- <field name="analytic_lines" domain="[('task_id.eagle_contract','=',active_id)]"> -->
                         <field name="analytic_lines">
                             <tree editable="top" string="Timesheet Activities" create="false">
