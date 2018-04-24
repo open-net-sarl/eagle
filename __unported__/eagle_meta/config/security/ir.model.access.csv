@@ -1,5 +1,0 @@
-"id","name","model_id:id","group_id:id","perm_read","perm_write","perm_create","perm_unlink"
-"access_eagle_meta_managers","eagle_meta.eagle_meta_managers","model_eagle_contract_meta","eagle_base.group_contracts_managers",1,1,1,1
-"access_eagle_meta_viewers","eagle_meta.eagle_meta_viewers","model_eagle_contract_meta","eagle_base.group_contracts_viewers",1,0,0,0
-"access_eagle_meta_editors","eagle_meta.eagle_meta_editors","model_eagle_contract_meta","eagle_base.group_contracts_editors",1,1,1,1
-"access_eagle_meta_users","eagle_meta.eagle_meta_users","model_eagle_contract_meta","eagle_base.group_contracts_users",1,0,0,0
