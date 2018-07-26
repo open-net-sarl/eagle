@@ -83,7 +83,9 @@
                                 <field name="short_descr"/>
                                 <field name="name" invisible="1"/>
                                 <field name="quantity" groups="base.group_no_one"/>
+                                <!--
                                 <field name="sold_quantity"/>
+                                -->
                                 <field name="uom_id"/>
                                 <field name="requested_date"/>
                                 <field name="recurring_rule_type"/>
@@ -99,6 +101,7 @@
                             </tree>
                         </field>
                     </page>
+                    <!--
                     <page string="Delivrables" name="sale_subscrl_delivrables">
                         <field name="lst_deliverables" context="{'ons_product_type':'deliverable','default_contract_id':context.get('active_id'),'default_partner_id':customer_id,'default_project_id':default_analytic_acc}" options="{'form_view_ref':'eagle_project.eagle_project_view_sale_order_line_form'}">
                             <tree string=" " 
@@ -155,22 +158,27 @@
                             </tree>
                         </field>
                     </page>
-                    <page string="Stock moves" name="sale_stock_moves" invisible="1">
-                        <field name="lst_stock_moves">
-                            <tree decoration-muted="state == 'cancel'" decoration-danger="(state not in ('cancel','done')) and date &gt; current_date" string="Moves" create="0" limit="20">
-                                <field name="name"/>
-                                <field name="picking_id" string="Reference"/>
-                                <field name="origin"/>
-                                <field name="picking_type_id" invisible="1"/>
-                                <field name="create_date" invisible="1" groups="base.group_no_one"/>
+                    -->
+                    <page string="Sale Order Lines" name="sale_order_line">
+                        <field name="sale_order_lines">
+                            <tree string=" " decoration-info="invoice_status=='to invoice'" create="false">
+                                <field name="sequence" widget="handle"/>
                                 <field name="product_id"/>
-                                <field name="product_uom_qty"/>
-                                <field name="product_uom" options="{'no_open': True, 'no_create': True}" string="Unit of Measure" groups="product.group_uom"/>
-                                <field name="location_id" groups="stock.group_stock_multi_locations"/>
-                                <field name="location_dest_id" groups="stock.group_stock_multi_locations"/>
-                                <field name="date" groups="base.group_no_one"/>
-                                <field name="date_expected" invisible="context.get('scrap_move')"/>  <!-- TDE FIXME: woooooo -->
-                                <field name="state"/>
+                                <field name="name" invisible="1"/>
+                                <field name="product_uom_qty" string="Ordered Qty"/>
+                                <field name="qty_delivered" invisible="1"/>
+                                <field name="qty_invoiced" invisible="1"/>
+                                <field name="qty_to_invoice" invisible="1"/>
+                                <field name="product_uom" groups="product.group_uom" options='{"no_open": True}'/>
+                                <field name="requested_date"/>
+                                <field name="price_unit"/>
+                                <field name="tax_id" widget="many2many_tags"/>
+                                <field name="discount" groups="sale.group_discount_per_so_line"/>
+                                <field name="price_subtotal" widget="monetary"/>
+                                <field name="qty_delivered_updateable" invisible="1"/>
+                                <field name="state" invisible="1"/>
+                                <field name="invoice_status"/>
+                                <field name="customer_lead" invisible="1"/>
                             </tree>
                         </field>
                     </page>
@@ -191,7 +199,6 @@
                                 <field name="discount" groups="sale.group_discount_per_so_line"/>
                                 <field name="price_subtotal" widget="monetary"/>
                                 <field name="qty_delivered_updateable" invisible="1"/>
-                                <field name="procurement_ids" invisible="1"/>
                                 <field name="state" invisible="1"/>
                                 <field name="invoice_status" invisible="1"/>
                                 <field name="customer_lead" invisible="1"/>
@@ -215,10 +222,28 @@
                                 <field name="discount" groups="sale.group_discount_per_so_line"/>
                                 <field name="price_subtotal" widget="monetary"/>
                                 <field name="qty_delivered_updateable" invisible="1"/>
-                                <field name="procurement_ids" invisible="1"/>
                                 <field name="state" invisible="1"/>
                                 <field name="invoice_status" invisible="1"/>
                                 <field name="customer_lead" invisible="1"/>
+                            </tree>
+                        </field>
+                    </page>
+                    <page string="Stock moves" name="sale_stock_moves" invisible="1">
+                        <field name="lst_stock_moves">
+                            <tree decoration-muted="state == 'cancel'" decoration-danger="(state not in ('cancel','done')) and date &gt; current_date" string="Moves" create="0" limit="20">
+                                <field name="name"/>
+                                <field name="picking_id" string="Reference"/>
+                                <field name="origin"/>
+                                <field name="picking_type_id" invisible="1"/>
+                                <field name="create_date" invisible="1" groups="base.group_no_one"/>
+                                <field name="product_id"/>
+                                <field name="product_uom_qty"/>
+                                <field name="product_uom" options="{'no_open': True, 'no_create': True}" string="Unit of Measure" groups="product.group_uom"/>
+                                <field name="location_id" groups="stock.group_stock_multi_locations"/>
+                                <field name="location_dest_id" groups="stock.group_stock_multi_locations"/>
+                                <field name="date" groups="base.group_no_one"/>
+                                <field name="date_expected" invisible="context.get('scrap_move')"/>
+                                <field name="state"/>
                             </tree>
                         </field>
                     </page>
@@ -256,15 +281,15 @@
                         </field>
                     </page>
                     <page string="Analytic Lines" name="analytic_lines" invisible="1">
-                        <!-- <field name="analytic_lines" domain="[('task_id.eagle_contract','=',active_id)]"> -->
                         <field name="analytic_lines">
                             <tree editable="top" string="Timesheet Activities" create="false">
                                 <field name="date"/>
                                 <field name="user_id" required="1"/>
                                 <field name="name"/>
+                                                                                <!-- , ('partner_id', '=', parent.partner_id)]" -->
                                 <field name="account_id"
                                     invisible="0"
-                                    domain="[('account_type', '=', 'normal'), ('partner_id', '=', parent.partner_id)]"
+                                    domain="[('account_type', '=', 'normal')]"
                                     options="{'no_open': True, 'no_create': True}"
                                     groups="analytic.group_analytic_accounting"/>
                                 <field name="unit_amount" string="Duration" widget="float_time"/>

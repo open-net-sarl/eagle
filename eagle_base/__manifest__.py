@@ -23,7 +23,6 @@
         'base',
         'decimal_precision',
         'mail',
-        'report',
         'product',
     ],
     'data': [

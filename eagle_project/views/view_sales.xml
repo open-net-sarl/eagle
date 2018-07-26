@@ -19,17 +19,16 @@
                 <xpath expr="//field[@name='order_line']/form//field[@name='product_id']" position="after">
                     <field name="short_descr"/>
                 </xpath>
-				<field name="project_id" position="after">
+				<field name="analytic_account_id" position="after">
 					<field
                         name="contract_id"
-                        attrs="{'readonly':[('subscription_id','!=',False)]}"
                         groups="eagle_base.group_contracts_viewers,eagle_base.group_contracts_editors,eagle_base.group_contracts_managers,eagle_base.group_contracts_users"/>
 				</field>
-                <xpath expr="//field[@name='quot_lines']/form//group[1]/group[2]" position="inside">
+                <xpath expr="//field[@name='order_line']/form//group[1]/group[2]" position="inside">
                     <field name="date_order"/>
                     <field name="requested_date"/>
                 </xpath>
-                <xpath expr="//field[@name='quot_lines']/tree//field[@name='price_unit']" position="before">
+                <xpath expr="//field[@name='order_line']/tree//field[@name='price_unit']" position="before">
                     <field name="date_order"/>
                     <field name="requested_date"/>
                 </xpath>
@@ -65,17 +64,6 @@
 				</field>
 			</field>
 		</record>
-        <record model="ir.ui.view" id="eagle_view_sale_order_form2">
-            <field name="name">Eagle Project: rm subscription field</field>
-            <field name="model">sale.order</field>
-            <field name="inherit_id" ref="sale.view_order_form"/>
-            <field name="priority" eval="30"/>
-            <field name="arch" type="xml">
-                <xpath expr="//field[@name='subscription_id']" position="attributes">
-                    <attribute name="invisible">1</attribute>
-                </xpath>
-            </field>
-        </record>
 
         <record model="ir.ui.view" id="eagle_project_view_sale_order_line_form">
             <field name="name">Eagle Project: sale line standalone form</field>
@@ -87,20 +75,19 @@
                         <group>
                             <field
                                     name="order_id"
-                                    context="{'default_contract_id':context.get('default_contract_id'),'default_partner_id':context.get('default_partner_id'),'default_project_id':context.get('default_project_id')}"
+                                    context="{'default_contract_id':context.get('default_contract_id'),'default_partner_id':context.get('default_partner_id'),'default_analytic_account_id':context.get('default_analytic_account_id')}"
                                     domain="[('contract_id','=',context.get('default_contract_id')),('state','not in',['done','cancel'])]"
                                     required="0"
                             />
                             <field
                                     name="product_id"
-                                    attrs="{'readonly': ['|', ('qty_invoiced', '&gt;', 0), ('procurement_ids', '!=', [])]}"
+                                    attrs="{'readonly': [('qty_invoiced', '&gt;', 0)]}"
                             />
                             <field name="short_descr"/>
                             <field name="layout_category_id" groups="sale.group_sale_layout"/>
                             <field name="invoice_status" invisible="1"/>
                             <field name="qty_to_invoice" invisible="1"/>
                             <field name="qty_delivered_updateable" invisible="1"/>
-                            <field name="procurement_ids" invisible="1"/>
                             <field name="price_subtotal" invisible="1"/>
                             <label for="product_uom_qty" string="Ordered Quantity"/>
                             <div>
@@ -124,9 +111,8 @@
                             </div>
                         </group>
                         <group>
-                            <field name="product_tmpl_id" invisible="1"/>
-                            <field name="product_packaging" context="{'default_product_tmpl_id': product_tmpl_id, 'quantity':product_uom_qty, 'uom':product_uom}" domain="[('product_tmpl_id','=',product_tmpl_id)]" groups="product.group_stock_packaging"/>
-                            <field name="tax_id" widget="many2many_tags" domain="[('type_tax_use','=','sale'),('company_id','=',order.company_id)]" attrs="{'readonly': [('qty_invoiced', '&gt;', 0)]}"/>
+                            <field name="product_packaging" context="{'quantity':product_uom_qty, 'uom':product_uom}" groups="product.group_stock_packaging"/>
+                            <field name="tax_id" widget="many2many_tags" domain="[('type_tax_use','=','sale'),('company_id','=',order_id.company_id)]" attrs="{'readonly': [('qty_invoiced', '&gt;', 0)]}"/>
                             <label for="customer_lead"/>
                             <div>
                                 <field name="customer_lead" class="oe_inline"/> days

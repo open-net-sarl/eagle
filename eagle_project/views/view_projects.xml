@@ -46,7 +46,7 @@
 				<field name="legend_done" position="after">
 					<field name="eagle_contract"/>
 				</field>
-                <xpath expr="//div[contains(@class, 'oe_kanban_content')]//div[contains(@class, 'text-muted')]" position="inside">
+                <xpath expr="//div[contains(@class, 'o_kanban_record_headings')]/small[contains(@class, 'o_kanban_record_subtitle')]" position="inside">
 					<t t-if="record.eagle_contract.raw_value"><br/><span t-attf-style="color:blue;">File: <field name="eagle_contract"/></span></t>
                 </xpath>
 			</field>

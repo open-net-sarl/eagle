@@ -75,6 +75,9 @@ class SaleSubscription(models.Model):
     date = fields.Date(default=_default_date)
     analytic_account_id = fields.Many2one(default=_default_analytic_account)
 
+    partner_invoice_id = fields.Many2one('res.partner', string='Invoice Address', related='analytic_account_id.partner_invoice_id')
+    partner_shipping_id = fields.Many2one('res.partner', string='Delivery Address', related='analytic_account_id.partner_shipping_id')
+
     # ---------- Instances management
 
     @api.multi

@@ -18,7 +18,7 @@
         'eagle_base',
         'analytic',
         'account',
-        'project_issue_sheet',
+        'hr_timesheet',
         'sale_stock',
         'sale_order_dates',
         'sale_timesheet',
@@ -26,7 +26,7 @@
         'ons_productivity_subscriptions_adv',
         'ons_productivity_layout',
         'account_asset',
-        'sale_contract_asset',
+        'sale_subscription_asset',
         'sale_margin'
     ],
     'data': [

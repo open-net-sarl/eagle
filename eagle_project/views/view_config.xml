@@ -12,7 +12,6 @@
 
     	<!--
     		Parameters
-    	-->
 		<record model="ir.ui.view" id="eagle_prj_view_config_params_form">
 			<field name="name">Eagle Project Params View</field>
 			<field name="model">eagle.config.settings</field>
@@ -27,6 +26,7 @@
                 </div>
 			</field>
 		</record>
+    	-->
 
 	</data>
 </openerp>

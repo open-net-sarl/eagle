@@ -15,6 +15,7 @@
                 Specific contract positions menu item
         -->
 
+<!--
         <record model="ir.ui.view" id="eagle_view_contract_pos_indep_tree">
             <field name="name">Eagle Contract Position Independant List</field>
             <field name="model">eagle.contract.position</field>
@@ -38,7 +39,6 @@
                 </tree>
             </field>
         </record>
-
         <record model="ir.ui.view" id="eagle_view_contract_pos_indep_form">
             <field name="name">Eagle Contract Position View</field>
             <field name="model">eagle.contract.position</field>
@@ -80,12 +80,12 @@
                 </search>
             </field>
         </record>
-
+-->
 
         <!--
                 Specific contract positions menu item
         -->
-
+        <!--
         <record model="ir.actions.act_window" id="eagle_action_contract_pos_filter_all_tree">
             <field name="name">Positions</field>
             <field name="res_model">eagle.contract.position</field>
@@ -108,7 +108,7 @@
             <field name="view_id" ref="eagle_view_contract_pos_indep_form"/>
             <field name="act_window_id" ref="eagle_action_contract_pos_filter_all_tree"/>
         </record>
-
+-->
         <!--
                 Contract partners
         -->
@@ -132,7 +132,7 @@
         <!--
             CONTRACTS 
         -->
-
+        <!--
         <record model="ir.ui.view" id="eagle_view_contract_pos_tree">
             <field name="name">Eagle Contract Position List</field>
             <field name="model">eagle.contract.position</field>
@@ -169,11 +169,11 @@
                 </form>
             </field>
         </record>
-
+-->
         <!--
                 Definitions used in the positions switchable edition modes
         -->
-
+        <!--
         <record model="ir.ui.view" id="eagle_view_contract_pos_sw_form">
             <field name="name">Eagle Contract Position Switched View</field>
             <field name="model">eagle.contract.position</field>
@@ -229,7 +229,7 @@
             <field name="view_id" ref="eagle_view_contract_pos_sw_form"/>
             <field name="act_window_id" ref="eagle_action_contract_pos_filter_sw_tree"/>
         </record>
-
+-->
         <record model="ir.ui.view" id="eagle_view_contract_form">
             <field name="name">Eagle Contract View</field>
             <field name="model">eagle.contract</field>
@@ -418,7 +418,8 @@
             res_model="mail.message" 
             src_model="eagle.contract"
             context="{'default_model':'eagle.contract','default_res_id':active_id}"/>
-        
+
+        <!--
         <record model="ir.ui.view" id="eagle_view_contract_pos_sales_tree">
             <field name="name">Eagle Contract Position Current Sales List</field>
             <field name="model">eagle.contract.position</field>
@@ -471,7 +472,7 @@
             <field name="search_view_id" ref="eagle_view_contract_pos_current_sales_filter"/>
             <field name="domain">[('is_invoicable','=',True)]</field>
         </record>
-
+-->
 
         <record model="ir.ui.view" id="eagle_view_customers_list">
             <field name="name">Customers</field>
@@ -499,7 +500,7 @@
             name="Files"
             res_model="eagle.contract"
             src_model="eagle.customer"/>
-
+        <!--
         <record model="ir.values" id="eagle_ir_cust_contract_select">
             <field name="key2">tree_but_open</field>
             <field name="model">eagle.customer</field>
@@ -508,7 +509,7 @@
             <field eval="True" name="object"/>
             <field name="search_view_id" ref="eagle_view_contract_filter"/>
         </record>
-        
+        -->
         <!--
                 Contracts categories
         -->

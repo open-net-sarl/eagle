@@ -52,7 +52,9 @@
                     <attribute name="editable"/>
                 </xpath>
                 <xpath expr="//field[@name='recurring_invoice_line_ids']/tree//field[@name='sequence']" position="replace"/>
+                <!--
                 <xpath expr="//field[@name='recurring_invoice_line_ids']/tree//field[@name='actual_quantity']" position="replace"/>
+                -->
                 <button name="prepare_renewal_order" position="replace"/>
 
                 <xpath expr="//field[@name='recurring_invoice_line_ids']/tree//field[@name='product_id']" position="before">
@@ -70,7 +72,7 @@
         <record model="ir.ui.view" id="eagle_view_ssubcr_list_inherit">
             <field name="name">Eagle Project: sale subscription list</field>
             <field name="model">sale.subscription</field>
-            <field name="inherit_id" ref="sale_contract.sale_subscription_view_list"/>
+            <field name="inherit_id" ref="sale_subscription.sale_subscription_view_list"/>
             <field name="priority" eval="17"/>
             <field name="arch" type="xml">
                 <field name="code" position="before">
@@ -129,7 +131,6 @@
                         <group>
                             <field name="sale_layout_cat_id"/>
                             <field name="quantity" groups="base.group_no_one"/>
-                            <field name="sold_quantity"/>
                             <field name="uom_id"/>
                             <field name="price_unit"/>
                             <field name="discount" groups="sale.group_discount_per_so_line"/>
@@ -151,7 +152,7 @@
                     <field name="product_id" invisible="1"/>
                     <field name="short_descr"/>
                     <field name="sale_layout_cat_id"/>
-                    <field name="sold_quantity"/>
+                    <field name="quantity"/>
                     <field name="uom_id"/>
                     <field name="recurring_rule_type"/>
                     <field name="recurring_next_date"/>
